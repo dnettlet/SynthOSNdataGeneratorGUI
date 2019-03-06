@@ -18,8 +18,9 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" layoutX="448.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleStartApplication" text="Start Application" />
+      <Button fx:id="startButton" layoutX="349.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleStartApplication" text="Start Application" />
       <ProgressBar fx:id="progressIndicator" layoutX="401.0" layoutY="360.0" prefWidth="200.0" progress="0.0" visible="false" />
       <Button fx:id="cancelButton" cancelButton="true" layoutX="475.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" visible="false" />
+      <Button fx:id="changeSettingsButton" layoutX="546.0" layoutY="300.0" mnemonicParsing="false" text="Change Settings..." />
    </children>
 </AnchorPane>

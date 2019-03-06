@@ -1,6 +1,6 @@
 package genDataNOapplication.view;
 
-import genDataNOapplication.AsyncTask;
+import genDataNOapplication.Controller;
 import genDataNOapplication.GenDataNO;
 import genDataNOapplication.Main;
 import javafx.concurrent.WorkerStateEvent;
@@ -22,9 +22,11 @@ public class HomePageController {
 	@FXML
 	Button cancelButton;
 	@FXML
+	Button changeSettingsButton;
+	@FXML
 	ProgressIndicator progressIndicator;
 	
-	private AsyncTask executeProgram;
+	private Controller executeProgram;
 	
 	
 	//Class constructor
@@ -53,7 +55,7 @@ public class HomePageController {
 		progressIndicator.setProgress(-1);
 		progressIndicator.progressProperty().unbind();
 		
-		executeProgram = new AsyncTask();
+		executeProgram = new Controller();
 		
 		// When completed tasks
         executeProgram.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, //
