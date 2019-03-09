@@ -90,5 +90,11 @@ public class HomePageController {
 		progressIndicator.setVisible(false);
 		cancelButton.setVisible(false);
 	}
+	
+	@FXML
+	private void handleChangeSettingsButton() {
+		main.showSettingsPage();
+	}
+	
 
 }

@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.SettingsPageController">
    <children>
       <Label layoutX="436.0" layoutY="58.0" text="Settings">
          <font>
@@ -21,12 +20,12 @@
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextField layoutX="39.0" layoutY="61.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Input File 1" />
+                  <TextField fx:id="inputFile1Name" layoutX="39.0" layoutY="61.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Input File 1" />
                   <Label layoutX="39.0" layoutY="35.0" text="Input File 1" />
-                  <TextField layoutX="39.0" layoutY="166.0" prefHeight="25.0" prefWidth="228.0" promptText="Select input File 2" />
+                  <TextField fx:id="inputFile2Name" layoutX="39.0" layoutY="166.0" prefHeight="25.0" prefWidth="228.0" promptText="Select input File 2" />
                   <Label layoutX="39.0" layoutY="138.0" text="Input File 2" />
-                  <Button layoutX="284.0" layoutY="61.0" mnemonicParsing="false" text="Browse..." />
-                  <Button layoutX="284.0" layoutY="166.0" mnemonicParsing="false" text="Browse..." />
+                  <Button fx:id="browseInFile1Button" layoutX="284.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleInFile1BrowseButton" text="Browse..." />
+                  <Button fx:id="browseInFile2Button" layoutX="284.0" layoutY="166.0" mnemonicParsing="false" onAction="#handleInFile2BrowseButton" text="Browse..." />
                </children>
             </Pane>
          </content>
@@ -35,18 +34,18 @@
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextField layoutX="39.0" layoutY="46.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Out File" />
+                  <TextField fx:id="outFileName" layoutX="39.0" layoutY="46.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Out File" />
                   <Label layoutX="39.0" layoutY="20.0" text="Out File" />
-                  <TextField layoutX="39.0" layoutY="125.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Outg File" />
+                  <TextField fx:id="outgFileName" layoutX="39.0" layoutY="125.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Outg File" />
                   <Label layoutX="39.0" layoutY="97.0" text="Outg File" />
-                  <Button layoutX="284.0" layoutY="46.0" mnemonicParsing="false" text="Browse..." />
-                  <Button layoutX="284.0" layoutY="125.0" mnemonicParsing="false" text="Browse..." />
-                  <TextField layoutX="39.0" layoutY="205.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Out1 File" />
+                  <Button fx:id="browseOutFileButton" layoutX="284.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleOutFileBrowseButton" text="Browse..." />
+                  <Button fx:id="brwoseOutgFileButton" layoutX="284.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleOutgFileBrowseButton" text="Browse..." />
+                  <TextField fx:id="out1FileName" layoutX="39.0" layoutY="205.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Out1 File" />
                   <Label layoutX="39.0" layoutY="179.0" text="Out1 File" />
-                  <Button layoutX="284.0" layoutY="205.0" mnemonicParsing="false" text="Browse..." />
-                  <TextField layoutX="39.0" layoutY="279.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Out2 File" />
+                  <Button fx:id="browseOut1FileButton" layoutX="284.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleOut1FileBrowseButton" text="Browse..." />
+                  <TextField fx:id="out2FileName" layoutX="39.0" layoutY="279.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Out2 File" />
                   <Label layoutX="39.0" layoutY="252.0" text="Out2 File" />
-                  <Button layoutX="284.0" layoutY="279.0" mnemonicParsing="false" text="Browse..." />
+                  <Button fx:id="browseOut2FileButton" layoutX="284.0" layoutY="279.0" mnemonicParsing="false" onAction="#handleOut2FileBrowseButton" text="Browse..." />
                </children>
             </Pane>
          </content>
