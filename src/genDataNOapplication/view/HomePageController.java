@@ -3,6 +3,7 @@ package genDataNOapplication.view;
 import genDataNOapplication.Controller;
 import genDataNOapplication.GenDataNO;
 import genDataNOapplication.Main;
+import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,7 +27,7 @@ public class HomePageController {
 	@FXML
 	ProgressIndicator progressIndicator;
 	
-	private Controller executeProgram;
+	private Controller programExecution;
 	
 	
 	//Class constructor
@@ -47,23 +48,44 @@ public class HomePageController {
 	}
 	
 	@FXML
-	private void handleStartApplication() {
-		
+	private void handleStartApplicationButton() {
+		ConfigurationModel configuration = new ConfigurationModel();
+		startApplication(configuration);
+	}
+	
+	@FXML
+	private void handleCancelButton() {
+		startButton.setDisable(false);
+		programExecution.cancel(true);
+		progressIndicator.setVisible(false);
+		cancelButton.setVisible(false);
+	}
+	
+	@FXML
+	private void handleChangeSettingsButton() {
+		main.showSettingsPage();
+	}
+	
+	public void startApplication(ConfigurationModel configuration) {
 		startButton.setDisable(true);
 		cancelButton.setVisible(true);
 		progressIndicator.setVisible(true);
 		progressIndicator.setProgress(-1);
 		progressIndicator.progressProperty().unbind();
 		
-		executeProgram = new Controller();
+
+		
+		programExecution = new Controller();
+		programExecution.setMainApp(main);
+		programExecution.setConfiguration(configuration);
 		
 		// When completed tasks
-        executeProgram.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, //
+		programExecution.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, //
                 new EventHandler<WorkerStateEvent>() {
 
                     @Override
                     public void handle(WorkerStateEvent t) {
-                    	if(!executeProgram.isCancelled()) {
+                    	if(!programExecution.isCancelled()) {
                     	progressIndicator.setVisible(false);
                 		Alert alert = new Alert(AlertType.INFORMATION);
                     	alert.setTitle("Run Completed");
@@ -79,21 +101,7 @@ public class HomePageController {
                     }
                 });
         // Start the Task.
-        new Thread(executeProgram).start();
-
-	}
-	
-	@FXML
-	private void handleCancelButton() {
-		startButton.setDisable(false);
-		executeProgram.cancel(true);
-		progressIndicator.setVisible(false);
-		cancelButton.setVisible(false);
-	}
-	
-	@FXML
-	private void handleChangeSettingsButton() {
-		main.showSettingsPage();
+        new Thread(programExecution).start();
 	}
 	
 

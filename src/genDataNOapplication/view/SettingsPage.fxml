@@ -51,6 +51,6 @@
          </content>
       </TitledPane>
       <Button layoutX="137.0" layoutY="528.0" mnemonicParsing="false" text="Resset to Default" />
-      <Button layoutX="285.0" layoutY="528.0" mnemonicParsing="false" text="Save &amp; Run" />
+      <Button fx:id="saveRunButton" layoutX="285.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run" />
    </children>
 </AnchorPane>

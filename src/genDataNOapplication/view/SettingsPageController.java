@@ -3,6 +3,7 @@ package genDataNOapplication.view;
 import java.io.File;
 
 import genDataNOapplication.Main;
+import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -25,6 +26,10 @@ public class SettingsPageController {
 	Button browseOut1FileButton;
 	@FXML 
 	Button browseOut2FileButton;
+	@FXML
+	Button saveRunButton;
+	@FXML
+	Button resetButton;
 	
 	@FXML
 	TextField inputFile1Name;
@@ -83,7 +88,7 @@ public class SettingsPageController {
 
         if (file != null) {
             System.out.println(file.getName());
-            String filename = file.getName();
+            String filename = file.getPath();
             
             switch(field) {
             case "inputFile1":
@@ -110,5 +115,21 @@ public class SettingsPageController {
         }
 
 	}
+	
+	@FXML
+	public void handleSaveRunButton() {
+		//Save
+		ConfigurationModel configuration = new ConfigurationModel();
+		configuration.setInputFile1(inputFile1Name.getText());
+		configuration.setInputFile2(inputFile2Name.getText());
+		configuration.setOutFile(outFileName.getText());
+		configuration.setOutgFile(outgFileName.getText());
+		configuration.setOut1File(out1FileName.getText());
+		configuration.setOut2File(out2FileName.getText());
+		//Run
+		main.runCustomSettings(configuration);
+	}
+	
+	
 
 }

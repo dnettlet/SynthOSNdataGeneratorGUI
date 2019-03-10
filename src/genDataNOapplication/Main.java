@@ -2,6 +2,7 @@ package genDataNOapplication;
 	
 import java.io.IOException;
 
+import genDataNOapplication.configuration.ConfigurationModel;
 import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.SettingsPageController;
 import javafx.application.Application;
@@ -61,6 +62,7 @@ public class Main extends Application {
 			HomePageController controller = loader.getController();
 			controller.setMainApp(this);
 			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,6 +87,29 @@ public class Main extends Application {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
+	}
+	
+	public void runCustomSettings(ConfigurationModel configuration) {
+		try {
+			//Load person overview
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/HomePage.fxml"));
+			AnchorPane homePage = (AnchorPane) loader.load();
+		
+			//Set homePage in the center of root layout
+			rootLayout.setCenter(homePage);
+			
+			//Give the controller access to the main app
+			HomePageController controller = loader.getController();
+			controller.setMainApp(this);
+			
+			controller.startApplication(configuration);
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public Stage getPrimaryStage() {

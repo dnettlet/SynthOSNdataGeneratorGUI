@@ -34,10 +34,14 @@ import genDataNOapplication.Dijkstra.AssignSeeds2;
 import genDataNOapplication.Dijkstra.FindMedoid;
 import genDataNOapplication.User.User;
 import genDataNOapplication.community.Community;
+import genDataNOapplication.configuration.ConfigurationModel;
 import genDataNOapplication.dataFile.dataFile;
 import genDataNOapplication.doCalcs.doCalcs;
 
 public class RV{
+	
+	public ConfigurationModel configuration;
+	
 static RV RVp;
 final static int  NUMVARS = 4;
 int user2;
@@ -80,8 +84,10 @@ private static double alpha=2.818975514, beta=0.735939979, gamma=1.957545111, de
 //calibrated weights wikivote 19 10
 //private static double alpha=3.067287079, beta=-0.255742136, gamma=1.332133616, delta=0.013077081, epsilon=-0.116390063;
 
-public double RVp() 
+public double RVp(ConfigurationModel configuration) 
 {
+	this.configuration = configuration;
+	
     int NUMVARS = 4;
     
     user2=0;
@@ -132,12 +138,12 @@ public double RVp()
 	//String nomFixterOut1   = "./resources/files/rmat_out1.csv"; 
 	//String nomFixterOut2   = "./resources/files/rmat_out2.csv";
 	
-	String nomFixterIn1    = "./resources/files/karate.csv";  
-	String nomFixterIn2    = "./resources/files/karatemodauth.csv";  
-	String nomFixterOut    = "./resources/files/karate_out.csv"; 
-	String nomFixterOutg   = "./resources/files/karate_outg.csv"; 
-	String nomFixterOut1   = "./resources/files/karate_out1.csv"; 
-	String nomFixterOut2   = "./resources/files/karate_out2.csv";
+	String nomFixterIn1    = configuration.getInputFile1(); 
+	String nomFixterIn2    = configuration.getInputFile2();
+	String nomFixterOut    = configuration.getOutFile();
+	String nomFixterOutg   = configuration.getOutgFile();
+	String nomFixterOut1   = configuration.getOut1File();
+	String nomFixterOut2   = configuration.getOut2File();
      
   	//  *** Obtener los datos del fichero de input ****/
     
