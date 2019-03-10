@@ -29,7 +29,7 @@ public class Main extends Application {
 		showHomePage();
 	}
 	
-
+	//Initializes the root layout
 	private void initRootLayout() {
 		try {
 			//Load root layout from fxml file
@@ -47,10 +47,10 @@ public class Main extends Application {
 		
 	}
 	
-	
-	private void showHomePage() {
+	//When called shows the Home Page of the program
+	public void showHomePage() {
 		try {
-			//Load person overview
+			//Load Home Page
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/HomePage.fxml"));
 			AnchorPane homePage = (AnchorPane) loader.load();
@@ -70,17 +70,16 @@ public class Main extends Application {
 		
 	}
 	
+	//When called shows the settings page of the program
 	public void showSettingsPage() {
 		 try {
 			 	
-	            // Load the fxml file and create a new stage for the popup dialog.
 	            FXMLLoader loader = new FXMLLoader();
 	            loader.setLocation(Main.class.getResource("view/SettingsPage.fxml"));
 	            AnchorPane settingsPage = (AnchorPane) loader.load();
 	            
 	            rootLayout.setCenter(settingsPage);
 
-				//Give the controller access to the main app
 				SettingsPageController controller = loader.getController();
 				controller.setMainApp(this);
 
@@ -89,17 +88,15 @@ public class Main extends Application {
 	        }
 	}
 	
+	//Runs the program with a set of customized settings
 	public void runCustomSettings(ConfigurationModel configuration) {
 		try {
-			//Load person overview
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/HomePage.fxml"));
 			AnchorPane homePage = (AnchorPane) loader.load();
 		
-			//Set homePage in the center of root layout
 			rootLayout.setCenter(homePage);
 			
-			//Give the controller access to the main app
 			HomePageController controller = loader.getController();
 			controller.setMainApp(this);
 			
@@ -112,6 +109,7 @@ public class Main extends Application {
 		}
 	}
 	
+	//Returns the primary stage of the program
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}

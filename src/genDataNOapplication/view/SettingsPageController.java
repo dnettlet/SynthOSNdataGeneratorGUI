@@ -30,6 +30,8 @@ public class SettingsPageController {
 	Button saveRunButton;
 	@FXML
 	Button resetButton;
+	@FXML
+	Button backButton;
 	
 	@FXML
 	TextField inputFile1Name;
@@ -120,16 +122,32 @@ public class SettingsPageController {
 	public void handleSaveRunButton() {
 		//Save
 		ConfigurationModel configuration = new ConfigurationModel();
-		configuration.setInputFile1(inputFile1Name.getText());
-		configuration.setInputFile2(inputFile2Name.getText());
-		configuration.setOutFile(outFileName.getText());
-		configuration.setOutgFile(outgFileName.getText());
-		configuration.setOut1File(out1FileName.getText());
-		configuration.setOut2File(out2FileName.getText());
+		
+		if(!inputFile1Name.getText().isEmpty()) { configuration.setInputFile1(inputFile1Name.getText());	}
+		if(!inputFile2Name.getText().isEmpty()) { configuration.setInputFile2(inputFile2Name.getText()); }
+		if(!outFileName.getText().isEmpty()) { configuration.setOutFile(outFileName.getText()); }
+		if(!outgFileName.getText().isEmpty()) { configuration.setOutgFile(outgFileName.getText()); }
+		if(!out1FileName.getText().isEmpty()) { configuration.setOut1File(out1FileName.getText()); }
+		if(!out2FileName.getText().isEmpty()) { configuration.setOut2File(out2FileName.getText()); }
+		
 		//Run
 		main.runCustomSettings(configuration);
 	}
 	
+	@FXML
+	public void handleResetButton() {
+		inputFile1Name.clear();
+		inputFile2Name.clear();
+		outFileName.clear();
+		outgFileName.clear();
+		out1FileName.clear();
+		out2FileName.clear();
+	}
+	
+	@FXML
+	public void handleBackButton() {
+		main.showHomePage();
+	}
 	
 
 }
