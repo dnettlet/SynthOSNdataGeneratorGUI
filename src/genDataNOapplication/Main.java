@@ -4,13 +4,12 @@ import java.io.IOException;
 
 import genDataNOapplication.configuration.ConfigurationModel;
 import genDataNOapplication.view.HomePageController;
+import genDataNOapplication.view.RootLayoutController;
 import genDataNOapplication.view.SettingsPageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -40,6 +39,11 @@ public class Main extends Application {
 			//Show the scene containing the root layout
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
+			
+	        // Give the controller access to the main app.
+	        @SuppressWarnings("unused")
+			RootLayoutController controller = loader.getController();
+			
 			primaryStage.show();
 		}catch (IOException e) {
 			e.printStackTrace();

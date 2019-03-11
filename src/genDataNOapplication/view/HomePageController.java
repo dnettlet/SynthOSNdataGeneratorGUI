@@ -1,7 +1,6 @@
 package genDataNOapplication.view;
 
 import genDataNOapplication.Controller;
-import genDataNOapplication.GenDataNO;
 import genDataNOapplication.Main;
 import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.concurrent.WorkerStateEvent;
@@ -12,18 +11,22 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 
+//Controller class for the Home Page
 public class HomePageController {
 	
 	
 	//Reference to the main application
 	private Main main;
 	
+	//Buttons
 	@FXML
 	Button startButton;
 	@FXML
 	Button cancelButton;
 	@FXML
 	Button changeSettingsButton;
+	
+	//Progress Indicator
 	@FXML
 	ProgressIndicator progressIndicator;
 	
@@ -47,6 +50,7 @@ public class HomePageController {
 		this.main = main;
 	}
 	
+	//Sets the configuration parameters to default and launches the application
 	@FXML
 	private void handleStartApplicationButton() {
 		ConfigurationModel configuration = new ConfigurationModel();
@@ -66,6 +70,7 @@ public class HomePageController {
 		main.showSettingsPage();
 	}
 	
+	//Given a ConfigurationModel, starts the program with this configuration. 
 	public void startApplication(ConfigurationModel configuration) {
 		startButton.setDisable(true);
 		cancelButton.setVisible(true);

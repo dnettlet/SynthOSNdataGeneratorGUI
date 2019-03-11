@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.SettingsPageController">
    <children>
-      <Label layoutX="436.0" layoutY="58.0" text="Settings">
+      <Label layoutX="404.0" layoutY="58.0" text="File Settings">
          <font>
             <Font size="36.0" />
          </font>

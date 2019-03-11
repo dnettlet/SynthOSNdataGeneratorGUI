@@ -1,19 +1,25 @@
 package genDataNOapplication.view;
 
 import java.io.File;
+import java.util.Optional;
 
 import genDataNOapplication.Main;
 import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
+//Controller class for the Settings Page
 public class SettingsPageController {
 	
 	//Reference to the main application
 	private Main main;
 	
+	//Buttons
 	@FXML
 	Button browseInFile1Button;
 	@FXML
@@ -33,6 +39,7 @@ public class SettingsPageController {
 	@FXML
 	Button backButton;
 	
+	//TextFields
 	@FXML
 	TextField inputFile1Name;
 	@FXML
@@ -63,7 +70,7 @@ public class SettingsPageController {
 		this.main = main;
 	}
 	
-	
+	//Browse button Handlers
 	public void handleInFile1BrowseButton() { handleBrowseButton("inputFile1"); }
 	public void handleInFile2BrowseButton() { handleBrowseButton("inputFile2"); }
 	public void handleOutFileBrowseButton() { handleBrowseButton("outFile"); }
@@ -71,7 +78,7 @@ public class SettingsPageController {
 	public void handleOut1FileBrowseButton() { handleBrowseButton("out1File"); }
 	public void handleOut2FileBrowseButton() { handleBrowseButton("out2File"); }
 
-	
+	//When browse button pressed, a file chooser is opened and when a file is selected its path is writen in the textfield
 	private void handleBrowseButton(String field) {
 		
         FileChooser fileChooser = new FileChooser();
@@ -118,6 +125,7 @@ public class SettingsPageController {
 
 	}
 	
+	//Saves the settings to a instance of ConfigurationModel. Then runs the program 
 	@FXML
 	public void handleSaveRunButton() {
 		//Save
@@ -134,19 +142,44 @@ public class SettingsPageController {
 		main.runCustomSettings(configuration);
 	}
 	
+	//Resets the default configuration. Asks user confirmation.
 	@FXML
 	public void handleResetButton() {
-		inputFile1Name.clear();
-		inputFile2Name.clear();
-		outFileName.clear();
-		outgFileName.clear();
-		out1FileName.clear();
-		out2FileName.clear();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Reset Default");
+		alert.setHeaderText("Reset parameters to default");
+		alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			inputFile1Name.clear();
+			inputFile2Name.clear();
+			outFileName.clear();
+			outgFileName.clear();
+			out1FileName.clear();
+			out2FileName.clear();
+		}
+
 	}
 	
+	//Handles back button. If something has been modified asks for user confirmation.
 	@FXML
 	public void handleBackButton() {
-		main.showHomePage();
+		if((inputFile1Name.getText().isEmpty() && inputFile2Name.getText().isEmpty() && outFileName.getText().isEmpty()) &&
+		outgFileName.getText().isEmpty() && out1FileName.getText().isEmpty() && out2FileName.getText().isEmpty()) {
+			main.showHomePage();
+		}else {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Return Home");
+			alert.setHeaderText("Return to Home Screen");
+			alert.setContentText("Are you sure you want to return to the previous page? \n All the changes will be lost.");
+			
+			Optional<ButtonType> result = alert.showAndWait();
+			if(result.get() == ButtonType.OK) {
+				main.showHomePage();
+			}
+		}
+		
 	}
 	
 

@@ -1,7 +1,9 @@
 package genDataNOapplication.configuration;
 
+//Class that stores all the customizable settings for the program execution
 public class ConfigurationModel {
 	
+	//Input and output file paths
 	private String inputFile1;
 	private String inputFile2;
 	private String outFile;
@@ -9,6 +11,7 @@ public class ConfigurationModel {
 	private String out1File;
 	private String out2File;
 	
+	//Class constructor
 	public ConfigurationModel() {
 		
 		this.inputFile1 = "./resources/files/karate.csv";
@@ -20,7 +23,7 @@ public class ConfigurationModel {
 		
 	}
 	
-	
+	//Setters and getters
 	public String getInputFile1() { return inputFile1; }
 	public void setInputFile1(String inputFile1) { this.inputFile1 = inputFile1; }
 	

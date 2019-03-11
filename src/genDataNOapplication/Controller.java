@@ -1,9 +1,5 @@
 package genDataNOapplication;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.concurrent.Task;
  
