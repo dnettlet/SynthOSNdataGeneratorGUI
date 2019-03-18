@@ -15,7 +15,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="395.0" layoutY="131.0" text="Change here all the Application settings" />
+      <Label layoutX="311.0" layoutY="111.0" text="Specify Below the names for the Input and output files of the program. " />
       <TitledPane collapsible="false" layoutX="49.0" layoutY="208.0" prefHeight="274.0" prefWidth="387.0" text="Input Files">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
@@ -53,5 +53,7 @@
       <Button fx:id="resetButton" layoutX="137.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default" />
       <Button fx:id="saveRunButton" layoutX="285.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run" />
       <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+      <Label layoutX="349.0" layoutY="128.0" text="You can browse through your computer to find locations." />
+      <Button fx:id="advancedSettingsButton" layoutX="786.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAdvancedSettingsButton" text="Advanced Settings" />
    </children>
 </AnchorPane>

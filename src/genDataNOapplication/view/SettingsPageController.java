@@ -38,6 +38,8 @@ public class SettingsPageController {
 	Button resetButton;
 	@FXML
 	Button backButton;
+	@FXML
+	Button advancedSettingsButton;
 	
 	//TextFields
 	@FXML
@@ -180,6 +182,11 @@ public class SettingsPageController {
 			}
 		}
 		
+	}
+	
+	@FXML
+	public void handleAdvancedSettingsButton() {
+		main.showAdvancedSettingsPage();
 	}
 	
 
