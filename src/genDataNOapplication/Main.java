@@ -2,7 +2,10 @@ package genDataNOapplication;
 	
 import java.io.IOException;
 
+import genDataNOapplication.configuration.ConfigurationModel;
 import genDataNOapplication.view.HomePageController;
+import genDataNOapplication.view.RootLayoutController;
+import genDataNOapplication.view.SettingsPageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -25,7 +28,7 @@ public class Main extends Application {
 		showHomePage();
 	}
 	
-
+	//Initializes the root layout
 	private void initRootLayout() {
 		try {
 			//Load root layout from fxml file
@@ -36,6 +39,11 @@ public class Main extends Application {
 			//Show the scene containing the root layout
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
+			
+	        // Give the controller access to the main app.
+	        @SuppressWarnings("unused")
+			RootLayoutController controller = loader.getController();
+			
 			primaryStage.show();
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -43,10 +51,10 @@ public class Main extends Application {
 		
 	}
 	
-	
-	private void showHomePage() {
+	//When called shows the Home Page of the program
+	public void showHomePage() {
 		try {
-			//Load person overview
+			//Load Home Page
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/HomePage.fxml"));
 			AnchorPane homePage = (AnchorPane) loader.load();
@@ -58,6 +66,7 @@ public class Main extends Application {
 			HomePageController controller = loader.getController();
 			controller.setMainApp(this);
 			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,6 +74,46 @@ public class Main extends Application {
 		
 	}
 	
+	//When called shows the settings page of the program
+	public void showSettingsPage() {
+		 try {
+			 	
+	            FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(Main.class.getResource("view/SettingsPage.fxml"));
+	            AnchorPane settingsPage = (AnchorPane) loader.load();
+	            
+	            rootLayout.setCenter(settingsPage);
+
+				SettingsPageController controller = loader.getController();
+				controller.setMainApp(this);
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	}
+	
+	//Runs the program with a set of customized settings
+	public void runCustomSettings(ConfigurationModel configuration) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/HomePage.fxml"));
+			AnchorPane homePage = (AnchorPane) loader.load();
+		
+			rootLayout.setCenter(homePage);
+			
+			HomePageController controller = loader.getController();
+			controller.setMainApp(this);
+			
+			controller.startApplication(configuration);
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	//Returns the primary stage of the program
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}

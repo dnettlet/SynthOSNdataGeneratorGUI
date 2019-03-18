@@ -1,8 +1,8 @@
 package genDataNOapplication.view;
 
-import genDataNOapplication.AsyncTask;
-import genDataNOapplication.GenDataNO;
+import genDataNOapplication.Controller;
 import genDataNOapplication.Main;
+import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,20 +11,26 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 
+//Controller class for the Home Page
 public class HomePageController {
 	
 	
 	//Reference to the main application
 	private Main main;
 	
+	//Buttons
 	@FXML
 	Button startButton;
 	@FXML
 	Button cancelButton;
 	@FXML
+	Button changeSettingsButton;
+	
+	//Progress Indicator
+	@FXML
 	ProgressIndicator progressIndicator;
 	
-	private AsyncTask executeProgram;
+	private Controller programExecution;
 	
 	
 	//Class constructor
@@ -44,24 +50,47 @@ public class HomePageController {
 		this.main = main;
 	}
 	
+	//Sets the configuration parameters to default and launches the application
 	@FXML
-	private void handleStartApplication() {
-		
+	private void handleStartApplicationButton() {
+		ConfigurationModel configuration = new ConfigurationModel();
+		startApplication(configuration);
+	}
+	
+	@FXML
+	private void handleCancelButton() {
+		startButton.setDisable(false);
+		programExecution.cancel(true);
+		progressIndicator.setVisible(false);
+		cancelButton.setVisible(false);
+	}
+	
+	@FXML
+	private void handleChangeSettingsButton() {
+		main.showSettingsPage();
+	}
+	
+	//Given a ConfigurationModel, starts the program with this configuration. 
+	public void startApplication(ConfigurationModel configuration) {
 		startButton.setDisable(true);
 		cancelButton.setVisible(true);
 		progressIndicator.setVisible(true);
 		progressIndicator.setProgress(-1);
 		progressIndicator.progressProperty().unbind();
 		
-		executeProgram = new AsyncTask();
+
+		
+		programExecution = new Controller();
+		programExecution.setMainApp(main);
+		programExecution.setConfiguration(configuration);
 		
 		// When completed tasks
-        executeProgram.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, //
+		programExecution.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, //
                 new EventHandler<WorkerStateEvent>() {
 
                     @Override
                     public void handle(WorkerStateEvent t) {
-                    	if(!executeProgram.isCancelled()) {
+                    	if(!programExecution.isCancelled()) {
                     	progressIndicator.setVisible(false);
                 		Alert alert = new Alert(AlertType.INFORMATION);
                     	alert.setTitle("Run Completed");
@@ -77,16 +106,8 @@ public class HomePageController {
                     }
                 });
         // Start the Task.
-        new Thread(executeProgram).start();
-
+        new Thread(programExecution).start();
 	}
 	
-	@FXML
-	private void handleCancelButton() {
-		startButton.setDisable(false);
-		executeProgram.cancel(true);
-		progressIndicator.setVisible(false);
-		cancelButton.setVisible(false);
-	}
 
 }

@@ -1,6 +1,7 @@
 package genDataNOapplication;
 
 import genDataNOapplication.RV.RV;
+import genDataNOapplication.configuration.ConfigurationModel;
 
 // Copyright (C) 2018  David F. Nettleton (david.nettleton@upf.edu)
 // License: GNU GENERAL PUBLIC LICENSE v3.0   See LICENSE for the full license.
@@ -23,9 +24,10 @@ public class GenDataNO //extends JFrame
 static GenDataNO thetestRV;
 
 
+
 /**
  */
-public static void main()
+public static void main(ConfigurationModel configuration)
 {
    /*try 
    {
@@ -45,7 +47,7 @@ public static void main()
    }*/
 	
    RV rv1 = new RV();
-   rv1.RVp();
+   rv1.RVp(configuration);
    
 } // fin de main
 } // end of clase URL
