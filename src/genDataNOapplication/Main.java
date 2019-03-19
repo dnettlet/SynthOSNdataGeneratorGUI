@@ -20,10 +20,14 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 	
+	public ConfigurationModel configuration;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Synthetic Data Generator");
+		
+		configuration = new ConfigurationModel();
 		
 		initRootLayout();
 		showHomePage();
@@ -87,6 +91,7 @@ public class Main extends Application {
 
 				SettingsPageController controller = loader.getController();
 				controller.setMainApp(this);
+				controller.setConfiguration(configuration);
 
 	        } catch (IOException e) {
 	            e.printStackTrace();
@@ -103,13 +108,15 @@ public class Main extends Application {
 			
 			AdvancedSettingsController controller = loader.getController();
 			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	//Runs the program with a set of customized settings
-	public void runCustomSettings(ConfigurationModel configuration) {
+	public void runCustomSettings() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/HomePage.fxml"));
@@ -127,6 +134,14 @@ public class Main extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void setConfiguration(ConfigurationModel configuration) {
+		this.configuration = configuration;
+	}
+	
+	public ConfigurationModel getConfiguration() {
+		return configuration;
 	}
 	
 	//Returns the primary stage of the program

@@ -19,6 +19,9 @@ public class SettingsPageController {
 	//Reference to the main application
 	private Main main;
 	
+	//Configuration
+	protected ConfigurationModel configuration;
+	
 	//Buttons
 	@FXML
 	Button browseInFile1Button;
@@ -70,6 +73,11 @@ public class SettingsPageController {
 	//Is called by the main application to give a reference back to itself.
 	public void setMainApp(Main main) {
 		this.main = main;
+	}
+	
+	//Is called to set a specific configuration
+	public void setConfiguration(ConfigurationModel configuration) {
+		this.configuration = configuration;
 	}
 	
 	//Browse button Handlers
@@ -130,18 +138,17 @@ public class SettingsPageController {
 	//Saves the settings to a instance of ConfigurationModel. Then runs the program 
 	@FXML
 	public void handleSaveRunButton() {
-		//Save
-		ConfigurationModel configuration = new ConfigurationModel();
-		
+		//Save		
 		if(!inputFile1Name.getText().isEmpty()) { configuration.setInputFile1(inputFile1Name.getText());	}
 		if(!inputFile2Name.getText().isEmpty()) { configuration.setInputFile2(inputFile2Name.getText()); }
 		if(!outFileName.getText().isEmpty()) { configuration.setOutFile(outFileName.getText()); }
 		if(!outgFileName.getText().isEmpty()) { configuration.setOutgFile(outgFileName.getText()); }
 		if(!out1FileName.getText().isEmpty()) { configuration.setOut1File(out1FileName.getText()); }
 		if(!out2FileName.getText().isEmpty()) { configuration.setOut2File(out2FileName.getText()); }
+		main.setConfiguration(configuration);
 		
 		//Run
-		main.runCustomSettings(configuration);
+		main.runCustomSettings();
 	}
 	
 	//Resets the default configuration. Asks user confirmation.

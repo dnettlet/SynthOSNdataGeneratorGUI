@@ -3,10 +3,13 @@ package genDataNOapplication.view;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
+import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
@@ -14,6 +17,9 @@ public class AdvancedSettingsController {
 	
 	//Reference to the main application
 	private Main main;
+	
+	//Configuration
+	protected ConfigurationModel configuration;
 	
 	//Buttons
 	@FXML
@@ -35,7 +41,7 @@ public class AdvancedSettingsController {
 	
 	//TextFields
 	@FXML
-	TextField numCommunitiesTextField;
+	Spinner<Integer> numCommunitiesTextField;
 	
 	//Class constructor
 	public AdvancedSettingsController() {
@@ -46,12 +52,17 @@ public class AdvancedSettingsController {
     // after the fxml file has been loaded.
 	@FXML
 	private void initialize() {
-		
+		numCommunitiesTextField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10));
 	}
 	
 	//Is called by the main application to give a reference back to itself.
 	public void setMainApp(Main main) {
 		this.main = main;
+	}
+	
+	//Is called to set a specific configuration
+	public void setConfiguration(ConfigurationModel configuration) {
+		this.configuration = configuration;
 	}
 	
 	@FXML
