@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
 public class AdvancedSettingsController {
@@ -38,10 +37,14 @@ public class AdvancedSettingsController {
 	Button backButton;
 	@FXML
 	Button communityAssignmentButton;
-	
-	//TextFields
 	@FXML
-	Spinner<Integer> numCommunitiesTextField;
+	Button profileSeedsButton;
+	
+	//Spinners
+	@FXML
+	Spinner<Integer> numCommunitiesSpinner;
+	@FXML
+	Spinner<Integer> seedSizeSpinner;
 	
 	//Class constructor
 	public AdvancedSettingsController() {
@@ -52,7 +55,8 @@ public class AdvancedSettingsController {
     // after the fxml file has been loaded.
 	@FXML
 	private void initialize() {
-		numCommunitiesTextField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10));
+		numCommunitiesSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 10));
+		
 	}
 	
 	//Is called by the main application to give a reference back to itself.
@@ -67,6 +71,7 @@ public class AdvancedSettingsController {
 	
 	@FXML
 	public void handleSaveButton() {
+		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
 	

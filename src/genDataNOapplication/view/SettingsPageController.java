@@ -193,6 +193,7 @@ public class SettingsPageController {
 	
 	@FXML
 	public void handleAdvancedSettingsButton() {
+		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
 	}
 	

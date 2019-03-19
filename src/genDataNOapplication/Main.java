@@ -1,5 +1,6 @@
 package genDataNOapplication;
 	
+import java.awt.ScrollPane;
 import java.io.IOException;
 
 import genDataNOapplication.configuration.ConfigurationModel;
@@ -10,6 +11,7 @@ import genDataNOapplication.view.SettingsPageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -20,7 +22,7 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 	
-	public ConfigurationModel configuration;
+	private ConfigurationModel configuration;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -102,7 +104,7 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/AdvancedSettings.fxml"));
-			AnchorPane advancedSettings = (AnchorPane) loader.load();
+			Node advancedSettings = (Node) loader.load();
 			
 			rootLayout.setCenter(advancedSettings);
 			

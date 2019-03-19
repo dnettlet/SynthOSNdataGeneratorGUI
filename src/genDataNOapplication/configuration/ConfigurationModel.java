@@ -11,6 +11,11 @@ public class ConfigurationModel {
 	private String out1File;
 	private String out2File;
 	
+	//Number of communities
+	private int numCommunities;
+	
+	private int seedSize;
+	
 	//Class constructor
 	public ConfigurationModel() {
 		
@@ -20,6 +25,9 @@ public class ConfigurationModel {
 		this.outgFile = "./resources/files/karate_outg.csv";
 		this.out1File = "./resources/files/karate_out1.csv"; 
 		this.out2File = "./resources/files/karate_out2.csv";
+		
+		numCommunities = 10;
+		seedSize = 110;
 		
 	}
 	
@@ -41,6 +49,12 @@ public class ConfigurationModel {
 	
 	public String getOut2File() { return out2File; }
 	public void setOut2File(String out2File) { this.out2File = out2File; }
+	
+	public int getNumCommunities() { return numCommunities; }
+	public void setNumCommunities(int numCommunities) { this.numCommunities = numCommunities; }
+	
+	public int getSeedSize() { return seedSize; }
+	public void setSeedSize(int seedSize) { this.seedSize = seedSize; }
 	
 
 }
