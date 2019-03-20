@@ -40,7 +40,7 @@ import genDataNOapplication.doCalcs.doCalcs;
 
 public class RV{
 	
-	public ConfigurationModel configuration;
+	public static ConfigurationModel configuration;
 	
 static RV RVp;
 final static int  NUMVARS = 4;
@@ -727,7 +727,7 @@ int maxid=0;
 			
 			//if (1==1) return 0;
 			
-			int seedsize = 110; // 110 seeds for 1K synth file, 5K seeds for amazon, 12k seeds for youtube and livejournal
+			int seedsize = configuration.getSeedSize(); // 110 seeds for 1K synth file, 5K seeds for amazon, 12k seeds for youtube and livejournal
 			
 			System.out.println("\nNUMBER OF SEEDS TO BE ASSIGNED:"+seedsize);
 			

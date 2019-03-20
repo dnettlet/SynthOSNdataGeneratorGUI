@@ -138,7 +138,14 @@ public class SettingsPageController {
 	//Saves the settings to a instance of ConfigurationModel. Then runs the program 
 	@FXML
 	public void handleSaveRunButton() {
-		//Save		
+		//Save
+		save();
+		
+		//Run
+		main.runCustomSettings();
+	}
+	
+	private void save() {	
 		if(!inputFile1Name.getText().isEmpty()) { configuration.setInputFile1(inputFile1Name.getText());	}
 		if(!inputFile2Name.getText().isEmpty()) { configuration.setInputFile2(inputFile2Name.getText()); }
 		if(!outFileName.getText().isEmpty()) { configuration.setOutFile(outFileName.getText()); }
@@ -146,9 +153,6 @@ public class SettingsPageController {
 		if(!out1FileName.getText().isEmpty()) { configuration.setOut1File(out1FileName.getText()); }
 		if(!out2FileName.getText().isEmpty()) { configuration.setOut2File(out2FileName.getText()); }
 		main.setConfiguration(configuration);
-		
-		//Run
-		main.runCustomSettings();
 	}
 	
 	//Resets the default configuration. Asks user confirmation.
@@ -193,7 +197,7 @@ public class SettingsPageController {
 	
 	@FXML
 	public void handleAdvancedSettingsButton() {
-		main.setConfiguration(configuration);
+		save();
 		main.showAdvancedSettingsPage();
 	}
 	

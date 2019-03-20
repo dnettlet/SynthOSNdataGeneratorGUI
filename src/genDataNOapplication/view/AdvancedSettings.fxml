@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <ScrollPane fitToWidth="true" pannable="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.AdvancedSettingsController">
    <content>
       <AnchorPane prefHeight="1200.0" prefWidth="1000.0">
@@ -27,7 +26,7 @@
                      <children>
                         <Text layoutX="7.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Communities are groups of users with similar profiles. The number of communities by default is 10, and the community file (second input file) must have the same number of communities as defined here. You should execute your community detection algorithm so it finds the number of communities defined here." textAlignment="JUSTIFY" wrappingWidth="366.9999870657921" />
                         <Label layoutX="14.0" layoutY="116.0" text="Number of Communities" />
-                        <Spinner fx:id="numCommunitiesTextField" disable="true" layoutX="191.0" layoutY="112.0" />
+                        <Spinner fx:id="numCommunitiesSpinner" disable="true" layoutX="191.0" layoutY="112.0" />
                         <Button fx:id="communityAssignmentButton" layoutX="89.0" layoutY="179.0" mnemonicParsing="false" text="Edit profile community assaignment" />
                         <Label layoutX="14.0" layoutY="204.0" text="Click to change the way each profile seed is assigned to a community. " />
                      </children>
@@ -62,9 +61,10 @@
                      <children>
                         <Text layoutX="7.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By default each community has a seed profile. A seed profile is a set of defined user characteristics that are used as a starting point for the algorithm to start generating the other users' characteristics in the community. " textAlignment="JUSTIFY" wrappingWidth="366.9999870657921" />
                         <Label layoutX="14.0" layoutY="116.0" text="Seed Size" />
-                        <Spinner fx:id="numCommunitiesTextField1" layoutX="111.0" layoutY="112.0" />
-                        <Button fx:id="communityAssignmentButton1" layoutX="146.0" layoutY="179.0" mnemonicParsing="false" text="Edit Profile Seeds" />
+                        <Spinner fx:id="seedSizeSpinner" layoutX="111.0" layoutY="112.0" />
+                        <Button fx:id="profileSeedsButton" layoutX="146.0" layoutY="179.0" mnemonicParsing="false" text="Edit Profile Seeds" />
                         <Text layoutX="3.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile seeds are built accordingly to parameters and frequencies set in the User Parameters settings. Click to manually edit profile seeds. " textAlignment="CENTER" wrappingWidth="379.208984375" />
+                        <Button fx:id="helpButton" layoutX="274.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleHelpButton" text="?" />
                      </children>
                   </Pane>
                </content>
