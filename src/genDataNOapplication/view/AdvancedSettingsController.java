@@ -13,7 +13,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
 import javafx.scene.control.Alert.AlertType;
 
-public class CommunitiesSettingsController {
+public class AdvancedSettingsController {
 	
 	//Reference to the main application
 	private Main main;
@@ -37,20 +37,14 @@ public class CommunitiesSettingsController {
 	@FXML
 	Button backButton;
 	@FXML
-	Button communityAssignmentButton;
-	@FXML
-	Button profileSeedsButton;
-	@FXML
-	Button helpButton;
+	Button distanceThresholdButton;
 	
 	//Spinners
 	@FXML
-	Spinner<Integer> numCommunitiesSpinner;
-	@FXML
-	Spinner<Integer> seedSizeSpinner;
+	Spinner<Integer> randomnessRatioSpinner;
 	
 	//Class constructor
-	public CommunitiesSettingsController() {
+	public AdvancedSettingsController() {
 		
 	}
 	
@@ -58,10 +52,8 @@ public class CommunitiesSettingsController {
     // after the fxml file has been loaded.
 	@FXML
 	private void initialize() {
-		numCommunitiesSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10));
-		numCommunitiesSpinner.getValueFactory().setValue(10);
-		seedSizeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999));
-		seedSizeSpinner.getValueFactory().setValue(110);
+		randomnessRatioSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+		randomnessRatioSpinner.getValueFactory().setValue(10);
 		
 	}
 	
@@ -77,8 +69,7 @@ public class CommunitiesSettingsController {
 	
 	@FXML
 	public void handleSaveButton() {
-		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		configuration.setSeedSize(seedSizeSpinner.getValue());
+
 		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
@@ -92,23 +83,11 @@ public class CommunitiesSettingsController {
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
-			configuration.setNumCommunities(10);
-			configuration.setSeedSize(110);
-			seedSizeSpinner.getValueFactory().setValue(110);
+
 		}
 	}
 	
-	@FXML
-	public void handleHelpButton() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Help");
-		alert.setHeaderText("Seed Size");
-		alert.setContentText("The seedsize is graph dependent and take into account that the more seeds," + 
-							 "the more time it will take to locate them. The values are orientative." +
-							 "\n 110 seeds for 1K synth file, 5K seeds for amazon, 12k seeds for youtube and livejournal." +
-							 "\n For more information read the User Manual (Menu -> Help -> Documentation)");
-		alert.showAndWait();
-	}
+
 	
 	@FXML
 	public void handleFilesButtonTab() {
@@ -119,11 +98,11 @@ public class CommunitiesSettingsController {
 	}
 	
 	@FXML
-	public void handleAdvancedButtonTab() {
-		main.showAdvancedSettingsPage();
+	public void handleCommunitiesButtonTab() {
+		main.showCommunitiesSettingsPage();
 	}
-
 	
 	
 
 }
+

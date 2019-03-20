@@ -46,7 +46,7 @@
                 <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files" />
                   <Button fx:id="userParametersButtonTab" mnemonicParsing="false" text="User Parameters" />
                   <Button fx:id="communitiesButtonTab" mnemonicParsing="false" text="Communities &amp; Profiles" />
-                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" text="Advanced" />
+                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced" />
               </buttons>
             </ButtonBar>
             <Label layoutX="375.0" layoutY="97.0" text="Communities &amp; Profiles">
