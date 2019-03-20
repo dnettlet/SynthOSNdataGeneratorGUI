@@ -4,7 +4,7 @@ import java.awt.ScrollPane;
 import java.io.IOException;
 
 import genDataNOapplication.configuration.ConfigurationModel;
-import genDataNOapplication.view.AdvancedSettingsController;
+import genDataNOapplication.view.CommunitiesSettingsController;
 import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.RootLayoutController;
 import genDataNOapplication.view.SettingsPageController;
@@ -100,15 +100,15 @@ public class Main extends Application {
 	        }
 	}
 	
-	public void showAdvancedSettingsPage() {
+	public void showCommunitiesSettingsPage() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("view/AdvancedSettings.fxml"));
-			Node advancedSettings = (Node) loader.load();
+			loader.setLocation(Main.class.getResource("view/CommunitiesProfilesSettings.fxml"));
+			Node communitiesSettings = (Node) loader.load();
 			
-			rootLayout.setCenter(advancedSettings);
+			rootLayout.setCenter(communitiesSettings);
 			
-			AdvancedSettingsController controller = loader.getController();
+			CommunitiesSettingsController controller = loader.getController();
 			controller.setMainApp(this);
 			controller.setConfiguration(configuration);
 			

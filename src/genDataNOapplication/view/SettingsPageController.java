@@ -198,7 +198,7 @@ public class SettingsPageController {
 	@FXML
 	public void handleAdvancedSettingsButton() {
 		save();
-		main.showAdvancedSettingsPage();
+		main.showCommunitiesSettingsPage();
 	}
 	
 

@@ -13,7 +13,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
 import javafx.scene.control.Alert.AlertType;
 
-public class AdvancedSettingsController {
+public class CommunitiesSettingsController {
 	
 	//Reference to the main application
 	private Main main;
@@ -50,7 +50,7 @@ public class AdvancedSettingsController {
 	Spinner<Integer> seedSizeSpinner;
 	
 	//Class constructor
-	public AdvancedSettingsController() {
+	public CommunitiesSettingsController() {
 		
 	}
 	
