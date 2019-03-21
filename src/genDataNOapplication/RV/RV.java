@@ -801,7 +801,7 @@ int maxid=0;
 			
 			//STEP 2. ASSIGN THE DATA
 			System.out.println("\n****STEP 2. ASSIGN THE DATA*****\n");
-			int ok = rAssignDataGeneralizedSensAttr4.rAssignDataGeneralizedSensAttr4(numnodes);
+			int ok = rAssignDataGeneralizedSensAttr4.rAssignDataGeneralizedSensAttr4(numnodes, configuration);
 
 			
 			// STEP 3. WRITE OUT THE DATA INTO A FILE, ONE ROW PER NODE (1) and ONE ROW PER LINK WITH CORRESPONDING EDGE WEIGHT(2).

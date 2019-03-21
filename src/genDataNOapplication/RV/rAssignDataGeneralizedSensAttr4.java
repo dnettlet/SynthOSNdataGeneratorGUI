@@ -14,9 +14,11 @@ import java.util.Vector;
 
 import genDataNOapplication.User.User;
 import genDataNOapplication.community.Community;
+import genDataNOapplication.configuration.ConfigurationModel;
 
 public class rAssignDataGeneralizedSensAttr4{
 	
+	public static ConfigurationModel configuration;
 	
 public static double dage(String agev1, String agev2)
 {
@@ -1911,8 +1913,9 @@ public static void AssignUnassigned(Random generator, Random generator2, int RAN
 /****************************************************************************************************************************/
 /*********************************************** MAIN ASSIGNMENT ROUTINE *************************************/
 /****************************************************************************************************************************/
-public static int rAssignDataGeneralizedSensAttr4(int numnodes)
+public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationModel Configuration)
 {
+	configuration = Configuration;
 	Random generator = new Random(System.currentTimeMillis()*1000);
 	Random generator2 = new Random(System.currentTimeMillis()*1000);
 	Enumeration en1 = RV.Users.keys();
@@ -2217,10 +2220,11 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes)
 			        religion, maritalstatus, profession, likes1, likes2, likes3, switchdistance);
 	
 	
-	int RANLIMUNAS=2; // Unassigned nodes assignment, 0 is equivalent to 10% random assignment (low). 
+	int RANLIMUNAS= configuration.getRandomness(); // Unassigned nodes assignment, 0 is equivalent to 10% random assignment (low). 
 	                  // 2 is 30% (medium), 4 is 50% (high). 
     // The remainder are assigned the modal values for each attribute for the 
     // neighbors with values assigned
+	System.out.println("Randomness: " + RANLIMUNAS);
 	
 	AssignUnassigned(generator, generator2, RANLIMUNAS, age, residence, gender, sexualorientation, politicalorientation, 
 	        religion, maritalstatus, profession, likes1, likes2, likes3);

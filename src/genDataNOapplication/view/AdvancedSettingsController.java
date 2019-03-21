@@ -4,13 +4,18 @@ import java.util.Optional;
 
 import genDataNOapplication.Main;
 import genDataNOapplication.configuration.ConfigurationModel;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 
 public class AdvancedSettingsController {
@@ -39,9 +44,15 @@ public class AdvancedSettingsController {
 	@FXML
 	Button distanceThresholdButton;
 	
-	//Spinners
+	//Radio buttons
 	@FXML
-	Spinner<Integer> randomnessRatioSpinner;
+	RadioButton lowRandomness;
+	@FXML
+	RadioButton mediumRandomness;
+	@FXML
+	RadioButton highRandomness;
+	ToggleGroup randomness = new ToggleGroup();
+	
 	
 	//Class constructor
 	public AdvancedSettingsController() {
@@ -52,8 +63,32 @@ public class AdvancedSettingsController {
     // after the fxml file has been loaded.
 	@FXML
 	private void initialize() {
-		randomnessRatioSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
-		randomnessRatioSpinner.getValueFactory().setValue(10);
+		lowRandomness.setToggleGroup(randomness);
+		lowRandomness.setSelected(true);
+		mediumRandomness.setToggleGroup(randomness);
+		highRandomness.setToggleGroup(randomness);
+		
+		randomness.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+	           @Override
+	           public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
+	               // Has selection.
+	               if (randomness.getSelectedToggle() != null) {
+	                   RadioButton button = (RadioButton) randomness.getSelectedToggle();
+	                   //System.out.println("Button: " + button.getText());
+	                   switch(button.getText()) {
+	                   case "Low":
+	                	   configuration.setRandomness(0);
+	                	   break;
+	                   case "Medium":
+	                	   configuration.setRandomness(2);
+	                	   break;
+	                   case "High":
+	                	   configuration.setRandomness(4);
+	                	   break;
+	                   }
+	               }
+	           }
+	       });
 		
 	}
 	
@@ -69,7 +104,6 @@ public class AdvancedSettingsController {
 	
 	@FXML
 	public void handleSaveButton() {
-
 		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
@@ -83,7 +117,8 @@ public class AdvancedSettingsController {
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
-
+			configuration.setRandomness(0);
+			lowRandomness.setSelected(true);
 		}
 	}
 	
@@ -91,9 +126,6 @@ public class AdvancedSettingsController {
 	
 	@FXML
 	public void handleFilesButtonTab() {
-		//configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		//configuration.setSeedSize(seedSizeSpinner.getValue());
-		//main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
 	

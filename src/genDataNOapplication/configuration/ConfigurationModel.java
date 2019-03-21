@@ -15,6 +15,7 @@ public class ConfigurationModel {
 	private int numCommunities;
 	
 	private int seedSize;
+	private int randomness;
 	
 	//Class constructor
 	public ConfigurationModel() {
@@ -28,6 +29,7 @@ public class ConfigurationModel {
 		
 		numCommunities = 10;
 		seedSize = 110;
+		randomness = 0;
 		
 	}
 	
@@ -56,5 +58,7 @@ public class ConfigurationModel {
 	public int getSeedSize() { return seedSize; }
 	public void setSeedSize(int seedSize) { this.seedSize = seedSize; }
 	
+	public int getRandomness() { return randomness; }
+	public void setRandomness(int randomness) { this.randomness = randomness; }
 
 }
