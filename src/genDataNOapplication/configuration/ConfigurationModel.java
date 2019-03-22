@@ -1,5 +1,11 @@
 package genDataNOapplication.configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+import genDataNOapplication.configuration.AttributeModel;
+
+import javafx.util.Pair;
+
 //Class that stores all the customizable settings for the program execution
 public class ConfigurationModel {
 	
@@ -17,6 +23,9 @@ public class ConfigurationModel {
 	private int seedSize;
 	private int randomness;
 	
+	//List of User Parameters
+	private List<AttributeModel> userAttrributesList;
+	
 	//Class constructor
 	public ConfigurationModel() {
 		
@@ -27,9 +36,13 @@ public class ConfigurationModel {
 		this.out1File = "./resources/files/karate_out1.csv"; 
 		this.out2File = "./resources/files/karate_out2.csv";
 		
+		userAttrributesList = new ArrayList<AttributeModel>();
+		
 		numCommunities = 10;
 		seedSize = 110;
 		randomness = 0;
+		
+		
 		
 	}
 	
@@ -60,5 +73,30 @@ public class ConfigurationModel {
 	
 	public int getRandomness() { return randomness; }
 	public void setRandomness(int randomness) { this.randomness = randomness; }
+	
+	public List<AttributeModel> getUserAttrributesList() { return userAttrributesList; }
+	
+	//Add and remove user attributes
+	public void addUserAttribute(AttributeModel userAttribute) {
+		for(AttributeModel attribute : userAttrributesList) {
+			if(attribute.getName().equals(userAttribute.getName())) {
+				System.out.println("ERROR. There is another attribute with this name");
+			}
+			else {
+				userAttrributesList.add(userAttribute); 
+			}
+		}
+	}
+	
+	public void removeUserAttribute(String attributeName) {
+		for(AttributeModel attribute : userAttrributesList) {
+			if(attribute.getName().equals(attributeName)) {
+				userAttrributesList.remove(attribute);
+			}
+			else {
+				System.out.println("The attribute " + attributeName + " doesn't exist");
+			}
+		}
+	}
 
 }
