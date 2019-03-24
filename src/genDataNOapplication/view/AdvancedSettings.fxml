@@ -23,9 +23,9 @@
       <ButtonBar layoutX="289.0" layoutY="14.0" prefHeight="40.0" prefWidth="422.0">
          <buttons>
             <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files" />
-            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" text="User Parameters" />
-            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" text="Communities &amp; Profiles" />
-            <Button fx:id="advancedButtonTab" mnemonicParsing="false" text="Advanced" />
+            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes" />
+            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Communities &amp; Profiles" />
+            <Button fx:id="advancedButtonTab" disable="true" mnemonicParsing="false" text="Advanced" />
          </buttons>
       </ButtonBar>
       <Text layoutX="294.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning!  Here you can customize advanced parameters and test experimental features, you may expect program malfunction and crashes. This is for advanced users only, if you have any doubts leave it with the default configuration." textAlignment="CENTER" wrappingWidth="412.0000019669533" />

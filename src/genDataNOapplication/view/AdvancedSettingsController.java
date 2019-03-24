@@ -134,6 +134,11 @@ public class AdvancedSettingsController {
 		main.showCommunitiesSettingsPage();
 	}
 	
+	@FXML
+	public void handleUserParametersButtonTab() {
+		main.showUserAttributesPage();
+	}
+	
 	
 
 }

@@ -3,14 +3,18 @@ package genDataNOapplication;
 import java.awt.ScrollPane;
 import java.io.IOException;
 
+import genDataNOapplication.configuration.AttributeModel;
 import genDataNOapplication.configuration.ConfigurationModel;
 import genDataNOapplication.view.AdvancedSettingsController;
+import genDataNOapplication.view.AttributeEditDialogController;
 import genDataNOapplication.view.CommunitiesSettingsController;
 import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.RootLayoutController;
 import genDataNOapplication.view.SettingsPageController;
+import genDataNOapplication.view.UserAttributesController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -133,6 +137,63 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void showUserAttributesPage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/UserAttributes.fxml"));
+			AnchorPane UserAttributes = (AnchorPane) loader.load();
+			
+			rootLayout.setCenter(UserAttributes);
+			
+			UserAttributesController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	/**
+	 * Opens a dialog to edit details for the specified person. If the user
+	 * clicks OK, the changes are saved into the provided person object and true
+	 * is returned.
+	 * 
+	 * @param person the person object to be edited
+	 * @return true if the user clicked OK, false otherwise.
+	 */
+	public AttributeModel showAttributeEditDialog(AttributeModel attribute) {
+	    try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(Main.class.getResource("view/AttributeEditDialog.fxml"));
+	        AnchorPane page = (AnchorPane) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Edit Attribute");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+
+	        // Set the person into the controller.
+	        AttributeEditDialogController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+	        controller.setAttribute(attribute);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+	        
+	        return controller.isOkClicked();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return null;
+	    }
 	}
 	
 	//Runs the program with a set of customized settings
