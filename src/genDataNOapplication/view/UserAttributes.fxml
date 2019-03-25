@@ -33,7 +33,7 @@
       </Label>
       <Text layoutX="306.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can define the different attributes that a user have, adding and removing them as you wish. You can also adjust the frequencies in wich each attribute will be assigned" textAlignment="CENTER" wrappingWidth="412.0000019669533" />
       <Button fx:id="addButton" layoutX="840.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add..." />
-      <GridPane layoutX="406.0" layoutY="207.0" prefHeight="138.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="207.0">
+      <GridPane fx:id="attributesSection" layoutX="406.0" layoutY="207.0" prefHeight="138.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="207.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

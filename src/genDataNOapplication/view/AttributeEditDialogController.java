@@ -33,6 +33,9 @@ public class AttributeEditDialogController {
 	
     @FXML
     private void initialize() {
+    	nameTextField.setText("Prova Name");
+    	descriptionTextArea.setText("Parameter Description. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur.");
+    	
     }
     
     /**
