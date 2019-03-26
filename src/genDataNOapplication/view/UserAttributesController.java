@@ -1,6 +1,5 @@
 package genDataNOapplication.view;
 
-import java.awt.Label;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,6 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -107,18 +105,40 @@ public class UserAttributesController {
 			TitledPane attributeCard = new TitledPane();
 			attributeCard.setText(attribute.getName());
 			attributeCard.setCollapsible(false);
-			attributesSection.add(attributeCard, 0, 0);
 			attributeCard.resize(318, 363);
 			attributeCard.setMinHeight(363);
+			attributesSection.add(attributeCard, 0, 0);			
 			BorderPane cardBorderPane = new BorderPane();
 			attributeCard.setContent(cardBorderPane);
 			cardBorderPane.resize(attributeCard.getWidth(), attributeCard.getHeight());
+			
+			HBox hbox = new HBox();
+			cardBorderPane.setTop(hbox);
+			hbox.setSpacing(30);
+			Text description = new Text();
+			description.setText(attribute.getDescription());
+			description.setWrappingWidth(201);
+			hbox.getChildren().add(description);
+			VBox vbox = new VBox();
+			hbox.getChildren().add(vbox);
+			Button editButton = new Button();
+			editButton.setText("Edit");
+			Button saveButton = new Button();
+			saveButton.setText("Save");
+			saveButton.setDefaultButton(true);
+			Button deleteButton = new Button();
+			deleteButton.setText("Delete");
+			deleteButton.setCancelButton(true);
+			vbox.getChildren().addAll(editButton, saveButton, deleteButton);
+			
+			
 			ScrollPane cardScrollPane = new ScrollPane();
-			cardScrollPane.resize(cardBorderPane.getWidth(), cardBorderPane.getHeight());
+			cardScrollPane.resize(cardScrollPane.getWidth(), cardScrollPane.getHeight());
+			System.out.println(cardBorderPane.getWidth() + " , " + cardBorderPane.getHeight());
 			cardBorderPane.setCenter(cardScrollPane);
 			GridPane parametersGridPane = new GridPane();
 			parametersGridPane.resize(cardBorderPane.getWidth(), cardBorderPane.getHeight());
-			parametersGridPane.setHgap(10);
+			parametersGridPane.setHgap(15);
 			parametersGridPane.setVgap(10);
 			parametersGridPane.setPadding(new Insets(0, 10, 0, 10));
 			
@@ -128,53 +148,13 @@ public class UserAttributesController {
 				paramName.setText(parameter.getKey());
 				parametersGridPane.add(paramName, paramCount, 0);
 				
-				Spinner<Integer> paramValue = new Spinner();
+				Spinner<Integer> paramValue = new Spinner<Integer>();
 				paramValue.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
 				paramValue.getValueFactory().setValue(parameter.getValue());
 				parametersGridPane.add(paramValue, paramCount, 1);
 				
 				paramCount++;
 			}
-			
-
-			
-			/*ScrollPane cardScrollPane = new ScrollPane();
-			GridPane parametersGridPane = new GridPane();
-			Text description = new Text();
-			description.setText(attribute.getDescription());
-			//parametersGridPane.add(description, 0, 0);
-			cardScrollPane.setContent(parametersGridPane);
-			cardBorderPane.setCenter(cardScrollPane);
-			cardBorderPane.setTop(description);
-			attributeCard.setContent(cardBorderPane);
-			AnchorPane attributeAnchorPane = new AnchorPane(attributeCard);
-			attributeCard.resize(attributeAnchorPane.getWidth(), attributeAnchorPane.getHeight());
-			cardBorderPane.resize(attributeCard.getWidth(),attributeCard.getHeight());
-			cardScrollPane.resize(cardBorderPane.getWidth(), cardBorderPane.getHeight());
-			description.resize(cardBorderPane.getWidth(), cardBorderPane.getHeight());*/
-			
-			
-			
-			
-			
-			/*TitledPane attributeCard = new TitledPane();
-			attributeCard.setText(attribute.getName());
-			attributeCard.setCollapsible(false);
-			AnchorPane anchorPane = new AnchorPane();
-			attributeCard.setContent(anchorPane);
-			
-			ScrollPane scrollPane = new ScrollPane();
-			attributeCard.setContent(scrollPane);
-			scrollPane.resize(attributeCard.getWidth(), attributeCard.getHeight());
-			BorderPane borderPane = new BorderPane();
-			scrollPane.setContent(borderPane);
-			borderPane.resize(scrollPane.getWidth(), scrollPane.getHeight());
-			Text description = new Text();
-			description.setText(attribute.getDescription());
-			borderPane.setTop(description);*/
-			
-			
-			//attributesSection.add(attributeAnchorPane, 0, 0);
 		}
 		
 	}

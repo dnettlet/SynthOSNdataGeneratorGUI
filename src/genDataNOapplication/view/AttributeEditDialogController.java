@@ -1,17 +1,28 @@
 package genDataNOapplication.view;
 
+import java.awt.Label;
+import java.util.ArrayList;
+import java.util.List;
+
+import genDataNOapplication.Utils.Utils;
 import genDataNOapplication.configuration.AttributeModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 public class AttributeEditDialogController {
 	
 	AttributeModel attribute;
+	List<Pair<String, Integer>> parameterList;
 	private Stage dialogStage;
 	private boolean okClicked = false;
+	private int paramCount = 0;
 	
 	@FXML
 	TextField nameTextField;
@@ -27,6 +38,9 @@ public class AttributeEditDialogController {
 	@FXML
 	Button saveButton;
 	
+	@FXML
+	GridPane parametersSection;
+	
 	public AttributeEditDialogController() {
 
 	}
@@ -35,6 +49,7 @@ public class AttributeEditDialogController {
     private void initialize() {
     	nameTextField.setText("Prova Name");
     	descriptionTextArea.setText("Parameter Description. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur.");
+    	parameterList = new ArrayList<Pair<String, Integer>>();
     	
     }
     
@@ -78,21 +93,38 @@ public class AttributeEditDialogController {
         }
     }
     
+    @FXML
+    private void handleAddButton() {
+    	TextField paramName = new TextField();
+    	paramName.setText("Introduce Parameter Name");
+    	parametersSection.add(paramName, 0, paramCount + 2);
+    	Spinner<Integer> paramValue = new Spinner<Integer>();
+		paramValue.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+		paramValue.getValueFactory().setValue(10);
+		parametersSection.add(paramValue, 1, paramCount + 2);
+		Button deleteParamButton = new Button();
+		deleteParamButton.setText("Delete");
+		parametersSection.add(deleteParamButton, 2, paramCount + 2);
+		paramCount++;
+    }
+    
     /**
      * Called when the user clicks ok.
      */
-    @FXML
+    @SuppressWarnings("unchecked")
+	@FXML
     private void handleOk() {
         if (isInputValid()) {
         	attribute.setName(nameTextField.getText());
         	attribute.setDescription(descriptionTextArea.getText());
-            /*person.setFirstName(firstNameField.getText());
-            person.setLastName(lastNameField.getText());
-            person.setStreet(streetField.getText());
-            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
-            person.setCity(cityField.getText());
-            person.setBirthday(DateUtil.parse(birthdayField.getText()));*/
-
+        	for(int i = 0; i < paramCount; i++) {
+        		TextField paramName = (TextField) Utils.getNodeByRowColumnIndex(0, i + 2, parametersSection);
+        		Spinner<Integer> paramValue = (Spinner<Integer>) Utils.getNodeByRowColumnIndex(1, i + 2, parametersSection);
+        		System.out.println(paramName.getText());
+        		Pair<String, Integer> parameter = new Pair<String, Integer>(paramName.getText(), paramValue.getValue());
+        		parameterList.add(parameter);
+        	}
+        	attribute.setParameterList(parameterList);
             okClicked = true;
             dialogStage.close();
         }
