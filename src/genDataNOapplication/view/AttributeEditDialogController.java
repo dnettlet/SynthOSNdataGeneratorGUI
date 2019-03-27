@@ -1,12 +1,11 @@
 package genDataNOapplication.view;
 
-import java.awt.Label;
 import java.util.ArrayList;
 import java.util.List;
 
-import genDataNOapplication.Utils.Utils;
 import genDataNOapplication.configuration.AttributeModel;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -104,6 +103,8 @@ public class AttributeEditDialogController {
 		parametersSection.add(paramValue, 1, paramCount + 2);
 		Button deleteParamButton = new Button();
 		deleteParamButton.setText("Delete");
+		String deleteButtonID = "deleteParamButton" + String.valueOf(paramCount);
+		deleteParamButton.setId(deleteButtonID);
 		parametersSection.add(deleteParamButton, 2, paramCount + 2);
 		paramCount++;
     }
@@ -117,13 +118,23 @@ public class AttributeEditDialogController {
         if (isInputValid()) {
         	attribute.setName(nameTextField.getText());
         	attribute.setDescription(descriptionTextArea.getText());
-        	for(int i = 0; i < paramCount; i++) {
-        		TextField paramName = (TextField) Utils.getNodeByRowColumnIndex(0, i + 2, parametersSection);
-        		Spinner<Integer> paramValue = (Spinner<Integer>) Utils.getNodeByRowColumnIndex(1, i + 2, parametersSection);
-        		System.out.println(paramName.getText());
-        		Pair<String, Integer> parameter = new Pair<String, Integer>(paramName.getText(), paramValue.getValue());
-        		parameterList.add(parameter);
+        	List<Node> childrens = parametersSection.getChildren();
+    		TextField paramName = null;
+    		Spinner<Integer> paramValue = null;
+        	for(Node currentNode : childrens) {
+	    		if(currentNode.getId() != null) {
+	    			continue;
+	    		}
+	    		if(currentNode.getClass().toString().equals("class javafx.scene.control.TextField")) {
+	    			paramName = (TextField) currentNode;
+	    			continue;
+	    		}else {
+	    			paramValue = (Spinner<Integer>) currentNode;
+	    		}
+	    		Pair<String, Integer> parameter = new Pair<String, Integer>(paramName.getText(), paramValue.getValue());
+	    		parameterList.add(parameter);
         	}
+        	System.out.println(parameterList);
         	attribute.setParameterList(parameterList);
             okClicked = true;
             dialogStage.close();

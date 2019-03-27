@@ -100,6 +100,8 @@ public class UserAttributesController {
 
 	protected void reloadAttributesSection() {
 		attributesSection.getChildren().clear();
+		int attributeColumn = 0;
+		int attributeRow = 0;
 		for(AttributeModel attribute : attributeList) {
 			
 			TitledPane attributeCard = new TitledPane();
@@ -107,7 +109,7 @@ public class UserAttributesController {
 			attributeCard.setCollapsible(false);
 			attributeCard.resize(318, 363);
 			attributeCard.setMinHeight(363);
-			attributesSection.add(attributeCard, 0, 0);			
+			attributesSection.add(attributeCard, attributeColumn, attributeRow);			
 			BorderPane cardBorderPane = new BorderPane();
 			attributeCard.setContent(cardBorderPane);
 			cardBorderPane.resize(attributeCard.getWidth(), attributeCard.getHeight());
@@ -134,26 +136,39 @@ public class UserAttributesController {
 			
 			ScrollPane cardScrollPane = new ScrollPane();
 			cardScrollPane.resize(cardScrollPane.getWidth(), cardScrollPane.getHeight());
-			System.out.println(cardBorderPane.getWidth() + " , " + cardBorderPane.getHeight());
 			cardBorderPane.setCenter(cardScrollPane);
 			GridPane parametersGridPane = new GridPane();
 			parametersGridPane.resize(cardBorderPane.getWidth(), cardBorderPane.getHeight());
 			parametersGridPane.setHgap(15);
 			parametersGridPane.setVgap(10);
 			parametersGridPane.setPadding(new Insets(0, 10, 0, 10));
+			cardScrollPane.setContent(parametersGridPane);
 			
 			int paramCount = 0;
 			for(Pair<String, Integer> parameter : attribute.getParameterList()) {
+				System.out.println("Parameter");
 				TextField paramName = new TextField();
 				paramName.setText(parameter.getKey());
-				parametersGridPane.add(paramName, paramCount, 0);
+				parametersGridPane.add(paramName, 0, paramCount);
 				
 				Spinner<Integer> paramValue = new Spinner<Integer>();
+				
 				paramValue.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
 				paramValue.getValueFactory().setValue(parameter.getValue());
-				parametersGridPane.add(paramValue, paramCount, 1);
+				paramValue.resize(50, 25);
+				parametersGridPane.add(paramValue, 1, paramCount);
+				
+				Button deleteParamButton = new Button();
+				deleteParamButton.setText("Del");
+				parametersGridPane.add(deleteParamButton, 2, paramCount);;
+				
 				
 				paramCount++;
+			}
+			attributeColumn++;
+			if(attributeColumn > 2) {
+				attributeColumn = 0;
+				attributeRow++;
 			}
 		}
 		

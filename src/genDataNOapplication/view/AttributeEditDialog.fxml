@@ -28,12 +28,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Atrribute Name">
+                  <Label fx:id="nameLabel" text="Atrribute Name">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label contentDisplay="CENTER" text="Attribute Description" GridPane.rowIndex="1">
+                  <Label fx:id="descriptionLabel" contentDisplay="CENTER" text="Attribute Description" GridPane.rowIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
