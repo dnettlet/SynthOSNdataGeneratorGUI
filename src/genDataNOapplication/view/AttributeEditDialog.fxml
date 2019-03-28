@@ -44,7 +44,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Button fx:id="resetButton" layoutX="57.0" layoutY="436.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Reset" />
+      <Button fx:id="resetButton" layoutX="57.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleResetButton" prefHeight="25.0" prefWidth="70.0" text="Reset" />
       <Button fx:id="saveButton" layoutX="397.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="25.0" prefWidth="70.0" text="Ok" />
       <Button fx:id="cancelButton" layoutX="476.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
       <Button fx:id="addButton" layoutX="250.0" layoutY="436.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add Parametrer" />

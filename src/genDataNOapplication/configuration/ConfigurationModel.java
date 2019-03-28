@@ -77,16 +77,7 @@ public class ConfigurationModel {
 	public List<AttributeModel> getUserAttrributesList() { return userAttrributesList; }
 	
 	//Add and remove user attributes
-	public void addUserAttribute(AttributeModel userAttribute) {
-		for(AttributeModel attribute : userAttrributesList) {
-			if(attribute.getName().equals(userAttribute.getName())) {
-				System.out.println("ERROR. There is another attribute with this name");
-			}
-			else {
-				userAttrributesList.add(userAttribute); 
-			}
-		}
-	}
+	public void setAttributeList(List<AttributeModel> attributeList) {this.userAttrributesList = attributeList; }  
 	
 	public void removeUserAttribute(String attributeName) {
 		for(AttributeModel attribute : userAttrributesList) {

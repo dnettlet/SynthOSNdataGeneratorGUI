@@ -2,6 +2,7 @@ package genDataNOapplication;
 	
 import java.awt.ScrollPane;
 import java.io.IOException;
+import java.util.List;
 
 import genDataNOapplication.configuration.AttributeModel;
 import genDataNOapplication.configuration.ConfigurationModel;
@@ -166,7 +167,7 @@ public class Main extends Application {
 	 * @param person the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	public AttributeModel showAttributeEditDialog(AttributeModel attribute) {
+	public AttributeModel showAttributeEditDialog(AttributeModel attribute, List<String> attributeNames) {
 	    try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
@@ -185,6 +186,7 @@ public class Main extends Application {
 	        AttributeEditDialogController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
 	        controller.setAttribute(attribute);
+	        controller.setAttributeNames(attributeNames);
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();

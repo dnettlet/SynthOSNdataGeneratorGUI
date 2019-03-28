@@ -11,12 +11,15 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -69,7 +72,6 @@ public class UserAttributesController {
 			@SuppressWarnings("rawtypes")
 			@Override
 	        public void onChanged(ListChangeListener.Change change) {
-	            System.out.println("Ocurrio un cambio! ");
 	            reloadAttributesSection();
 	        }
 	    });
@@ -89,12 +91,36 @@ public class UserAttributesController {
 	
 	@FXML
 	public void handleAddButton() {
+		List<String> attributeNames = new ArrayList<String>();
+		for(AttributeModel attribute : attributeList) {
+			attributeNames.add(attribute.getName());
+		}
 	    AttributeModel attribute = new AttributeModel();
-	    AttributeModel modifiedAttribute = main.showAttributeEditDialog(attribute);
+	    AttributeModel modifiedAttribute = main.showAttributeEditDialog(attribute, attributeNames);
 	    if (modifiedAttribute  != null) {
-	        System.out.println("Name: " + modifiedAttribute.getName() + "\n Description: " + modifiedAttribute.getDescription());
 	        attributeList.add(modifiedAttribute);
 	    }
+	}
+	
+	@FXML
+	public void handleSaveButton() {
+		this.reloadAttributesSection();
+		if(attributeList.size() > 0) {
+		configuration.setAttributeList(attributeList);
+		System.out.println(attributeList.get(0).getParameterList().get(0).getKey());
+		main.setConfiguration(configuration);
+		main.showSettingsPage();
+		}else {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setTitle("No attributes set");
+    		alert.setHeaderText("Error: No attributes set");
+    		alert.setContentText("There is any User attribute specified, therefore the application can't run."
+    				+ "Please add some User Attributes Using the Add button.");
+    		alert.showAndWait();
+		}
+		
+
+		
 	}
 	
 
@@ -125,13 +151,10 @@ public class UserAttributesController {
 			hbox.getChildren().add(vbox);
 			Button editButton = new Button();
 			editButton.setText("Edit");
-			Button saveButton = new Button();
-			saveButton.setText("Save");
-			saveButton.setDefaultButton(true);
 			Button deleteButton = new Button();
 			deleteButton.setText("Delete");
 			deleteButton.setCancelButton(true);
-			vbox.getChildren().addAll(editButton, saveButton, deleteButton);
+			vbox.getChildren().addAll(editButton, deleteButton);
 			
 			
 			ScrollPane cardScrollPane = new ScrollPane();
@@ -146,7 +169,6 @@ public class UserAttributesController {
 			
 			int paramCount = 0;
 			for(Pair<String, Integer> parameter : attribute.getParameterList()) {
-				System.out.println("Parameter");
 				TextField paramName = new TextField();
 				paramName.setText(parameter.getKey());
 				parametersGridPane.add(paramName, 0, paramCount);

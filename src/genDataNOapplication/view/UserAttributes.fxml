@@ -43,5 +43,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+      <Button defaultButton="true" layoutX="840.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="46.0" text="Save" />
    </children>
 </AnchorPane>
