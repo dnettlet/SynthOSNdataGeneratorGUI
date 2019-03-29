@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import genDataNOapplication.Utils.Utils;
 import genDataNOapplication.configuration.AttributeModel;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -19,7 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-
+//Class that controlls the Attribute Edit dialog used to add or edit a user attribute
 public class AttributeEditDialogController {
 	
 	AttributeModel attribute;
@@ -29,11 +28,12 @@ public class AttributeEditDialogController {
 	private boolean okClicked = false;
 	private int paramCount = 0;
 	
+	//Textfiields
 	@FXML
 	TextField nameTextField;
 	@FXML
 	TextArea descriptionTextArea;
-	
+	//Buttons
 	@FXML
 	Button addButton;
 	@FXML
@@ -42,14 +42,15 @@ public class AttributeEditDialogController {
 	Button cancelButton;
 	@FXML
 	Button saveButton;
-	
+	//Gridpane containing the different fields
 	@FXML
 	GridPane parametersSection;
-	
+	//Class constctor
 	public AttributeEditDialogController() {
 
 	}
-	
+	//Initializes the controller class. This method is automatically called
+    // after the fxml file has been loaded.
     @FXML
     private void initialize() {
     	nameTextField.setText("Prova Name");
@@ -59,24 +60,15 @@ public class AttributeEditDialogController {
     	
     }
     
-    /**
-     * Sets the stage of this dialog.
-     * 
-     * @param dialogStage
-     */
+    //Setters
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
-    
+ 
     public void setAttributeNames(List<String> attributeNames) {
     	this.attributeNames = attributeNames;
     }
     
-    /**
-     * Sets the person to be edited in the dialog.
-     * 
-     * @param person
-     */
     public void setAttribute(AttributeModel attribute) {
         this.attribute = attribute;
 
@@ -95,7 +87,7 @@ public class AttributeEditDialogController {
         	return null;
         }
     }
-    
+    //When the add button is pressed, a new Parameter is created in the corresponding cell of the gridpane
     @FXML
     private void handleAddButton() {
     	TextField paramName = new TextField();
@@ -153,7 +145,9 @@ public class AttributeEditDialogController {
     private void handleCancel() {
         dialogStage.close();
     }
-    
+    /**
+     * Called when the user clicks Reset.
+     */
 	@FXML
 	public void handleResetButton() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -225,6 +219,8 @@ public class AttributeEditDialogController {
     	return true;
     }
     
+    //When from the User Attributes page a user clicks "edit" in one attribute this method is called
+    ///in order to load that attribute here in the Attribute Edit Screen
     private void openAttribute(AttributeModel attribute) {
     	this.attribute = attribute;
     	this.parameterList = attribute.getParameterList();

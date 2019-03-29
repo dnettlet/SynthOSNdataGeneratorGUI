@@ -11,7 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Alert.AlertType;
-
+//Class that controlls the behaviour of the Communities Settings Page
 public class CommunitiesSettingsController {
 	
 	//Reference to the main application

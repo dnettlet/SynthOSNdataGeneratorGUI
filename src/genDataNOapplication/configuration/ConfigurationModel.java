@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import genDataNOapplication.configuration.AttributeModel;
 
-import javafx.util.Pair;
-
 //Class that stores all the customizable settings for the program execution
 public class ConfigurationModel {
 	

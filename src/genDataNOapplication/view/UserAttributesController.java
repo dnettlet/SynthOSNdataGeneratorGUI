@@ -11,7 +11,6 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -26,7 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Pair;
-
+//Class that controlls the behaviour of the User Attributes page
 public class UserAttributesController {
 	
 	//Reference to the main application
@@ -89,6 +88,7 @@ public class UserAttributesController {
 		this.configuration = configuration;
 	}
 	
+	//Button to add a new User attribute. It opens the Edit User Attribute dialog
 	@FXML
 	public void handleAddButton() {
 		List<String> attributeNames = new ArrayList<String>();
@@ -102,6 +102,7 @@ public class UserAttributesController {
 	    }
 	}
 	
+	//Saves the current state. If there isn't any attribute an error pops
 	@FXML
 	public void handleSaveButton() {
 		this.reloadAttributesSection();
@@ -123,7 +124,8 @@ public class UserAttributesController {
 		
 	}
 	
-
+	//When called it refreshes the user attributes displayed by taking a look at the attributes list and
+	//updating the corresponding graphical elements
 	protected void reloadAttributesSection() {
 		attributesSection.getChildren().clear();
 		int attributeColumn = 0;
@@ -199,9 +201,6 @@ public class UserAttributesController {
 	
 	@FXML
 	public void handleFilesButtonTab() {
-		//configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		//configuration.setSeedSize(seedSizeSpinner.getValue());
-		//main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
 	

@@ -2,9 +2,9 @@ package genDataNOapplication.Utils;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
+//Class with different util functions to operate with JavaFX elements
 public class Utils {
 	
 
