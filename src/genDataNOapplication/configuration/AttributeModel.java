@@ -9,12 +9,12 @@ public class AttributeModel {
 	
 	private String name;
 	private String description;
-	List<Pair<String, Integer>> parameterList;
+	List<Pair<String, Double>> parameterList;
 	
 	public AttributeModel() {
 		name = "Insert a Name";
 		description = "Insert a description";
-		parameterList = new ArrayList<Pair<String, Integer>>();
+		parameterList = new ArrayList<Pair<String, Double>>();
 	}
 	
 	//Getters and setters
@@ -24,12 +24,12 @@ public class AttributeModel {
 	public String getDescription() { return description; }
 	public void setDescription(String description) { this.description = description; }
 
-	public List<Pair<String, Integer>> getParameterList() { return parameterList; }
-	public void setParameterList(List<Pair<String, Integer>> parameterList) { this.parameterList = parameterList; }
+	public List<Pair<String, Double>> getParameterList() { return parameterList; }
+	public void setParameterList(List<Pair<String, Double>> parameterList) { this.parameterList = parameterList; }
 	
 	//Add and remove parameters
-	public void addParameter(Pair<String, Integer> parameter) {
-		for(Pair<String, Integer> currentParameter : parameterList) {
+	public void addParameter(Pair<String, Double> parameter) {
+		for(Pair<String, Double> currentParameter : parameterList) {
 			if(currentParameter.getKey().equals(parameter.getKey())){
 				System.out.println("ERROR: There is already a parameter with the same Name");
 			}
@@ -40,7 +40,7 @@ public class AttributeModel {
 	}
 	
 	public void removeParameter(String parameterName) {
-		for(Pair<String, Integer> parameter : parameterList) {
+		for(Pair<String, Double> parameter : parameterList) {
 			if(parameter.getKey().equals(parameterName)) {
 				parameterList.remove(parameter);
 			}

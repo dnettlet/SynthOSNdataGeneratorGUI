@@ -22,7 +22,7 @@ import javafx.util.Pair;
 public class AttributeEditDialogController {
 	
 	AttributeModel attribute;
-	List<Pair<String, Integer>> parameterList;
+	List<Pair<String, Double>> parameterList;
 	List<String> attributeNames;
 	private Stage dialogStage;
 	private boolean okClicked = false;
@@ -55,7 +55,7 @@ public class AttributeEditDialogController {
     private void initialize() {
     	nameTextField.setText("Prova Name");
     	descriptionTextArea.setText("Parameter Description. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur.");
-    	parameterList = new ArrayList<Pair<String, Integer>>();
+    	parameterList = new ArrayList<Pair<String, Double>>();
     	attributeNames = new ArrayList<String>();
     	
     }
@@ -93,9 +93,9 @@ public class AttributeEditDialogController {
     	TextField paramName = new TextField();
     	paramName.setText("Introduce Parameter Name");
     	parametersSection.add(paramName, 0, paramCount + 2);
-    	Spinner<Integer> paramValue = new Spinner<Integer>();
-		paramValue.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
-		paramValue.getValueFactory().setValue(50);
+    	Spinner<Double> paramValue = new Spinner<Double>();
+		paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
+		paramValue.getValueFactory().setValue((double)50);
 		parametersSection.add(paramValue, 1, paramCount + 2);
 		Button deleteParamButton = new Button();
 		deleteParamButton.setText("Delete");
@@ -115,7 +115,7 @@ public class AttributeEditDialogController {
     	attribute.setDescription(descriptionTextArea.getText());
     	List<Node> childrens = parametersSection.getChildren();
 		TextField paramName = null;
-		Spinner<Integer> paramValue = null;
+		Spinner<Double> paramValue = null;
     	for(Node currentNode : childrens) {
     		if(currentNode.getId() != null) {
     			continue;
@@ -124,9 +124,9 @@ public class AttributeEditDialogController {
     			paramName = (TextField) currentNode;
     			continue;
     		}else {
-    			paramValue = (Spinner<Integer>) currentNode;
+    			paramValue = (Spinner<Double>) currentNode;
     		}
-    		Pair<String, Integer> parameter = new Pair<String, Integer>(paramName.getText(), paramValue.getValue());
+    		Pair<String, Double> parameter = new Pair<String, Double>(paramName.getText(), paramValue.getValue());
     		parameterList.add(parameter);
     	}
         if (isInputValid()) {
@@ -162,7 +162,8 @@ public class AttributeEditDialogController {
 			parameterList.clear();
 			for(int i = (paramCount*3) + 4; i > 4; i--) {
 
-				parametersSection.getChildren().remove(i-1);
+				parametersSection.getChildren().remove(i-1);		
+				
 
 			}
 			paramCount = 0;
@@ -192,7 +193,7 @@ public class AttributeEditDialogController {
     	}
     	if(paramCount > 0) {
         	int sum = 0;
-        	for(Pair<String, Integer> parameter : parameterList) {
+        	for(Pair<String, Double> parameter : parameterList) {
         		sum += parameter.getValue();
         	}
         	if(sum != 100) {
@@ -227,12 +228,12 @@ public class AttributeEditDialogController {
     	paramCount = parameterList.size();
     	nameTextField.setText(attribute.getName());
     	descriptionTextArea.setText(attribute.getDescription());
-    	for(Pair<String, Integer> parameter : parameterList) {
+    	for(Pair<String, Double> parameter : parameterList) {
         	TextField paramName = new TextField();
         	paramName.setText(parameter.getKey());
         	parametersSection.add(paramName, 0, paramCount + 2);
-        	Spinner<Integer> paramValue = new Spinner<Integer>();
-    		paramValue.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+        	Spinner<Double> paramValue = new Spinner<Double>();
+    		paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
     		paramValue.getValueFactory().setValue(parameter.getValue());
     		parametersSection.add(paramValue, 1, paramCount + 2);
     		Button deleteParamButton = new Button();

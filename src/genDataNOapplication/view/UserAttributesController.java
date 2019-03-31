@@ -64,17 +64,7 @@ public class UserAttributesController {
     // after the fxml file has been loaded.
 	@FXML
 	private void initialize() {
-		list = new ArrayList<AttributeModel>();
-		attributeList = FXCollections.observableList(list);
-		attributeList.addListener(new ListChangeListener<Object>() {
-
-			@SuppressWarnings("rawtypes")
-			@Override
-	        public void onChanged(ListChangeListener.Change change) {
-	            reloadAttributesSection();
-	        }
-	    });
-		
+		list = new ArrayList<AttributeModel>();		
 	}
 	
 
@@ -86,6 +76,17 @@ public class UserAttributesController {
 	//Is called to set a specific configuration
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
+		list = configuration.getUserAttrributesList();
+		attributeList = FXCollections.observableList(list);
+		attributeList.addListener(new ListChangeListener<Object>() {
+
+			@SuppressWarnings("rawtypes")
+			@Override
+	        public void onChanged(ListChangeListener.Change change) {
+	            reloadAttributesSection();
+	        }
+	    });
+		reloadAttributesSection();
 	}
 	
 	//Button to add a new User attribute. It opens the Edit User Attribute dialog
@@ -170,14 +171,14 @@ public class UserAttributesController {
 			cardScrollPane.setContent(parametersGridPane);
 			
 			int paramCount = 0;
-			for(Pair<String, Integer> parameter : attribute.getParameterList()) {
+			for(Pair<String, Double> parameter : attribute.getParameterList()) {
 				TextField paramName = new TextField();
 				paramName.setText(parameter.getKey());
 				parametersGridPane.add(paramName, 0, paramCount);
 				
-				Spinner<Integer> paramValue = new Spinner<Integer>();
+				Spinner<Double> paramValue = new Spinner<Double>();
 				
-				paramValue.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+				paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
 				paramValue.getValueFactory().setValue(parameter.getValue());
 				paramValue.resize(50, 25);
 				parametersGridPane.add(paramValue, 1, paramCount);
