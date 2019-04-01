@@ -19,6 +19,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -51,9 +52,13 @@ public class UserAttributesController {
 	@FXML
 	Button addButton;
 	
-	//Anchor pane
+	//Grid pane
 	@FXML
 	GridPane attributesSection;
+	
+	//Anchor Pane
+	@FXML
+	AnchorPane pageAnchorPane;
 
 	//Class Constructor
 	public UserAttributesController() {
@@ -192,6 +197,10 @@ public class UserAttributesController {
 			}
 			attributeColumn++;
 			if(attributeColumn > 2) {
+				System.out.println(pageAnchorPane.getWidth() + " , " + pageAnchorPane.getHeight());
+				pageAnchorPane.resize(pageAnchorPane.getWidth(), pageAnchorPane.getHeight() + 2000);
+				
+				System.out.println(pageAnchorPane.getWidth() + " , " + pageAnchorPane.getHeight());
 				attributeColumn = 0;
 				attributeRow++;
 			}

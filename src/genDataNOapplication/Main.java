@@ -143,7 +143,7 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/UserAttributes.fxml"));
-			AnchorPane UserAttributes = (AnchorPane) loader.load();
+			Node UserAttributes = (Node) loader.load();
 			
 			rootLayout.setCenter(UserAttributes);
 			

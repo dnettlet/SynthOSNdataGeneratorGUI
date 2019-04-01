@@ -95,7 +95,7 @@ public class AttributeEditDialogController {
     	parametersSection.add(paramName, 0, paramCount + 2);
     	Spinner<Double> paramValue = new Spinner<Double>();
 		paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
-		paramValue.getValueFactory().setValue((double)50);
+		paramValue.getValueFactory().setValue((double)0.5);
 		parametersSection.add(paramValue, 1, paramCount + 2);
 		Button deleteParamButton = new Button();
 		deleteParamButton.setText("Delete");
@@ -192,14 +192,14 @@ public class AttributeEditDialogController {
     		}
     	}
     	if(paramCount > 0) {
-        	int sum = 0;
+        	double sum = 0;
         	for(Pair<String, Double> parameter : parameterList) {
         		sum += parameter.getValue();
         	}
-        	if(sum != 100) {
+        	if(sum != 1) {
         		errorHeader = "Error with parameter Values";
-        		errorMessage = "Please make sure the sum of the values of the different parameters is 100."
-        				+ "\n Remember that the parameter values are the % of assignation, so it should sum 100.";
+        		errorMessage = "Please make sure the sum of the values of the different parameters is 1."
+        				+ "\n Remember that the parameter values are the % of assignation, so it should sum 1.";
         		error = true;
         	}
     	}else {
