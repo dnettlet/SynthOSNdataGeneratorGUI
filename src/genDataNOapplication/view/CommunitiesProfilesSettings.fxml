@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -27,7 +29,14 @@
                         <Text layoutX="7.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Communities are groups of users with similar profiles. The number of communities by default is 10, and the community file (second input file) must have the same number of communities as defined here. You should execute your community detection algorithm so it finds the number of communities defined here." textAlignment="JUSTIFY" wrappingWidth="366.9999870657921" />
                         <Label layoutX="14.0" layoutY="116.0" text="Number of Communities" />
                         <Spinner fx:id="numCommunitiesSpinner" disable="true" layoutX="191.0" layoutY="112.0" />
-                        <Button fx:id="communityAssignmentButton" layoutX="89.0" layoutY="179.0" mnemonicParsing="false" text="Edit profile community assaignment" />
+                        <Button fx:id="communityAssignmentButton" layoutX="89.0" layoutY="179.0" mnemonicParsing="false" text="Edit profile community assaignment">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons/baseline_edit_black_24dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Label layoutX="14.0" layoutY="204.0" text="Click to change the way each profile seed is assigned to a community. " />
                      </children>
                   </Pane>
@@ -38,15 +47,64 @@
                   <Pane prefHeight="200.0" prefWidth="200.0" />
                </content>
             </TitledPane>
-            <Button fx:id="resetButton" layoutX="137.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default" />
-            <Button fx:id="saveButton" layoutX="285.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSaveButton" text="Save &amp; Run" />
-            <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back" />
+            <Button fx:id="resetButton" layoutX="137.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="saveButton" layoutX="285.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSaveButton" text="Save &amp; Run">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline-arrow_back-24px.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <ButtonBar layoutX="289.0" layoutY="14.0" prefHeight="40.0" prefWidth="422.0">
               <buttons>
-                <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files" />
-                  <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes" />
-                  <Button fx:id="communitiesButtonTab" disable="true" mnemonicParsing="false" text="Communities &amp; Profiles" />
-                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced" />
+                <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/icons/outline_file_copy_black_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/icons/outline_group_black_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="communitiesButtonTab" disable="true" mnemonicParsing="false" text="Communities &amp; Profiles">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/icons/outline_device_hub_black_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/icons/outline_settings_black_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
               </buttons>
             </ButtonBar>
             <Label layoutX="375.0" layoutY="97.0" text="Communities &amp; Profiles">
@@ -62,13 +120,25 @@
                         <Text layoutX="7.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By default each community has a seed profile. A seed profile is a set of defined user characteristics that are used as a starting point for the algorithm to start generating the other users' characteristics in the community. " textAlignment="JUSTIFY" wrappingWidth="366.9999870657921" />
                         <Label layoutX="14.0" layoutY="116.0" text="Seed Size" />
                         <Spinner fx:id="seedSizeSpinner" layoutX="111.0" layoutY="112.0" />
-                        <Button fx:id="profileSeedsButton" layoutX="146.0" layoutY="179.0" mnemonicParsing="false" text="Edit Profile Seeds" />
+                        <Button fx:id="profileSeedsButton" layoutX="146.0" layoutY="179.0" mnemonicParsing="false" text="Edit Profile Seeds">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons/baseline_edit_black_24dp.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Text layoutX="3.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile seeds are built accordingly to parameters and frequencies set in the User Parameters settings. Click to manually edit profile seeds. " textAlignment="CENTER" wrappingWidth="379.208984375" />
                         <Button fx:id="helpButton" layoutX="274.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleHelpButton" text="?" />
                      </children>
                   </Pane>
                </content>
             </TitledPane>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="306.0" layoutY="66.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_device_hub_black_24dptitle.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>

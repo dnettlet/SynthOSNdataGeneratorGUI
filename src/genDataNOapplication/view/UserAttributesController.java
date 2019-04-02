@@ -9,6 +9,8 @@ import genDataNOapplication.configuration.ConfigurationModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
@@ -102,7 +104,7 @@ public class UserAttributesController {
 			attributeNames.add(attribute.getName());
 		}
 	    AttributeModel attribute = new AttributeModel();
-	    AttributeModel modifiedAttribute = main.showAttributeEditDialog(attribute, attributeNames);
+	    AttributeModel modifiedAttribute = main.showAttributeEditDialog(attribute, attributeNames, false);
 	    if (modifiedAttribute  != null) {
 	        attributeList.add(modifiedAttribute);
 	    }
@@ -129,6 +131,8 @@ public class UserAttributesController {
 
 		
 	}
+	
+	
 	
 	//When called it refreshes the user attributes displayed by taking a look at the attributes list and
 	//updating the corresponding graphical elements
@@ -159,6 +163,19 @@ public class UserAttributesController {
 			hbox.getChildren().add(vbox);
 			Button editButton = new Button();
 			editButton.setText("Edit");
+			editButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	        		List<String> attributeNames = new ArrayList<String>();
+	        		for(AttributeModel currentAttribute : attributeList) {
+	        			attributeNames.add(currentAttribute.getName());
+	        		}
+	        	    AttributeModel modifiedAttribute = main.showAttributeEditDialog(attribute, attributeNames, true);
+	        	    if (modifiedAttribute  != null) {
+	        	        attributeList.add(modifiedAttribute);
+	        	    }
+	            }
+	        });
 			Button deleteButton = new Button();
 			deleteButton.setText("Delete");
 			deleteButton.setCancelButton(true);

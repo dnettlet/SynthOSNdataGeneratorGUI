@@ -222,10 +222,10 @@ public class AttributeEditDialogController {
     
     //When from the User Attributes page a user clicks "edit" in one attribute this method is called
     ///in order to load that attribute here in the Attribute Edit Screen
-    private void openAttribute(AttributeModel attribute) {
+    public void openAttribute(AttributeModel attribute) {
     	this.attribute = attribute;
     	this.parameterList = attribute.getParameterList();
-    	paramCount = parameterList.size();
+    	paramCount = 0;
     	nameTextField.setText(attribute.getName());
     	descriptionTextArea.setText(attribute.getDescription());
     	for(Pair<String, Double> parameter : parameterList) {
@@ -241,6 +241,7 @@ public class AttributeEditDialogController {
     		String deleteButtonID = "deleteParamButton" + String.valueOf(paramCount);
     		deleteParamButton.setId(deleteButtonID);
     		parametersSection.add(deleteParamButton, 2, paramCount + 2);
+    		paramCount++;
     	}
     	
     }

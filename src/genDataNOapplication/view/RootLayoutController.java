@@ -4,12 +4,20 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
+import genDataNOapplication.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class RootLayoutController {
 	
+	//Reference to the main application
+	private Main main;
+	
+	//Is called by the main application to give a reference back to itself.
+	public void setMainApp(Main main) {
+		this.main = main;
+	}
     @FXML
     private void handleExit() {
         System.exit(0);
@@ -48,7 +56,27 @@ public class RootLayoutController {
 		}
 
     }
-
+    
+    @FXML
+    private void handleSwitchHome() {
+    	main.showHomePage();
+    }
+    @FXML
+    private void handleSwitchFiles() {
+    	main.showSettingsPage();
+    }
+    @FXML
+    private void handleSwitchUserAttributes() {
+    	main.showUserAttributesPage();
+    }
+    @FXML
+    private void handleSwitchCommunities() {
+    	main.showCommunitiesSettingsPage();
+    }
+    @FXML
+    private void handleSwitchAdvanced() {
+    	main.showAdvancedSettingsPage();
+    }
 
 
 }

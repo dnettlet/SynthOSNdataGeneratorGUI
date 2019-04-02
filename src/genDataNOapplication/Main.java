@@ -52,9 +52,10 @@ public class Main extends Application {
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			
+			
 	        // Give the controller access to the main app.
-	        @SuppressWarnings("unused")
-			RootLayoutController controller = loader.getController();
+	        RootLayoutController controller = loader.getController();
+	        controller.setMainApp(this);
 			
 			primaryStage.show();
 		}catch (IOException e) {
@@ -166,7 +167,7 @@ public class Main extends Application {
 	 * @param person the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	public AttributeModel showAttributeEditDialog(AttributeModel attribute, List<String> attributeNames) {
+	public AttributeModel showAttributeEditDialog(AttributeModel attribute, List<String> attributeNames, boolean openExistentAttr) {
 	    try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
@@ -186,6 +187,9 @@ public class Main extends Application {
 	        controller.setDialogStage(dialogStage);
 	        controller.setAttribute(attribute);
 	        controller.setAttributeNames(attributeNames);
+	        if(openExistentAttr) {
+	        	controller.openAttribute(attribute);
+	        }
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();
