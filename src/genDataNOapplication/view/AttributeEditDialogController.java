@@ -116,6 +116,7 @@ public class AttributeEditDialogController {
     	List<Node> childrens = parametersSection.getChildren();
 		TextField paramName = null;
 		Spinner<Double> paramValue = null;
+		parameterList.clear();
     	for(Node currentNode : childrens) {
     		if(currentNode.getId() != null) {
     			continue;

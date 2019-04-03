@@ -8,12 +8,15 @@ import java.lang.Math;
 import java.lang.Object;
 import java.io.Serializable;
 import java.util.Random;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
 import genDataNOapplication.User.User;
 import genDataNOapplication.community.Community;
+import genDataNOapplication.configuration.AttributeModel;
 import genDataNOapplication.configuration.ConfigurationModel;
 
 public class rAssignDataGeneralizedSensAttr4{
@@ -1916,6 +1919,9 @@ public static void AssignUnassigned(Random generator, Random generator2, int RAN
 public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationModel Configuration)
 {
 	configuration = Configuration;
+	for(AttributeModel attribute : configuration.getUserAttrributesList()) {
+		System.out.println(attribute.getName());
+	}
 	Random generator = new Random(System.currentTimeMillis()*1000);
 	Random generator2 = new Random(System.currentTimeMillis()*1000);
 	Enumeration en1 = RV.Users.keys();
@@ -1938,6 +1944,16 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	String residence[] = new String[6]; 
 	String gender[]    = new String[2]; 
 	String age[]       = new String[12]; 
+	/*List<String[]> paramList = new ArrayList<String[]>();
+	for(AttributeModel attribute : configuration.getUserAttrributesList()) {
+		System.out.println(attribute.getName());
+		List<Pair<String, Double>> parmeters
+		String string[] = new String[attribute.getParameterList().size()];
+		for(Pair<String, Double> param : attribute.getParameterList()) {
+			
+		}
+		paramList.add(string);
+	}*/
 
 	
 	String greligion[]              = new String[9];  	 int religionf[]             = new int[9];
@@ -2007,6 +2023,7 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	age[9] = "56-65";
 	age[10] = "66-75";
 	age[11] = "76-85";
+
 	
 	// TOTAL: 1000
 	greligion[0] = "Buddhist";  religionf[0] = 68; //6.8%

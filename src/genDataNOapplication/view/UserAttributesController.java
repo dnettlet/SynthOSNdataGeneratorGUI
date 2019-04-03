@@ -2,6 +2,7 @@ package genDataNOapplication.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import genDataNOapplication.Main;
 import genDataNOapplication.configuration.AttributeModel;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -168,17 +170,37 @@ public class UserAttributesController {
 	            public void handle(ActionEvent event) {
 	        		List<String> attributeNames = new ArrayList<String>();
 	        		for(AttributeModel currentAttribute : attributeList) {
+	        			if(currentAttribute.getName().equals(attribute.getName())) {
+	        				continue;
+	        			}
 	        			attributeNames.add(currentAttribute.getName());
 	        		}
 	        	    AttributeModel modifiedAttribute = main.showAttributeEditDialog(attribute, attributeNames, true);
 	        	    if (modifiedAttribute  != null) {
+	        	    	attributeList.remove(attribute);
 	        	        attributeList.add(modifiedAttribute);
+	        	       
 	        	    }
 	            }
 	        });
 			Button deleteButton = new Button();
 			deleteButton.setText("Delete");
 			deleteButton.setCancelButton(true);
+			deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("Delete attribute");
+					alert.setHeaderText("Do you really want to delete the attribute?");
+					alert.setContentText("By clicking okay the selected attribute will be deleted. There will not be the possibility to restore it.");
+
+					Optional<ButtonType> result = alert.showAndWait();
+					if (result.get() == ButtonType.OK){
+						attributeList.remove(attribute);
+					}
+					
+				}
+			});
 			vbox.getChildren().addAll(editButton, deleteButton);
 			
 			
