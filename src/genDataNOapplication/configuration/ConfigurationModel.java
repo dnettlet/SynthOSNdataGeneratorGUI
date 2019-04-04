@@ -52,13 +52,13 @@ public class ConfigurationModel {
 		age.setName("Age");
 		age.setDescription("The age range in Years");
 		List<Pair<String, Double>> AgeparameterList = new ArrayList<Pair<String, Double>>();
-		AgeparameterList.add(new Pair<String, Double>("18-25", 0.25));
-		AgeparameterList.add(new Pair<String, Double>("26-35", 0.25));
-		AgeparameterList.add(new Pair<String, Double>("36-45", 0.17));
-		AgeparameterList.add(new Pair<String, Double>("46-55", 0.09));
-		AgeparameterList.add(new Pair<String, Double>("56-55", 0.08));
-		AgeparameterList.add(new Pair<String, Double>("66-75", 0.08));
-		AgeparameterList.add(new Pair<String, Double>("76-85", 0.08));
+		AgeparameterList.add(new Pair<String, Double>("18-25", 0.25)); //0
+		AgeparameterList.add(new Pair<String, Double>("26-35", 0.25)); //1
+		AgeparameterList.add(new Pair<String, Double>("36-45", 0.17)); //2
+		AgeparameterList.add(new Pair<String, Double>("46-55", 0.09)); //3
+		AgeparameterList.add(new Pair<String, Double>("56-65", 0.08)); //4
+		AgeparameterList.add(new Pair<String, Double>("66-75", 0.08)); //5
+		AgeparameterList.add(new Pair<String, Double>("76-85", 0.08)); //6
 		age.setParameterList(AgeparameterList);
 		userAttrributesList.add(age);
 		
