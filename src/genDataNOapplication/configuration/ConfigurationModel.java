@@ -99,7 +99,7 @@ public class ConfigurationModel {
 		ReligionparameterList.add(new Pair<String, Double>("Other religions", 0.110));
 		ReligionparameterList.add(new Pair<String, Double>("No religious affiliation", 0.117));
 		religion.setParameterList(ReligionparameterList);
-		//userAttrributesList.add(religion);
+		userAttrributesList.add(religion);
 		
 		AttributeModel maritalstatus = new AttributeModel();
 		maritalstatus.setName("Marital Status");
