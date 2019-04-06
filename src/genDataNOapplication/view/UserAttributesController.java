@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
-import genDataNOapplication.configuration.AttributeModel;
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.AttributeModel;
+import genDataNOapplication.model.ConfigurationModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;

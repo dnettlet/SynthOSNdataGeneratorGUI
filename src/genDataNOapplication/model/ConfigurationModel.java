@@ -1,8 +1,9 @@
-package genDataNOapplication.configuration;
+package genDataNOapplication.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import genDataNOapplication.configuration.AttributeModel;
+
+import genDataNOapplication.model.AttributeModel;
 import javafx.util.Pair;
 
 //Class that stores all the customizable settings for the program execution
@@ -22,8 +23,11 @@ public class ConfigurationModel {
 	private int seedSize;
 	private int randomness;
 	
-	//List of User Parameters
+	//List of User Attributes
 	private List<AttributeModel> userAttrributesList;
+	
+	//List of Profiles
+	private List<ProfileModel> profileList;
 	
 	//Class constructor
 	public ConfigurationModel() {
@@ -36,6 +40,7 @@ public class ConfigurationModel {
 		this.out2File = "./resources/files/karate_out2.csv";
 		
 		userAttrributesList = new ArrayList<AttributeModel>();
+		profileList = new ArrayList<ProfileModel>();
 		
 		numCommunities = 10;
 		seedSize = 110;
@@ -150,6 +155,8 @@ public class ConfigurationModel {
 		sexualOrientationparameterList.add(new Pair<String, Double>("Homosexual", 0.02));
 		sexualOrientation.setParameterList(sexualOrientationparameterList);
 		//userAttrributesList.add(sexualOrientation);
+		
+		
 		
 		
 	

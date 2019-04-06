@@ -3,8 +3,8 @@ package genDataNOapplication;
 import java.io.IOException;
 import java.util.List;
 
-import genDataNOapplication.configuration.AttributeModel;
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.AttributeModel;
+import genDataNOapplication.model.ConfigurationModel;
 import genDataNOapplication.view.AdvancedSettingsController;
 import genDataNOapplication.view.AttributeEditDialogController;
 import genDataNOapplication.view.CommunitiesSettingsController;

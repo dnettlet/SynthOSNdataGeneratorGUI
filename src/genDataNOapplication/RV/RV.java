@@ -34,9 +34,9 @@ import genDataNOapplication.Dijkstra.AssignSeeds2;
 import genDataNOapplication.Dijkstra.FindMedoid;
 import genDataNOapplication.User.User;
 import genDataNOapplication.community.Community;
-import genDataNOapplication.configuration.ConfigurationModel;
 import genDataNOapplication.dataFile.dataFile;
 import genDataNOapplication.doCalcs.doCalcs;
+import genDataNOapplication.model.ConfigurationModel;
 
 public class RV{
 	

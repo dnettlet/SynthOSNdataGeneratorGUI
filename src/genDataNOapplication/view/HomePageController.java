@@ -1,8 +1,14 @@
 package genDataNOapplication.view;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import genDataNOapplication.Controller;
 import genDataNOapplication.Main;
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.ConfigurationModel;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -72,41 +78,57 @@ public class HomePageController {
 	
 	//Given a ConfigurationModel, starts the program with this configuration. 
 	public void startApplication(ConfigurationModel configuration) {
-		startButton.setDisable(true);
-		cancelButton.setVisible(true);
-		progressIndicator.setVisible(true);
-		progressIndicator.setProgress(-1);
-		progressIndicator.progressProperty().unbind();
+		try{
+			startButton.setDisable(true);
 		
+			cancelButton.setVisible(true);
+			progressIndicator.setVisible(true);
+			progressIndicator.setProgress(-1);
+			progressIndicator.progressProperty().unbind();
+			
+	
+			
+			programExecution = new Controller();
+			programExecution.setMainApp(main);
+			programExecution.setConfiguration(configuration);
+			
+			// When completed tasks
+						programExecution.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, 
+				                new EventHandler<WorkerStateEvent>() {
+				
+				                    @Override
+				                    public void handle(WorkerStateEvent t) {
+				                    	if(!programExecution.isCancelled()) {
+				                    	progressIndicator.setVisible(false);
+				                		Alert alert = new Alert(AlertType.INFORMATION);
+				                    	alert.setTitle("Run Completed");
+				                    	alert.setHeaderText("The program has finished running");
+				                    	alert.setContentText("Execution complete. To see the results check the output files located in the directory /resources/files. "
+				                    			+ "\n You can run it gain by pressing the \"Start Application\" Button.");
+				                    	alert.showAndWait();
+				                    	
+				                    	startButton.setDisable(false);
+				                    	cancelButton.setVisible(false);
+				                    	}
+				                        
+				                    }
+				                });
+						
+						programExecution.addEventHandler(WorkerStateEvent.WORKER_STATE_CANCELLED, 
+				                new EventHandler<WorkerStateEvent>() {
+				
+				                    @Override
+				                    public void handle(WorkerStateEvent t) {
+				                    	System.out.println("An error occurred");
+				                        
+				                    }
+				                });
 
-		
-		programExecution = new Controller();
-		programExecution.setMainApp(main);
-		programExecution.setConfiguration(configuration);
-		
-		// When completed tasks
-		programExecution.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, //
-                new EventHandler<WorkerStateEvent>() {
-
-                    @Override
-                    public void handle(WorkerStateEvent t) {
-                    	if(!programExecution.isCancelled()) {
-                    	progressIndicator.setVisible(false);
-                		Alert alert = new Alert(AlertType.INFORMATION);
-                    	alert.setTitle("Run Completed");
-                    	alert.setHeaderText("The program has finished running");
-                    	alert.setContentText("Execution complete. To see the results check the output files located in the directory /resources/files. "
-                    			+ "\n You can run it gain by pressing the \"Start Application\" Button.");
-                    	alert.showAndWait();
-                    	
-                    	startButton.setDisable(false);
-                    	cancelButton.setVisible(false);
-                    	}
-                        
-                    }
-                });
-        // Start the Task.
-        new Thread(programExecution).start();
+				        // Start the Task.
+				        new Thread(programExecution).start();
+		}catch(Throwable t) {
+			System.out.println("Un error");
+		}
 	}
 	
 

@@ -3,7 +3,7 @@ package genDataNOapplication.view;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.ConfigurationModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;

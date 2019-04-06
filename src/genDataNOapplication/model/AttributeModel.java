@@ -1,4 +1,4 @@
-package genDataNOapplication.configuration;
+package genDataNOapplication.model;
 
 import java.util.ArrayList;
 import java.util.List;

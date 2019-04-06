@@ -3,7 +3,7 @@ package genDataNOapplication.view;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.ConfigurationModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
