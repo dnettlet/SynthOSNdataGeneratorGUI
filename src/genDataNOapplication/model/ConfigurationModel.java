@@ -1,7 +1,10 @@
 package genDataNOapplication.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import genDataNOapplication.model.AttributeModel;
 import javafx.util.Pair;
@@ -27,7 +30,10 @@ public class ConfigurationModel {
 	private List<AttributeModel> userAttrributesList;
 	
 	//List of Profiles
-	private List<ProfileModel> profileList;
+	private List<Pair<List<Integer>, Integer>> profileList;
+	
+	//Each Profile Assigned to one community
+	int profileCommunityAssaign[] = new int[10];
 	
 	//Class constructor
 	public ConfigurationModel() {
@@ -40,7 +46,7 @@ public class ConfigurationModel {
 		this.out2File = "./resources/files/karate_out2.csv";
 		
 		userAttrributesList = new ArrayList<AttributeModel>();
-		profileList = new ArrayList<ProfileModel>();
+		profileList = new ArrayList<Pair<List<Integer>, Integer>>();
 		
 		numCommunities = 10;
 		seedSize = 110;
@@ -115,7 +121,7 @@ public class ConfigurationModel {
 		maritalstatusparameterList.add(new Pair<String, Double>("Divorced", 0.1));
 		maritalstatusparameterList.add(new Pair<String, Double>("Widowed", 0.06));
 		maritalstatus.setParameterList(maritalstatusparameterList);
-		//userAttrributesList.add(maritalstatus);
+		userAttrributesList.add(maritalstatus);
 		
 		AttributeModel profession = new AttributeModel();
 		profession.setName("Profession");	
@@ -129,7 +135,7 @@ public class ConfigurationModel {
 		professionparameterList.add(new Pair<String, Double>("Production transportation and material moving", 0.09));
 		professionparameterList.add(new Pair<String, Double>("Student", 0.23));
 		profession.setParameterList(professionparameterList);
-		//userAttrributesList.add(profession);
+		userAttrributesList.add(profession);
 		
 		AttributeModel politicalOrientation = new AttributeModel();
 		politicalOrientation.setName("Political Orientation");
@@ -143,7 +149,7 @@ public class ConfigurationModel {
 		politicalOrientationparameterList.add(new Pair<String, Double>("Right", 0.08));
 		politicalOrientationparameterList.add(new Pair<String, Double>("Far Right", 0.01));
 		politicalOrientation.setParameterList(politicalOrientationparameterList);
-		//userAttrributesList.add(politicalOrientation);
+		userAttrributesList.add(politicalOrientation);
 		
 		AttributeModel sexualOrientation = new AttributeModel();
 		sexualOrientation.setName("Sexual Orientation");
@@ -154,12 +160,71 @@ public class ConfigurationModel {
 		sexualOrientationparameterList.add(new Pair<String, Double>("Heterosexual", 0.95));
 		sexualOrientationparameterList.add(new Pair<String, Double>("Homosexual", 0.02));
 		sexualOrientation.setParameterList(sexualOrientationparameterList);
-		//userAttrributesList.add(sexualOrientation);
+		userAttrributesList.add(sexualOrientation);
 		
+
+		List<Integer> profileParams0 = new ArrayList<Integer>();
+		profileParams0.addAll(Arrays.asList(2, 0, 3, 8, 1, 3, 3, 2));
+		Pair<List<Integer>, Integer> profile0 = new Pair<List<Integer>, Integer>(profileParams0, 216);
+		profileList.add(profile0);
 		
+		List<Integer> profileParams1 = new ArrayList<Integer>();
+		profileParams1.addAll(Arrays.asList(1, 1, 4, 0, 2, 3, 3, 2));
+		Pair<List<Integer>, Integer> profile1 = new Pair<List<Integer>, Integer>(profileParams0, 172);
+		profileList.add(profile1);
 		
+		List<Integer> profileParams2 = new ArrayList<Integer>();
+		profileParams2.addAll(Arrays.asList(0, 0, 0, 1, 0, 6, 2, 2));
+		Pair<List<Integer>, Integer> profile2 = new Pair<List<Integer>, Integer>(profileParams0, 211);
+		profileList.add(profile2);
 		
-	
+		List<Integer> profileParams3 = new ArrayList<Integer>();
+		profileParams3.addAll(Arrays.asList(0, 1, 2, 4, 0, 1, 4, 2));
+		Pair<List<Integer>, Integer> profile3 = new Pair<List<Integer>, Integer>(profileParams0, (Integer) 97);
+		profileList.add(profile3);
+
+		List<Integer> profileParams4 = new ArrayList<Integer>();
+		profileParams4.addAll(Arrays.asList(4, 0, 1, 2, 3, 4, 5, 2));
+		Pair<List<Integer>, Integer> profile4 = new Pair<List<Integer>, Integer>(profileParams0, 81);
+		profileList.add(profile4);
+
+		List<Integer> profileParams5 = new ArrayList<Integer>();
+		profileParams5.addAll(Arrays.asList(5, 1, 5, 3, 1, 5, 0, 2));
+		Pair<List<Integer>, Integer> profile5 = new Pair<List<Integer>, Integer>(profileParams0, 157);
+		profileList.add(profile5);
+
+		List<Integer> profileParams6 = new ArrayList<Integer>();
+		profileParams6.addAll(Arrays.asList(0, 1, 2, 1, 0, 1, 4, 2));
+		Pair<List<Integer>, Integer> profile6 = new Pair<List<Integer>, Integer>(profileParams0, 24);
+		profileList.add(profile6);
+		
+		List<Integer> profileParams7 = new ArrayList<Integer>();
+		profileParams7.addAll(Arrays.asList(0, 1, 2, 3, 0, 1, 4, 2));
+		Pair<List<Integer>, Integer> profile7 = new Pair<List<Integer>, Integer>(profileParams0, 5);
+		profileList.add(profile7);
+		
+		List<Integer> profileParams8 = new ArrayList<Integer>();
+		profileParams8.addAll(Arrays.asList(4, 0, 1, 2, 3, 4, 1, 2));
+		Pair<List<Integer>, Integer> profile8 = new Pair<List<Integer>, Integer>(profileParams0, 28);
+		profileList.add(profile8);
+
+		List<Integer> profileParams9 = new ArrayList<Integer>();
+		profileParams9.addAll(Arrays.asList(4, 0, 1, 2, 3, 4, 0, 2));
+		Pair<List<Integer>, Integer> profile9 = new Pair<List<Integer>, Integer>(profileParams0, 9);
+		profileList.add(profile9);
+		
+		profileCommunityAssaign[0] = 0; // assign profile 0 to community 0
+		profileCommunityAssaign[1] = 2; // assign profile 2 to community 1
+		profileCommunityAssaign[2] = 1; // assign profile 1 to community 2
+		profileCommunityAssaign[3] = 4; // assign profile 4 to community 3
+		profileCommunityAssaign[4] = 5; // assign profile 5 to community 4
+		profileCommunityAssaign[5] = 3; // assign profile 3 to community 5
+		profileCommunityAssaign[6] = 7; // assign profile 7 to community 6
+		profileCommunityAssaign[7] = 9; // assign profile 9 to community 7
+		profileCommunityAssaign[8] = 6; // assign profile 6 to community 8
+		profileCommunityAssaign[9] = 8; // assign profile 8 to community 9
+
+		
 	}
 	
 	//Setters and getters
@@ -191,6 +256,12 @@ public class ConfigurationModel {
 	public void setRandomness(int randomness) { this.randomness = randomness; }
 	
 	public List<AttributeModel> getUserAttrributesList() { return userAttrributesList; }
+	
+	public List<Pair<List<Integer>, Integer>> getProfileList() { return profileList; }
+	public void setProfileList(List<Pair<List<Integer>, Integer>> profileList) { this.profileList = profileList; }
+	
+	public int[] getProfileCommunityAssaignment() { return profileCommunityAssaign; }
+	public void setProfileCommunityAssaignment(int[] profileCommunityAssaign) { this.profileCommunityAssaign = profileCommunityAssaign; }
 	
 	//Add and remove user attributes
 	public void setAttributeList(List<AttributeModel> attributeList) {this.userAttrributesList = attributeList; }  
