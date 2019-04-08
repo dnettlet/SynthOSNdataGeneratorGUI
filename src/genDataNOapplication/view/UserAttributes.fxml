@@ -15,7 +15,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.UserAttributesController">
    <content>
-      <AnchorPane fx:id="pageAnchorPane" prefHeight="1200.0" prefWidth="1000.0">
+      <AnchorPane fx:id="pageAnchorPane" prefHeight="1300.0" prefWidth="1000.0">
          <children>
             <Label layoutX="353.0" layoutY="58.0" text="Advanced Settings">
                <font>

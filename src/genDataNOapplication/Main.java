@@ -222,6 +222,44 @@ public class Main extends Application {
 		}
 	}
 	
+	
+	/**
+	 * Opens a dialog to edit details for the specified person. If the user
+	 * clicks OK, the changes are saved into the provided person object and true
+	 * is returned.
+	 * 
+	 * @param person the person object to be edited
+	 * @return true if the user clicked OK, false otherwise.
+	 */
+	public AttributeModel showCommunityAssaignmentDialog() {
+	    try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(Main.class.getResource("view/CommunityAssaignmentDialog.fxml"));
+	        AnchorPane page = (AnchorPane) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Community Assaignment");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+
+	        // Set the person into the controller.
+	        AttributeEditDialogController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+	        
+	        return controller.isOkClicked();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}
+	
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
 	}

@@ -1,5 +1,7 @@
 package genDataNOapplication.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
@@ -8,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Alert.AlertType;
@@ -74,6 +77,10 @@ public class CommunitiesSettingsController {
 		this.configuration = configuration;
 	}
 	
+	@FXML
+	public void handleCommunityAssignmentButton() {
+		System.out.println(main.showCommunityAssaignmentDialog());
+	}
 	@FXML
 	public void handleSaveButton() {
 		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
