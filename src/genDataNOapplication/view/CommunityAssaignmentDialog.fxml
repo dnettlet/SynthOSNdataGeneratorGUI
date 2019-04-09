@@ -32,7 +32,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label fx:id="nameLabel" text="Community 0">
+                  <Label text="Community 0">
                      <font>
                         <Font size="13.0" />
                      </font>

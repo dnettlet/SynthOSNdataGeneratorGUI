@@ -89,6 +89,13 @@ public class CommunityAssaignmentController {
     }
     
     
+    //Setters
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+ 
+    
+    
     /**
      * Returns true if the user clicked OK, false otherwise.
      * 

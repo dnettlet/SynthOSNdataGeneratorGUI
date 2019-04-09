@@ -8,11 +8,13 @@ import genDataNOapplication.model.ConfigurationModel;
 import genDataNOapplication.view.AdvancedSettingsController;
 import genDataNOapplication.view.AttributeEditDialogController;
 import genDataNOapplication.view.CommunitiesSettingsController;
+import genDataNOapplication.view.CommunityAssaignmentController;
 import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.RootLayoutController;
 import genDataNOapplication.view.SettingsPageController;
 import genDataNOapplication.view.UserAttributesController;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -231,7 +233,7 @@ public class Main extends Application {
 	 * @param person the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	public AttributeModel showCommunityAssaignmentDialog() {
+	public ObservableList<String> showCommunityAssaignmentDialog() {
 	    try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
@@ -247,7 +249,7 @@ public class Main extends Application {
 	        dialogStage.setScene(scene);
 
 	        // Set the person into the controller.
-	        AttributeEditDialogController controller = loader.getController();
+	        CommunityAssaignmentController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
 
 	        // Show the dialog and wait until the user closes it

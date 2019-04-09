@@ -1175,6 +1175,7 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			
 			for(int k = 0; k < 10; k++) {
 				profilevalues[k] = profileCommunityAssaign[k];
+				System.out.println("Community " + k + "assaigned to profile " + profilevalues[k]);
 			}
 			
 			// *********** next 10 lines only for rmat ***********

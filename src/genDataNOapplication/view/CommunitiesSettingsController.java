@@ -67,6 +67,8 @@ public class CommunitiesSettingsController {
 		
 	}
 	
+	
+	
 	//Is called by the main application to give a reference back to itself.
 	public void setMainApp(Main main) {
 		this.main = main;
@@ -79,13 +81,17 @@ public class CommunitiesSettingsController {
 	
 	@FXML
 	public void handleCommunityAssignmentButton() {
-		System.out.println(main.showCommunityAssaignmentDialog());
+		int[] communityAssaignment = new int[0];
+		int count = 0;
+		for(String i : main.showCommunityAssaignmentDialog()) {
+			communityAssaignment[count] = Integer.parseInt(i);
+			count++;
+		}
+		configuration.setProfileCommunityAssaignment(communityAssaignment);
 	}
 	@FXML
 	public void handleSaveButton() {
-		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		configuration.setSeedSize(seedSizeSpinner.getValue());
-		main.setConfiguration(configuration);
+
 		main.showSettingsPage();
 	}
 	
