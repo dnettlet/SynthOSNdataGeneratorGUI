@@ -41,7 +41,7 @@ public class CommunitiesSettingsController {
 	@FXML
 	Button communityAssignmentButton;
 	@FXML
-	Button profileSeedsButton;
+	Button profileFrequencyButton;
 	@FXML
 	Button helpButton;
 	
@@ -82,6 +82,11 @@ public class CommunitiesSettingsController {
 	@FXML
 	public void handleCommunityAssignmentButton() {
 		configuration.setProfileCommunityAssaignment(main.showCommunityAssaignmentDialog());
+	}
+	
+	@FXML
+	public void handleProfileFrequencyButton() {
+		main.showProfileFreqDialog();
 	}
 		
 
