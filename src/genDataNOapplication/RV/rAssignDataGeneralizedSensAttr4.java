@@ -8,10 +8,8 @@ import java.lang.Math;
 import java.lang.Object;
 import java.io.Serializable;
 import java.util.Random;
-import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -1117,7 +1115,7 @@ return(likes);
 
 public static void AssignSeeds(Random generator, String profile_age[],String profile_gen[],String profile_res[],
 		                       String profile_rel[], String profile_mar[], String profile_prof[], String profile_pol[],
-		                       String profile_seo[], String profile_lk1[], String profile_lk2[], String profile_lk3[], 
+		                       String profile_seo[], String profile_lk1[], String profile_lk2[], String profile_lk3[],
 		                       List<Pair<List<Integer>, Integer>> profileList, int[] profileCommunityAssaign)
 
 {
@@ -1149,7 +1147,7 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 				profilefreq[k] = profileList.get(k).getValue();
 			}
 			
-			profilefreq[0]=216; // sum to 1000
+			/*profilefreq[0]=216; // sum to 1000
 			profilefreq[2]=211;
 			profilefreq[1]=172;
 			profilefreq[5]=157;
@@ -1158,7 +1156,7 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			profilefreq[8]=28;
 			profilefreq[6]=24;
 			profilefreq[9]=9;
-			profilefreq[7]=5;
+			profilefreq[7]=5;*/
 			
 			int freq=0;
 			
@@ -1174,8 +1172,8 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			}
 			
 			for(int k = 0; k < 10; k++) {
-				profilevalues[k] = profileCommunityAssaign[k];
-				System.out.println("Community " + k + "assaigned to profile " + profilevalues[k]);
+			profilevalues[k] = profileCommunityAssaign[k];
+			//System.out.println("Community " + k + "assaigned to profile " + profilevalues[k]);
 			}
 			
 			// *********** next 10 lines only for rmat ***********
@@ -1936,14 +1934,12 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	for(AttributeModel attribute : attributeList) {
 		System.out.println(attribute.getName());
 	}
-	
-	
 	Random generator = new Random(System.currentTimeMillis()*1000);
 	Random generator2 = new Random(System.currentTimeMillis()*1000);
 	Enumeration en1 = RV.Users.keys();
 	String str="";
 	User nw, nw2;
-	int user1=0,user2=0,i=0, j=0, friends_ok=0;	
+	int user1=0,user2=0,i=0, j=0, friends_ok=0;
 	
 	String profile_age[]       = new String[10]; 
 	String profile_gen[]       = new String[10]; 
@@ -1960,6 +1956,7 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	String residence[] = new String[6]; 
 	String gender[]    = new String[2]; 
 	String age[]       = new String[12]; 
+
 	
 	String greligion[]              = new String[9];  	 int religionf[]             = new int[9];
 	String gmaritalstatus[]         = new String[4];     int maritalstatusf[]        = new int[4];
@@ -2029,22 +2026,8 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	age[10] = "66-75";
 	age[11] = "76-85";
 	
-	//List<Pair<String, Double>> ageParamList = new ArrayList<Pair<String, Double>>();
-	//List<Pair<String, Double>> religionParamList = new ArrayList<Pair<String, Double>>();
-	
-	/*for(AttributeModel attribute : configuration.getUserAttrributesList()) {
-		if(attribute.getName().equals("Age")) {
-			ageParamList = attribute.getParameterList();
-		}
-			
-		if(attribute.getName().equals("Religion")) {
-			//religionParamList = attribute.getParameterList();
-		}
-	}*/
-
-	
 	// TOTAL: 1000
-	religion[0] = "Buddhist";  religionf[0] = 68; //6.8%
+	greligion[0] = "Buddhist";  religionf[0] = 68; //6.8%
 	greligion[1] = "Christian"; religionf[1] = 304;//30.4%
 	greligion[2] = "Hindu";     religionf[2] = 138;//13.8%
 	greligion[3] = "Jewish";    religionf[3] = 2;//0.2%
@@ -2122,7 +2105,7 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		    ++count;
 		}
 	}
-	// assign religion based on frequencies	
+	// assign religion based on frequencies
 	for(i=0, count=0; i<9; i++)
 	{
 		num = religionf[i];
@@ -2132,14 +2115,6 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		    ++count;
 		}
 	}
-	/*for(i = 0, count = 0; i < religionParamList.size(); i++) {
-		num = (int) (religionParamList.get(i).getValue() * 100);
-		for(j = 0; j < num; j++) {
-			religion[count] = religionParamList.get(i).getKey();
-			++count;
-		}
-	}*/
-	
 	
 	// assign marital status based on frequencies
 	for(i=0, count=0; i<4; i++)
@@ -2266,10 +2241,6 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	profile_lk1[9]  = glike1[3];  				profile_lk2[9]  = glike2[3]; 			profile_lk3[9]  = glike3[3];
 	//profile_pol[9]  = gpoliticalorientation[0]; profile_seo[9]  = gsexualorientation[2];
 	
-	/*String[] ageKey = new String[ageParamList.size()];
-	for(int k = 0; k < ageParamList.size(); k++) {
-		ageKey[k] = ageParamList.get(k).getKey();
-	}*/
 	
     // The following three routines do all the work
 	AssignSeeds(generator, profile_age,profile_gen,profile_res, profile_rel, profile_mar, profile_prof, profile_pol,

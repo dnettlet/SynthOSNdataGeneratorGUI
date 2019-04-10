@@ -81,14 +81,10 @@ public class CommunitiesSettingsController {
 	
 	@FXML
 	public void handleCommunityAssignmentButton() {
-		int[] communityAssaignment = new int[0];
-		int count = 0;
-		for(String i : main.showCommunityAssaignmentDialog()) {
-			communityAssaignment[count] = Integer.parseInt(i);
-			count++;
-		}
-		configuration.setProfileCommunityAssaignment(communityAssaignment);
+		configuration.setProfileCommunityAssaignment(main.showCommunityAssaignmentDialog());
 	}
+		
+
 	@FXML
 	public void handleSaveButton() {
 
