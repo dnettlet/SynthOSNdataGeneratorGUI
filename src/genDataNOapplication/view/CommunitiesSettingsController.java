@@ -13,6 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.util.Pair;
 import javafx.scene.control.Alert.AlertType;
 //Class that controlls the behaviour of the Communities Settings Page
 public class CommunitiesSettingsController {
@@ -86,7 +87,18 @@ public class CommunitiesSettingsController {
 	
 	@FXML
 	public void handleProfileFrequencyButton() {
-		main.showProfileFreqDialog();
+		int[] frequencies = main.showProfileFreqDialog();
+		int count = 0;
+		List<Pair<List<Integer>, Integer>> profileList = configuration.getProfileList();
+		List<Pair<List<Integer>, Integer>> updatedProfileList = new ArrayList<Pair<List<Integer>, Integer>>();
+		for(Pair<List<Integer>, Integer> currentProfile : profileList) {
+			List<Integer> paramList = currentProfile.getKey();
+			Pair<List<Integer>, Integer> updatedProfile = new Pair<List<Integer>, Integer>(paramList, frequencies[count]);
+			updatedProfileList.add(updatedProfile);
+			count++;
+			
+		}
+		configuration.setProfileList(updatedProfileList);
 	}
 		
 

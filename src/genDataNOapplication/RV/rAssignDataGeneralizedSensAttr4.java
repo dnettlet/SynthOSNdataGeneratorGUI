@@ -1146,7 +1146,7 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			for(int k = 0; i < profileList.size(); i++) {
 				profilefreq[k] = profileList.get(k).getValue();
 			}
-			
+			System.out.println("Profile 0 frequency: " + profilefreq[0]);
 			/*profilefreq[0]=216; // sum to 1000
 			profilefreq[2]=211;
 			profilefreq[1]=172;
