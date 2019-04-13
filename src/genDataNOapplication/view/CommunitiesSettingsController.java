@@ -5,14 +5,19 @@ import java.util.List;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
+import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 import javafx.scene.control.Alert.AlertType;
 //Class that controlls the behaviour of the Communities Settings Page
@@ -52,6 +57,10 @@ public class CommunitiesSettingsController {
 	@FXML
 	Spinner<Integer> seedSizeSpinner;
 	
+	//VBOX
+	@FXML
+	VBox profilesSection;
+	
 	//Class constructor
 	public CommunitiesSettingsController() {
 		
@@ -65,7 +74,35 @@ public class CommunitiesSettingsController {
 		numCommunitiesSpinner.getValueFactory().setValue(10);
 		seedSizeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999));
 		seedSizeSpinner.getValueFactory().setValue(110);
-		
+	}
+	
+	public void loadProfileCard() {
+		//int numAttributes = configuration.getUserAttrributesList().size();
+		for(int i = 0; i < 10; i++) {
+			String title = "Profile " + i;
+			Label titleLabel = new Label();
+			titleLabel.setText(title);
+			profilesSection.getChildren().add(titleLabel);
+			GridPane profileAttr = new GridPane();
+			int col = 0; int row = 0;
+			for(AttributeModel attribute : configuration.getUserAttrributesList()) {
+				ChoiceBox<String> attributeSelection = new ChoiceBox();
+				List<String> options = new ArrayList<String>();
+				for(Pair<String, Double> param : attribute.getParameterList()) {
+					options.add(param.getKey());
+				}
+				attributeSelection.getItems().addAll(options);
+				if(col < 3) {
+				profileAttr.add(attributeSelection, row, col);
+				col++;
+				}else {
+					col = 0;
+					row++;
+				}
+				
+			}
+			profilesSection.getChildren().add(profileAttr);
+		}
 	}
 	
 	
@@ -78,6 +115,7 @@ public class CommunitiesSettingsController {
 	//Is called to set a specific configuration
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
+		this.loadProfileCard();
 	}
 	
 	@FXML

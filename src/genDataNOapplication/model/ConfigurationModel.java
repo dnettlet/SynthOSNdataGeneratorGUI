@@ -38,12 +38,12 @@ public class ConfigurationModel {
 	//Class constructor
 	public ConfigurationModel() {
 		
-		this.inputFile1 = "./resources/files/karate.csv";
-		this.inputFile2 = "./resources/files/karatemodauth.csv";
-		this.outFile = "./resources/files/karate_out.csv";
-		this.outgFile = "./resources/files/karate_outg.csv";
-		this.out1File = "./resources/files/karate_out1.csv"; 
-		this.out2File = "./resources/files/karate_out2.csv";
+		this.inputFile1 = "./resources/Input_files/inputFile1_karate.csv";
+		this.inputFile2 = "./resources/Input_files/inputFile2_karatemodauth.csv";
+		this.outFile = "./resources/Output_files/karate_out.csv";
+		this.outgFile = "./resources/Output_files/karate_outg.csv";
+		this.out1File = "./resources/Output_files/karate_out1.csv"; 
+		this.out2File = "./resources/Output_files/karate_out2.csv";
 		
 		userAttrributesList = new ArrayList<AttributeModel>();
 		profileList = new ArrayList<Pair<List<Integer>, Integer>>();

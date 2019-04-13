@@ -95,6 +95,11 @@ public class SettingsPageController {
         
         File initialDirectory = new File("./resources");
         
+        if(field.contains("input")) {
+        	initialDirectory = new File("./resources/Input_files");
+        }else {
+        	initialDirectory = new File("./resources/Output_files");
+        }
         fileChooser.setInitialDirectory(initialDirectory);
 
         // Set extension filter
@@ -107,7 +112,10 @@ public class SettingsPageController {
 
         if (file != null) {
             System.out.println(file.getName());
-            String filename = file.getPath();
+            String filePath = file.getPath();
+            //String[] parts = filePath.split("(?<=\\\\)");
+           // String filename = parts[parts.length - 1];
+            String filename = filePath;
             
             switch(field) {
             case "inputFile1":
@@ -198,7 +206,7 @@ public class SettingsPageController {
 	@FXML
 	public void handleAdvancedSettingsButton() {
 		save();
-		main.showCommunitiesSettingsPage();
+		main.showUserAttributesPage();
 	}
 	
 
