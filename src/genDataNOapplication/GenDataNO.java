@@ -1,7 +1,9 @@
 package genDataNOapplication;
 
+import java.util.List;
+
 import genDataNOapplication.RV.RV;
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.ConfigurationModel;
 
 // Copyright (C) 2018  David F. Nettleton (david.nettleton@upf.edu)
 // License: GNU GENERAL PUBLIC LICENSE v3.0   See LICENSE for the full license.
@@ -27,7 +29,7 @@ static GenDataNO thetestRV;
 
 /**
  */
-public static void main(ConfigurationModel configuration)
+public static double main(ConfigurationModel configuration)
 {
    /*try 
    {
@@ -47,7 +49,9 @@ public static void main(ConfigurationModel configuration)
    }*/
 	
    RV rv1 = new RV();
-   rv1.RVp(configuration);
+   double ret = rv1.RVp(configuration);
+   
+   return ret;
    
 } // fin de main
 } // end of clase URL

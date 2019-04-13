@@ -1,6 +1,6 @@
 package genDataNOapplication;
 
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.ConfigurationModel;
 import javafx.concurrent.Task;
  
 
@@ -14,9 +14,9 @@ public class Controller extends Task<Object> {
 	@Override
 	protected Object call() throws Exception {
 		
-		GenDataNO.main(configuration);
+		double ret = GenDataNO.main(configuration);
 		
-		return null;
+		return ret;
 	}
 	
 	public void setConfiguration(ConfigurationModel configuration) { this.configuration = configuration; }

@@ -9,14 +9,19 @@ import java.lang.Object;
 import java.io.Serializable;
 import java.util.Random;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
 import genDataNOapplication.User.User;
 import genDataNOapplication.community.Community;
+import genDataNOapplication.model.AttributeModel;
+import genDataNOapplication.model.ConfigurationModel;
+import javafx.util.Pair;
 
 public class rAssignDataGeneralizedSensAttr4{
 	
+	public static ConfigurationModel configuration;
 	
 public static double dage(String agev1, String agev2)
 {
@@ -1110,7 +1115,8 @@ return(likes);
 
 public static void AssignSeeds(Random generator, String profile_age[],String profile_gen[],String profile_res[],
 		                       String profile_rel[], String profile_mar[], String profile_prof[], String profile_pol[],
-		                       String profile_seo[], String profile_lk1[], String profile_lk2[], String profile_lk3[])
+		                       String profile_seo[], String profile_lk1[], String profile_lk2[], String profile_lk3[],
+		                       List<Pair<List<Integer>, Integer>> profileList, int[] profileCommunityAssaign)
 
 {
 	int i=0, j=0, count=0, profix=0;
@@ -1137,7 +1143,11 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			int profilefreq[] = new int[10];
 			int profilevalues[] = new int[1000];
 			
-			profilefreq[0]=216; // sum to 1000
+			for(int k = 0; i < profileList.size(); i++) {
+				profilefreq[k] = profileList.get(k).getValue();
+			}
+			System.out.println("Profile 0 frequency: " + profilefreq[0]);
+			/*profilefreq[0]=216; // sum to 1000
 			profilefreq[2]=211;
 			profilefreq[1]=172;
 			profilefreq[5]=157;
@@ -1146,7 +1156,7 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			profilefreq[8]=28;
 			profilefreq[6]=24;
 			profilefreq[9]=9;
-			profilefreq[7]=5;
+			profilefreq[7]=5;*/
 			
 			int freq=0;
 			
@@ -1161,8 +1171,13 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 				}
 			}
 			
+			for(int k = 0; k < 10; k++) {
+			profilevalues[k] = profileCommunityAssaign[k];
+			//System.out.println("Community " + k + "assaigned to profile " + profilevalues[k]);
+			}
+			
 			// *********** next 10 lines only for rmat ***********
-			profilevalues[0]=0; // assign profile 0 to community 0
+			/*profilevalues[0]=0; // assign profile 0 to community 0
 			profilevalues[1]=2; // assign profile 2 to community 1
 			profilevalues[2]=1; // assign profile 1 to community 2
 			profilevalues[3]=4; // assign profile 4 to community 3
@@ -1171,7 +1186,7 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			profilevalues[6]=7; // assign profile 7 to community 6
 			profilevalues[7]=9; // assign profile 9 to community 7
 			profilevalues[8]=6; // assign profile 6 to community 8
-			profilevalues[9]=8; // assign profile 8 to community 9
+			profilevalues[9]=8; // assign profile 8 to community 9*/
 			
 	  		enc = RV.Communities.keys();
 	  		int comcount=0;
@@ -1911,8 +1926,14 @@ public static void AssignUnassigned(Random generator, Random generator2, int RAN
 /****************************************************************************************************************************/
 /*********************************************** MAIN ASSIGNMENT ROUTINE *************************************/
 /****************************************************************************************************************************/
-public static int rAssignDataGeneralizedSensAttr4(int numnodes)
+public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationModel Configuration)
 {
+	configuration = Configuration;
+	List<AttributeModel> attributeList = configuration.getUserAttrributesList();
+	
+	for(AttributeModel attribute : attributeList) {
+		System.out.println(attribute.getName());
+	}
 	Random generator = new Random(System.currentTimeMillis()*1000);
 	Random generator2 = new Random(System.currentTimeMillis()*1000);
 	Enumeration en1 = RV.Users.keys();
@@ -2157,70 +2178,84 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes)
 	
 	
 	// ASSIGN THE PROFILES
-	profile_age[0]  = age[6]; 					profile_gen[0]  = gender[0]; 			profile_res[0]  = residence[3]; 
-	profile_rel[0]  = greligion[8]; 			profile_mar[0]  = gmaritalstatus[1]; 	profile_prof[0] = gprofession[3]; 
+	List<Pair<List<Integer>, Integer>> profileList = configuration.getProfileList();
+	for(int k = 0; k < profileList.size(); k++) {
+		Pair<List<Integer>, Integer> profile = profileList.get(k);
+		profile_age[k] = attributeList.get(0).getParameterList().get(profileList.get(k).getKey().get(0)).getKey();
+		profile_gen[k] = attributeList.get(1).getParameterList().get(profileList.get(k).getKey().get(1)).getKey();
+		profile_res[k] = attributeList.get(2).getParameterList().get(profileList.get(k).getKey().get(2)).getKey();
+		profile_rel[k] = attributeList.get(3).getParameterList().get(profileList.get(k).getKey().get(3)).getKey();
+		profile_mar[k] = attributeList.get(4).getParameterList().get(profileList.get(k).getKey().get(4)).getKey();
+		profile_prof[k] = attributeList.get(5).getParameterList().get(profileList.get(k).getKey().get(5)).getKey();
+		profile_pol[k] = attributeList.get(6).getParameterList().get(profileList.get(k).getKey().get(6)).getKey();
+		profile_seo[k] = attributeList.get(7).getParameterList().get(profileList.get(k).getKey().get(7)).getKey();
+	}
+	
+	//profile_age[0]  = age[6]; 					profile_gen[0]  = gender[0]; 			profile_res[0]  = residence[3]; 
+	//profile_rel[0]  = greligion[8]; 			profile_mar[0]  = gmaritalstatus[1]; 	profile_prof[0] = gprofession[3]; 
 	profile_lk1[0]  = glike1[3];  				profile_lk2[0]  = glike2[3]; 			profile_lk3[0]  = glike3[3];
-	profile_pol[0]  = gpoliticalorientation[3]; profile_seo[0]  = gsexualorientation[2]; 
+	//profile_pol[0]  = gpoliticalorientation[3]; profile_seo[0]  = gsexualorientation[2]; 
 	
-	profile_age[1]  = age[3]; 					profile_gen[1]  = gender[1]; 			profile_res[1]  = residence[4]; 
-	profile_rel[1]  = greligion[0]; 			profile_mar[1]  = gmaritalstatus[2]; 	profile_prof[1] = gprofession[0]; 
+	//profile_age[1]  = age[3]; 					profile_gen[1]  = gender[1]; 			profile_res[1]  = residence[4]; 
+	//profile_rel[1]  = greligion[0]; 			profile_mar[1]  = gmaritalstatus[2]; 	profile_prof[1] = gprofession[0]; 
 	profile_lk1[1]  = glike1[1];  				profile_lk2[1]  = glike2[1]; 			profile_lk3[1]  = glike3[1];
-	profile_pol[1]  = gpoliticalorientation[1]; profile_seo[1]  = gsexualorientation[1]; 
+	//profile_pol[1]  = gpoliticalorientation[1]; profile_seo[1]  = gsexualorientation[1]; 
 	
-	profile_age[2]  = age[0]; 					profile_gen[2]  = gender[0]; 			profile_res[2]  = residence[0]; 
-	profile_rel[2]  = greligion[1]; 			profile_mar[2]  = gmaritalstatus[0]; 	profile_prof[2] = gprofession[6]; 
+	//profile_age[2]  = age[0]; 					profile_gen[2]  = gender[0]; 			profile_res[2]  = residence[0]; 
+	//profile_rel[2]  = greligion[1]; 			profile_mar[2]  = gmaritalstatus[0]; 	profile_prof[2] = gprofession[6]; 
 	profile_lk1[2]  = glike1[2];  				profile_lk2[2]  = glike2[2]; 			profile_lk3[2]  = glike3[2];
-	profile_pol[2]  = gpoliticalorientation[2]; profile_seo[2]  = gsexualorientation[2];
+	//profile_pol[2]  = gpoliticalorientation[2]; profile_seo[2]  = gsexualorientation[2];
 	
-	profile_age[3]  = age[0]; 					profile_gen[3]  = gender[1]; 			profile_res[3]  = residence[2]; 
-	profile_rel[3]  = greligion[4]; 			profile_mar[3]  = gmaritalstatus[0]; 	profile_prof[3] = gprofession[1]; 
+	//profile_age[3]  = age[0]; 					profile_gen[3]  = gender[1]; 			profile_res[3]  = residence[2]; 
+	//profile_rel[3]  = greligion[4]; 			profile_mar[3]  = gmaritalstatus[0]; 	profile_prof[3] = gprofession[1]; 
 	profile_lk1[3]  = glike1[0];  				profile_lk2[3]  = glike2[0]; 			profile_lk3[3]  = glike3[0];
-	profile_pol[3]  = gpoliticalorientation[4]; profile_seo[3]  = gsexualorientation[2];
+	//profile_pol[3]  = gpoliticalorientation[4]; profile_seo[3]  = gsexualorientation[2];
 	
-	profile_age[4]  = age[9]; 					profile_gen[4]  = gender[0]; 			profile_res[4]  = residence[1]; 
-	profile_rel[4]  = greligion[2]; 			profile_mar[4]  = gmaritalstatus[3]; 	profile_prof[4] = gprofession[4]; 
+	//profile_age[4]  = age[9]; 					profile_gen[4]  = gender[0]; 			profile_res[4]  = residence[1]; 
+	//profile_rel[4]  = greligion[2]; 			profile_mar[4]  = gmaritalstatus[3]; 	profile_prof[4] = gprofession[4]; 
 	profile_lk1[4]  = glike1[3];  				profile_lk2[4]  = glike2[3]; 			profile_lk3[4]  = glike3[3];
-	profile_pol[4]  = gpoliticalorientation[5]; profile_seo[4]  = gsexualorientation[2];
+	//profile_pol[4]  = gpoliticalorientation[5]; profile_seo[4]  = gsexualorientation[2];
 	
-	profile_age[5]  = age[10]; 					profile_gen[5]  = gender[1]; 			profile_res[5]  = residence[5]; 
-	profile_rel[5]  = greligion[3]; 			profile_mar[5]  = gmaritalstatus[1]; 	profile_prof[5] = gprofession[5]; 
+	//profile_age[5]  = age[10]; 					profile_gen[5]  = gender[1]; 			profile_res[5]  = residence[5]; 
+	//profile_rel[5]  = greligion[3]; 			profile_mar[5]  = gmaritalstatus[1]; 	profile_prof[5] = gprofession[5]; 
 	profile_lk1[5]  = glike1[1];  				profile_lk2[5]  = glike2[1]; 			profile_lk3[5]  = glike3[1];
-	profile_pol[5]  = gpoliticalorientation[0]; profile_seo[5]  = gsexualorientation[2];
+	//profile_pol[5]  = gpoliticalorientation[0]; profile_seo[5]  = gsexualorientation[2];
 	
-	profile_age[6]  = age[0]; 					profile_gen[6]  = gender[1]; 			profile_res[6]  = residence[2]; 
-	profile_rel[6]  = greligion[1]; 			profile_mar[6]  = gmaritalstatus[0]; 	profile_prof[6] = gprofession[1]; 
+	//profile_age[6]  = age[0]; 					profile_gen[6]  = gender[1]; 			profile_res[6]  = residence[2]; 
+	//profile_rel[6]  = greligion[1]; 			profile_mar[6]  = gmaritalstatus[0]; 	profile_prof[6] = gprofession[1]; 
 	profile_lk1[6]  = glike1[0];  				profile_lk2[6]  = glike2[0]; 			profile_lk3[6]  = glike3[0];
-	profile_pol[6]  = gpoliticalorientation[4]; profile_seo[6]  = gsexualorientation[2];
+	//profile_pol[6]  = gpoliticalorientation[4]; profile_seo[6]  = gsexualorientation[2];
 	
-	profile_age[7]  = age[0]; 					profile_gen[7]  = gender[1]; 			profile_res[7]  = residence[2]; 
-	profile_rel[7]  = greligion[3]; 			profile_mar[7]  = gmaritalstatus[0]; 	profile_prof[7] = gprofession[1]; 
+	//profile_age[7]  = age[0]; 					profile_gen[7]  = gender[1]; 			profile_res[7]  = residence[2]; 
+	//profile_rel[7]  = greligion[3]; 			profile_mar[7]  = gmaritalstatus[0]; 	profile_prof[7] = gprofession[1]; 
 	profile_lk1[7]  = glike1[0];  				profile_lk2[7]  = glike2[0]; 			profile_lk3[7]  = glike3[0];
-	profile_pol[7]  = gpoliticalorientation[4]; profile_seo[7]  = gsexualorientation[2];
+	//profile_pol[7]  = gpoliticalorientation[4]; profile_seo[7]  = gsexualorientation[2];
 	
-	profile_age[8]  = age[9]; 					profile_gen[8]  = gender[0]; 			profile_res[8]  = residence[1]; 
-	profile_rel[8]  = greligion[2]; 			profile_mar[8]  = gmaritalstatus[3]; 	profile_prof[8] = gprofession[4]; 
+	//profile_age[8]  = age[9]; 					profile_gen[8]  = gender[0]; 			profile_res[8]  = residence[1]; 
+	//profile_rel[8]  = greligion[2]; 			profile_mar[8]  = gmaritalstatus[3]; 	profile_prof[8] = gprofession[4]; 
 	profile_lk1[8]  = glike1[3];  				profile_lk2[8]  = glike2[3]; 			profile_lk3[8]  = glike3[3];
-	profile_pol[8]  = gpoliticalorientation[1]; profile_seo[8]  = gsexualorientation[2];
+	//profile_pol[8]  = gpoliticalorientation[1]; profile_seo[8]  = gsexualorientation[2];
 	
-	profile_age[9]  = age[9]; 					profile_gen[9]  = gender[0]; 			profile_res[9]  = residence[1]; 
-	profile_rel[9]  = greligion[2]; 			profile_mar[9]  = gmaritalstatus[3]; 	profile_prof[9] = gprofession[4]; 
+	//profile_age[9]  = age[9]; 					profile_gen[9]  = gender[0]; 			profile_res[9]  = residence[1]; 
+	//profile_rel[9]  = greligion[2]; 			profile_mar[9]  = gmaritalstatus[3]; 	profile_prof[9] = gprofession[4]; 
 	profile_lk1[9]  = glike1[3];  				profile_lk2[9]  = glike2[3]; 			profile_lk3[9]  = glike3[3];
-	profile_pol[9]  = gpoliticalorientation[0]; profile_seo[9]  = gsexualorientation[2];
+	//profile_pol[9]  = gpoliticalorientation[0]; profile_seo[9]  = gsexualorientation[2];
 	
 	
     // The following three routines do all the work
 	AssignSeeds(generator, profile_age,profile_gen,profile_res, profile_rel, profile_mar, profile_prof, profile_pol,
-                profile_seo, profile_lk1, profile_lk2, profile_lk3);
+                profile_seo, profile_lk1, profile_lk2, profile_lk3, profileList, configuration.getProfileCommunityAssaignment());
 		
 	boolean switchdistance = true;
 	AssignNeighbors(generator, generator2, age, residence, gender, sexualorientation, politicalorientation, 
 			        religion, maritalstatus, profession, likes1, likes2, likes3, switchdistance);
 	
 	
-	int RANLIMUNAS=2; // Unassigned nodes assignment, 0 is equivalent to 10% random assignment (low). 
+	int RANLIMUNAS= configuration.getRandomness(); // Unassigned nodes assignment, 0 is equivalent to 10% random assignment (low). 
 	                  // 2 is 30% (medium), 4 is 50% (high). 
     // The remainder are assigned the modal values for each attribute for the 
     // neighbors with values assigned
+	System.out.println("Randomness: " + RANLIMUNAS);
 	
 	AssignUnassigned(generator, generator2, RANLIMUNAS, age, residence, gender, sexualorientation, politicalorientation, 
 	        religion, maritalstatus, profession, likes1, likes2, likes3);

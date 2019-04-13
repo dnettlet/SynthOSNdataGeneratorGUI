@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.AdvancedSettingsController">
+   <children>
+      <Label layoutX="353.0" layoutY="58.0" text="Advanced Settings">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="resetButton" layoutX="706.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="saveButton" layoutX="864.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleSaveButton" text="Save">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_save_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline-arrow_back-24px.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <ButtonBar layoutX="289.0" layoutY="14.0" prefHeight="40.0" prefWidth="422.0">
+         <buttons>
+            <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_file_copy_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_group_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Communities &amp; Profiles">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_device_hub_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="advancedButtonTab" disable="true" mnemonicParsing="false" text="Advanced">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_settings_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </buttons>
+      </ButtonBar>
+      <Text layoutX="294.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning!  Here you can customize advanced parameters and test experimental features, you may expect program malfunction and crashes. This is for advanced users only, if you have any doubts leave it with the default configuration." textAlignment="CENTER" wrappingWidth="412.0000019669533" />
+      <TitledPane collapsible="false" layoutX="14.0" layoutY="202.0" prefHeight="394.0" prefWidth="306.0" text="Probability Ranges">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="8.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can adjust the probability Ranges of each user parameter. You can choose between low, medium and high. This will be used during the AssignNeighbours routine, to determine the percentage of randomness." textAlignment="JUSTIFY" wrappingWidth="287.9999870657921" />
+               </children>
+            </Pane>
+         </content>
+      </TitledPane>
+      <TitledPane collapsible="false" layoutX="347.0" layoutY="202.0" prefHeight="394.0" prefWidth="306.0" text="Thresholds">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="9.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The distance threshold depends on how the distance is calculated and may differ from attribute to attributeIt indicates the distance of the two closest categories" textAlignment="JUSTIFY" wrappingWidth="285.9999870657921" />
+                  <Button fx:id="distanceThresholdButton" layoutX="79.0" layoutY="100.0" mnemonicParsing="false" text="Edit Distance Thresholds">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/icons/baseline_edit_black_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Text layoutX="14.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can edit the assignment thresholds in AssignNeighbours. In this routine each attribute has a specific random threshold." wrappingWidth="283.4296875" />
+                  <Button layoutX="79.0" layoutY="264.0" mnemonicParsing="false" text="Edit Distance Thresholds">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/icons/baseline_edit_black_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </Pane>
+         </content>
+      </TitledPane>
+      <TitledPane collapsible="false" layoutX="680.0" layoutY="202.0" prefHeight="222.0" prefWidth="306.0" text="Randomness">
+         <content>
+            <Pane prefHeight="190.0" prefWidth="304.0">
+               <children>
+                  <Text layoutX="9.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The settings here affect the last routine: AssignUnassigned. By default modal vaules are assigned 90% of the time, and random values are assigned 10% of the time. " textAlignment="JUSTIFY" wrappingWidth="286.9999870657921" />
+                  <Label layoutX="11.0" layoutY="121.0" text="Random Assaignment Ratio:" />
+                  <RadioButton fx:id="lowRandomness" layoutX="21.0" layoutY="152.0" mnemonicParsing="false" text="Low" />
+                  <RadioButton fx:id="mediumRandomness" layoutX="114.0" layoutY="152.0" mnemonicParsing="false" text="Medium" />
+                  <RadioButton fx:id="highRandomness" layoutX="220.0" layoutY="152.0" mnemonicParsing="false" text="High" />
+               </children>
+            </Pane>
+         </content>
+      </TitledPane>
+      <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="301.0" layoutY="66.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/icons/outline_settings_black_24dptitle.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

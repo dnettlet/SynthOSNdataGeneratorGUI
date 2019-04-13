@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
-import genDataNOapplication.configuration.ConfigurationModel;
+import genDataNOapplication.model.ConfigurationModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,6 +18,9 @@ public class SettingsPageController {
 	
 	//Reference to the main application
 	private Main main;
+	
+	//Configuration
+	protected ConfigurationModel configuration;
 	
 	//Buttons
 	@FXML
@@ -38,6 +41,8 @@ public class SettingsPageController {
 	Button resetButton;
 	@FXML
 	Button backButton;
+	@FXML
+	Button advancedSettingsButton;
 	
 	//TextFields
 	@FXML
@@ -70,6 +75,11 @@ public class SettingsPageController {
 		this.main = main;
 	}
 	
+	//Is called to set a specific configuration
+	public void setConfiguration(ConfigurationModel configuration) {
+		this.configuration = configuration;
+	}
+	
 	//Browse button Handlers
 	public void handleInFile1BrowseButton() { handleBrowseButton("inputFile1"); }
 	public void handleInFile2BrowseButton() { handleBrowseButton("inputFile2"); }
@@ -85,6 +95,11 @@ public class SettingsPageController {
         
         File initialDirectory = new File("./resources");
         
+        if(field.contains("input")) {
+        	initialDirectory = new File("./resources/Input_files");
+        }else {
+        	initialDirectory = new File("./resources/Output_files");
+        }
         fileChooser.setInitialDirectory(initialDirectory);
 
         // Set extension filter
@@ -97,7 +112,10 @@ public class SettingsPageController {
 
         if (file != null) {
             System.out.println(file.getName());
-            String filename = file.getPath();
+            String filePath = file.getPath();
+            //String[] parts = filePath.split("(?<=\\\\)");
+           // String filename = parts[parts.length - 1];
+            String filename = filePath;
             
             switch(field) {
             case "inputFile1":
@@ -129,17 +147,20 @@ public class SettingsPageController {
 	@FXML
 	public void handleSaveRunButton() {
 		//Save
-		ConfigurationModel configuration = new ConfigurationModel();
+		save();
 		
+		//Run
+		main.runCustomSettings();
+	}
+	
+	private void save() {	
 		if(!inputFile1Name.getText().isEmpty()) { configuration.setInputFile1(inputFile1Name.getText());	}
 		if(!inputFile2Name.getText().isEmpty()) { configuration.setInputFile2(inputFile2Name.getText()); }
 		if(!outFileName.getText().isEmpty()) { configuration.setOutFile(outFileName.getText()); }
 		if(!outgFileName.getText().isEmpty()) { configuration.setOutgFile(outgFileName.getText()); }
 		if(!out1FileName.getText().isEmpty()) { configuration.setOut1File(out1FileName.getText()); }
 		if(!out2FileName.getText().isEmpty()) { configuration.setOut2File(out2FileName.getText()); }
-		
-		//Run
-		main.runCustomSettings(configuration);
+		main.setConfiguration(configuration);
 	}
 	
 	//Resets the default configuration. Asks user confirmation.
@@ -180,6 +201,12 @@ public class SettingsPageController {
 			}
 		}
 		
+	}
+	
+	@FXML
+	public void handleAdvancedSettingsButton() {
+		save();
+		main.showUserAttributesPage();
 	}
 	
 

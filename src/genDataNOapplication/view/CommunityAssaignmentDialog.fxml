@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ComAssaignDialogController">
+   <children>
+      <ScrollPane layoutX="29.0" layoutY="10.0" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <GridPane hgap="20.0" prefHeight="408.0" prefWidth="473.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="163.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="10.0" prefWidth="283.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Community 0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label text="Communnity 1" GridPane.rowIndex="1" />
+                  <Label text="Communnity 2" GridPane.rowIndex="2" />
+                  <Label text="Communnity 3" GridPane.rowIndex="3" />
+                  <Label text="Communnity 4" GridPane.rowIndex="4" />
+                  <Label text="Communnity 5" GridPane.rowIndex="5" />
+                  <Label text="Communnity 6" GridPane.rowIndex="6" />
+                  <Label text="Communnity 7" GridPane.rowIndex="7" />
+                  <Label text="Communnity 8" GridPane.rowIndex="8" />
+                  <Label text="Communnity 9" GridPane.rowIndex="9" />
+                  <ChoiceBox fx:id="com0" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ChoiceBox fx:id="com1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ChoiceBox fx:id="com2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ChoiceBox fx:id="com3" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ChoiceBox fx:id="com4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ChoiceBox fx:id="com5" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ChoiceBox fx:id="com6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ChoiceBox fx:id="com7" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <ChoiceBox fx:id="com8" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <ChoiceBox fx:id="com9" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+               </children>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="saveButton" layoutX="317.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="25.0" prefWidth="70.0" text="Ok" />
+      <Button fx:id="cancelButton" layoutX="117.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
+   </children>
+</AnchorPane>
