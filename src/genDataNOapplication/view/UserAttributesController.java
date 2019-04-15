@@ -48,6 +48,8 @@ public class UserAttributesController {
 	@FXML
 	Button userParametersButtonTab;
 	@FXML
+	Button profilesButtonTab;
+	@FXML
 	Button communitiesButtonTab;
 	@FXML
 	Button advancedButtonTab;
@@ -122,8 +124,7 @@ public class UserAttributesController {
 		if(attributeList.size() > 0) {
 		configuration.setAttributeList(attributeList);
 		System.out.println(attributeList.get(0).getParameterList().get(0).getKey());
-		main.setConfiguration(configuration);
-		main.showCommunitiesSettingsPage();
+		handleProfilesButtonTab();
 		}else {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("No attributes set");
@@ -261,6 +262,12 @@ public class UserAttributesController {
 	public void handleAdvancedButtonTab() {
 		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
+	}
+	
+	@FXML
+	public void handleProfilesButtonTab() {
+		main.setConfiguration(configuration);
+		main.showProfilesPage();
 	}
 	
 	@FXML

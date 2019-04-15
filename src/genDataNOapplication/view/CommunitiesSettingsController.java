@@ -35,6 +35,8 @@ public class CommunitiesSettingsController {
 	@FXML
 	Button userParametersButtonTab;
 	@FXML
+	Button profilesButtonTab;
+	@FXML
 	Button communitiesButtonTab;
 	@FXML
 	Button advancedButtonTab;
@@ -186,6 +188,12 @@ public class CommunitiesSettingsController {
 	public void handleUserParametersButtonTab() {
 		main.setConfiguration(configuration);
 		main.showUserAttributesPage();
+	}
+	
+	@FXML
+	public void handleProfilesButtonTab() {
+		main.setConfiguration(configuration);
+		main.showProfilesPage();
 	}
 	
 	@FXML

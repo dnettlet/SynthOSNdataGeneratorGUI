@@ -11,6 +11,7 @@ import genDataNOapplication.view.CommunitiesSettingsController;
 import genDataNOapplication.view.ComAssaignDialogController;
 import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.ProfileFreqDialogController;
+import genDataNOapplication.view.ProfilesPageController;
 import genDataNOapplication.view.RootLayoutController;
 import genDataNOapplication.view.FileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
@@ -107,6 +108,24 @@ public class Main extends Application {
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
+	}
+	
+	
+	public void showProfilesPage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/ProfilesPage.fxml"));
+			AnchorPane ProfilesPage = (AnchorPane) loader.load();
+			
+			rootLayout.setCenter(ProfilesPage);
+			
+			ProfilesPageController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void showCommunitiesSettingsPage() {

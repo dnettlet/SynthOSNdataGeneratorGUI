@@ -15,7 +15,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 
-public class AdvancedSettingsController {
+public class ProfilesPageController {
 	
 	//Reference to the main application
 	private Main main;
@@ -39,22 +39,12 @@ public class AdvancedSettingsController {
 	@FXML
 	Button backButton;
 	@FXML
-	Button distanceThresholdButton;
-	@FXML
-	Button saveRunButton;
-	
-	//Radio buttons
-	@FXML
-	RadioButton lowRandomness;
-	@FXML
-	RadioButton mediumRandomness;
-	@FXML
-	RadioButton highRandomness;
-	ToggleGroup randomness = new ToggleGroup();
+	Button nextButton;
+
 	
 	
 	//Class constructor
-	public AdvancedSettingsController() {
+	public ProfilesPageController() {
 		
 	}
 	
@@ -62,32 +52,6 @@ public class AdvancedSettingsController {
     // after the fxml file has been loaded.
 	@FXML
 	private void initialize() {
-		lowRandomness.setToggleGroup(randomness);
-		lowRandomness.setSelected(true);
-		mediumRandomness.setToggleGroup(randomness);
-		highRandomness.setToggleGroup(randomness);
-		
-		randomness.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-	           @Override
-	           public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
-	               // Has selection.
-	               if (randomness.getSelectedToggle() != null) {
-	                   RadioButton button = (RadioButton) randomness.getSelectedToggle();
-	                   //System.out.println("Button: " + button.getText());
-	                   switch(button.getText()) {
-	                   case "Low":
-	                	   configuration.setRandomness(0);
-	                	   break;
-	                   case "Medium":
-	                	   configuration.setRandomness(2);
-	                	   break;
-	                   case "High":
-	                	   configuration.setRandomness(4);
-	                	   break;
-	                   }
-	               }
-	           }
-	       });
 		
 	}
 	
@@ -102,12 +66,6 @@ public class AdvancedSettingsController {
 	}
 	
 	@FXML
-	public void handleSaveRunButton() {
-		main.setConfiguration(configuration);
-		main.runCustomSettings();
-	}
-	
-	@FXML
 	public void handleResetButton() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Reset Default");
@@ -116,8 +74,7 @@ public class AdvancedSettingsController {
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
-			configuration.setRandomness(0);
-			lowRandomness.setSelected(true);
+
 		}
 	}
 	
@@ -129,11 +86,6 @@ public class AdvancedSettingsController {
 		main.showSettingsPage();
 	}
 	
-	@FXML
-	public void handleProfilesButtonTab() {
-		main.setConfiguration(configuration);
-		main.showProfilesPage();
-	}
 	
 	@FXML
 	public void handleCommunitiesButtonTab() {
@@ -145,6 +97,12 @@ public class AdvancedSettingsController {
 	public void handleUserParametersButtonTab() {
 		main.setConfiguration(configuration);
 		main.showUserAttributesPage();
+	}
+	
+	@FXML
+	public void handleAdvancedButtonTab() {
+		main.setConfiguration(configuration);
+		main.showAdvancedSettingsPage();
 	}
 	
 	

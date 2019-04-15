@@ -28,6 +28,8 @@ public class FileSettingsController {
 	@FXML
 	Button userParametersButtonTab;
 	@FXML
+	Button profilesButtonTab;
+	@FXML
 	Button communitiesButtonTab;
 	@FXML
 	Button advancedButtonTab;
@@ -218,12 +220,6 @@ public class FileSettingsController {
 	}
 	
 	@FXML
-	public void handleNextButton() {
-		save();
-		main.showUserAttributesPage();
-	}
-	
-	@FXML
 	public void handleCommunitiesButtonTab() {
 		save();
 		main.showCommunitiesSettingsPage();
@@ -233,6 +229,12 @@ public class FileSettingsController {
 	public void handleUserParametersButtonTab() {
 		save();
 		main.showUserAttributesPage();
+	}
+	
+	@FXML
+	public void handleProfilesButtonTab() {
+		save();
+		main.showProfilesPage();
 	}
 	
 	@FXML

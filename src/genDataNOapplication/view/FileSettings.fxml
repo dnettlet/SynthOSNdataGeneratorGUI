@@ -78,7 +78,7 @@
             </ImageView>
          </graphic></Button>
       <Label layoutX="372.0" layoutY="134.0" text="You can browse through your computer to find locations." />
-      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="813.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleNextButton" text="Next">
+      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="813.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="Next">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -91,7 +91,7 @@
             <Image url="@../../../resources/icons/outline_file_copy_black_24dpTitle.png" />
          </image>
       </ImageView>
-      <ButtonBar layoutX="299.0" layoutY="24.0" prefHeight="40.0" prefWidth="422.0">
+      <ButtonBar layoutX="217.0" layoutY="22.0" prefHeight="40.0" prefWidth="523.0">
          <buttons>
             <Button fx:id="filesButtonTab" disable="true" mnemonicParsing="false" text="Files">
                <graphic>
@@ -107,6 +107,15 @@
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../resources/icons/outline_group_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" text="Profiles">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/baseline_dashboard_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
