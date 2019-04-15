@@ -14,7 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
 //Controller class for the Settings Page
-public class SettingsPageController {
+public class FileSettingsController {
 	
 	//Reference to the main application
 	private Main main;
@@ -23,6 +23,14 @@ public class SettingsPageController {
 	protected ConfigurationModel configuration;
 	
 	//Buttons
+	@FXML
+	Button filesButtonTab;
+	@FXML
+	Button userParametersButtonTab;
+	@FXML
+	Button communitiesButtonTab;
+	@FXML
+	Button advancedButtonTab;
 	@FXML
 	Button browseInFile1Button;
 	@FXML
@@ -42,7 +50,7 @@ public class SettingsPageController {
 	@FXML
 	Button backButton;
 	@FXML
-	Button advancedSettingsButton;
+	Button nextButton;
 	
 	//TextFields
 	@FXML
@@ -59,7 +67,7 @@ public class SettingsPageController {
 	TextField out2FileName;
 	
 	//Class constructor
-	public SettingsPageController() {
+	public FileSettingsController() {
 		
 	}
 	
@@ -78,6 +86,12 @@ public class SettingsPageController {
 	//Is called to set a specific configuration
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
+		inputFile1Name.setText(configuration.getInputFile1());
+		inputFile2Name.setText(configuration.getInputFile2());
+		outFileName.setText(configuration.getOutFile());
+		outgFileName.setText(configuration.getOutgFile());
+		out1FileName.setText(configuration.getOut1File());
+		out2FileName.setText(configuration.getOut2File());
 	}
 	
 	//Browse button Handlers
@@ -204,10 +218,29 @@ public class SettingsPageController {
 	}
 	
 	@FXML
-	public void handleAdvancedSettingsButton() {
+	public void handleNextButton() {
 		save();
 		main.showUserAttributesPage();
 	}
+	
+	@FXML
+	public void handleCommunitiesButtonTab() {
+		save();
+		main.showCommunitiesSettingsPage();
+	}
+	
+	@FXML
+	public void handleUserParametersButtonTab() {
+		save();
+		main.showUserAttributesPage();
+	}
+	
+	@FXML
+	public void handleAdvancedButtonTab() {
+		save();
+		main.showAdvancedSettingsPage();
+	}
+
 	
 
 }

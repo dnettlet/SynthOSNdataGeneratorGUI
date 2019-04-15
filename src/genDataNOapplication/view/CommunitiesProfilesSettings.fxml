@@ -18,11 +18,6 @@
    <content>
       <AnchorPane prefHeight="1200.0" prefWidth="1000.0">
          <children>
-            <Label layoutX="353.0" layoutY="58.0" text="Advanced Settings">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
             <TitledPane collapsible="false" layoutX="49.0" layoutY="208.0" prefHeight="274.0" prefWidth="387.0" text="Communities">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
@@ -48,7 +43,7 @@
                   <VBox fx:id="profilesSection" prefHeight="200.0" prefWidth="100.0" />
                </content>
             </TitledPane>
-            <Button fx:id="resetButton" layoutX="137.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+            <Button fx:id="resetButton" layoutX="180.0" layoutY="526.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -56,15 +51,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="saveButton" layoutX="285.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSaveButton" text="Save &amp; Run">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
+            <Button fx:id="backButton" layoutX="110.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -81,7 +68,8 @@
                               <Image url="@../../../resources/icons/outline_file_copy_black_24dp.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
                   <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
@@ -108,9 +96,9 @@
                      </graphic></Button>
               </buttons>
             </ButtonBar>
-            <Label layoutX="375.0" layoutY="97.0" text="Communities &amp; Profiles">
+            <Label layoutX="344.0" layoutY="88.0" text="Communities &amp; Profiles">
                <font>
-                  <Font size="24.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
             <Text layoutX="306.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can customize the way Communities and Profiles are assigned. This is for advanced users only, if you have any doubts leave it with the default configuration. To apply the changes, press the blue rounded button." textAlignment="CENTER" wrappingWidth="412.0000019669533" />
@@ -135,11 +123,20 @@
                   </Pane>
                </content>
             </TitledPane>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="306.0" layoutY="66.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="306.0" layoutY="96.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons/outline_device_hub_black_24dptitle.png" />
                </image>
             </ImageView>
+            <Button fx:id="saveRunButton" defaultButton="true" layoutX="815.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_play_circle_filled_white_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </content>

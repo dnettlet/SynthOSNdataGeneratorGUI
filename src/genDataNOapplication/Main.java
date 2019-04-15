@@ -12,7 +12,7 @@ import genDataNOapplication.view.ComAssaignDialogController;
 import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.ProfileFreqDialogController;
 import genDataNOapplication.view.RootLayoutController;
-import genDataNOapplication.view.SettingsPageController;
+import genDataNOapplication.view.FileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -95,12 +95,12 @@ public class Main extends Application {
 		 try {
 			 	
 	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(Main.class.getResource("view/SettingsPage.fxml"));
+	            loader.setLocation(Main.class.getResource("view/FileSettings.fxml"));
 	            AnchorPane settingsPage = (AnchorPane) loader.load();
 	            
 	            rootLayout.setCenter(settingsPage);
 
-				SettingsPageController controller = loader.getController();
+				FileSettingsController controller = loader.getController();
 				controller.setMainApp(this);
 				controller.setConfiguration(configuration);
 

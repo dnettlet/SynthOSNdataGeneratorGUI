@@ -39,8 +39,6 @@ public class CommunitiesSettingsController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
-	Button saveButton;
-	@FXML
 	Button resetButton;
 	@FXML
 	Button backButton;
@@ -50,6 +48,8 @@ public class CommunitiesSettingsController {
 	Button profileFrequencyButton;
 	@FXML
 	Button helpButton;
+	@FXML
+	Button saveRunButton;
 	
 	//Spinners
 	@FXML
@@ -116,6 +116,8 @@ public class CommunitiesSettingsController {
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
 		this.loadProfileCard();
+		numCommunitiesSpinner.getValueFactory().setValue(configuration.getNumCommunities());
+		seedSizeSpinner.getValueFactory().setValue(configuration.getSeedSize());
 	}
 	
 	@FXML
@@ -137,13 +139,6 @@ public class CommunitiesSettingsController {
 			
 		}
 		configuration.setProfileList(updatedProfileList);
-	}
-		
-
-	@FXML
-	public void handleSaveButton() {
-
-		main.showSettingsPage();
 	}
 	
 	@FXML
@@ -183,12 +178,20 @@ public class CommunitiesSettingsController {
 	
 	@FXML
 	public void handleAdvancedButtonTab() {
+		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
 	}
 	
 	@FXML
 	public void handleUserParametersButtonTab() {
+		main.setConfiguration(configuration);
 		main.showUserAttributesPage();
+	}
+	
+	@FXML
+	public void handleSaveRunButton() {
+		main.setConfiguration(configuration);
+		main.runCustomSettings();
 	}
 
 	

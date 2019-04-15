@@ -55,6 +55,9 @@ public class UserAttributesController {
 	Button backButton;
 	@FXML
 	Button addButton;
+	@FXML
+	Button nextButton;
+	
 	
 	//Grid pane
 	@FXML
@@ -114,13 +117,13 @@ public class UserAttributesController {
 	
 	//Saves the current state. If there isn't any attribute an error pops
 	@FXML
-	public void handleSaveButton() {
+	public void handleNextButton() {
 		this.reloadAttributesSection();
 		if(attributeList.size() > 0) {
 		configuration.setAttributeList(attributeList);
 		System.out.println(attributeList.get(0).getParameterList().get(0).getKey());
 		main.setConfiguration(configuration);
-		main.showSettingsPage();
+		main.showCommunitiesSettingsPage();
 		}else {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("No attributes set");
@@ -250,16 +253,19 @@ public class UserAttributesController {
 	
 	@FXML
 	public void handleFilesButtonTab() {
+		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
 	
 	@FXML
 	public void handleAdvancedButtonTab() {
+		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
 	}
 	
 	@FXML
 	public void handleCommunitiesButtonTab() {
+		main.setConfiguration(configuration);
 		main.showCommunitiesSettingsPage();
 	}
 	

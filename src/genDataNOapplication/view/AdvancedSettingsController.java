@@ -33,13 +33,13 @@ public class AdvancedSettingsController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
-	Button saveButton;
-	@FXML
 	Button resetButton;
 	@FXML
 	Button backButton;
 	@FXML
 	Button distanceThresholdButton;
+	@FXML
+	Button saveRunButton;
 	
 	//Radio buttons
 	@FXML
@@ -100,9 +100,9 @@ public class AdvancedSettingsController {
 	}
 	
 	@FXML
-	public void handleSaveButton() {
+	public void handleSaveRunButton() {
 		main.setConfiguration(configuration);
-		main.showSettingsPage();
+		main.runCustomSettings();
 	}
 	
 	@FXML
@@ -123,16 +123,19 @@ public class AdvancedSettingsController {
 	
 	@FXML
 	public void handleFilesButtonTab() {
+		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
 	
 	@FXML
 	public void handleCommunitiesButtonTab() {
+		main.setConfiguration(configuration);
 		main.showCommunitiesSettingsPage();
 	}
 	
 	@FXML
 	public void handleUserParametersButtonTab() {
+		main.setConfiguration(configuration);
 		main.showUserAttributesPage();
 	}
 	

@@ -19,19 +19,11 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="resetButton" layoutX="706.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+      <Button fx:id="resetButton" layoutX="752.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button fx:id="saveButton" layoutX="864.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleSaveButton" text="Save">
-         <graphic>
-            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icons/outline_save_black_24dp.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -133,5 +125,14 @@
             <Image url="@../../../resources/icons/outline_settings_black_24dptitle.png" />
          </image>
       </ImageView>
+      <Button fx:id="saveRunButton" defaultButton="true" layoutX="815.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_play_circle_filled_white_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

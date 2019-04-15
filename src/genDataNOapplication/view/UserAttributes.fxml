@@ -17,12 +17,7 @@
    <content>
       <AnchorPane fx:id="pageAnchorPane" prefHeight="1300.0" prefWidth="1000.0">
          <children>
-            <Label layoutX="353.0" layoutY="58.0" text="Advanced Settings">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
+            <Button fx:id="backButton" layoutX="110.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -66,13 +61,13 @@
                      </graphic></Button>
                </buttons>
             </ButtonBar>
-            <Label layoutX="426.0" layoutY="97.0" text="User Attributes">
+            <Label layoutX="381.0" layoutY="88.0" text="User Attributes">
                <font>
-                  <Font size="24.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
             <Text layoutX="306.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can define the different attributes that a user have, adding and removing them as you wish. You can also adjust the frequencies in wich each attribute will be assigned" textAlignment="CENTER" wrappingWidth="412.0000019669533" />
-            <Button fx:id="addButton" layoutX="840.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add...">
+            <Button fx:id="addButton" layoutX="839.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add...">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -91,19 +86,20 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Button defaultButton="true" layoutX="840.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="66.0" text="Save">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/outline_save_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="306.0" layoutY="66.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="331.0" layoutY="96.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons/outline_group_black_24dptitle.png" />
                </image>
             </ImageView>
+            <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="838.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="25.0" prefWidth="64.0" text="Next">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </content>
