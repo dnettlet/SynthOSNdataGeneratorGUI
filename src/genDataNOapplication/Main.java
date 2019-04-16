@@ -115,7 +115,7 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/ProfilesPage.fxml"));
-			AnchorPane ProfilesPage = (AnchorPane) loader.load();
+			Node ProfilesPage = (Node) loader.load();
 			
 			rootLayout.setCenter(ProfilesPage);
 			

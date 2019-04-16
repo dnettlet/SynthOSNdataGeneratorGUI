@@ -1,8 +1,11 @@
 package genDataNOapplication.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
+import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,10 +13,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.util.Pair;
 
 public class ProfilesPageController {
 	
@@ -40,7 +49,13 @@ public class ProfilesPageController {
 	Button backButton;
 	@FXML
 	Button nextButton;
-
+	
+	//Gridpane
+	//@FXML
+	//GridPane profilesGridPane;
+	
+	@FXML
+	AnchorPane profilesAnchorPane;
 	
 	
 	//Class constructor
@@ -54,6 +69,52 @@ public class ProfilesPageController {
 	private void initialize() {
 		
 	}
+	@FXML
+	public void loadProfileCards() {
+		//int numAttributes = configuration.getUserAttrributesList().size();
+		GridPane profilesGridPane = new GridPane();
+		profilesGridPane.setHgap(20);
+		profilesGridPane.setVgap(25);
+		profilesGridPane.setPrefWidth(970);
+		int col = 0; int row = 0;
+		for(int i = 0; i < 10; i++) {
+			String title = "Profile " + i;
+			GridPane profileAttr = new GridPane();
+			int col1 = 0; int row1 = 0;
+			for(AttributeModel attribute : configuration.getUserAttrributesList()) {
+				ChoiceBox<String> attributeSelection = new ChoiceBox();
+				List<String> options = new ArrayList<String>();
+				for(Pair<String, Double> param : attribute.getParameterList()) {
+					options.add(param.getKey());
+				}
+				attributeSelection.getItems().addAll(options);
+				if(col1 < 3) {
+				profileAttr.add(attributeSelection, row1, col1);
+				col1++;
+				}else {
+					col1 = 0;
+					row1++;
+					profileAttr.add(attributeSelection, row1, col1);
+					col1++;
+				}
+			}
+			TitledPane profileCard = new TitledPane();
+			profileCard.setText(title);
+			profileCard.setCollapsible(false);
+			profileCard.setContent(profileAttr);
+			if(col < 2) {
+				profilesGridPane.add(profileCard, col, row);
+				col++;
+			}else {
+				col = 0;
+				row++;
+				profilesGridPane.add(profileCard, col, row);
+				col++;
+			}
+			
+		}
+		profilesAnchorPane.getChildren().add(profilesGridPane);
+	}
 	
 	//Is called by the main application to give a reference back to itself.
 	public void setMainApp(Main main) {
@@ -63,6 +124,7 @@ public class ProfilesPageController {
 	//Is called to set a specific configuration
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
+		loadProfileCards();
 	}
 	
 	@FXML
