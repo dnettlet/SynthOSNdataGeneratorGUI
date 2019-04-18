@@ -9,6 +9,8 @@ import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -78,16 +80,27 @@ public class ProfilesPageController {
 		profilesGridPane.setPrefWidth(970);
 		int col = 0; int row = 0;
 		for(int i = 0; i < 10; i++) {
+			List<Integer> userSelection = new ArrayList<Integer>();
 			String title = "Profile " + i;
 			GridPane profileAttr = new GridPane();
 			int col1 = 0; int row1 = 0;
 			for(AttributeModel attribute : configuration.getUserAttrributesList()) {
-				ChoiceBox<String> attributeSelection = new ChoiceBox();
+				ChoiceBox<String> attributeSelection = new ChoiceBox<String>();
 				List<String> options = new ArrayList<String>();
 				for(Pair<String, Double> param : attribute.getParameterList()) {
 					options.add(param.getKey());
 				}
 				attributeSelection.getItems().addAll(options);
+				
+		        attributeSelection.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() { 
+		        	  
+		            // if the item of the list is changed 
+		            public void changed(ObservableValue ov, Number value, Number new_value) 
+		            { 
+		            	System.out.println(new_value.intValue() + " Selected");
+		            	
+		            } 
+		        }); 
 				if(col1 < 3) {
 				profileAttr.add(attributeSelection, row1, col1);
 				col1++;
