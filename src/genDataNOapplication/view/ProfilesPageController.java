@@ -80,25 +80,36 @@ public class ProfilesPageController {
 		profilesGridPane.setPrefWidth(970);
 		int col = 0; int row = 0;
 		for(int i = 0; i < 10; i++) {
-			List<Integer> userSelection = new ArrayList<Integer>();
+			Pair<List<Integer>, Integer> currentProfile = configuration.getProfileList().get(i);
 			String title = "Profile " + i;
 			GridPane profileAttr = new GridPane();
 			int col1 = 0; int row1 = 0;
-			for(AttributeModel attribute : configuration.getUserAttrributesList()) {
+			int count = i;
+			for(int j = 0; j < configuration.getUserAttrributesList().size(); j++) {
 				ChoiceBox<String> attributeSelection = new ChoiceBox<String>();
+				attributeSelection.setId(String.valueOf(j));
 				List<String> options = new ArrayList<String>();
+				AttributeModel attribute = configuration.getUserAttrributesList().get(j);
 				for(Pair<String, Double> param : attribute.getParameterList()) {
 					options.add(param.getKey());
 				}
 				attributeSelection.getItems().addAll(options);
+				attributeSelection.getSelectionModel().select(currentProfile.getKey().get(j));
 				
 		        attributeSelection.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() { 
-		        	  
+		        	 
 		            // if the item of the list is changed 
-		            public void changed(ObservableValue ov, Number value, Number new_value) 
+		            public void changed(ObservableValue ov, Number value, Number userValue) 
 		            { 
-		            	System.out.println(new_value.intValue() + " Selected");
-		            	
+		            	List<Integer> oldValues = currentProfile.getKey();
+		            	int oldFreq = currentProfile.getValue();
+		            	System.out.println("Old Value: " + oldValues.get(Integer.parseInt(attributeSelection.getId())));
+		            	oldValues.set(Integer.parseInt(attributeSelection.getId()), (int) userValue);
+		            	System.out.println("New Value: " + oldValues.get(Integer.parseInt(attributeSelection.getId())));
+		            	Pair<List<Integer>, Integer> updatedProfile = new Pair<List<Integer>,Integer>(oldValues, oldFreq);
+		            	List<Pair<List<Integer>, Integer>> profileList = configuration.getProfileList();
+		            	profileList.set(count, updatedProfile);
+		            	configuration.setProfileList(profileList);
 		            } 
 		        }); 
 				if(col1 < 3) {

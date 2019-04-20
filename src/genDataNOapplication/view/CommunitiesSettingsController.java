@@ -80,7 +80,7 @@ public class CommunitiesSettingsController {
 	
 	public void loadProfileCard() {
 		//int numAttributes = configuration.getUserAttrributesList().size();
-		for(int i = 0; i < 10; i++) {
+		/*for(int i = 0; i < 10; i++) {
 			String title = "Profile " + i;
 			Label titleLabel = new Label();
 			titleLabel.setText(title);
@@ -104,7 +104,7 @@ public class CommunitiesSettingsController {
 				
 			}
 			profilesSection.getChildren().add(profileAttr);
-		}
+		}*/
 	}
 	
 	

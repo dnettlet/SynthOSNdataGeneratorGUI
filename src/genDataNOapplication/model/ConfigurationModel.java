@@ -170,47 +170,47 @@ public class ConfigurationModel {
 		
 		List<Integer> profileParams1 = new ArrayList<Integer>();
 		profileParams1.addAll(Arrays.asList(1, 1, 4, 0, 2, 3, 3, 2));
-		Pair<List<Integer>, Integer> profile1 = new Pair<List<Integer>, Integer>(profileParams0, 172);
+		Pair<List<Integer>, Integer> profile1 = new Pair<List<Integer>, Integer>(profileParams1, 172);
 		profileList.add(profile1);
 		
 		List<Integer> profileParams2 = new ArrayList<Integer>();
 		profileParams2.addAll(Arrays.asList(0, 0, 0, 1, 0, 6, 2, 2));
-		Pair<List<Integer>, Integer> profile2 = new Pair<List<Integer>, Integer>(profileParams0, 211);
+		Pair<List<Integer>, Integer> profile2 = new Pair<List<Integer>, Integer>(profileParams2, 211);
 		profileList.add(profile2);
 		
 		List<Integer> profileParams3 = new ArrayList<Integer>();
 		profileParams3.addAll(Arrays.asList(0, 1, 2, 4, 0, 1, 4, 2));
-		Pair<List<Integer>, Integer> profile3 = new Pair<List<Integer>, Integer>(profileParams0, (Integer) 97);
+		Pair<List<Integer>, Integer> profile3 = new Pair<List<Integer>, Integer>(profileParams3, (Integer) 97);
 		profileList.add(profile3);
 
 		List<Integer> profileParams4 = new ArrayList<Integer>();
 		profileParams4.addAll(Arrays.asList(4, 0, 1, 2, 3, 4, 5, 2));
-		Pair<List<Integer>, Integer> profile4 = new Pair<List<Integer>, Integer>(profileParams0, 81);
+		Pair<List<Integer>, Integer> profile4 = new Pair<List<Integer>, Integer>(profileParams4, 81);
 		profileList.add(profile4);
 
 		List<Integer> profileParams5 = new ArrayList<Integer>();
 		profileParams5.addAll(Arrays.asList(5, 1, 5, 3, 1, 5, 0, 2));
-		Pair<List<Integer>, Integer> profile5 = new Pair<List<Integer>, Integer>(profileParams0, 157);
+		Pair<List<Integer>, Integer> profile5 = new Pair<List<Integer>, Integer>(profileParams5, 157);
 		profileList.add(profile5);
 
 		List<Integer> profileParams6 = new ArrayList<Integer>();
 		profileParams6.addAll(Arrays.asList(0, 1, 2, 1, 0, 1, 4, 2));
-		Pair<List<Integer>, Integer> profile6 = new Pair<List<Integer>, Integer>(profileParams0, 24);
+		Pair<List<Integer>, Integer> profile6 = new Pair<List<Integer>, Integer>(profileParams6, 24);
 		profileList.add(profile6);
 		
 		List<Integer> profileParams7 = new ArrayList<Integer>();
 		profileParams7.addAll(Arrays.asList(0, 1, 2, 3, 0, 1, 4, 2));
-		Pair<List<Integer>, Integer> profile7 = new Pair<List<Integer>, Integer>(profileParams0, 5);
+		Pair<List<Integer>, Integer> profile7 = new Pair<List<Integer>, Integer>(profileParams7, 5);
 		profileList.add(profile7);
 		
 		List<Integer> profileParams8 = new ArrayList<Integer>();
 		profileParams8.addAll(Arrays.asList(4, 0, 1, 2, 3, 4, 1, 2));
-		Pair<List<Integer>, Integer> profile8 = new Pair<List<Integer>, Integer>(profileParams0, 28);
+		Pair<List<Integer>, Integer> profile8 = new Pair<List<Integer>, Integer>(profileParams8, 28);
 		profileList.add(profile8);
 
 		List<Integer> profileParams9 = new ArrayList<Integer>();
 		profileParams9.addAll(Arrays.asList(4, 0, 1, 2, 3, 4, 0, 2));
-		Pair<List<Integer>, Integer> profile9 = new Pair<List<Integer>, Integer>(profileParams0, 9);
+		Pair<List<Integer>, Integer> profile9 = new Pair<List<Integer>, Integer>(profileParams9, 9);
 		profileList.add(profile9);
 		
 		profileCommunityAssaign[0] = 0; // assign profile 0 to community 0
