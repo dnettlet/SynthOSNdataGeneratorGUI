@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ProfilesPageController">
    <content>
       <AnchorPane prefHeight="1000.0" prefWidth="1000.0">
@@ -29,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="Back">
+            <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="Back">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +37,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ButtonBar layoutX="289.0" layoutY="14.0" prefHeight="40.0" prefWidth="422.0">
+            <ButtonBar layoutX="243.0" layoutY="14.0" prefHeight="40.0" prefWidth="527.0">
                <buttons>
                   <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files">
                      <graphic>

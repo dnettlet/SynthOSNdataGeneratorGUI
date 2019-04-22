@@ -17,7 +17,7 @@
    <content>
       <AnchorPane fx:id="pageAnchorPane" prefHeight="1300.0" prefWidth="1000.0">
          <children>
-            <Button fx:id="backButton" layoutX="110.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
+            <Button fx:id="backButton" layoutX="110.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Back">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -25,7 +25,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <ButtonBar layoutX="239.0" layoutY="14.0" prefHeight="40.0" prefWidth="523.0">
+            <ButtonBar layoutX="239.0" layoutY="14.0" prefHeight="40.0" prefWidth="527.0">
                <buttons>
                   <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files">
                      <graphic>
@@ -100,7 +100,7 @@
                   <Image url="@../../../resources/icons/outline_group_black_24dptitle.png" />
                </image>
             </ImageView>
-            <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="838.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="25.0" prefWidth="64.0" text="Next">
+            <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="838.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="25.0" prefWidth="64.0" text="Next">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>

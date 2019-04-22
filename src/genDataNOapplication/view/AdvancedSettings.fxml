@@ -27,7 +27,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="backButton" layoutX="111.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Back">
+      <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Back">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,7 +35,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ButtonBar layoutX="289.0" layoutY="14.0" prefHeight="40.0" prefWidth="422.0">
+      <ButtonBar layoutX="237.0" layoutY="14.0" prefHeight="40.0" prefWidth="527.0">
          <buttons>
             <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files">
                <graphic>
@@ -134,7 +134,7 @@
             <Image url="@../../../resources/icons/outline_settings_black_24dptitle.png" />
          </image>
       </ImageView>
-      <Button fx:id="saveRunButton" defaultButton="true" layoutX="815.0" layoutY="72.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
+      <Button fx:id="saveRunButton" defaultButton="true" layoutX="815.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

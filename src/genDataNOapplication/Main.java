@@ -132,7 +132,7 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/CommunitiesProfilesSettings.fxml"));
-			Node communitiesSettings = (Node) loader.load();
+			AnchorPane communitiesSettings = (AnchorPane) loader.load();
 			
 			rootLayout.setCenter(communitiesSettings);
 			

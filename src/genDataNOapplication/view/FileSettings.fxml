@@ -91,7 +91,7 @@
             <Image url="@../../../resources/icons/outline_file_copy_black_24dpTitle.png" />
          </image>
       </ImageView>
-      <ButtonBar layoutX="217.0" layoutY="22.0" prefHeight="40.0" prefWidth="523.0">
+      <ButtonBar layoutX="217.0" layoutY="22.0" prefHeight="40.0" prefWidth="527.0">
          <buttons>
             <Button fx:id="filesButtonTab" disable="true" mnemonicParsing="false" text="Files">
                <graphic>

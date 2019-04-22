@@ -59,10 +59,6 @@ public class CommunitiesSettingsController {
 	@FXML
 	Spinner<Integer> seedSizeSpinner;
 	
-	//VBOX
-	@FXML
-	VBox profilesSection;
-	
 	//Class constructor
 	public CommunitiesSettingsController() {
 		
@@ -76,38 +72,7 @@ public class CommunitiesSettingsController {
 		numCommunitiesSpinner.getValueFactory().setValue(10);
 		seedSizeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999));
 		seedSizeSpinner.getValueFactory().setValue(110);
-	}
-	
-	public void loadProfileCard() {
-		//int numAttributes = configuration.getUserAttrributesList().size();
-		/*for(int i = 0; i < 10; i++) {
-			String title = "Profile " + i;
-			Label titleLabel = new Label();
-			titleLabel.setText(title);
-			profilesSection.getChildren().add(titleLabel);
-			GridPane profileAttr = new GridPane();
-			int col = 0; int row = 0;
-			for(AttributeModel attribute : configuration.getUserAttrributesList()) {
-				ChoiceBox<String> attributeSelection = new ChoiceBox();
-				List<String> options = new ArrayList<String>();
-				for(Pair<String, Double> param : attribute.getParameterList()) {
-					options.add(param.getKey());
-				}
-				attributeSelection.getItems().addAll(options);
-				if(col < 3) {
-				profileAttr.add(attributeSelection, row, col);
-				col++;
-				}else {
-					col = 0;
-					row++;
-				}
-				
-			}
-			profilesSection.getChildren().add(profileAttr);
-		}*/
-	}
-	
-	
+	}	
 	
 	//Is called by the main application to give a reference back to itself.
 	public void setMainApp(Main main) {
@@ -117,7 +82,6 @@ public class CommunitiesSettingsController {
 	//Is called to set a specific configuration
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
-		this.loadProfileCard();
 		numCommunitiesSpinner.getValueFactory().setValue(configuration.getNumCommunities());
 		seedSizeSpinner.getValueFactory().setValue(configuration.getSeedSize());
 	}
@@ -172,32 +136,40 @@ public class CommunitiesSettingsController {
 	
 	@FXML
 	public void handleFilesButtonTab() {
-		//configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		//configuration.setSeedSize(seedSizeSpinner.getValue());
-		//main.setConfiguration(configuration);
+		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
+		configuration.setSeedSize(seedSizeSpinner.getValue());
+		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
 	
 	@FXML
 	public void handleAdvancedButtonTab() {
+		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
+		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
 	}
 	
 	@FXML
 	public void handleUserParametersButtonTab() {
+		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
+		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showUserAttributesPage();
 	}
 	
 	@FXML
 	public void handleProfilesButtonTab() {
+		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
+		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showProfilesPage();
 	}
 	
 	@FXML
 	public void handleSaveRunButton() {
+		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
+		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.runCustomSettings();
 	}
