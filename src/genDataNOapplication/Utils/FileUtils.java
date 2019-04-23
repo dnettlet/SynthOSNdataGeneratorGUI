@@ -9,13 +9,12 @@ import org.w3c.dom.Element;
 
 public class FileUtils {
 
-   public static void main(String[] args) {
+   public static void load(File file) {
 
       try {
-         File inputFile = new File("input.txt");
          DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-         Document doc = dBuilder.parse(inputFile);
+         Document doc = dBuilder.parse(file);
          doc.getDocumentElement().normalize();
          System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
          NodeList nList = doc.getElementsByTagName("student");

@@ -1,19 +1,17 @@
 package genDataNOapplication.view;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.io.File;
 
 import genDataNOapplication.Controller;
 import genDataNOapplication.Main;
+import genDataNOapplication.Utils.FileUtils;
 import genDataNOapplication.model.ConfigurationModel;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 
@@ -31,6 +29,8 @@ public class HomePageController {
 	Button cancelButton;
 	@FXML
 	Button changeSettingsButton;
+	@FXML
+	Button loadFromFileButton;
 	
 	//Progress Indicator
 	@FXML
@@ -76,10 +76,31 @@ public class HomePageController {
 		main.showSettingsPage();
 	}
 	
+	@FXML
+	private void handleLoadFromFileButton() {
+		System.out.println("Loading File");
+		
+        FileChooser fileChooser = new FileChooser();
+        
+        File initialDirectory = new File("./config");
+        fileChooser.setInitialDirectory(initialDirectory);
+
+        // Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "Archivo de origen XML (.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        // Show save file dialog
+        File file = fileChooser.showOpenDialog(main.getPrimaryStage());
+		FileUtils.load(file);
+	}
+	
 	//Given a ConfigurationModel, starts the program with this configuration. 
 	public void startApplication(ConfigurationModel configuration) {
 		try{
 			startButton.setDisable(true);
+			loadFromFileButton.setDisable(true);
+			changeSettingsButton.setDisable(true);
 		
 			cancelButton.setVisible(true);
 			progressIndicator.setVisible(true);
@@ -108,6 +129,8 @@ public class HomePageController {
 				                    	alert.showAndWait();
 				                    	
 				                    	startButton.setDisable(false);
+				            			loadFromFileButton.setDisable(false);
+				            			changeSettingsButton.setDisable(false);
 				                    	cancelButton.setVisible(false);
 				                    	}
 				                        
