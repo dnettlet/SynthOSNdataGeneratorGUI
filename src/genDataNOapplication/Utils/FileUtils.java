@@ -35,6 +35,23 @@ public class FileUtils {
         	 System.out.println("SeedSize: " + varElem.getElementsByTagName("seedSize").item(0).getTextContent());
         	 System.out.println("Randomness: " + varElem.getElementsByTagName("randomness").item(0).getTextContent());
 	         
+        	 NodeList attributeNList = doc.getElementsByTagName("attribute");
+        	 for(int i = 0; i < attributeNList.getLength(); i++) {
+        		 Node attributeNode = attributeNList.item(i);
+        		 if(attributeNode.getNodeType() == Node.ELEMENT_NODE) {
+            		 Element attributeElem = (Element) attributeNode;
+            		 System.out.println("Attribute Name: " + attributeElem.getAttribute("name"));
+            		 System.out.println("Attribute Description: " + attributeElem.getElementsByTagName("description").item(0).getTextContent());
+            		 NodeList paramList = attributeElem.getElementsByTagName("param");
+            		 System.out.println("Number of params: " + paramList.getLength());
+            		 for(int j = 0; j < paramList.getLength(); j++) {
+            			 Element paramElem = (Element) paramList.item(j);
+            			 System.out.println("Value: " + paramElem.getElementsByTagName("value").item(0).getTextContent());
+            			 System.out.println("Frequency: " + paramElem.getElementsByTagName("frequency").item(0).getTextContent());
+            		 }
+        		 }
+        		 
+        	 }
 	         
 	   } catch (Exception e) {
 	         e.printStackTrace();
