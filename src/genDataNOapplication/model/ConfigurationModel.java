@@ -180,7 +180,7 @@ public class ConfigurationModel {
 		
 		List<Integer> profileParams3 = new ArrayList<Integer>();
 		profileParams3.addAll(Arrays.asList(0, 1, 2, 4, 0, 1, 4, 2));
-		Pair<List<Integer>, Integer> profile3 = new Pair<List<Integer>, Integer>(profileParams3, (Integer) 97);
+		Pair<List<Integer>, Integer> profile3 = new Pair<List<Integer>, Integer>(profileParams3, 97);
 		profileList.add(profile3);
 
 		List<Integer> profileParams4 = new ArrayList<Integer>();

@@ -92,7 +92,27 @@ public class HomePageController {
 
         // Show save file dialog
         File file = fileChooser.showOpenDialog(main.getPrimaryStage());
-		FileUtils.load(file);
+        ConfigurationModel configuration = new ConfigurationModel();
+		configuration = FileUtils.loadConfig(file, configuration);
+		if(configuration == null) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Importing Configuration");
+			alert.setHeaderText("An error occurred while importing the configuration from a file.");
+			alert.setContentText("The configuration couldn't be imported. Check that the file " + file.getName()
+						+ " exists and is not corrupted. The default configuration will be restored, please try again.");
+			alert.showAndWait();
+			
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Import Successfull");
+			alert.setHeaderText("The configuration has been successfully imported");
+			alert.setContentText("You imported the configuration from file " + file.getName() + " . Click Start Application to run with the imported"
+					 + "settings or click change settings to edit those settings.");
+			alert.showAndWait();
+			main.setConfiguration(configuration);
+		}
+
+		
 	}
 	
 	//Given a ConfigurationModel, starts the program with this configuration. 
