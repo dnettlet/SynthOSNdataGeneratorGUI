@@ -49,7 +49,7 @@
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/baseline_keyboard_capslock_black_24dp.png" />
+                  <Image url="@../../../resources/icons/baseline_save_alt_black_24dp.png" />
                </image>
             </ImageView>
          </graphic>

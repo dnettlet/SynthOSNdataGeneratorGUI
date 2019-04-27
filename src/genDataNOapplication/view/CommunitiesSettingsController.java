@@ -1,10 +1,12 @@
 package genDataNOapplication.view;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import genDataNOapplication.Main;
+import genDataNOapplication.Utils.FileUtils;
 import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.util.Pair;
 import javafx.scene.control.Alert.AlertType;
 //Class that controlls the behaviour of the Communities Settings Page
@@ -52,6 +55,8 @@ public class CommunitiesSettingsController {
 	Button helpButton;
 	@FXML
 	Button saveRunButton;
+	@FXML
+	Button exportConfigurationButton;
 	
 	//Spinners
 	@FXML
@@ -120,6 +125,23 @@ public class CommunitiesSettingsController {
 			configuration.setSeedSize(110);
 			seedSizeSpinner.getValueFactory().setValue(110);
 		}
+	}
+	
+	@FXML
+	public void handleExportConfig() {
+        FileChooser fileChooser = new FileChooser();
+        
+        File initialDirectory = new File("./config");
+        fileChooser.setInitialDirectory(initialDirectory);
+        
+        //Set extension filter for text files
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivo de origen XML (.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        //Show save file dialog
+        File file = fileChooser.showSaveDialog(main.getPrimaryStage());
+        
+        FileUtils.exportConfig(file, configuration);
 	}
 	
 	@FXML

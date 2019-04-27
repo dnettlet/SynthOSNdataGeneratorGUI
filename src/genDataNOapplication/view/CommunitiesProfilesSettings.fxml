@@ -35,7 +35,7 @@
             </Pane>
          </content>
       </TitledPane>
-      <Button fx:id="resetButton" layoutX="801.0" layoutY="120.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+      <Button fx:id="resetButton" layoutX="801.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -140,6 +140,15 @@
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons/outline_play_circle_filled_white_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="exportConfigurationButton" layoutX="792.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleExportConfig" text="Export Config to File">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_save_black_24dp.png" />
                </image>
             </ImageView>
          </graphic>

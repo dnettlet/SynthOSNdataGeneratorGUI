@@ -5,7 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.parsers.DocumentBuilder;
+
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -115,5 +123,102 @@ public class FileUtils {
 	         e.printStackTrace();
 	         return null;
 	      }
+   }
+   
+   public static void exportConfig(File file, ConfigurationModel configuration) {
+	   try {
+		   DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+			// root elements
+			Document doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("config");
+			doc.appendChild(rootElement);
+
+			// staff elements
+			Element inputFiles = doc.createElement("inputFiles");
+			rootElement.appendChild(inputFiles);
+
+			// set attribute to staff element
+			//Attr attr = doc.createAttribute("id");
+			//attr.setValue("1");
+			//staff.setAttributeNode(attr);
+
+			// shorten way
+			// staff.setAttribute("id", "1");
+
+
+			Element inputFile1 = doc.createElement("inputFile1");
+			inputFile1.appendChild(doc.createTextNode(configuration.getInputFile1()));
+			inputFiles.appendChild(inputFile1);
+			Element inputFile2 = doc.createElement("inputFile2");
+			inputFile2.appendChild(doc.createTextNode(configuration.getInputFile2()));
+			inputFiles.appendChild(inputFile2);
+			
+			Element outputFiles = doc.createElement("outputFiles");
+			rootElement.appendChild(outputFiles);
+			Element outFile = doc.createElement("outFile");
+			outFile.appendChild(doc.createTextNode(configuration.getOutFile()));
+			outputFiles.appendChild(outFile);
+			Element outgFile = doc.createElement("outgFile");
+			outgFile.appendChild(doc.createTextNode(configuration.getOutgFile()));
+			outputFiles.appendChild(outgFile);
+			Element out1File = doc.createElement("out1File");
+			out1File.appendChild(doc.createTextNode(configuration.getOut1File()));
+			outputFiles.appendChild(out1File);
+			Element out2File = doc.createElement("out2File");
+			out2File.appendChild(doc.createTextNode(configuration.getOut2File()));
+			outputFiles.appendChild(out2File);
+			
+			Element vars = doc.createElement("vars");
+			rootElement.appendChild(vars);
+			Element numCommunities = doc.createElement("numCommunities");
+			numCommunities.appendChild(doc.createTextNode(String.valueOf(configuration.getNumCommunities())));
+			vars.appendChild(numCommunities);
+			Element seedSize = doc.createElement("seedSize");
+			seedSize.appendChild(doc.createTextNode(String.valueOf(configuration.getSeedSize())));
+			vars.appendChild(seedSize);
+			Element randomness = doc.createElement("randomness");
+			randomness.appendChild(doc.createTextNode(String.valueOf(configuration.getRandomness())));
+			vars.appendChild(randomness);
+			
+			for(AttributeModel currentAttribute : configuration.getUserAttrributesList()) {
+				Element attribute = doc.createElement("attribute");
+				attribute.setAttribute("name", currentAttribute.getName());
+				Element description = doc.createElement("description");
+				description.appendChild(doc.createTextNode(currentAttribute.getDescription()));
+				attribute.appendChild(description);
+			
+				for(Pair<String, Double> currentParam : currentAttribute.getParameterList()) {
+					Element param = doc.createElement("param");
+					attribute.appendChild(param);
+					Element value = doc.createElement("value");
+					value.appendChild(doc.createTextNode(currentParam.getKey()));
+					param.appendChild(value);
+					Element frequency = doc.createElement("frequency");
+					frequency.appendChild(doc.createTextNode(String.valueOf(currentParam.getValue())));
+					param.appendChild(frequency);
+				}
+				rootElement.appendChild(attribute);
+			}
+
+			// write the content into xml file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(file);
+
+			// Output to console for testing
+			// StreamResult result = new StreamResult(System.out);
+
+			transformer.transform(source, result);
+
+			System.out.println("File saved!");
+
+		  } catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		  } catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		  }
    }
 }
