@@ -201,6 +201,40 @@ public class FileUtils {
 				}
 				rootElement.appendChild(attribute);
 			}
+			
+			int count = 0;
+			for(Pair<List<Integer>, Integer> currentProfile : configuration.getProfileList()) {
+				Element profile = doc.createElement("profile");
+				profile.setAttribute("id", String.valueOf(count));
+				
+				String paramsString = new String();
+				for(int currentParam : currentProfile.getKey()) {
+					paramsString += String.valueOf(currentParam);
+					paramsString +=",";
+				}
+				paramsString = paramsString.substring(0, paramsString.length() - 1);
+				Element params = doc.createElement("params");
+				params.appendChild(doc.createTextNode(paramsString));
+				profile.appendChild(params);
+				
+				Element frequency = doc.createElement("frequency");
+				frequency.appendChild(doc.createTextNode(String.valueOf(currentProfile.getValue())));
+				profile.appendChild(frequency);
+				
+				Element community = doc.createElement("community");
+				int[] profileCommunityAssaign = configuration.getProfileCommunityAssaignment();
+				int index = 0;
+				for(int i = 0; i < profileCommunityAssaign.length; i++) {
+					if(profileCommunityAssaign[i] == count) {
+						index = i;
+					}
+				}
+				community.appendChild(doc.createTextNode(String.valueOf(index)));
+				profile.appendChild(community);
+				rootElement.appendChild(profile);
+				count++;
+				
+			}
 
 			// write the content into xml file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
