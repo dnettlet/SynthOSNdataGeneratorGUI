@@ -202,21 +202,8 @@ public class FileSettingsController {
 	//Handles back button. If something has been modified asks for user confirmation.
 	@FXML
 	public void handleBackButton() {
-		if((inputFile1Name.getText().isEmpty() && inputFile2Name.getText().isEmpty() && outFileName.getText().isEmpty()) &&
-		outgFileName.getText().isEmpty() && out1FileName.getText().isEmpty() && out2FileName.getText().isEmpty()) {
-			main.showHomePage();
-		}else {
-			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("Return Home");
-			alert.setHeaderText("Return to Home Screen");
-			alert.setContentText("Are you sure you want to return to the previous page? \n All the changes will be lost.");
-			
-			Optional<ButtonType> result = alert.showAndWait();
-			if(result.get() == ButtonType.OK) {
-				main.showHomePage();
-			}
-		}
-		
+		save();
+		main.showHomePage();
 	}
 	
 	@FXML

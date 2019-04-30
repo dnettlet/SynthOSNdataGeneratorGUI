@@ -64,6 +64,10 @@ public class ComAssaignDialogController {
     // after the fxml file has been loaded.
     @FXML
     private void initialize() {
+
+    }
+    
+    public void setup(int[] profileCommAssaign) {
     	choiceList = FXCollections.observableArrayList();
     	userChoices = new int[10];
     	choiceList.removeAll(choiceList);
@@ -79,25 +83,25 @@ public class ComAssaignDialogController {
     	String p9 = "Profile 9";
     	choiceList.addAll(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
     	com0.getItems().addAll(choiceList);
-    	com0.getSelectionModel().select(0);
+    	com0.getSelectionModel().select(profileCommAssaign[0]);
     	com1.getItems().addAll(choiceList);
-    	com1.getSelectionModel().select(2);
+    	com1.getSelectionModel().select(profileCommAssaign[1]);
     	com2.getItems().addAll(choiceList);
-    	com2.getSelectionModel().select(1);
+    	com2.getSelectionModel().select(profileCommAssaign[2]);
     	com3.getItems().addAll(choiceList);
-    	com3.getSelectionModel().select(4);
+    	com3.getSelectionModel().select(profileCommAssaign[3]);
     	com4.getItems().addAll(choiceList);
-    	com4.getSelectionModel().select(5);
+    	com4.getSelectionModel().select(profileCommAssaign[4]);
     	com5.getItems().addAll(choiceList);
-    	com5.getSelectionModel().select(3);
+    	com5.getSelectionModel().select(profileCommAssaign[5]);
     	com6.getItems().addAll(choiceList);
-    	com6.getSelectionModel().select(7);
+    	com6.getSelectionModel().select(profileCommAssaign[6]);
     	com7.getItems().addAll(choiceList);
-    	com7.getSelectionModel().select(9);
+    	com7.getSelectionModel().select(profileCommAssaign[7]);
     	com8.getItems().addAll(choiceList);
-    	com8.getSelectionModel().select(6);
+    	com8.getSelectionModel().select(profileCommAssaign[8]);
     	com9.getItems().addAll(choiceList);
-    	com9.getSelectionModel().select(8);
+    	com9.getSelectionModel().select(profileCommAssaign[9]);
     }
     
     

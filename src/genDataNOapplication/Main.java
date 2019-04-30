@@ -271,6 +271,7 @@ public class Main extends Application {
 	        // Set the person into the controller.
 	        ComAssaignDialogController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
+	        controller.setup(configuration.getProfileCommunityAssaignment());
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();
@@ -308,6 +309,7 @@ public class Main extends Application {
 	        // Set the person into the controller.
 	        ProfileFreqDialogController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
+	        controller.setup(configuration.getProfileList());
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();

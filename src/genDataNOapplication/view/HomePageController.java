@@ -63,6 +63,7 @@ public class HomePageController {
 		startApplication(configuration);
 	}
 	
+	//Stops the execution and re enables the buttons
 	@FXML
 	private void handleCancelButton() {
 		startButton.setDisable(false);
@@ -71,21 +72,20 @@ public class HomePageController {
 		cancelButton.setVisible(false);
 	}
 	
+	//Goes to the settings screen
 	@FXML
 	private void handleChangeSettingsButton() {
 		main.showSettingsPage();
 	}
 	
+	//Opens the select file dialog and imports the configuration from file
 	@FXML
 	private void handleLoadFromFileButton() {
-		System.out.println("Loading File");
 		
+		//Let the user choose a file from the file chooser screen
         FileChooser fileChooser = new FileChooser();
-        
         File initialDirectory = new File("./config");
         fileChooser.setInitialDirectory(initialDirectory);
-
-        // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "Archivo de origen XML (.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
@@ -93,6 +93,8 @@ public class HomePageController {
         // Show save file dialog
         File file = fileChooser.showOpenDialog(main.getPrimaryStage());
         ConfigurationModel configuration = new ConfigurationModel();
+        
+        //Executes the import and shows a message depending if the import was successfull or not
 		configuration = FileUtils.loadConfig(file, configuration);
 		if(configuration == null) {
 			Alert alert = new Alert(AlertType.ERROR);

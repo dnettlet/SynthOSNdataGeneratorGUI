@@ -112,6 +112,7 @@ public class CommunitiesSettingsController {
 		configuration.setProfileList(updatedProfileList);
 	}
 	
+	//Restores the page values to the default ones
 	@FXML
 	public void handleResetButton() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -127,23 +128,45 @@ public class CommunitiesSettingsController {
 		}
 	}
 	
+	//Exports the current configuration to a xml file
 	@FXML
 	public void handleExportConfig() {
-        FileChooser fileChooser = new FileChooser();
-        
+		//Saves the current page values to the configuration model
+		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
+		configuration.setSeedSize(seedSizeSpinner.getValue());
+		
+		//Opens a window for the user to choose the save location
+        FileChooser fileChooser = new FileChooser();   
         File initialDirectory = new File("./config");
         fileChooser.setInitialDirectory(initialDirectory);
-        
-        //Set extension filter for text files
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivo de origen XML (.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
 
         //Show save file dialog
         File file = fileChooser.showSaveDialog(main.getPrimaryStage());
         
-        FileUtils.exportConfig(file, configuration);
+        //Executes the export process and shows a message to the user depending on the result
+        boolean status = FileUtils.exportConfig(file, configuration);
+        
+        if(status) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Export Successfull");
+    		alert.setHeaderText("The configuration has been successfully saved to file");
+    		alert.setContentText("The configuration has been saved to  " + file.getPath() + " ."
+    				 + "to load this file go to the initial page and click the button Load Config From File.");
+    		alert.showAndWait();
+        }else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Exporting configuration");
+			alert.setHeaderText("An error occurred while saving the configuration to a file.");
+			alert.setContentText("The configuration couldn't be saved. Check that the directory " + file.getPath()
+						+ " is valid and accessible. Try executing the application with Administrator rights or try another location.");
+			alert.showAndWait();
+        }
+
 	}
 	
+	//Button that promps a help popup
 	@FXML
 	public void handleHelpButton() {
 		Alert alert = new Alert(AlertType.INFORMATION);

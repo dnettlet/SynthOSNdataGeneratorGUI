@@ -26,21 +26,25 @@ import org.w3c.dom.Element;
 
 public class FileUtils {
 
+	//Function to load the configuration from a xml file
    public static ConfigurationModel loadConfig(File file, ConfigurationModel configuration) {
 	   
 	   try {
+		   //Open the file
 		   DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	         Document doc = dBuilder.parse(file);
 	         doc.getDocumentElement().normalize();
 	         System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-
+	         
+	         //Load input files
     		 Element eElement = (Element) doc.getElementsByTagName("inputFiles").item(0);
     		 System.out.println("InputFile1: " + eElement.getElementsByTagName("inputFile1").item(0).getTextContent());
     		 configuration.setInputFile1(eElement.getElementsByTagName("inputFile1").item(0).getTextContent());
     		 System.out.println("InputFile2: " + eElement.getElementsByTagName("inputFile2").item(0).getTextContent());
     		 configuration.setInputFile2(eElement.getElementsByTagName("inputFile2").item(0).getTextContent());
-
+    		 
+    		 //Load output files
         	 Element outFilesElem = (Element) doc.getElementsByTagName("outputFiles").item(0);
 	         System.out.println("OutFile: " + outFilesElem.getElementsByTagName("outFile").item(0).getTextContent());
 	         configuration.setOutFile(outFilesElem.getElementsByTagName("outFile").item(0).getTextContent());
@@ -50,7 +54,8 @@ public class FileUtils {
 	         configuration.setOut1File(outFilesElem.getElementsByTagName("out1File").item(0).getTextContent());
 	         System.out.println("Out2File: " + outFilesElem.getElementsByTagName("out2File").item(0).getTextContent());
 	         configuration.setOut2File(outFilesElem.getElementsByTagName("out2File").item(0).getTextContent());
-
+	         
+	         //Load numCommunities, Seedsize and randomness
         	 Element varElem = (Element) doc.getElementsByTagName("vars").item(0);
         	 System.out.println("Numcommunities: " + varElem.getElementsByTagName("numCommunities").item(0).getTextContent());
         	 configuration.setNumCommunities(Integer.parseInt(varElem.getElementsByTagName("numCommunities").item(0).getTextContent()));
@@ -59,7 +64,7 @@ public class FileUtils {
         	 System.out.println("Randomness: " + varElem.getElementsByTagName("randomness").item(0).getTextContent());
         	 configuration.setRandomness(Integer.parseInt(varElem.getElementsByTagName("randomness").item(0).getTextContent()));
 	         
-        	 
+        	 //Load User Attributes
         	 List<AttributeModel> attributeList = new ArrayList<AttributeModel>();
         	 NodeList attributeNList = doc.getElementsByTagName("attribute");
         	 for(int i = 0; i < attributeNList.getLength(); i++) {
@@ -90,6 +95,7 @@ public class FileUtils {
         	 }
         	 configuration.setAttributeList(attributeList);
         	 
+        	 //Load profiles
         	 List<Pair<List<Integer>, Integer>> profileList = new ArrayList<Pair<List<Integer>, Integer>>();
         	 NodeList profileNList = doc.getElementsByTagName("profile");
         	 for(int i = 0; i < profileNList.getLength(); i++) {
@@ -115,6 +121,7 @@ public class FileUtils {
         			 configuration.setProfileCommunityAssaignment(profileCommunityAssaign);
         		 }
         	 }
+        	 configuration.setProfileList(profileList);
         	 
         	 
         	 return configuration;
@@ -125,29 +132,19 @@ public class FileUtils {
 	      }
    }
    
-   public static void exportConfig(File file, ConfigurationModel configuration) {
+   //Function to save the custom configuration to a xml file
+   public static boolean exportConfig(File file, ConfigurationModel configuration) {
 	   try {
+		   //Create the document
 		   DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-
-			// root elements
 			Document doc = docBuilder.newDocument();
 			Element rootElement = doc.createElement("config");
 			doc.appendChild(rootElement);
 
-			// staff elements
+			//Export Input files
 			Element inputFiles = doc.createElement("inputFiles");
 			rootElement.appendChild(inputFiles);
-
-			// set attribute to staff element
-			//Attr attr = doc.createAttribute("id");
-			//attr.setValue("1");
-			//staff.setAttributeNode(attr);
-
-			// shorten way
-			// staff.setAttribute("id", "1");
-
-
 			Element inputFile1 = doc.createElement("inputFile1");
 			inputFile1.appendChild(doc.createTextNode(configuration.getInputFile1()));
 			inputFiles.appendChild(inputFile1);
@@ -155,6 +152,7 @@ public class FileUtils {
 			inputFile2.appendChild(doc.createTextNode(configuration.getInputFile2()));
 			inputFiles.appendChild(inputFile2);
 			
+			//Export Output files
 			Element outputFiles = doc.createElement("outputFiles");
 			rootElement.appendChild(outputFiles);
 			Element outFile = doc.createElement("outFile");
@@ -170,6 +168,7 @@ public class FileUtils {
 			out2File.appendChild(doc.createTextNode(configuration.getOut2File()));
 			outputFiles.appendChild(out2File);
 			
+			//Export numCommunities, seedSize and randomness
 			Element vars = doc.createElement("vars");
 			rootElement.appendChild(vars);
 			Element numCommunities = doc.createElement("numCommunities");
@@ -182,6 +181,7 @@ public class FileUtils {
 			randomness.appendChild(doc.createTextNode(String.valueOf(configuration.getRandomness())));
 			vars.appendChild(randomness);
 			
+			//Export User Attributes
 			for(AttributeModel currentAttribute : configuration.getUserAttrributesList()) {
 				Element attribute = doc.createElement("attribute");
 				attribute.setAttribute("name", currentAttribute.getName());
@@ -202,6 +202,8 @@ public class FileUtils {
 				rootElement.appendChild(attribute);
 			}
 			
+			
+			//Export profiles
 			int count = 0;
 			for(Pair<List<Integer>, Integer> currentProfile : configuration.getProfileList()) {
 				Element profile = doc.createElement("profile");
@@ -236,23 +238,22 @@ public class FileUtils {
 				
 			}
 
-			// write the content into xml file
+			// Write to XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
 			StreamResult result = new StreamResult(file);
-
-			// Output to console for testing
-			// StreamResult result = new StreamResult(System.out);
-
 			transformer.transform(source, result);
 
 			System.out.println("File saved!");
+			return true;
 
 		  } catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
+			return false;
 		  } catch (TransformerException tfe) {
 			tfe.printStackTrace();
+			return false;
 		  }
    }
 }

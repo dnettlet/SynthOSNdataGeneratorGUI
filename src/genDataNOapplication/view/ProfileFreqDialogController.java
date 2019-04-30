@@ -88,72 +88,70 @@ public class ProfileFreqDialogController {
     @FXML
     private void initialize() {
     	okClicked = false;
-    	frequencies = new int[10];
+    	frequencies = new int[10];    	
+    }
+    
+    public void setup(List<Pair<List<Integer>,Integer>> profileList) {
     	sliderP0.setMin(0);    	sliderP0.setMax(500);    	
         sliderP0.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP0.setText(Integer.toString(i)); } );
-        sliderP0.setValue(216);
+        sliderP0.setValue(profileList.get(0).getValue());
         
     	sliderP1.setMin(0);    	sliderP1.setMax(500);    	
         sliderP1.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP1.setText(Integer.toString(i)); } );
-        sliderP1.setValue(172);
+        sliderP1.setValue(profileList.get(1).getValue());
         
     	sliderP2.setMin(0);    	sliderP2.setMax(500);    	
         sliderP2.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP2.setText(Integer.toString(i)); } );
-        sliderP2.setValue(211);
+        sliderP2.setValue(profileList.get(2).getValue());
         
     	sliderP3.setMin(0);    	sliderP3.setMax(500);    	
         sliderP3.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP3.setText(Integer.toString(i)); } );
-        sliderP3.setValue(97);
+        sliderP3.setValue(profileList.get(3).getValue());
         
     	sliderP4.setMin(0);    	sliderP4.setMax(500);    	
         sliderP4.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP4.setText(Integer.toString(i)); } );
-        sliderP4.setValue(81);
+        sliderP4.setValue(profileList.get(4).getValue());
         
     	sliderP5.setMin(0);    	sliderP5.setMax(500);    	
         sliderP5.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP5.setText(Integer.toString(i)); } );
-        sliderP5.setValue(157);
+        sliderP5.setValue(profileList.get(5).getValue());
         
     	sliderP6.setMin(0);    	sliderP6.setMax(500);    	
         sliderP6.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP6.setText(Integer.toString(i)); } );
-        sliderP6.setValue(24);
+        sliderP6.setValue(profileList.get(6).getValue());
         
     	sliderP7.setMin(0);    	sliderP7.setMax(500);    	
         sliderP7.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP7.setText(Integer.toString(i)); } );
-        sliderP7.setValue(5);
+        sliderP7.setValue(profileList.get(7).getValue());
         
     	sliderP8.setMin(0);    	sliderP8.setMax(500);    	
         sliderP8.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP8.setText(Integer.toString(i)); } );
-        sliderP8.setValue(24);
+        sliderP8.setValue(profileList.get(8).getValue());
         
     	sliderP9.setMin(0);    	sliderP9.setMax(500);    	
         sliderP9.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
                     labelP9.setText(Integer.toString(i)); } );
-        sliderP9.setValue(9);
-
-        
-
-    	
+        sliderP9.setValue(profileList.get(9).getValue());
     }
-    
     
     //Setters
     public void setDialogStage(Stage dialogStage) {

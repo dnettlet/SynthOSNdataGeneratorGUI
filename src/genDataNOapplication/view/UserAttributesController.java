@@ -123,7 +123,6 @@ public class UserAttributesController {
 		this.reloadAttributesSection();
 		if(attributeList.size() > 0) {
 		configuration.setAttributeList(attributeList);
-		System.out.println(attributeList.get(0).getParameterList().get(0).getKey());
 		handleProfilesButtonTab();
 		}else {
     		Alert alert = new Alert(AlertType.ERROR);
