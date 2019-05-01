@@ -44,13 +44,15 @@ public class UserAttributesController {
 	
 	//Buttons
 	@FXML
-	Button filesButtonTab;
+	Button inputFilesButtonTab;
 	@FXML
 	Button userParametersButtonTab;
 	@FXML
 	Button profilesButtonTab;
 	@FXML
 	Button communitiesButtonTab;
+	@FXML
+	Button outputFilesButtonTab;
 	@FXML
 	Button advancedButtonTab;
 	@FXML
@@ -252,7 +254,7 @@ public class UserAttributesController {
 	
 	
 	@FXML
-	public void handleFilesButtonTab() {
+	public void handleInputFilesButtonTab() {
 		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
@@ -273,6 +275,12 @@ public class UserAttributesController {
 	public void handleCommunitiesButtonTab() {
 		main.setConfiguration(configuration);
 		main.showCommunitiesSettingsPage();
+	}
+	
+	@FXML
+	public void handleOutputFilesButtonTab() {
+		main.setConfiguration(configuration);
+		main.showOutputFileSettingsPage();
 	}
 	
 	

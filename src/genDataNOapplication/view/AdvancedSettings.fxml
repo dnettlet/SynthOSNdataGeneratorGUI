@@ -27,7 +27,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Back">
+      <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" text="Back">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,51 +35,6 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ButtonBar layoutX="237.0" layoutY="14.0" prefHeight="40.0" prefWidth="527.0">
-         <buttons>
-            <Button fx:id="filesButtonTab" mnemonicParsing="false" onAction="#handleFilesButtonTab" text="Files">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/outline_file_copy_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/outline_group_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" text="Profiles">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/baseline_dashboard_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Communities &amp; Profiles">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/outline_device_hub_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button fx:id="advancedButtonTab" disable="true" mnemonicParsing="false" text="Advanced">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/outline_settings_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-         </buttons>
-      </ButtonBar>
       <Text layoutX="294.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning!  Here you can customize advanced parameters and test experimental features, you may expect program malfunction and crashes. This is for advanced users only, if you have any doubts leave it with the default configuration." textAlignment="CENTER" wrappingWidth="412.0000019669533" />
       <TitledPane collapsible="false" layoutX="14.0" layoutY="202.0" prefHeight="394.0" prefWidth="306.0" text="Probability Ranges">
          <content>
@@ -143,5 +98,63 @@
             </ImageView>
          </graphic>
       </Button>
+      <ButtonBar layoutX="195.0" layoutY="22.0" prefHeight="40.0" prefWidth="631.0">
+         <buttons>
+            <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" text="Input Files">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/download-multiple.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_group_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" text="Profiles">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/baseline_dashboard_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Communities &amp; Profiles">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_device_hub_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="outputFilesButtonTab" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" text="Out Files">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/upload-multiple.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="advancedButtonTab" disable="true" mnemonicParsing="false" text="Advanced">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_settings_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

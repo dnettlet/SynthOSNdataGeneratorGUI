@@ -25,13 +25,15 @@ public class AdvancedSettingsController {
 	
 	//Buttons
 	@FXML
-	Button filesButtonTab;
+	Button InputFilesButtonTab;
 	@FXML
 	Button userParametersButtonTab;
 	@FXML
 	Button profilesButtonTab;
 	@FXML
 	Button communitiesButtonTab;
+	@FXML
+	Button outputFilesButtonTab;
 	@FXML
 	Button advancedButtonTab;
 	@FXML
@@ -124,7 +126,7 @@ public class AdvancedSettingsController {
 
 	
 	@FXML
-	public void handleFilesButtonTab() {
+	public void handleInputFilesButtonTab() {
 		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
@@ -145,6 +147,12 @@ public class AdvancedSettingsController {
 	public void handleUserParametersButtonTab() {
 		main.setConfiguration(configuration);
 		main.showUserAttributesPage();
+	}
+	
+	@FXML
+	public void handleOutputFilesButtonTab() {
+		main.setConfiguration(configuration);
+		main.showOutputFileSettingsPage();
 	}
 	
 	

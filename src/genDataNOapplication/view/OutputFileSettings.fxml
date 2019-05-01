@@ -10,30 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.FileSettingsController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.OutputFileSettingsController">
    <children>
       <Label layoutX="414.0" layoutY="72.0" text="File Settings">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="321.0" layoutY="117.0" text="Specify Below the names for the Input and output files of the program. " />
-      <TitledPane collapsible="false" layoutX="49.0" layoutY="208.0" prefHeight="274.0" prefWidth="387.0" text="Input Files">
-         <content>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="inputFile1Name" layoutX="39.0" layoutY="61.0" prefHeight="25.0" prefWidth="228.0" promptText="Select Input File 1" />
-                  <Label layoutX="39.0" layoutY="35.0" text="Input File 1" />
-                  <TextField fx:id="inputFile2Name" layoutX="39.0" layoutY="166.0" prefHeight="25.0" prefWidth="228.0" promptText="Select input File 2" />
-                  <Label layoutX="39.0" layoutY="138.0" text="Input File 2" />
-                  <Button fx:id="browseInFile1Button" layoutX="284.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleInFile1BrowseButton" text="Browse..." />
-                  <Button fx:id="browseInFile2Button" layoutX="284.0" layoutY="166.0" mnemonicParsing="false" onAction="#handleInFile2BrowseButton" text="Browse..." />
-               </children>
-            </Pane>
-         </content>
-      </TitledPane>
-      <TitledPane collapsible="false" layoutX="556.0" layoutY="208.0" prefHeight="363.0" prefWidth="387.0" text="Output Files">
+      <TitledPane alignment="CENTER" collapsible="false" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="198.0" layoutY="191.0" prefHeight="363.0" prefWidth="387.0" text="Output Files">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -52,20 +38,19 @@
                </children>
             </Pane>
          </content>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/upload-multiple.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </TitledPane>
-      <Button fx:id="resetButton" layoutX="137.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+      <Button fx:id="resetButton" layoutX="689.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button fx:id="saveRunButton" layoutX="285.0" layoutY="528.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
-         <graphic>
-            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icons/outline_play_circle_filled_white_black_24dp.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -77,27 +62,18 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label layoutX="372.0" layoutY="134.0" text="You can browse through your computer to find locations." />
-      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="813.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="Next">
-         <graphic>
-            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
       <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="353.0" layoutY="78.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/icons/outline_file_copy_black_24dpTitle.png" />
          </image>
       </ImageView>
-      <ButtonBar layoutX="217.0" layoutY="22.0" prefHeight="40.0" prefWidth="527.0">
+      <ButtonBar layoutX="195.0" layoutY="22.0" prefHeight="40.0" prefWidth="631.0">
          <buttons>
-            <Button fx:id="filesButtonTab" disable="true" mnemonicParsing="false" text="Files">
+            <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFileButtonTab" text="Input Files">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../resources/icons/outline_file_copy_black_24dp.png" />
+                        <Image url="@../../../resources/icons/download-multiple.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -129,6 +105,15 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="inputFilesButtonTab1" disable="true" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleInputFileButtonTab" text="Out Files">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/upload-multiple.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
@@ -140,5 +125,24 @@
             </Button>
          </buttons>
       </ButtonBar>
+      <Button fx:id="saveRunButton" defaultButton="true" layoutX="701.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_play_circle_filled_white_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="exportConfigurationButton" layoutX="679.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleExportConfig" text="Export Config to File">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_save_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Text layoutX="281.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specify Below the names for the Output files of the program.  You can browse through your computer to find locations. Click &quot;Run&quot; to execute the program.  You can save this custom configuration by pressing &quot;Export Config to File&quot; button." wrappingWidth="437.322265625" />
    </children>
 </AnchorPane>

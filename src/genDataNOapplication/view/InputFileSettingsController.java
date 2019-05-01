@@ -14,7 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
 //Controller class for the Settings Page
-public class FileSettingsController {
+public class InputFileSettingsController {
 	
 	//Reference to the main application
 	private Main main;
@@ -24,7 +24,7 @@ public class FileSettingsController {
 	
 	//Buttons
 	@FXML
-	Button filesButtonTab;
+	Button inputFilesButtonTab;
 	@FXML
 	Button userParametersButtonTab;
 	@FXML
@@ -34,19 +34,13 @@ public class FileSettingsController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
+	Button outputFilesButtonTab;
+	@FXML
 	Button browseInFile1Button;
 	@FXML
 	Button browseInFile2Button;
 	@FXML
-	Button browseOutFileButton;
-	@FXML
-	Button brwoseOutgFileButton;
-	@FXML
-	Button browseOut1FileButton;
-	@FXML 
-	Button browseOut2FileButton;
-	@FXML
-	Button saveRunButton;
+	Button helpButton;
 	@FXML
 	Button resetButton;
 	@FXML
@@ -59,17 +53,9 @@ public class FileSettingsController {
 	TextField inputFile1Name;
 	@FXML
 	TextField inputFile2Name;
-	@FXML
-	TextField outFileName;
-	@FXML
-	TextField outgFileName;
-	@FXML
-	TextField out1FileName;
-	@FXML
-	TextField out2FileName;
 	
 	//Class constructor
-	public FileSettingsController() {
+	public InputFileSettingsController() {
 		
 	}
 	
@@ -90,32 +76,19 @@ public class FileSettingsController {
 		this.configuration = configuration;
 		inputFile1Name.setText(configuration.getInputFile1());
 		inputFile2Name.setText(configuration.getInputFile2());
-		outFileName.setText(configuration.getOutFile());
-		outgFileName.setText(configuration.getOutgFile());
-		out1FileName.setText(configuration.getOut1File());
-		out2FileName.setText(configuration.getOut2File());
 	}
 	
 	//Browse button Handlers
 	public void handleInFile1BrowseButton() { handleBrowseButton("inputFile1"); }
 	public void handleInFile2BrowseButton() { handleBrowseButton("inputFile2"); }
-	public void handleOutFileBrowseButton() { handleBrowseButton("outFile"); }
-	public void handleOutgFileBrowseButton() { handleBrowseButton("outgFile"); }
-	public void handleOut1FileBrowseButton() { handleBrowseButton("out1File"); }
-	public void handleOut2FileBrowseButton() { handleBrowseButton("out2File"); }
 
 	//When browse button pressed, a file chooser is opened and when a file is selected its path is writen in the textfield
 	private void handleBrowseButton(String field) {
 		
         FileChooser fileChooser = new FileChooser();
         
-        File initialDirectory = new File("./resources");
+        File initialDirectory = new File("./resources/Input_files");
         
-        if(field.contains("input")) {
-        	initialDirectory = new File("./resources/Input_files");
-        }else {
-        	initialDirectory = new File("./resources/Output_files");
-        }
         fileChooser.setInitialDirectory(initialDirectory);
 
         // Set extension filter
@@ -140,42 +113,13 @@ public class FileSettingsController {
             case "inputFile2":
             	inputFile2Name.setText(filename);
             	break;
-            case "outFile":
-            	outFileName.setText(filename);
-            	break;
-            case "outgFile":
-            	outgFileName.setText(filename);
-            	break;
-            case "out1File":
-            	out1FileName.setText(filename);
-            	break;
-            case "out2File":
-            	out2FileName.setText(filename);
-            	break;
             }
-            
-            
         }
-
-	}
-	
-	//Saves the settings to a instance of ConfigurationModel. Then runs the program 
-	@FXML
-	public void handleSaveRunButton() {
-		//Save
-		save();
-		
-		//Run
-		main.runCustomSettings();
 	}
 	
 	private void save() {	
 		if(!inputFile1Name.getText().isEmpty()) { configuration.setInputFile1(inputFile1Name.getText());	}
 		if(!inputFile2Name.getText().isEmpty()) { configuration.setInputFile2(inputFile2Name.getText()); }
-		if(!outFileName.getText().isEmpty()) { configuration.setOutFile(outFileName.getText()); }
-		if(!outgFileName.getText().isEmpty()) { configuration.setOutgFile(outgFileName.getText()); }
-		if(!out1FileName.getText().isEmpty()) { configuration.setOut1File(out1FileName.getText()); }
-		if(!out2FileName.getText().isEmpty()) { configuration.setOut2File(out2FileName.getText()); }
 		main.setConfiguration(configuration);
 	}
 	
@@ -191,12 +135,13 @@ public class FileSettingsController {
 		if (result.get() == ButtonType.OK){
 			inputFile1Name.clear();
 			inputFile2Name.clear();
-			outFileName.clear();
-			outgFileName.clear();
-			out1FileName.clear();
-			out2FileName.clear();
 		}
 
+	}
+	
+	@FXML
+	public void handleHelpButton() {
+		
 	}
 	
 	//Handles back button. If something has been modified asks for user confirmation.
@@ -228,6 +173,12 @@ public class FileSettingsController {
 	public void handleAdvancedButtonTab() {
 		save();
 		main.showAdvancedSettingsPage();
+	}
+	
+	@FXML
+	public void handleOutputFilesButtonTab() {
+		save();
+		main.showOutputFileSettingsPage();
 	}
 
 	

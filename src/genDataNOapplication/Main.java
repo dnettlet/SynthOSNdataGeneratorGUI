@@ -13,7 +13,8 @@ import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.ProfileFreqDialogController;
 import genDataNOapplication.view.ProfilesPageController;
 import genDataNOapplication.view.RootLayoutController;
-import genDataNOapplication.view.FileSettingsController;
+import genDataNOapplication.view.InputFileSettingsController;
+import genDataNOapplication.view.OutputFileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -96,12 +97,12 @@ public class Main extends Application {
 		 try {
 			 	
 	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(Main.class.getResource("view/FileSettings.fxml"));
+	            loader.setLocation(Main.class.getResource("view/InputFileSettings.fxml"));
 	            AnchorPane settingsPage = (AnchorPane) loader.load();
 	            
 	            rootLayout.setCenter(settingsPage);
 
-				FileSettingsController controller = loader.getController();
+				InputFileSettingsController controller = loader.getController();
 				controller.setMainApp(this);
 				controller.setConfiguration(configuration);
 
@@ -143,6 +144,23 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void showOutputFileSettingsPage() {
+		 try {
+	            FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(Main.class.getResource("view/OutputFileSettings.fxml"));
+	            AnchorPane settingsPage = (AnchorPane) loader.load();
+	            
+	            rootLayout.setCenter(settingsPage);
+
+				OutputFileSettingsController controller = loader.getController();
+				controller.setMainApp(this);
+				controller.setConfiguration(configuration);
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 	}
 	
 	public void showAdvancedSettingsPage() {
