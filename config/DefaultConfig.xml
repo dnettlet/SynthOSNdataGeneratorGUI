@@ -239,63 +239,54 @@
     <profile id = "0">
         <params>0,0,0,0,0,0,0,0</params>
         <frequency>216</frequency>
-        <community>0</community>
     </profile>
 
     <profile id = "1">
         <params>1,1,4,0,2,3,3,2</params>
         <frequency>172</frequency>
-        <community>2</community>
     </profile>
 
     <profile id = "2">
         <params>0,0,0,1,0,6,2,2</params>
         <frequency>211</frequency>
-        <community>1</community>
     </profile>
 
     <profile id = "3">
         <params>0,1,2,4,0,1,4,2</params>
         <frequency>97</frequency>
-        <community>5</community>
     </profile>
 
     <profile id = "4">
         <params>4,0,1,2,3,4,5,2</params>
         <frequency>81</frequency>
-        <community>3</community>
     </profile>
 
     <profile id = "5">
         <params>5,1,5,3,1,5,0,2</params>
         <frequency>157</frequency>
-        <community>4</community>
     </profile>
 
     <profile id = "6">
         <params>0,1,2,1,0,1,4,2</params>
         <frequency>24</frequency>
-        <community>8</community>
     </profile>
 
     <profile id = "7">
         <params>0,1,2,3,0,1,4,2</params>
         <frequency>5</frequency>
-        <community>6</community>
     </profile>
 
     <profile id = "8">
         <params>4,0,1,2,3,4,1,2</params>
         <frequency>28</frequency>
-        <community>9</community>
     </profile>
 
     <profile id = "9">
         <params>4,0,1,2,3,4,0,2</params>
         <frequency>9</frequency>
-        <community>7</community>
     </profile>
 
+    <profileCommunityAssaignment>0,2,1,4,5,3,7,9,6,8</profileCommunityAssaignment>
 
 
 </config>

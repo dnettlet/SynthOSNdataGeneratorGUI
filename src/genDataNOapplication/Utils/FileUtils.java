@@ -113,16 +113,18 @@ public class FileUtils {
         			 int frequency = Integer.parseInt(profileElem.getElementsByTagName("frequency").item(0).getTextContent());
         			 Pair<List<Integer>, Integer> profile = new Pair<List<Integer>, Integer>(profileParamList, frequency);
         			 profileList.add(profile);
-        			 System.out.println("Community: " + profileElem.getElementsByTagName("community").item(0).getTextContent());
-        			 int profileCommunityAssaign[] = configuration.getProfileCommunityAssaignment();
-        			 int community = Integer.parseInt(profileElem.getElementsByTagName("community").item(0).getTextContent());
-        			 int profileID = Integer.parseInt(profileElem.getAttribute("id"));
-        			 profileCommunityAssaign[community] = profileID;
-        			 configuration.setProfileCommunityAssaignment(profileCommunityAssaign);
         		 }
         	 }
         	 configuration.setProfileList(profileList);
         	 
+        	 //Load profile community assaignment        	 
+        	 System.out.println("Profile Community Assaignment: " + doc.getElementsByTagName("profileCommunityAssaignment").item(0).getTextContent());
+        	 String[] profileCommunityAssaignStr = doc.getElementsByTagName("profileCommunityAssaignment").item(0).getTextContent().split(",");
+        	 int[] profileCommunityAssaign = new int[profileCommunityAssaignStr.length];
+        	 for(int i = 0; i < profileCommunityAssaignStr.length; i++) {
+        		 profileCommunityAssaign[i] = Integer.parseInt(profileCommunityAssaignStr[i]);
+        	 }
+        	 configuration.setProfileCommunityAssaignment(profileCommunityAssaign);
         	 
         	 return configuration;
 	         
@@ -222,21 +224,21 @@ public class FileUtils {
 				Element frequency = doc.createElement("frequency");
 				frequency.appendChild(doc.createTextNode(String.valueOf(currentProfile.getValue())));
 				profile.appendChild(frequency);
-				
-				Element community = doc.createElement("community");
-				int[] profileCommunityAssaign = configuration.getProfileCommunityAssaignment();
-				int index = 0;
-				for(int i = 0; i < profileCommunityAssaign.length; i++) {
-					if(profileCommunityAssaign[i] == count) {
-						index = i;
-					}
-				}
-				community.appendChild(doc.createTextNode(String.valueOf(index)));
-				profile.appendChild(community);
 				rootElement.appendChild(profile);
 				count++;
 				
 			}
+			
+			//Assaign profiles to communities
+			Element profileComAssaign = doc.createElement("profileCommunityAssaignment");
+			int[] profileCommunityAssaign = configuration.getProfileCommunityAssaignment();
+			String profileComAssaignString = new String();
+			for(int i = 0; i < profileCommunityAssaign.length; i++) {
+				profileComAssaignString += profileCommunityAssaign[i] + ",";
+			}
+			profileComAssaignString = profileComAssaignString.substring(0, profileComAssaignString.length() - 1);
+			profileComAssaign.appendChild(doc.createTextNode(profileComAssaignString));
+			rootElement.appendChild(profileComAssaign);
 
 			// Write to XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
