@@ -141,7 +141,15 @@ public class InputFileSettingsController {
 	
 	@FXML
 	public void handleHelpButton() {
-		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Help");
+		alert.setHeaderText("Input Files");
+		alert.setContentText("File 1 contain a graph, defined as edges, one per row, in the format id1 id2, i1 id3,"
+				+ " .. etc. where id is a node id and ‘id1 id2’ indicates there is an edge (link) between these two nodes. \n \n"
+				+ "File 2 contains the community labels for each of the users, that is, each user has an associated community "
+				+ "label in the format id mod, where id is the user and mod is the community id (usually, 1,2,3, etc.).");
+
+		alert.showAndWait();
 	}
 	
 	//Handles back button. If something has been modified asks for user confirmation.
