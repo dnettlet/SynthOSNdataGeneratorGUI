@@ -54,15 +54,12 @@ public class CommunitiesSettingsController {
 	@FXML
 	Button profileFrequencyButton;
 	@FXML
-	Button helpButton;
-	@FXML
 	Button nextButton;
 	
 	//Spinners
 	@FXML
 	Spinner<Integer> numCommunitiesSpinner;
-	@FXML
-	Spinner<Integer> seedSizeSpinner;
+
 	
 	//Class constructor
 	public CommunitiesSettingsController() {
@@ -75,8 +72,6 @@ public class CommunitiesSettingsController {
 	private void initialize() {
 		numCommunitiesSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10));
 		numCommunitiesSpinner.getValueFactory().setValue(10);
-		seedSizeSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999));
-		seedSizeSpinner.getValueFactory().setValue(110);
 	}	
 	
 	//Is called by the main application to give a reference back to itself.
@@ -88,28 +83,34 @@ public class CommunitiesSettingsController {
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
 		numCommunitiesSpinner.getValueFactory().setValue(configuration.getNumCommunities());
-		seedSizeSpinner.getValueFactory().setValue(configuration.getSeedSize());
+
 	}
 	
 	@FXML
 	public void handleCommunityAssignmentButton() {
-		configuration.setProfileCommunityAssaignment(main.showCommunityAssaignmentDialog());
+		int[] commAssaign = main.showCommunityAssaignmentDialog();
+		if(commAssaign != null) {
+			configuration.setProfileCommunityAssaignment(commAssaign);
+		}
 	}
 	
 	@FXML
 	public void handleProfileFrequencyButton() {
 		int[] frequencies = main.showProfileFreqDialog();
-		int count = 0;
-		List<Pair<List<Integer>, Integer>> profileList = configuration.getProfileList();
-		List<Pair<List<Integer>, Integer>> updatedProfileList = new ArrayList<Pair<List<Integer>, Integer>>();
-		for(Pair<List<Integer>, Integer> currentProfile : profileList) {
-			List<Integer> paramList = currentProfile.getKey();
-			Pair<List<Integer>, Integer> updatedProfile = new Pair<List<Integer>, Integer>(paramList, frequencies[count]);
-			updatedProfileList.add(updatedProfile);
-			count++;
-			
+		if(frequencies != null) {
+			int count = 0;
+			List<Pair<List<Integer>, Integer>> profileList = configuration.getProfileList();
+			List<Pair<List<Integer>, Integer>> updatedProfileList = new ArrayList<Pair<List<Integer>, Integer>>();
+			for(Pair<List<Integer>, Integer> currentProfile : profileList) {
+				List<Integer> paramList = currentProfile.getKey();
+				Pair<List<Integer>, Integer> updatedProfile = new Pair<List<Integer>, Integer>(paramList, frequencies[count]);
+				updatedProfileList.add(updatedProfile);
+				count++;
+				
+			}
+			configuration.setProfileList(updatedProfileList);
 		}
-		configuration.setProfileList(updatedProfileList);
+
 	}
 	
 	//Restores the page values to the default ones
@@ -124,27 +125,13 @@ public class CommunitiesSettingsController {
 		if (result.get() == ButtonType.OK){
 			configuration.setNumCommunities(10);
 			configuration.setSeedSize(110);
-			seedSizeSpinner.getValueFactory().setValue(110);
+
 		}
-	}
-	
-	//Button that promps a help popup
-	@FXML
-	public void handleHelpButton() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Help");
-		alert.setHeaderText("Seed Size");
-		alert.setContentText("The seedsize is graph dependent and take into account that the more seeds," + 
-							 "the more time it will take to locate them. The values are orientative." +
-							 "\n 110 seeds for 1K synth file, 5K seeds for amazon, 12k seeds for youtube and livejournal." +
-							 "\n For more information read the User Manual (Menu -> Help -> Documentation)");
-		alert.showAndWait();
 	}
 	
 	@FXML
 	public void handleInputFilesButtonTab() {
 		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
@@ -152,7 +139,6 @@ public class CommunitiesSettingsController {
 	@FXML
 	public void handleAdvancedButtonTab() {
 		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
 	}
@@ -160,7 +146,6 @@ public class CommunitiesSettingsController {
 	@FXML
 	public void handleUserParametersButtonTab() {
 		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showUserAttributesPage();
 	}
@@ -168,7 +153,6 @@ public class CommunitiesSettingsController {
 	@FXML
 	public void handleProfilesButtonTab() {
 		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showProfilesPage();
 	}
@@ -176,7 +160,6 @@ public class CommunitiesSettingsController {
 	@FXML
 	public void handleOutputFilesButtonTab() {
 		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
-		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.setConfiguration(configuration);
 		main.showOutputFileSettingsPage();
 	}

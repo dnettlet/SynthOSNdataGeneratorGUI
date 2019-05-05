@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.CommunitiesSettingsController">
    <children>
-      <TitledPane collapsible="false" layoutX="72.0" layoutY="208.0" prefHeight="274.0" prefWidth="387.0" text="Communities">
+      <TitledPane collapsible="false" layoutX="525.0" layoutY="208.0" prefHeight="274.0" prefWidth="387.0" text="Communities">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -59,14 +59,11 @@
          </font>
       </Label>
       <Text layoutX="306.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can customize the way Communities and Profiles are assigned. This is for advanced users only, if you have any doubts leave it with the default configuration. To execute the program press the button &quot;Save &amp; Run&quot;." textAlignment="CENTER" wrappingWidth="412.0000019669533" />
-      <TitledPane collapsible="false" layoutX="525.0" layoutY="208.0" prefHeight="274.0" prefWidth="387.0" text="Profile Seeds">
+      <TitledPane collapsible="false" layoutX="73.0" layoutY="208.0" prefHeight="274.0" prefWidth="387.0" text="Profile Frequency">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text layoutX="7.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By default each community has a seed profile. A seed profile is a set of defined user characteristics that are used as a starting point for the algorithm to start generating the other users' characteristics in the community. " textAlignment="JUSTIFY" wrappingWidth="366.9999870657921" />
-                  <Label layoutX="14.0" layoutY="116.0" text="Seed Size" />
-                  <Spinner fx:id="seedSizeSpinner" layoutX="111.0" layoutY="112.0" />
-                  <Button fx:id="profileFrequencyButton" layoutX="117.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleProfileFrequencyButton" text="Edit Profile Frequency">
+                  <Button fx:id="profileFrequencyButton" layoutX="117.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleProfileFrequencyButton" text="Edit Profile Frequency">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,15 +72,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Text layoutX="3.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile seeds are built accordingly to parameters and frequencies set in the User Parameters settings. Click to manually edit profile seeds. " textAlignment="CENTER" wrappingWidth="379.208984375" />
-                  <Button fx:id="helpButton" layoutX="274.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleHelpButton">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/icons/outline_help_outline_black_24dp.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
+                  <Text layoutX="9.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile seeds are built accordingly to parameters and frequencies set in the User Parameters settings. Click to manually edit profile seeds. " textAlignment="CENTER" wrappingWidth="367.208984375" />
                </children>
             </Pane>
          </content>

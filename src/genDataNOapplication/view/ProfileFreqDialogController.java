@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -191,8 +193,19 @@ public class ProfileFreqDialogController {
 		frequencies[7] = (int) sliderP7.getValue();
 		frequencies[8] = (int) sliderP8.getValue();
 		frequencies[9] = (int) sliderP9.getValue();
-		okClicked = true;
-		dialogStage.close();
+		if(this.checkConditions()) {
+			okClicked = true;
+			dialogStage.close();
+		}else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error with profile frequencies");
+			alert.setContentText("Te sum of the frequencies must be 1000.\n"
+					+ "Please check that the sum is 1000 or click the Cancel button to revert the changes.");
+
+			alert.showAndWait();
+		}
+
 
     }
     
@@ -202,6 +215,15 @@ public class ProfileFreqDialogController {
     @FXML
     private void handleCancel() {
         dialogStage.close();
+    }
+    
+    private boolean checkConditions() {
+    	int sum = 0;
+    	for(int i = 0; i < frequencies.length; i++) {
+    		sum += frequencies[i];
+    	}
+    	if(sum == 1000) { return true; }
+    	else { return false; }
     }
 
 }

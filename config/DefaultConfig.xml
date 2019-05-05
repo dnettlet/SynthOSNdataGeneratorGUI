@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <config>
     <inputFiles>
-        <inputFile1>holaa</inputFile1>
+        <inputFile1>./resources/Input_files/inputFile1_karate.csv</inputFile1>
         <inputFile2>./resources/Input_files/inputFile2_karatemodauth.csv</inputFile2>
     </inputFiles>
 
