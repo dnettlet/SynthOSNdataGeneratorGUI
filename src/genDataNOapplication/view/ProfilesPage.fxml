@@ -7,55 +7,43 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.UserAttributesController">
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ProfilesPageController">
    <content>
-      <AnchorPane fx:id="pageAnchorPane" prefHeight="1300.0" prefWidth="1000.0">
+      <AnchorPane prefHeight="1000.0" prefWidth="1000.0">
          <children>
-            <Button fx:id="backButton" layoutX="110.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" text="Back">
+            <Label layoutX="379.0" layoutY="59.0" text="Profiles Settings">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="resetButton" layoutX="794.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="Back">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../resources/icons/outline-arrow_back-24px.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
-            <Label layoutX="381.0" layoutY="88.0" text="User Attributes">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Text layoutX="306.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can define the different attributes that a user have, adding and removing them as you wish. You can also adjust the frequencies in wich each attribute will be assigned" textAlignment="CENTER" wrappingWidth="412.0000019669533" />
-            <Button fx:id="addButton" layoutX="839.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleAddButton" text="Add...">
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/icons/outline_add_black_24dp.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <GridPane fx:id="attributesSection" layoutX="406.0" layoutY="207.0" prefHeight="138.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="207.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="331.0" layoutY="96.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
+               </graphic>
+            </Button>
+            <Text layoutX="294.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning!  Here you can customize advanced parameters and test experimental features, you may expect program malfunction and crashes. This is for advanced users only, if you have any doubts leave it with the default configuration." textAlignment="CENTER" wrappingWidth="412.0000019669533" />
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="328.0" layoutY="66.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/outline_group_black_24dptitle.png" />
+                  <Image url="@../../../resources/icons/baseline_dashboard_black_24dptitle.png" />
                </image>
             </ImageView>
-            <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="838.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleNextButton" prefHeight="25.0" prefWidth="64.0" text="Next">
+            <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="826.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Next">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -64,6 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <AnchorPane fx:id="profilesAnchorPane" layoutX="4.0" layoutY="210.0" maxWidth="970.0" prefHeight="790.0" prefWidth="953.0" />
             <ButtonBar layoutX="195.0" layoutY="14.0" prefHeight="40.0" prefWidth="631.0">
                <buttons>
                   <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" text="Input Files">
@@ -75,7 +64,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="userParametersButtonTab" disable="true" mnemonicParsing="false" text="User Attributes">
+                  <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -84,7 +73,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" text="Profiles">
+                  <Button fx:id="profilesButtonTab" disable="true" mnemonicParsing="false" text="Profiles">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -102,20 +91,20 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced">
-                     <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/icons/outline_settings_black_24dp.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                   <Button fx:id="outputFilesButtonTab" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" text="Out Files">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../resources/icons/upload-multiple.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/icons/outline_settings_black_24dp.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -11,8 +11,10 @@ import genDataNOapplication.view.CommunitiesSettingsController;
 import genDataNOapplication.view.ComAssaignDialogController;
 import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.ProfileFreqDialogController;
+import genDataNOapplication.view.ProfilesPageController;
 import genDataNOapplication.view.RootLayoutController;
-import genDataNOapplication.view.SettingsPageController;
+import genDataNOapplication.view.InputFileSettingsController;
+import genDataNOapplication.view.OutputFileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -95,12 +97,12 @@ public class Main extends Application {
 		 try {
 			 	
 	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(Main.class.getResource("view/SettingsPage.fxml"));
+	            loader.setLocation(Main.class.getResource("view/InputFileSettings.fxml"));
 	            AnchorPane settingsPage = (AnchorPane) loader.load();
 	            
 	            rootLayout.setCenter(settingsPage);
 
-				SettingsPageController controller = loader.getController();
+				InputFileSettingsController controller = loader.getController();
 				controller.setMainApp(this);
 				controller.setConfiguration(configuration);
 
@@ -109,11 +111,29 @@ public class Main extends Application {
 	        }
 	}
 	
+	
+	public void showProfilesPage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/ProfilesPage.fxml"));
+			Node ProfilesPage = (Node) loader.load();
+			
+			rootLayout.setCenter(ProfilesPage);
+			
+			ProfilesPageController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void showCommunitiesSettingsPage() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/CommunitiesProfilesSettings.fxml"));
-			Node communitiesSettings = (Node) loader.load();
+			AnchorPane communitiesSettings = (AnchorPane) loader.load();
 			
 			rootLayout.setCenter(communitiesSettings);
 			
@@ -124,6 +144,23 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void showOutputFileSettingsPage() {
+		 try {
+	            FXMLLoader loader = new FXMLLoader();
+	            loader.setLocation(Main.class.getResource("view/OutputFileSettings.fxml"));
+	            AnchorPane settingsPage = (AnchorPane) loader.load();
+	            
+	            rootLayout.setCenter(settingsPage);
+
+				OutputFileSettingsController controller = loader.getController();
+				controller.setMainApp(this);
+				controller.setConfiguration(configuration);
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 	}
 	
 	public void showAdvancedSettingsPage() {
@@ -252,6 +289,7 @@ public class Main extends Application {
 	        // Set the person into the controller.
 	        ComAssaignDialogController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
+	        controller.setup(configuration.getProfileCommunityAssaignment());
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();
@@ -289,6 +327,7 @@ public class Main extends Application {
 	        // Set the person into the controller.
 	        ProfileFreqDialogController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
+	        controller.setup(configuration.getProfileList());
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();

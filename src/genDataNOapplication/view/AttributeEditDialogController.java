@@ -197,7 +197,7 @@ public class AttributeEditDialogController {
         	for(Pair<String, Double> parameter : parameterList) {
         		sum += parameter.getValue();
         	}
-        	if(sum != 1) {
+        	if(sum > 1.1 || sum < 0.9) {
         		errorHeader = "Error with parameter Values";
         		errorMessage = "Please make sure the sum of the values of the different parameters is 1."
         				+ "\n Remember that the parameter values are the % of assignation, so it should sum 1.";

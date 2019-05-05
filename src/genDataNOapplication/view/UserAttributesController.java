@@ -44,17 +44,24 @@ public class UserAttributesController {
 	
 	//Buttons
 	@FXML
-	Button filesButtonTab;
+	Button inputFilesButtonTab;
 	@FXML
 	Button userParametersButtonTab;
 	@FXML
+	Button profilesButtonTab;
+	@FXML
 	Button communitiesButtonTab;
+	@FXML
+	Button outputFilesButtonTab;
 	@FXML
 	Button advancedButtonTab;
 	@FXML
 	Button backButton;
 	@FXML
 	Button addButton;
+	@FXML
+	Button nextButton;
+	
 	
 	//Grid pane
 	@FXML
@@ -114,13 +121,11 @@ public class UserAttributesController {
 	
 	//Saves the current state. If there isn't any attribute an error pops
 	@FXML
-	public void handleSaveButton() {
+	public void handleNextButton() {
 		this.reloadAttributesSection();
 		if(attributeList.size() > 0) {
 		configuration.setAttributeList(attributeList);
-		System.out.println(attributeList.get(0).getParameterList().get(0).getKey());
-		main.setConfiguration(configuration);
-		main.showSettingsPage();
+		handleProfilesButtonTab();
 		}else {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("No attributes set");
@@ -249,18 +254,33 @@ public class UserAttributesController {
 	
 	
 	@FXML
-	public void handleFilesButtonTab() {
+	public void handleInputFilesButtonTab() {
+		main.setConfiguration(configuration);
 		main.showSettingsPage();
 	}
 	
 	@FXML
 	public void handleAdvancedButtonTab() {
+		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
 	}
 	
 	@FXML
+	public void handleProfilesButtonTab() {
+		main.setConfiguration(configuration);
+		main.showProfilesPage();
+	}
+	
+	@FXML
 	public void handleCommunitiesButtonTab() {
+		main.setConfiguration(configuration);
 		main.showCommunitiesSettingsPage();
+	}
+	
+	@FXML
+	public void handleOutputFilesButtonTab() {
+		main.setConfiguration(configuration);
+		main.showOutputFileSettingsPage();
 	}
 	
 	

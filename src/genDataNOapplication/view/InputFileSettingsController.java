@@ -14,7 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
 //Controller class for the Settings Page
-public class SettingsPageController {
+public class InputFileSettingsController {
 	
 	//Reference to the main application
 	private Main main;
@@ -24,42 +24,38 @@ public class SettingsPageController {
 	
 	//Buttons
 	@FXML
+	Button inputFilesButtonTab;
+	@FXML
+	Button userParametersButtonTab;
+	@FXML
+	Button profilesButtonTab;
+	@FXML
+	Button communitiesButtonTab;
+	@FXML
+	Button advancedButtonTab;
+	@FXML
+	Button outputFilesButtonTab;
+	@FXML
 	Button browseInFile1Button;
 	@FXML
 	Button browseInFile2Button;
 	@FXML
-	Button browseOutFileButton;
-	@FXML
-	Button brwoseOutgFileButton;
-	@FXML
-	Button browseOut1FileButton;
-	@FXML 
-	Button browseOut2FileButton;
-	@FXML
-	Button saveRunButton;
+	Button helpButton;
 	@FXML
 	Button resetButton;
 	@FXML
 	Button backButton;
 	@FXML
-	Button advancedSettingsButton;
+	Button nextButton;
 	
 	//TextFields
 	@FXML
 	TextField inputFile1Name;
 	@FXML
 	TextField inputFile2Name;
-	@FXML
-	TextField outFileName;
-	@FXML
-	TextField outgFileName;
-	@FXML
-	TextField out1FileName;
-	@FXML
-	TextField out2FileName;
 	
 	//Class constructor
-	public SettingsPageController() {
+	public InputFileSettingsController() {
 		
 	}
 	
@@ -78,28 +74,21 @@ public class SettingsPageController {
 	//Is called to set a specific configuration
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
+		inputFile1Name.setText(configuration.getInputFile1());
+		inputFile2Name.setText(configuration.getInputFile2());
 	}
 	
 	//Browse button Handlers
 	public void handleInFile1BrowseButton() { handleBrowseButton("inputFile1"); }
 	public void handleInFile2BrowseButton() { handleBrowseButton("inputFile2"); }
-	public void handleOutFileBrowseButton() { handleBrowseButton("outFile"); }
-	public void handleOutgFileBrowseButton() { handleBrowseButton("outgFile"); }
-	public void handleOut1FileBrowseButton() { handleBrowseButton("out1File"); }
-	public void handleOut2FileBrowseButton() { handleBrowseButton("out2File"); }
 
 	//When browse button pressed, a file chooser is opened and when a file is selected its path is writen in the textfield
 	private void handleBrowseButton(String field) {
 		
         FileChooser fileChooser = new FileChooser();
         
-        File initialDirectory = new File("./resources");
+        File initialDirectory = new File("./resources/Input_files");
         
-        if(field.contains("input")) {
-        	initialDirectory = new File("./resources/Input_files");
-        }else {
-        	initialDirectory = new File("./resources/Output_files");
-        }
         fileChooser.setInitialDirectory(initialDirectory);
 
         // Set extension filter
@@ -124,42 +113,13 @@ public class SettingsPageController {
             case "inputFile2":
             	inputFile2Name.setText(filename);
             	break;
-            case "outFile":
-            	outFileName.setText(filename);
-            	break;
-            case "outgFile":
-            	outgFileName.setText(filename);
-            	break;
-            case "out1File":
-            	out1FileName.setText(filename);
-            	break;
-            case "out2File":
-            	out2FileName.setText(filename);
-            	break;
             }
-            
-            
         }
-
-	}
-	
-	//Saves the settings to a instance of ConfigurationModel. Then runs the program 
-	@FXML
-	public void handleSaveRunButton() {
-		//Save
-		save();
-		
-		//Run
-		main.runCustomSettings();
 	}
 	
 	private void save() {	
 		if(!inputFile1Name.getText().isEmpty()) { configuration.setInputFile1(inputFile1Name.getText());	}
 		if(!inputFile2Name.getText().isEmpty()) { configuration.setInputFile2(inputFile2Name.getText()); }
-		if(!outFileName.getText().isEmpty()) { configuration.setOutFile(outFileName.getText()); }
-		if(!outgFileName.getText().isEmpty()) { configuration.setOutgFile(outgFileName.getText()); }
-		if(!out1FileName.getText().isEmpty()) { configuration.setOut1File(out1FileName.getText()); }
-		if(!out2FileName.getText().isEmpty()) { configuration.setOut2File(out2FileName.getText()); }
 		main.setConfiguration(configuration);
 	}
 	
@@ -175,39 +135,60 @@ public class SettingsPageController {
 		if (result.get() == ButtonType.OK){
 			inputFile1Name.clear();
 			inputFile2Name.clear();
-			outFileName.clear();
-			outgFileName.clear();
-			out1FileName.clear();
-			out2FileName.clear();
 		}
 
+	}
+	
+	@FXML
+	public void handleHelpButton() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Help");
+		alert.setHeaderText("Input Files");
+		alert.setContentText("File 1 contain a graph, defined as edges, one per row, in the format id1 id2, i1 id3,"
+				+ " .. etc. where id is a node id and ‘id1 id2’ indicates there is an edge (link) between these two nodes. \n \n"
+				+ "File 2 contains the community labels for each of the users, that is, each user has an associated community "
+				+ "label in the format id mod, where id is the user and mod is the community id (usually, 1,2,3, etc.).");
+
+		alert.showAndWait();
 	}
 	
 	//Handles back button. If something has been modified asks for user confirmation.
 	@FXML
 	public void handleBackButton() {
-		if((inputFile1Name.getText().isEmpty() && inputFile2Name.getText().isEmpty() && outFileName.getText().isEmpty()) &&
-		outgFileName.getText().isEmpty() && out1FileName.getText().isEmpty() && out2FileName.getText().isEmpty()) {
-			main.showHomePage();
-		}else {
-			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setTitle("Return Home");
-			alert.setHeaderText("Return to Home Screen");
-			alert.setContentText("Are you sure you want to return to the previous page? \n All the changes will be lost.");
-			
-			Optional<ButtonType> result = alert.showAndWait();
-			if(result.get() == ButtonType.OK) {
-				main.showHomePage();
-			}
-		}
-		
+		save();
+		main.showHomePage();
 	}
 	
 	@FXML
-	public void handleAdvancedSettingsButton() {
+	public void handleCommunitiesButtonTab() {
+		save();
+		main.showCommunitiesSettingsPage();
+	}
+	
+	@FXML
+	public void handleUserParametersButtonTab() {
 		save();
 		main.showUserAttributesPage();
 	}
+	
+	@FXML
+	public void handleProfilesButtonTab() {
+		save();
+		main.showProfilesPage();
+	}
+	
+	@FXML
+	public void handleAdvancedButtonTab() {
+		save();
+		main.showAdvancedSettingsPage();
+	}
+	
+	@FXML
+	public void handleOutputFilesButtonTab() {
+		save();
+		main.showOutputFileSettingsPage();
+	}
+
 	
 
 }

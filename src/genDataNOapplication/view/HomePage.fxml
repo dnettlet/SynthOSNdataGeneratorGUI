@@ -28,8 +28,8 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ProgressBar fx:id="progressIndicator" layoutX="401.0" layoutY="360.0" prefWidth="200.0" progress="0.0" visible="false" />
-      <Button fx:id="cancelButton" cancelButton="true" layoutX="475.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" visible="false">
+      <ProgressBar fx:id="progressIndicator" layoutX="413.0" layoutY="406.0" prefWidth="200.0" progress="0.0" visible="false" />
+      <Button fx:id="cancelButton" cancelButton="true" layoutX="477.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" visible="false">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -45,5 +45,14 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button fx:id="loadFromFileButton" defaultButton="true" layoutX="435.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleLoadFromFileButton" text="Load Config From File">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/baseline_save_alt_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
