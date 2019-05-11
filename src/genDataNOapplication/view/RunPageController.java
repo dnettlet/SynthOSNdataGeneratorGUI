@@ -212,6 +212,11 @@ public class RunPageController {
 		main.showOutputFileSettingsPage();
 	}
 	
+	@FXML
+	public void handleStatisticsButton() {
+		main.showStatisticsPage();
+	}
+	
 	
 
 }

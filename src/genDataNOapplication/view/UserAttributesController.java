@@ -184,8 +184,10 @@ public class UserAttributesController {
 	        		}
 	        	    AttributeModel modifiedAttribute = main.showAttributeEditDialog(attribute, attributeNames, true);
 	        	    if (modifiedAttribute  != null) {
-	        	    	attributeList.remove(attribute);
-	        	        attributeList.add(modifiedAttribute);
+	        	    	int index = attributeList.indexOf(attribute);
+	        	    	attributeList.set(index, modifiedAttribute);
+	        	    	//attributeList.remove(attribute);
+	        	        //attributeList.add(modifiedAttribute);
 	        	       
 	        	    }
 	            }

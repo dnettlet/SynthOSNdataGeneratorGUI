@@ -128,7 +128,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="statisticsButton" layoutX="743.0" layoutY="403.0" mnemonicParsing="false" text="Show statistics" visible="false">
+      <Button fx:id="statisticsButton" layoutX="743.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleStatisticsButton" text="Show statistics" visible="false">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

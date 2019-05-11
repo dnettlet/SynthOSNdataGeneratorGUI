@@ -14,6 +14,7 @@ import genDataNOapplication.view.ProfileFreqDialogController;
 import genDataNOapplication.view.ProfilesPageController;
 import genDataNOapplication.view.RootLayoutController;
 import genDataNOapplication.view.RunPageController;
+import genDataNOapplication.view.StatisticsPageController;
 import genDataNOapplication.view.InputFileSettingsController;
 import genDataNOapplication.view.OutputFileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
@@ -273,6 +274,24 @@ public class Main extends Application {
 			rootLayout.setCenter(runPage);
 			
 			RunPageController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showStatisticsPage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/StatisticsPage.fxml"));
+			AnchorPane statisticsPage = (AnchorPane) loader.load();
+		
+			rootLayout.setCenter(statisticsPage);
+			
+			StatisticsPageController controller = loader.getController();
 			controller.setMainApp(this);
 			controller.setConfiguration(configuration);
 			
