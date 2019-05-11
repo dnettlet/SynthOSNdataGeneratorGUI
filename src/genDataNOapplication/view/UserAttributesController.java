@@ -56,6 +56,8 @@ public class UserAttributesController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
+	Button runButtonTab;
+	@FXML
 	Button backButton;
 	@FXML
 	Button addButton;
@@ -281,6 +283,12 @@ public class UserAttributesController {
 	public void handleOutputFilesButtonTab() {
 		main.setConfiguration(configuration);
 		main.showOutputFileSettingsPage();
+	}
+	
+	@FXML
+	public void handleRunButtonTab() {
+		main.setConfiguration(configuration);
+		main.showRunPage();
 	}
 	
 	

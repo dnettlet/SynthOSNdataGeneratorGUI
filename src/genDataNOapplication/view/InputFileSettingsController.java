@@ -34,6 +34,8 @@ public class InputFileSettingsController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
+	Button runButtonTab;
+	@FXML
 	Button outputFilesButtonTab;
 	@FXML
 	Button browseInFile1Button;
@@ -187,6 +189,12 @@ public class InputFileSettingsController {
 	public void handleOutputFilesButtonTab() {
 		save();
 		main.showOutputFileSettingsPage();
+	}
+	
+	@FXML
+	public void handleRunButtonTab() {
+		save();
+		main.showRunPage();
 	}
 
 	

@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,15 +24,6 @@
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons/round_play_arrow_black_24dp.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <ProgressBar fx:id="progressIndicator" layoutX="413.0" layoutY="406.0" prefWidth="200.0" progress="0.0" visible="false" />
-      <Button fx:id="cancelButton" cancelButton="true" layoutX="477.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" visible="false">
-         <graphic>
-            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icons/outline_stop_black_24dp.png" />
                </image>
             </ImageView>
          </graphic></Button>

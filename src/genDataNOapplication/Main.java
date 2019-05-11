@@ -13,6 +13,7 @@ import genDataNOapplication.view.HomePageController;
 import genDataNOapplication.view.ProfileFreqDialogController;
 import genDataNOapplication.view.ProfilesPageController;
 import genDataNOapplication.view.RootLayoutController;
+import genDataNOapplication.view.RunPageController;
 import genDataNOapplication.view.InputFileSettingsController;
 import genDataNOapplication.view.OutputFileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
@@ -245,16 +246,35 @@ public class Main extends Application {
 	public void runCustomSettings() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("view/HomePage.fxml"));
-			AnchorPane homePage = (AnchorPane) loader.load();
+			loader.setLocation(Main.class.getResource("view/RunPage.fxml"));
+			AnchorPane runPage = (AnchorPane) loader.load();
 		
-			rootLayout.setCenter(homePage);
+			rootLayout.setCenter(runPage);
 			
-			HomePageController controller = loader.getController();
+			RunPageController controller = loader.getController();
 			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
 			
-			controller.startApplication(configuration);
+			controller.startApplication();
 			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showRunPage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/RunPage.fxml"));
+			AnchorPane runPage = (AnchorPane) loader.load();
+		
+			rootLayout.setCenter(runPage);
+			
+			RunPageController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -39,6 +39,8 @@ public class AdvancedSettingsController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
+	Button runButtonTab;
+	@FXML
 	Button resetButton;
 	@FXML
 	Button backButton;
@@ -184,6 +186,13 @@ public class AdvancedSettingsController {
 		main.setConfiguration(configuration);
 		configuration.setSeedSize(seedSizeSpinner.getValue());
 		main.showOutputFileSettingsPage();
+	}
+	
+	@FXML
+	public void handleRunButtonTab() {
+		main.setConfiguration(configuration);
+		configuration.setSeedSize(seedSizeSpinner.getValue());
+		main.showRunPage();
 	}
 	
 	
