@@ -1,5 +1,9 @@
 package genDataNOapplication.view;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
 import genDataNOapplication.Controller;
 import genDataNOapplication.Main;
 import genDataNOapplication.model.ConfigurationModel;
@@ -43,6 +47,8 @@ public class RunPageController {
 		Button homePageButton;
 		@FXML
 		Button statisticsButton;
+		@FXML
+		Button openButton;
 		
 	//Progress bar
 		@FXML
@@ -84,6 +90,19 @@ public class RunPageController {
 	public void handleStartApplicationButton() {
 		main.setConfiguration(configuration);
 		startApplication();
+	}
+	
+	@FXML
+	public void handleOpenButton() {
+		try {
+		File file = new File(configuration.getOutFile());
+		String parent = file.getParent();
+		File outDirectory = new File(parent);
+		Desktop.getDesktop().open((outDirectory));
+		} catch (IOException e) {
+			 //TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//Given a ConfigurationModel, starts the program with this configuration.
@@ -135,6 +154,7 @@ public class RunPageController {
 				                    	cancelButton.setVisible(false);
 				                    	statisticsButton.setVisible(true);
 				                    	homePageButton.setVisible(true);
+				                    	openButton.setVisible(true);
 				                    	}
 				                        
 				                    }

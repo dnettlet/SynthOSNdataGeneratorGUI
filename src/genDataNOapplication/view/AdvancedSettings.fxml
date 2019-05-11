@@ -81,15 +81,6 @@
             <Image url="@../../../resources/icons/outline_settings_black_24dptitle.png" />
          </image>
       </ImageView>
-      <Button fx:id="saveRunButton" defaultButton="true" layoutX="815.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
-         <graphic>
-            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icons/outline_play_circle_filled_white_black_24dp.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <ButtonBar layoutX="113.0" layoutY="22.0" prefHeight="40.0" prefWidth="729.0">
          <buttons>
             <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" text="Input Files">
@@ -177,5 +168,14 @@
             </Pane>
          </content>
       </TitledPane>
+      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="815.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Next">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
