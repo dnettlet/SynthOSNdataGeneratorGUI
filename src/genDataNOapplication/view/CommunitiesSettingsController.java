@@ -46,6 +46,8 @@ public class CommunitiesSettingsController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
+	Button runButtonTab;
+	@FXML
 	Button resetButton;
 	@FXML
 	Button backButton;
@@ -164,8 +166,12 @@ public class CommunitiesSettingsController {
 		main.showOutputFileSettingsPage();
 	}
 	
-
+	@FXML
+	public void handleRunButtonTab() {
+		configuration.setNumCommunities(numCommunitiesSpinner.getValue());
+		main.setConfiguration(configuration);
+		main.showRunPage();
+	}
 	
 	
-
 }

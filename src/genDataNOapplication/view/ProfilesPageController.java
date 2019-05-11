@@ -48,6 +48,8 @@ public class ProfilesPageController {
 	@FXML
 	Button advancedButtonTab;
 	@FXML
+	Button runButtonTab;
+	@FXML
 	Button resetButton;
 	@FXML
 	Button backButton;
@@ -197,6 +199,12 @@ public class ProfilesPageController {
 	public void handleAdvancedButtonTab() {
 		main.setConfiguration(configuration);
 		main.showAdvancedSettingsPage();
+	}
+	
+	@FXML
+	public void handleRunButtonTab() {
+		main.setConfiguration(configuration);
+		main.showRunPage();
 	}
 	
 	

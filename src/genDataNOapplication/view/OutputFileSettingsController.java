@@ -34,6 +34,8 @@ public class OutputFileSettingsController {
 		@FXML
 		Button advancedButtonTab;
 		@FXML
+		Button runButtonTab;
+		@FXML
 		Button browseOutFileButton;
 		@FXML
 		Button brwoseOutgFileButton;
@@ -42,7 +44,7 @@ public class OutputFileSettingsController {
 		@FXML 
 		Button browseOut2FileButton;
 		@FXML
-		Button saveRunButton;
+		Button nextButton;
 		@FXML
 		Button resetButton;
 		@FXML
@@ -173,16 +175,6 @@ public class OutputFileSettingsController {
 
 		}
 		
-		//Saves the settings to a instance of ConfigurationModel. Then runs the program 
-		@FXML
-		public void handleSaveRunButton() {
-			//Save
-			save();
-			
-			//Run
-			main.runCustomSettings();
-		}
-		
 		private void save() {	
 			if(!outFileName.getText().isEmpty()) { configuration.setOutFile(outFileName.getText()); }
 			if(!outgFileName.getText().isEmpty()) { configuration.setOutgFile(outgFileName.getText()); }
@@ -244,6 +236,12 @@ public class OutputFileSettingsController {
 		public void handleAdvancedButtonTab() {
 			save();
 			main.showAdvancedSettingsPage();
+		}
+		
+		@FXML
+		public void handleRunButtonTab() {
+			save();
+			main.showRunPage();
 		}
 
 }

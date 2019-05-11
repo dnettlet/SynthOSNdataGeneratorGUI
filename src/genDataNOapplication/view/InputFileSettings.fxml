@@ -79,7 +79,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <ButtonBar layoutX="195.0" layoutY="22.0" prefHeight="40.0" prefWidth="631.0">
+      <ButtonBar layoutX="113.0" layoutY="22.0" prefHeight="40.0" prefWidth="729.0">
          <buttons>
             <Button fx:id="inputFilesButtonTab" disable="true" mnemonicParsing="false" text="Input Files">
                <graphic>
@@ -131,6 +131,15 @@
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../resources/icons/outline_settings_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Run">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/round_play_arrow_black_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>

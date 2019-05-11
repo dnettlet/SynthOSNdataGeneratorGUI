@@ -67,7 +67,7 @@
             <Image url="@../../../resources/icons/outline_file_copy_black_24dpTitle.png" />
          </image>
       </ImageView>
-      <ButtonBar layoutX="195.0" layoutY="22.0" prefHeight="40.0" prefWidth="631.0">
+      <ButtonBar layoutX="113.0" layoutY="22.0" prefHeight="40.0" prefWidth="729.0">
          <buttons>
             <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFileButtonTab" text="Input Files">
                <graphic>
@@ -123,17 +123,17 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Run">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/icons/round_play_arrow_black_24dp.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </buttons>
       </ButtonBar>
-      <Button fx:id="saveRunButton" defaultButton="true" layoutX="701.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleSaveRunButton" text="Save &amp; Run">
-         <graphic>
-            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icons/outline_play_circle_filled_white_black_24dp.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="exportConfigurationButton" layoutX="679.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleExportConfig" text="Export Config to File">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
@@ -144,5 +144,14 @@
          </graphic>
       </Button>
       <Text layoutX="281.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specify Below the names for the Output files of the program.  You can browse through your computer to find locations. Click &quot;Run&quot; to execute the program.  You can save this custom configuration by pressing &quot;Export Config to File&quot; button." wrappingWidth="437.322265625" />
+      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="823.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Next">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
