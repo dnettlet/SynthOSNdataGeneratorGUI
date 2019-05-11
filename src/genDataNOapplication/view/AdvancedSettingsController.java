@@ -50,6 +50,8 @@ public class AdvancedSettingsController {
 	Button saveRunButton;
 	@FXML
 	Button helpButton;
+	@FXML
+	Button nextButton;
 	
 	//Radio buttons
 	@FXML

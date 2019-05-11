@@ -143,7 +143,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text layoutX="281.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specify Below the names for the Output files of the program.  You can browse through your computer to find locations. Click &quot;Run&quot; to execute the program.  You can save this custom configuration by pressing &quot;Export Config to File&quot; button." wrappingWidth="437.322265625" />
+      <Text layoutX="281.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specify Below the names for the Output files of the program.  You can browse through your computer to find locations. You can save this custom configuration by pressing &quot;Export Config to File&quot; button." textAlignment="CENTER" wrappingWidth="437.322265625" />
       <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="823.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Next">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">

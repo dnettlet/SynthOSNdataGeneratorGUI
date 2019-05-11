@@ -137,5 +137,14 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="openButton" layoutX="442.0" layoutY="471.0" mnemonicParsing="false" onAction="#handleOpenButton" text="Open Files Directory" visible="false">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/baseline_folder_open_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
