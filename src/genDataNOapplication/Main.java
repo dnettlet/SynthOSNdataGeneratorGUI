@@ -287,7 +287,7 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/StatisticsPage.fxml"));
-			AnchorPane statisticsPage = (AnchorPane) loader.load();
+			Node statisticsPage = (Node) loader.load();
 		
 			rootLayout.setCenter(statisticsPage);
 			
