@@ -12,14 +12,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.OutputFileSettingsController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.OutputFileSettingsController">
    <children>
       <Label layoutX="414.0" layoutY="72.0" text="File Settings">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TitledPane alignment="CENTER" collapsible="false" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="198.0" layoutY="191.0" prefHeight="363.0" prefWidth="387.0" text="Output Files">
+      <TitledPane alignment="CENTER" collapsible="false" contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="198.0" layoutY="191.0" prefHeight="363.0" prefWidth="387.0" styleClass="info" text="Output Files">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -46,7 +46,7 @@
             </ImageView>
          </graphic>
       </TitledPane>
-      <Button fx:id="resetButton" layoutX="689.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+      <Button fx:id="resetButton" layoutX="689.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleResetButton" styleClass="danger" text="Resset to Default">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,7 +54,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back">
+      <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleBackButton" styleClass="warning" text="Back">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -69,7 +69,7 @@
       </ImageView>
       <ButtonBar layoutX="113.0" layoutY="22.0" prefHeight="40.0" prefWidth="729.0">
          <buttons>
-            <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFileButtonTab" text="Input Files">
+            <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFileButtonTab" styleClass="first" text="Input Files">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -78,7 +78,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
+            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" styleClass="middle" text="User Attributes">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -87,7 +87,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" text="Profiles">
+            <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" styleClass="middle" text="Profiles">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -96,7 +96,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Communities &amp; Profiles">
+            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" styleClass="middle" text="Communities &amp; Profiles">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -105,7 +105,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="inputFilesButtonTab1" disable="true" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleInputFileButtonTab" text="Out Files">
+            <Button fx:id="inputFilesButtonTab1" disable="true" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleInputFileButtonTab" styleClass="middle" text="Out Files">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -114,7 +114,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced">
+            <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" styleClass="middle" text="Advanced">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -123,7 +123,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Run">
+            <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" styleClass="last" text="Run">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -134,7 +134,7 @@
             </Button>
          </buttons>
       </ButtonBar>
-      <Button fx:id="exportConfigurationButton" layoutX="679.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleExportConfig" text="Export Config to File">
+      <Button fx:id="exportConfigurationButton" layoutX="679.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleExportConfig" styleClass="success" text="Export Config to File">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -144,7 +144,7 @@
          </graphic>
       </Button>
       <Text layoutX="281.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specify Below the names for the Output files of the program.  You can browse through your computer to find locations. You can save this custom configuration by pressing &quot;Export Config to File&quot; button." textAlignment="CENTER" wrappingWidth="437.322265625" />
-      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="823.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Next">
+      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="823.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleRunButtonTab" styleClass="primary" text="Next">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>

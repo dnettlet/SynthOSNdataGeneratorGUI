@@ -25,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -42,7 +43,7 @@ public class Main extends Application {
 		this.primaryStage.setTitle("Synthetic Data Generator");
 		
 		configuration = new ConfigurationModel();
-		
+		this.primaryStage.getIcons().add(new Image("file:./resources/icons/logo.png"));
 		initRootLayout();
 		showHomePage();
 	}
