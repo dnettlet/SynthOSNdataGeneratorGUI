@@ -227,6 +227,7 @@ public class UserAttributesController {
 			ScrollPane cardScrollPane = new ScrollPane();
 			cardScrollPane.resize(cardScrollPane.getWidth(), cardScrollPane.getHeight());
 			cardBorderPane.setCenter(cardScrollPane);
+			
 			GridPane parametersGridPane = new GridPane();
 			parametersGridPane.resize(cardBorderPane.getWidth(), cardBorderPane.getHeight());
 			parametersGridPane.setHgap(10);

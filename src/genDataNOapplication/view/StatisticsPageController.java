@@ -3,9 +3,13 @@ package genDataNOapplication.view;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
 import java.awt.Desktop;
@@ -17,6 +21,7 @@ import genDataNOapplication.Main;
 import genDataNOapplication.Utils.Utils;
 import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,6 +38,7 @@ public class StatisticsPageController {
 		
 	//Configuration
 	protected ConfigurationModel configuration;
+	double total;
 	
 	//Buttons
 	@FXML
@@ -66,6 +72,7 @@ public class StatisticsPageController {
 	//Is called to set a specific configuration
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
+		total = 0;
 		setup();
 	}
 	
@@ -97,6 +104,38 @@ public class StatisticsPageController {
         	count++;
         }
         final PieChart profileChart = new PieChart(profileChartData);
+        
+        /*final Label caption = new Label("");
+        caption.setTextFill(Color.DARKORANGE);
+        caption.setStyle("-fx-font: 24 arial;");
+        for (final PieChart.Data data : profileChart.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED,
+                e -> {
+                    double total = 0;
+                    for (PieChart.Data d : profileChart.getData()) {
+                        total += d.getPieValue();
+                    }
+                    caption.setTranslateX(e.getSceneX());
+                    caption.setTranslateY(e.getSceneY());
+                    String text = String.format("%.1f%%", 100*data.getPieValue()/total) ;
+                    caption.setText(text);
+                    System.out.println(text);;
+                 }
+                );
+        }*/
+        
+        for (PieChart.Data d : profileChart.getData()) {
+            total += d.getPieValue();
+        }
+
+        profileChart.getData().stream().forEach(data -> {
+            Tooltip tooltip = new Tooltip();
+            tooltip.setText(100*data.getPieValue()/total + "%");
+            Tooltip.install(data.getNode(), tooltip);
+            data.pieValueProperty().addListener((observable, oldValue, newValue) -> 
+                tooltip.setText(newValue + "%"));
+        });
+
         profileChart.setTitle("Profile Frequency");
 		chartsSection.add(profileChart, 0, 0);
 		
