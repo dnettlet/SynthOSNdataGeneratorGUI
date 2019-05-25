@@ -1,5 +1,6 @@
 package genDataNOapplication.view;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,14 +15,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -154,8 +160,10 @@ public class UserAttributesController {
 			TitledPane attributeCard = new TitledPane();
 			attributeCard.setText(attribute.getName());
 			attributeCard.setCollapsible(false);
-			attributeCard.resize(318, 363);
+			attributeCard.resize(300, 363);
 			attributeCard.setMinHeight(363);
+			attributeCard.setMaxHeight(363);
+			attributeCard.setMaxWidth(290);
 			attributeCard.getStyleClass().add("info");
 			attributesSection.add(attributeCard, attributeColumn, attributeRow);			
 			BorderPane cardBorderPane = new BorderPane();
@@ -167,12 +175,13 @@ public class UserAttributesController {
 			hbox.setSpacing(30);
 			Text description = new Text();
 			description.setText(attribute.getDescription());
-			description.setWrappingWidth(201);
+			description.setWrappingWidth(150);
 			hbox.getChildren().add(description);
 			VBox vbox = new VBox();
 			hbox.getChildren().add(vbox);
 			Button editButton = new Button();
 			editButton.setText("Edit");
+			editButton.getStyleClass().add("success");
 			editButton.setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
@@ -195,6 +204,7 @@ public class UserAttributesController {
 	        });
 			Button deleteButton = new Button();
 			deleteButton.setText("Delete");
+			deleteButton.getStyleClass().add("danger");
 			deleteButton.setCancelButton(true);
 			deleteButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -219,27 +229,24 @@ public class UserAttributesController {
 			cardBorderPane.setCenter(cardScrollPane);
 			GridPane parametersGridPane = new GridPane();
 			parametersGridPane.resize(cardBorderPane.getWidth(), cardBorderPane.getHeight());
-			parametersGridPane.setHgap(15);
+			parametersGridPane.setHgap(10);
 			parametersGridPane.setVgap(10);
-			parametersGridPane.setPadding(new Insets(0, 10, 0, 10));
+			parametersGridPane.setPadding(new Insets(10, 10, 0, 10));
 			cardScrollPane.setContent(parametersGridPane);
 			
 			int paramCount = 0;
 			for(Pair<String, Double> parameter : attribute.getParameterList()) {
-				TextField paramName = new TextField();
+				Label paramName = new Label();
 				paramName.setText(parameter.getKey());
 				parametersGridPane.add(paramName, 0, paramCount);
 				
-				Spinner<Double> paramValue = new Spinner<Double>();
+				Separator separator = new Separator();
+				separator.setOrientation(Orientation.VERTICAL);
+				parametersGridPane.add(separator, 1, paramCount);
 				
-				paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
-				paramValue.getValueFactory().setValue(parameter.getValue());
-				paramValue.resize(50, 25);
-				parametersGridPane.add(paramValue, 1, paramCount);
-				
-				Button deleteParamButton = new Button();
-				deleteParamButton.setText("Del");
-				parametersGridPane.add(deleteParamButton, 2, paramCount);;
+				Label paramValue = new Label();
+				paramValue.setText(String.valueOf(parameter.getValue()));
+				parametersGridPane.add(paramValue, 2, paramCount);
 				
 				
 				paramCount++;

@@ -12,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -82,11 +83,14 @@ public class ProfilesPageController {
 		profilesGridPane.setHgap(20);
 		profilesGridPane.setVgap(25);
 		profilesGridPane.setPrefWidth(970);
+		profilesGridPane.setPadding(new Insets(15, 0, 20, 20));
 		int col = 0; int row = 0;
 		for(int i = 0; i < 10; i++) {
 			Pair<List<Integer>, Integer> currentProfile = configuration.getProfileList().get(i);
 			String title = "Profile " + i;
 			GridPane profileAttr = new GridPane();
+			profileAttr.setVgap(10);
+			profileAttr.setHgap(10);
 			int col1 = 0; int row1 = 0;
 			int count = i;
 			for(int j = 0; j < configuration.getUserAttrributesList().size(); j++) {

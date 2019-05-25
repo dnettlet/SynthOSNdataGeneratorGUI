@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane stylesheets="@../../../resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ProfilesPageController">
+<ScrollPane prefHeight="1002.0" prefWidth="1003.0" stylesheets="@../../../resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ProfilesPageController">
    <content>
-      <AnchorPane prefHeight="1000.0" prefWidth="1000.0">
+      <AnchorPane prefHeight="1000.0" prefWidth="851.0">
          <children>
             <Label layoutX="379.0" layoutY="59.0" text="Profiles Settings">
                <font>
@@ -52,7 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <AnchorPane fx:id="profilesAnchorPane" layoutX="4.0" layoutY="210.0" maxWidth="970.0" prefHeight="790.0" prefWidth="953.0" />
+            <AnchorPane fx:id="profilesAnchorPane" layoutX="4.0" layoutY="210.0" maxWidth="980.0" prefHeight="790.0" prefWidth="962.0" />
             <ButtonBar layoutX="113.0" layoutY="14.0" prefHeight="40.0" prefWidth="729.0">
                <buttons>
                   <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" styleClass="first" text="Input Files">

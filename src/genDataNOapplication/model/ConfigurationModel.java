@@ -131,8 +131,8 @@ public class ConfigurationModel {
 		professionparameterList.add(new Pair<String, Double>("Professional", 0.17));
 		professionparameterList.add(new Pair<String, Double>("Service", 0.14));
 		professionparameterList.add(new Pair<String, Double>("Sales and office", 0.18));
-		professionparameterList.add(new Pair<String, Double>("Natural resources construction and maintenance", 0.07));
-		professionparameterList.add(new Pair<String, Double>("Production transportation and material moving", 0.09));
+		professionparameterList.add(new Pair<String, Double>("Natural resources construction", 0.07));
+		professionparameterList.add(new Pair<String, Double>("Production transportation", 0.09));
 		professionparameterList.add(new Pair<String, Double>("Student", 0.23));
 		profession.setParameterList(professionparameterList);
 		userAttrributesList.add(profession);

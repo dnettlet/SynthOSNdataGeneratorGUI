@@ -102,6 +102,7 @@ public class AttributeEditDialogController {
 		parametersSection.add(paramValue, 1, paramCount + 2);
 		Button deleteParamButton = new Button();
 		deleteParamButton.setText("Delete");
+		deleteParamButton.getStyleClass().add("danger");
 		String deleteButtonID = "deleteParamButton" + String.valueOf(paramCount);
 		deleteParamButton.setId(deleteButtonID);
 		parametersSection.add(deleteParamButton, 2, paramCount + 2);
@@ -246,6 +247,7 @@ public class AttributeEditDialogController {
     		parametersSection.add(paramValue, 1, paramCount + 2);
     		Button deleteParamButton = new Button();
     		deleteParamButton.setText("Delete");
+    		deleteParamButton.getStyleClass().add("danger");
     		String deleteButtonID = "deleteParamButton" + String.valueOf(paramCount);
     		deleteParamButton.setId(deleteButtonID);
     		parametersSection.add(deleteParamButton, 2, paramCount + 2);
