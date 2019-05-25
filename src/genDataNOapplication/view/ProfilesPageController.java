@@ -130,6 +130,7 @@ public class ProfilesPageController {
 			profileCard.setText(title);
 			profileCard.setCollapsible(false);
 			profileCard.setContent(profileAttr);
+			profileCard.getStyleClass().add("info");
 			if(col < 2) {
 				profilesGridPane.add(profileCard, col, row);
 				col++;

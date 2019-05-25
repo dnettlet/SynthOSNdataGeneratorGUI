@@ -44,7 +44,7 @@
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
+                  <Image url="@../../../resources/icons/outline_restore_white_24dp.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -61,7 +61,7 @@
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
+                  <Image url="@../../../resources/icons/baseline_arrow_forward_white_24dp.png" />
                </image>
             </ImageView>
          </graphic></Button>

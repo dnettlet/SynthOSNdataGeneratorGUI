@@ -16,7 +16,7 @@
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/baseline_play_circle_outline_black_24dp.png" />
+                  <Image url="@../../../resources/icons/outline_play_circle_filled_white_white_24dp.png" />
                </image>
             </ImageView>
          </graphic>
@@ -28,7 +28,7 @@
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/outline_stop_black_24dp.png" />
+                  <Image url="@../../../resources/icons/outline_stop_white_24dp.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -128,7 +128,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="statisticsButton" layoutX="743.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleStatisticsButton" text="Show statistics" visible="false">
+      <Button fx:id="statisticsButton" layoutX="743.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleStatisticsButton" styleClass="info" text="Show statistics" visible="false">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -137,11 +137,11 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="openButton" layoutX="442.0" layoutY="471.0" mnemonicParsing="false" onAction="#handleOpenButton" text="Open Files Directory" visible="false">
+      <Button fx:id="openButton" layoutX="442.0" layoutY="471.0" mnemonicParsing="false" onAction="#handleOpenButton" styleClass="success" text="Open Files Directory" visible="false">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/baseline_folder_open_black_24dp.png" />
+                  <Image url="@../../../resources/icons/baseline_folder_open_white_24dp.png" />
                </image>
             </ImageView>
          </graphic>

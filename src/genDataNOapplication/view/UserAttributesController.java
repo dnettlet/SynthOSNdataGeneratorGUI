@@ -156,6 +156,7 @@ public class UserAttributesController {
 			attributeCard.setCollapsible(false);
 			attributeCard.resize(318, 363);
 			attributeCard.setMinHeight(363);
+			attributeCard.getStyleClass().add("info");
 			attributesSection.add(attributeCard, attributeColumn, attributeRow);			
 			BorderPane cardBorderPane = new BorderPane();
 			attributeCard.setContent(cardBorderPane);
