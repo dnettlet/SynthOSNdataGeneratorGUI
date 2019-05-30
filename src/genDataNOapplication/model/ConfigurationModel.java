@@ -263,18 +263,8 @@ public class ConfigurationModel {
 	public int[] getProfileCommunityAssaignment() { return profileCommunityAssaign; }
 	public void setProfileCommunityAssaignment(int[] profileCommunityAssaign) { this.profileCommunityAssaign = profileCommunityAssaign; }
 	
-	//Add and remove user attributes
+	//Add user attributes
 	public void setAttributeList(List<AttributeModel> attributeList) {this.userAttrributesList = attributeList; }  
 	
-	public void removeUserAttribute(String attributeName) {
-		for(AttributeModel attribute : userAttrributesList) {
-			if(attribute.getName().equals(attributeName)) {
-				userAttrributesList.remove(attribute);
-			}
-			else {
-				System.out.println("The attribute " + attributeName + " doesn't exist");
-			}
-		}
-	}
 
 }

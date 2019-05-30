@@ -3,6 +3,7 @@ package genDataNOapplication.view;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +23,9 @@ import genDataNOapplication.Utils.Utils;
 import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -56,6 +60,10 @@ public class StatisticsPageController {
 	@FXML
 	GridPane chartsSection;
 	
+	//ChoiceBox
+	@FXML
+	ChoiceBox<String> whatToDisplay;
+	
 	public StatisticsPageController() {
 		
 	}
@@ -88,12 +96,32 @@ public class StatisticsPageController {
 		File out2File = new File(configuration.getOut2File());
 		name = out2File.getName();
 		out2FileButton.setText(name);
-		loadStatistics();
+		whatToDisplay.getItems().add("Community 0");
+		whatToDisplay.getItems().add("Community 1");
+		whatToDisplay.getItems().add("Community 2");
+		whatToDisplay.getItems().add("Community 3");
+		whatToDisplay.getItems().add("Community 4");
+		whatToDisplay.getItems().add("Community 5");
+		whatToDisplay.getItems().add("Community 6");
+		whatToDisplay.getItems().add("Community 7");
+		whatToDisplay.getItems().add("Community 8");
+		whatToDisplay.getItems().add("Community 9");
+		whatToDisplay.getItems().add("Show All");
+		whatToDisplay.getSelectionModel().select(10);
+        whatToDisplay.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() { 
+       	 
+            // if the item of the list is changed 
+            public void changed(ObservableValue ov, Number value, Number userValue) 
+            { 
+            	loadStatistics(whatToDisplay.getSelectionModel().selectedIndexProperty().intValue());
+            } 
+        }); 
+		loadStatistics(whatToDisplay.getSelectionModel().selectedIndexProperty().intValue());
 	}
     
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void loadStatistics() {
-		
+	private void loadStatistics(int i) {
+		System.out.println(i);
 		//Chart for Profiles
 		List<Pair<List<Integer>, Integer>>  profileList = configuration.getProfileList();
 		int count = 0;

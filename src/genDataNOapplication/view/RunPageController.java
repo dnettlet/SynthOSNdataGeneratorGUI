@@ -126,7 +126,6 @@ public class RunPageController {
 	
 			
 			programExecution = new Controller();
-			programExecution.setMainApp(main);
 			programExecution.setConfiguration(configuration);
 			
 			// When completed tasks
