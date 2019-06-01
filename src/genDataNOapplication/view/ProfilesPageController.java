@@ -23,8 +23,11 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class ProfilesPageController {
@@ -166,7 +169,10 @@ public class ProfilesPageController {
 		alert.setTitle("Reset Default");
 		alert.setHeaderText("Reset parameters to default");
 		alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
-
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 

@@ -13,6 +13,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -159,7 +161,10 @@ public class AttributeEditDialogController {
 		alert.setTitle("Reset Default");
 		alert.setHeaderText("Reset parameters to default");
 		alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
-
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			nameTextField.setText("");

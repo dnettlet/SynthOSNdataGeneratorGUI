@@ -35,6 +35,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 //Class that controlls the behaviour of the User Attributes page
 public class UserAttributesController {
@@ -213,7 +214,11 @@ public class UserAttributesController {
 					alert.setTitle("Delete attribute");
 					alert.setHeaderText("Do you really want to delete the attribute?");
 					alert.setContentText("By clicking okay the selected attribute will be deleted. There will not be the possibility to restore it.");
-
+					Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+					Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+					stage.getIcons().add(icon);		
+					alert.setGraphic(new ImageView(icon));
+					
 					Optional<ButtonType> result = alert.showAndWait();
 					if (result.get() == ButtonType.OK){
 						attributeList.remove(attribute);

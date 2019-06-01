@@ -12,7 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class OutputFileSettingsController {
 	
@@ -165,6 +168,8 @@ public class OutputFileSettingsController {
 	    		alert.setHeaderText("The configuration has been successfully saved to file");
 	    		alert.setContentText("The configuration has been saved to  " + file.getPath() + " ."
 	    				 + "to load this file go to the initial page and click the button Load Config From File.");
+	    		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+	    		stage.getIcons().add(new Image("file:./resources/icons/info_icon.png"));
 	    		alert.showAndWait();
 	        }else {
 				Alert alert = new Alert(AlertType.ERROR);
@@ -192,7 +197,10 @@ public class OutputFileSettingsController {
 			alert.setTitle("Reset Default");
 			alert.setHeaderText("Reset parameters to default");
 			alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
-
+			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+			Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+			stage.getIcons().add(icon);		
+			alert.setGraphic(new ImageView(icon));
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				outFileName.clear();
@@ -211,6 +219,10 @@ public class OutputFileSettingsController {
 			alert.setContentText("First out file is the most important one, as it contains the list of users created and its characteristics,"
 					+ " this means the list of attributes with the parameter assaigned to each user. \n "
 					+ "Outg file contains the links between users, this means the list of friends of each user and its linkweight.");
+			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image("file:./resources/icons/info_icon.png"));
+			Image icon = new Image("file:./resources/icons/info_icon.png");	
+			alert.setGraphic(new ImageView(icon));
 			alert.showAndWait();
 		}
 		

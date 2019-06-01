@@ -135,7 +135,12 @@ public class InputFileSettingsController {
 		alert.setTitle("Reset Default");
 		alert.setHeaderText("Reset parameters to default");
 		alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+		stage.getIcons().add(icon);
 
+		// Add a custom icon		
+		alert.setGraphic(new ImageView(icon));
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			inputFile1Name.clear();
@@ -154,11 +159,12 @@ public class InputFileSettingsController {
 				+ "File 2 contains the community labels for each of the users, that is, each user has an associated community "
 				+ "label in the format id mod, where id is the user and mod is the community id (usually, 1,2,3, etc.).");
 		// Get the Stage.
-		//Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/info_icon.png");
+		stage.getIcons().add(icon);
 
-		// Add a custom icon.
-		//stage.getIcons().add(new Image(this.getClass().getResource("./resources/icons/logo.png").toString()));
-		//alert.setGraphic(new ImageView(this.getClass().getResource("file:./resources/icons/logo.png").toString()));
+		// Add a custom icon		
+		alert.setGraphic(new ImageView(icon));
 		alert.showAndWait();
 	}
 	
