@@ -117,6 +117,7 @@ public class AdvancedSettingsController {
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
 		seedSizeSpinner.getValueFactory().setValue(configuration.getSeedSize());
+		seedSizeSpinner.setEditable(true);
 	}
 	
 	@FXML

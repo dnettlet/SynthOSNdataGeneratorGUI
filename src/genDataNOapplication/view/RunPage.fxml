@@ -137,7 +137,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="openButton" layoutX="442.0" layoutY="471.0" mnemonicParsing="false" onAction="#handleOpenButton" styleClass="success" text="Open Files Directory" visible="false">
+      <Button fx:id="openButton" layoutX="430.0" layoutY="471.0" mnemonicParsing="false" onAction="#handleOpenButton" styleClass="success" text="Open Files Directory" visible="false">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

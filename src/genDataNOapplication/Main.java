@@ -222,6 +222,7 @@ public class Main extends Application {
 	        dialogStage.setTitle("Edit Attribute");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
+	        dialogStage.getIcons().add(new Image("file:./resources/icons/edit_icon.png"));
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
 
@@ -322,6 +323,7 @@ public class Main extends Application {
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Community Assaignment");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.getIcons().add(new Image("file:./resources/icons/edit_icon.png"));
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
@@ -360,6 +362,7 @@ public class Main extends Application {
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Profile Frequency");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.getIcons().add(new Image("file:./resources/icons/edit_icon.png"));
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);

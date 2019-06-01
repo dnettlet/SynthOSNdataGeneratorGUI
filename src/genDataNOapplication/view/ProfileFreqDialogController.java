@@ -19,6 +19,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -27,7 +28,8 @@ public class ProfileFreqDialogController {
 	private Stage dialogStage;
 	private boolean okClicked;
 	
-	private int[] frequencies;	
+	private int[] frequencies;
+	private int total;
 	
 	//Sliders
 	@FXML
@@ -72,6 +74,8 @@ public class ProfileFreqDialogController {
 	Label labelP8;
 	@FXML
 	Label labelP9;
+	@FXML
+	Label labelTotal;
 	
 	//Buttons
 	@FXML
@@ -97,61 +101,72 @@ public class ProfileFreqDialogController {
     	sliderP0.setMin(0);    	sliderP0.setMax(500);    	
         sliderP0.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP0.setText(Integer.toString(i)); } );
+                    labelP0.setText(Integer.toString(i)); 
+                    sumTotal();} );
         sliderP0.setValue(profileList.get(0).getValue());
         
     	sliderP1.setMin(0);    	sliderP1.setMax(500);    	
         sliderP1.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP1.setText(Integer.toString(i)); } );
+                    labelP1.setText(Integer.toString(i)); 
+                    sumTotal();} );
         sliderP1.setValue(profileList.get(1).getValue());
         
     	sliderP2.setMin(0);    	sliderP2.setMax(500);    	
         sliderP2.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP2.setText(Integer.toString(i)); } );
+                    labelP2.setText(Integer.toString(i));
+                    sumTotal();} );
         sliderP2.setValue(profileList.get(2).getValue());
         
     	sliderP3.setMin(0);    	sliderP3.setMax(500);    	
         sliderP3.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP3.setText(Integer.toString(i)); } );
+                    labelP3.setText(Integer.toString(i));
+                    sumTotal();} );
         sliderP3.setValue(profileList.get(3).getValue());
         
     	sliderP4.setMin(0);    	sliderP4.setMax(500);    	
         sliderP4.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP4.setText(Integer.toString(i)); } );
+                    labelP4.setText(Integer.toString(i));
+                    sumTotal();} );
         sliderP4.setValue(profileList.get(4).getValue());
         
     	sliderP5.setMin(0);    	sliderP5.setMax(500);    	
         sliderP5.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP5.setText(Integer.toString(i)); } );
+                    labelP5.setText(Integer.toString(i));
+                    sumTotal();} );
         sliderP5.setValue(profileList.get(5).getValue());
         
     	sliderP6.setMin(0);    	sliderP6.setMax(500);    	
         sliderP6.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP6.setText(Integer.toString(i)); } );
+                    labelP6.setText(Integer.toString(i));
+                    sumTotal();
+                    } );
         sliderP6.setValue(profileList.get(6).getValue());
         
     	sliderP7.setMin(0);    	sliderP7.setMax(500);    	
         sliderP7.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP7.setText(Integer.toString(i)); } );
+                    labelP7.setText(Integer.toString(i));
+                    sumTotal();} );
         sliderP7.setValue(profileList.get(7).getValue());
         
     	sliderP8.setMin(0);    	sliderP8.setMax(500);    	
         sliderP8.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP8.setText(Integer.toString(i)); } );
+                    labelP8.setText(Integer.toString(i));
+                    sumTotal();} );
         sliderP8.setValue(profileList.get(8).getValue());
         
     	sliderP9.setMin(0);    	sliderP9.setMax(500);    	
         sliderP9.valueProperty().addListener((observable, oldvalue, newvalue) ->
                 {   int i = newvalue.intValue();
-                    labelP9.setText(Integer.toString(i)); } );
+                    labelP9.setText(Integer.toString(i));
+                    sumTotal();} );
         sliderP9.setValue(profileList.get(9).getValue());
     }
     
@@ -183,17 +198,8 @@ public class ProfileFreqDialogController {
 
 	@FXML
     private void handleOk() {
-		frequencies[0] = (int) sliderP0.getValue();
-		frequencies[1] = (int) sliderP1.getValue();
-		frequencies[2] = (int) sliderP2.getValue();
-		frequencies[3] = (int) sliderP3.getValue();
-		frequencies[4] = (int) sliderP4.getValue();
-		frequencies[5] = (int) sliderP5.getValue();
-		frequencies[6] = (int) sliderP6.getValue();
-		frequencies[7] = (int) sliderP7.getValue();
-		frequencies[8] = (int) sliderP8.getValue();
-		frequencies[9] = (int) sliderP9.getValue();
-		if(this.checkConditions()) {
+		sumTotal();
+		if(total == 1000) {
 			okClicked = true;
 			dialogStage.close();
 		}else {
@@ -217,13 +223,36 @@ public class ProfileFreqDialogController {
         dialogStage.close();
     }
     
-    private boolean checkConditions() {
+    /*private boolean checkConditions() {
     	int sum = 0;
     	for(int i = 0; i < frequencies.length; i++) {
     		sum += frequencies[i];
     	}
     	if(sum == 1000) { return true; }
     	else { return false; }
+    }*/
+    private void sumTotal() {
+    	int sum = 0;
+		frequencies[0] = (int) sliderP0.getValue();
+		frequencies[1] = (int) sliderP1.getValue();
+		frequencies[2] = (int) sliderP2.getValue();
+		frequencies[3] = (int) sliderP3.getValue();
+		frequencies[4] = (int) sliderP4.getValue();
+		frequencies[5] = (int) sliderP5.getValue();
+		frequencies[6] = (int) sliderP6.getValue();
+		frequencies[7] = (int) sliderP7.getValue();
+		frequencies[8] = (int) sliderP8.getValue();
+		frequencies[9] = (int) sliderP9.getValue();
+    	for(int i = 0; i < frequencies.length; i++) {
+    		sum += frequencies[i];
+    	}
+    	total = sum;
+    	labelTotal.setText("Total: " + total);
+    	if(total == 1000) {
+    		labelTotal.setTextFill(Color.GREEN);
+    	}else {
+    		labelTotal.setTextFill(Color.RED);
+    	}
     }
 
 }

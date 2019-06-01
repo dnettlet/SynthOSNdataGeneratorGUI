@@ -94,5 +94,10 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Label fx:id="labelTotal" layoutX="227.0" layoutY="421.0" text="Total: " AnchorPane.bottomAnchor="64.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

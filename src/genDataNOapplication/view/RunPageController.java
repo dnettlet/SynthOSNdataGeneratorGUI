@@ -119,6 +119,9 @@ public class RunPageController {
 			advancedButtonTab.setDisable(true);
 		
 			cancelButton.setVisible(true);
+			homePageButton.setVisible(false);
+			statisticsButton.setVisible(false);
+			openButton.setVisible(false);
 			progressIndicator.setVisible(true);
 			progressIndicator.setProgress(-1);
 			progressIndicator.progressProperty().unbind();

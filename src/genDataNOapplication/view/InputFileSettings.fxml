@@ -44,7 +44,7 @@
             </ImageView>
          </graphic>
       </TitledPane>
-      <Button fx:id="resetButton" layoutX="692.0" layoutY="365.0" mnemonicParsing="false" onAction="#handleResetButton" styleClass="danger" text="Resset to Default">
+      <Button fx:id="resetButton" layoutX="677.0" layoutY="364.0" mnemonicParsing="false" onAction="#handleResetButton" styleClass="danger" text="Resset to Default">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

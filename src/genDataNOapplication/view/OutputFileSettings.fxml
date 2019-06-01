@@ -46,7 +46,7 @@
             </ImageView>
          </graphic>
       </TitledPane>
-      <Button fx:id="resetButton" layoutX="689.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleResetButton" styleClass="danger" text="Resset to Default">
+      <Button fx:id="resetButton" layoutX="691.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleResetButton" styleClass="danger" text="Resset to Default">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -134,7 +134,7 @@
             </Button>
          </buttons>
       </ButtonBar>
-      <Button fx:id="exportConfigurationButton" layoutX="679.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleExportConfig" styleClass="success" text="Export Config to File">
+      <Button fx:id="exportConfigurationButton" layoutX="680.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleExportConfig" styleClass="success" text="Export Config to File">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -149,6 +149,15 @@
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="helpButton" layoutX="729.0" layoutY="357.0" mnemonicParsing="false" onAction="#handleHelpButton" styleClass="info" text="Help">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/outline_help_outline_black_24dp.png" />
                </image>
             </ImageView>
          </graphic>

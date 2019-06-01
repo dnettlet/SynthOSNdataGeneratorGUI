@@ -10,8 +10,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 //Controller class for the Settings Page
 public class InputFileSettingsController {
@@ -150,7 +153,12 @@ public class InputFileSettingsController {
 				+ " .. etc. where id is a node id and ‘id1 id2’ indicates there is an edge (link) between these two nodes. \n \n"
 				+ "File 2 contains the community labels for each of the users, that is, each user has an associated community "
 				+ "label in the format id mod, where id is the user and mod is the community id (usually, 1,2,3, etc.).");
+		// Get the Stage.
+		//Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 
+		// Add a custom icon.
+		//stage.getIcons().add(new Image(this.getClass().getResource("./resources/icons/logo.png").toString()));
+		//alert.setGraphic(new ImageView(this.getClass().getResource("file:./resources/icons/logo.png").toString()));
 		alert.showAndWait();
 	}
 	

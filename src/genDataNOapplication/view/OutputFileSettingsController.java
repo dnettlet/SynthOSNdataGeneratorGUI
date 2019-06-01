@@ -51,6 +51,8 @@ public class OutputFileSettingsController {
 		Button backButton;
 		@FXML
 		Button exportConfigurationButton;
+		@FXML
+		Button helpButton;
 		
 		//TextFields
 		@FXML
@@ -199,6 +201,17 @@ public class OutputFileSettingsController {
 				out2FileName.clear();
 			}
 
+		}
+		
+		@FXML
+		public void handleHelpButton() {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Help");
+			alert.setHeaderText("Output Files");
+			alert.setContentText("First out file is the most important one, as it contains the list of users created and its characteristics,"
+					+ " this means the list of attributes with the parameter assaigned to each user. \n "
+					+ "Outg file contains the links between users, this means the list of friends of each user and its linkweight.");
+			alert.showAndWait();
 		}
 		
 		//Handles back button. If something has been modified asks for user confirmation.
