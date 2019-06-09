@@ -171,11 +171,11 @@
             <frequency>0.18</frequency>
         </param>
         <param>
-            <value>Natural resources construction and maintenance</value>
+            <value>Natural resources construction</value>
             <frequency>0.07</frequency>
         </param>
         <param>
-            <value>Production transportation and material moving</value>
+            <value>Production transportation</value>
             <frequency>0.09</frequency>
         </param>
         <param>

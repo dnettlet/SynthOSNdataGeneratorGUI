@@ -12,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -22,8 +23,11 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class ProfilesPageController {
@@ -82,11 +86,14 @@ public class ProfilesPageController {
 		profilesGridPane.setHgap(20);
 		profilesGridPane.setVgap(25);
 		profilesGridPane.setPrefWidth(970);
+		profilesGridPane.setPadding(new Insets(15, 0, 20, 20));
 		int col = 0; int row = 0;
 		for(int i = 0; i < 10; i++) {
 			Pair<List<Integer>, Integer> currentProfile = configuration.getProfileList().get(i);
 			String title = "Profile " + i;
 			GridPane profileAttr = new GridPane();
+			profileAttr.setVgap(10);
+			profileAttr.setHgap(10);
 			int col1 = 0; int row1 = 0;
 			int count = i;
 			for(int j = 0; j < configuration.getUserAttrributesList().size(); j++) {
@@ -130,6 +137,7 @@ public class ProfilesPageController {
 			profileCard.setText(title);
 			profileCard.setCollapsible(false);
 			profileCard.setContent(profileAttr);
+			profileCard.getStyleClass().add("info");
 			if(col < 2) {
 				profilesGridPane.add(profileCard, col, row);
 				col++;
@@ -161,7 +169,10 @@ public class ProfilesPageController {
 		alert.setTitle("Reset Default");
 		alert.setHeaderText("Reset parameters to default");
 		alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
-
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 

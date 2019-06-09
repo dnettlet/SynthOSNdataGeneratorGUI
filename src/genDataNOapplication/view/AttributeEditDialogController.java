@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import genDataNOapplication.model.AttributeModel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -12,6 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -93,12 +98,15 @@ public class AttributeEditDialogController {
     	TextField paramName = new TextField();
     	paramName.setText("Introduce Parameter Name");
     	parametersSection.add(paramName, 0, paramCount + 2);
-    	Spinner<Double> paramValue = new Spinner<Double>();
-		paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
-		paramValue.getValueFactory().setValue((double)0.5);
+        Spinner<Double> paramValue = new Spinner<Double>(); 
+        DoubleSpinnerValueFactory factory = new DoubleSpinnerValueFactory(0, 1, 0.5);
+        factory.setAmountToStepBy(0.1);
+        paramValue.setValueFactory(factory);
+        paramValue.setEditable(true);
 		parametersSection.add(paramValue, 1, paramCount + 2);
 		Button deleteParamButton = new Button();
 		deleteParamButton.setText("Delete");
+		deleteParamButton.getStyleClass().add("danger");
 		String deleteButtonID = "deleteParamButton" + String.valueOf(paramCount);
 		deleteParamButton.setId(deleteButtonID);
 		parametersSection.add(deleteParamButton, 2, paramCount + 2);
@@ -155,7 +163,10 @@ public class AttributeEditDialogController {
 		alert.setTitle("Reset Default");
 		alert.setHeaderText("Reset parameters to default");
 		alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
-
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			nameTextField.setText("");
@@ -234,13 +245,30 @@ public class AttributeEditDialogController {
         	paramName.setText(parameter.getKey());
         	parametersSection.add(paramName, 0, paramCount + 2);
         	Spinner<Double> paramValue = new Spinner<Double>();
-    		paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
-    		paramValue.getValueFactory().setValue(parameter.getValue());
+    		//paramValue.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100));
+    		//paramValue.getValueFactory().setValue(parameter.getValue());
+            DoubleSpinnerValueFactory factory = new DoubleSpinnerValueFactory(0, 1, parameter.getValue());
+            factory.setAmountToStepBy(0.1);
+            paramValue.setValueFactory(factory);
+            paramValue.setEditable(true);
     		parametersSection.add(paramValue, 1, paramCount + 2);
     		Button deleteParamButton = new Button();
     		deleteParamButton.setText("Delete");
+    		deleteParamButton.getStyleClass().add("danger");
     		String deleteButtonID = "deleteParamButton" + String.valueOf(paramCount);
     		deleteParamButton.setId(deleteButtonID);
+    		deleteParamButton.setOnAction(new EventHandler<ActionEvent>() {
+    	
+				@Override public void handle(ActionEvent e) {
+    		       parameterList.remove(parameter);
+    		       attribute.setParameterList(parameterList);
+    		       int size = parametersSection.getChildren().size();
+    		       for(int i = size - 1; i > 3; i--) {
+    		    	   parametersSection.getChildren().remove(i);
+    		       }
+    		       openAttribute(attribute);
+    		    }
+    		});
     		parametersSection.add(deleteParamButton, 2, paramCount + 2);
     		paramCount++;
     	}

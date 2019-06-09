@@ -16,6 +16,9 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class AdvancedSettingsController {
 	
@@ -117,6 +120,7 @@ public class AdvancedSettingsController {
 	public void setConfiguration(ConfigurationModel configuration) {
 		this.configuration = configuration;
 		seedSizeSpinner.getValueFactory().setValue(configuration.getSeedSize());
+		seedSizeSpinner.setEditable(true);
 	}
 	
 	@FXML
@@ -131,7 +135,10 @@ public class AdvancedSettingsController {
 		alert.setTitle("Reset Default");
 		alert.setHeaderText("Reset parameters to default");
 		alert.setContentText("Are you sure you want to reset all settings parameters to the default configuration?");
-
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			configuration.setRandomness(0);
@@ -150,6 +157,10 @@ public class AdvancedSettingsController {
 							 "the more time it will take to locate them. The values are orientative." +
 							 "\n 110 seeds for 1K synth file, 5K seeds for amazon, 12k seeds for youtube and livejournal." +
 							 "\n For more information read the User Manual (Menu -> Help -> Documentation)");
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/confirmation_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
 		alert.showAndWait();
 	}
 	

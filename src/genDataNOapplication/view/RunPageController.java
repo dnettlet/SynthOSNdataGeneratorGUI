@@ -14,6 +14,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class RunPageController {
 	
@@ -119,6 +122,9 @@ public class RunPageController {
 			advancedButtonTab.setDisable(true);
 		
 			cancelButton.setVisible(true);
+			homePageButton.setVisible(false);
+			statisticsButton.setVisible(false);
+			openButton.setVisible(false);
 			progressIndicator.setVisible(true);
 			progressIndicator.setProgress(-1);
 			progressIndicator.progressProperty().unbind();
@@ -126,7 +132,6 @@ public class RunPageController {
 	
 			
 			programExecution = new Controller();
-			programExecution.setMainApp(main);
 			programExecution.setConfiguration(configuration);
 			
 			// When completed tasks
@@ -142,6 +147,10 @@ public class RunPageController {
 				                    	alert.setHeaderText("The program has finished running");
 				                    	alert.setContentText("Execution complete. To see the results check the output files located in the directory /resources/files. "
 				                    			+ "\n You can run it gain by pressing the \"Start Application\" Button.");
+				                		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+				                		Image icon = new Image("file:./resources/icons/info_icon.png");
+				                		stage.getIcons().add(icon);		
+				                		alert.setGraphic(new ImageView(icon));
 				                    	alert.showAndWait();
 				                    	
 				                    	runButton.setDisable(false);
@@ -210,6 +219,11 @@ public class RunPageController {
 	@FXML
 	public void handleOutputFilesButtonTab() {
 		main.showOutputFileSettingsPage();
+	}
+	
+	@FXML
+	public void handleStatisticsButton() {
+		main.showStatisticsPage();
 	}
 	
 	

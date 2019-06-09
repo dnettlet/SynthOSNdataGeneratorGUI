@@ -1,5 +1,9 @@
 package genDataNOapplication.Utils;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
@@ -26,6 +30,17 @@ public class Utils {
 	    }
 
 	    return result;
+	}
+	
+	public static boolean openFile(File file) {
+		try {
+			Desktop.getDesktop().open(file);
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 }

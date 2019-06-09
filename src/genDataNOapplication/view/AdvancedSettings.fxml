@@ -13,22 +13,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.AdvancedSettingsController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.AdvancedSettingsController">
    <children>
       <Label layoutX="353.0" layoutY="58.0" text="Advanced Settings">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="resetButton" layoutX="752.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+      <Button fx:id="resetButton" layoutX="752.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleResetButton" styleClass="danger" text="Resset to Default">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
+                  <Image url="@../../../resources/icons/outline_restore_white_24dp.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" text="Back">
+      <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" styleClass="warning" text="Back">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,25 +37,25 @@
             </ImageView>
          </graphic></Button>
       <Text layoutX="294.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning!  Here you can customize advanced parameters and test experimental features, you may expect program malfunction and crashes. This is for advanced users only, if you have any doubts leave it with the default configuration." textAlignment="CENTER" wrappingWidth="412.0000019669533" />
-      <TitledPane collapsible="false" layoutX="347.0" layoutY="202.0" prefHeight="394.0" prefWidth="306.0" text="Thresholds">
+      <TitledPane collapsible="false" layoutX="347.0" layoutY="202.0" prefHeight="394.0" prefWidth="306.0" styleClass="info" text="Thresholds">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Text layoutX="9.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The distance threshold depends on how the distance is calculated and may differ from attribute to attributeIt indicates the distance of the two closest categories" textAlignment="JUSTIFY" wrappingWidth="285.9999870657921" />
-                  <Button fx:id="distanceThresholdButton" layoutX="79.0" layoutY="100.0" mnemonicParsing="false" text="Edit Distance Thresholds">
+                  <Button fx:id="distanceThresholdButton" disable="true" layoutX="59.0" layoutY="100.0" mnemonicParsing="false" styleClass="success" text="Edit Distance Thresholds">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/icons/baseline_edit_black_24dp.png" />
+                              <Image url="@../../../resources/icons/baseline_edit_white_24dp.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
                   <Text layoutX="14.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here you can edit the assignment thresholds in AssignNeighbours. In this routine each attribute has a specific random threshold." wrappingWidth="283.4296875" />
-                  <Button layoutX="79.0" layoutY="264.0" mnemonicParsing="false" text="Edit Distance Thresholds">
+                  <Button disable="true" layoutX="42.0" layoutY="265.0" mnemonicParsing="false" styleClass="success" text="Edit Assaignment Thresholds">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../resources/icons/baseline_edit_black_24dp.png" />
+                              <Image url="@../../../resources/icons/baseline_edit_white_24dp.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -63,7 +63,7 @@
             </Pane>
          </content>
       </TitledPane>
-      <TitledPane collapsible="false" layoutX="680.0" layoutY="202.0" prefHeight="222.0" prefWidth="306.0" text="Randomness">
+      <TitledPane collapsible="false" layoutX="680.0" layoutY="202.0" prefHeight="222.0" prefWidth="306.0" styleClass="info" text="Randomness">
          <content>
             <Pane prefHeight="190.0" prefWidth="304.0">
                <children>
@@ -81,9 +81,9 @@
             <Image url="@../../../resources/icons/outline_settings_black_24dptitle.png" />
          </image>
       </ImageView>
-      <ButtonBar layoutX="113.0" layoutY="22.0" prefHeight="40.0" prefWidth="729.0">
+      <ButtonBar buttonMinWidth="80.0" layoutX="113.0" layoutY="22.0" prefHeight="40.0" prefWidth="729.0" styleClass="bar">
          <buttons>
-            <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" text="Input Files">
+            <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" styleClass="first" text="Input Files">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -92,7 +92,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
+            <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" styleClass="middle" text="User Attributes">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -101,7 +101,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" text="Profiles">
+            <Button fx:id="profilesButtonTab" mnemonicParsing="false" onAction="#handleProfilesButtonTab" styleClass="middle" text="Profiles">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -110,7 +110,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Communities &amp; Profiles">
+            <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" styleClass="middle" text="Communities &amp; Profiles">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -119,7 +119,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="outputFilesButtonTab" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" text="Out Files">
+            <Button fx:id="outputFilesButtonTab" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" styleClass="middle" text="Out Files">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -128,7 +128,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="advancedButtonTab" disable="true" mnemonicParsing="false" text="Advanced">
+            <Button fx:id="advancedButtonTab" disable="true" mnemonicParsing="false" styleClass="middle" text="Advanced">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -137,7 +137,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Run">
+            <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" styleClass="last" text="Run">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -148,14 +148,14 @@
             </Button>
          </buttons>
       </ButtonBar>
-      <TitledPane collapsible="false" layoutX="18.0" layoutY="202.0" prefHeight="394.0" prefWidth="306.0" text="Profile Seeds">
+      <TitledPane collapsible="false" layoutX="18.0" layoutY="202.0" prefHeight="394.0" prefWidth="306.0" styleClass="info" text="Profile Seeds">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Text layoutX="7.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By default each community has a seed profile. A seed profile is a set of defined user characteristics that are used as a starting point for the algorithm to start generating the other users' characteristics in the community. " textAlignment="JUSTIFY" wrappingWidth="366.9999870657921" />
                   <Label layoutX="14.0" layoutY="116.0" text="Seed Size" />
                   <Spinner fx:id="seedSizeSpinner" layoutX="111.0" layoutY="112.0" />
-                  <Button fx:id="helpButton" layoutX="14.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleHelpButton" text="Help">
+                  <Button fx:id="helpButton" layoutX="14.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleHelpButton" styleClass="info" text="Help">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -168,11 +168,11 @@
             </Pane>
          </content>
       </TitledPane>
-      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="815.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Next">
+      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="815.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleRunButtonTab" styleClass="primary" text="Next">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
+                  <Image url="@../../../resources/icons/baseline_arrow_forward_white_24dp.png" />
                </image>
             </ImageView>
          </graphic>

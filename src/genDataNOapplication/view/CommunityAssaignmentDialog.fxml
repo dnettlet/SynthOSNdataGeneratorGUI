@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ComAssaignDialogController">
+<AnchorPane stylesheets="@../../../resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ComAssaignDialogController">
    <children>
       <ScrollPane layoutX="29.0" layoutY="10.0" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="0.0">
          <content>
-            <GridPane hgap="20.0" prefHeight="408.0" prefWidth="473.0" vgap="10.0">
+            <GridPane hgap="20.0" prefHeight="426.0" prefWidth="473.0" vgap="10.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="163.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.0" minWidth="10.0" prefWidth="283.0" />
@@ -32,7 +35,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Community 0">
+                  <Label styleClass="first" text="Community 0">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -46,7 +49,7 @@
                   <Label text="Communnity 7" GridPane.rowIndex="7" />
                   <Label text="Communnity 8" GridPane.rowIndex="8" />
                   <Label text="Communnity 9" GridPane.rowIndex="9" />
-                  <ChoiceBox fx:id="com0" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ChoiceBox fx:id="com0" prefWidth="150.0" styleClass="dot" GridPane.columnIndex="1" />
                   <ChoiceBox fx:id="com1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <ChoiceBox fx:id="com2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ChoiceBox fx:id="com3" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -57,10 +60,27 @@
                   <ChoiceBox fx:id="com8" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                   <ChoiceBox fx:id="com9" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
             </GridPane>
          </content>
       </ScrollPane>
-      <Button fx:id="saveButton" layoutX="317.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="25.0" prefWidth="70.0" text="Ok" />
-      <Button fx:id="cancelButton" layoutX="117.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
+      <Button fx:id="saveButton" layoutX="159.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="25.0" prefWidth="84.0" styleClass="success" text="Ok">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/baseline_done_white_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="cancelButton" layoutX="266.0" layoutY="446.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="25.0" prefWidth="84.0" styleClass="danger" text="Cancel">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icons/baseline_close_white_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

@@ -12,7 +12,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.scene.control.ButtonType;
 
 public class RootLayoutController {
@@ -55,6 +58,10 @@ public class RootLayoutController {
 			alert.setHeaderText("The configuration has been successfully imported");
 			alert.setContentText("You imported the configuration from file " + file.getName() + " . Click Start Application to run with the imported"
 					 + "settings or click change settings to edit those settings.");
+			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+			Image icon = new Image("file:./resources/icons/info_icon.png");
+			stage.getIcons().add(icon);		
+			alert.setGraphic(new ImageView(icon));
 			alert.showAndWait();
 			main.setConfiguration(configuration);
 		}
@@ -81,6 +88,10 @@ public class RootLayoutController {
     		alert.setHeaderText("The configuration has been successfully saved to file");
     		alert.setContentText("The configuration has been saved to  " + file.getPath() + " ."
     				 + "to load this file go to the initial page and click the button Load Config From File.");
+    		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+    		Image icon = new Image("file:./resources/icons/info_icon.png");
+    		stage.getIcons().add(icon);		
+    		alert.setGraphic(new ImageView(icon));
     		alert.showAndWait();
         }else {
 			Alert alert = new Alert(AlertType.ERROR);
@@ -103,6 +114,10 @@ public class RootLayoutController {
     	alert.setHeaderText("About the Synthetic Data Generator");
     	alert.setContentText("A synthetic data generator for Online Social Networks Graphs developed by David Nettleton. "
     			+ "\n GUI developed by Marc Canal as a TFG.");
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/info_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
     	alert.showAndWait();
     }
     
@@ -124,6 +139,10 @@ public class RootLayoutController {
     			"\n Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications," + 
     			"which include larger works using a licensed work, under the same license." +
     			"\n Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.");
+		Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		Image icon = new Image("file:./resources/icons/info_icon.png");
+		stage.getIcons().add(icon);		
+		alert.setGraphic(new ImageView(icon));
 
     	ButtonType buttonTypeOne = new ButtonType("Open License File");
     	ButtonType buttonTypeCancel = new ButtonType("Close", ButtonData.CANCEL_CLOSE);

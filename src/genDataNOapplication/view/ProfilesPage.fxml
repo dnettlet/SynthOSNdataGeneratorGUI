@@ -10,25 +10,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ProfilesPageController">
+<ScrollPane prefHeight="1002.0" prefWidth="1003.0" stylesheets="@../../../resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="genDataNOapplication.view.ProfilesPageController">
    <content>
-      <AnchorPane prefHeight="1000.0" prefWidth="1000.0">
+      <AnchorPane prefHeight="1000.0" prefWidth="851.0">
          <children>
             <Label layoutX="379.0" layoutY="59.0" text="Profiles Settings">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="resetButton" layoutX="794.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleResetButton" text="Resset to Default">
+            <Button fx:id="resetButton" layoutX="794.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleResetButton" styleClass="danger" text="Resset to Default">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../resources/icons/outline_restore_black_24dp.png" />
+                        <Image url="@../../../resources/icons/outline_restore_white_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="Back">
+            <Button fx:id="backButton" layoutX="111.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" styleClass="warning" text="Back">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,19 +43,19 @@
                   <Image url="@../../../resources/icons/baseline_dashboard_black_24dptitle.png" />
                </image>
             </ImageView>
-            <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="826.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Next">
+            <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="826.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" styleClass="primary" text="Next">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../resources/icons/baseline_arrow_forward_black_24dp.png" />
+                        <Image url="@../../../resources/icons/baseline_arrow_forward_white_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <AnchorPane fx:id="profilesAnchorPane" layoutX="4.0" layoutY="210.0" maxWidth="970.0" prefHeight="790.0" prefWidth="953.0" />
+            <AnchorPane fx:id="profilesAnchorPane" layoutX="4.0" layoutY="210.0" maxWidth="980.0" prefHeight="790.0" prefWidth="962.0" />
             <ButtonBar layoutX="113.0" layoutY="14.0" prefHeight="40.0" prefWidth="729.0">
                <buttons>
-                  <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" text="Input Files">
+                  <Button fx:id="inputFilesButtonTab" mnemonicParsing="false" onAction="#handleInputFilesButtonTab" styleClass="first" text="Input Files">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -64,7 +64,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" text="User Attributes">
+                  <Button fx:id="userParametersButtonTab" mnemonicParsing="false" onAction="#handleUserParametersButtonTab" styleClass="middle" text="User Attributes">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -73,7 +73,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="profilesButtonTab" disable="true" mnemonicParsing="false" text="Profiles">
+                  <Button fx:id="profilesButtonTab" disable="true" mnemonicParsing="false" styleClass="middle" text="Profiles">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -82,7 +82,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" text="Communities &amp; Profiles">
+                  <Button fx:id="communitiesButtonTab" mnemonicParsing="false" onAction="#handleCommunitiesButtonTab" styleClass="middle" text="Communities &amp; Profiles">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -91,7 +91,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="outputFilesButtonTab" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" text="Out Files">
+                  <Button fx:id="outputFilesButtonTab" graphicTextGap="1.0" mnemonicParsing="false" onAction="#handleOutputFilesButtonTab" styleClass="middle" text="Out Files">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -100,7 +100,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" text="Advanced">
+                  <Button fx:id="advancedButtonTab" mnemonicParsing="false" onAction="#handleAdvancedButtonTab" styleClass="middle" text="Advanced">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -109,7 +109,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" text="Run">
+                  <Button fx:id="runButtonTab" mnemonicParsing="false" onAction="#handleRunButtonTab" styleClass="last" text="Run">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>

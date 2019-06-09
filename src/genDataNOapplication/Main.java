@@ -14,6 +14,7 @@ import genDataNOapplication.view.ProfileFreqDialogController;
 import genDataNOapplication.view.ProfilesPageController;
 import genDataNOapplication.view.RootLayoutController;
 import genDataNOapplication.view.RunPageController;
+import genDataNOapplication.view.StatisticsPageController;
 import genDataNOapplication.view.InputFileSettingsController;
 import genDataNOapplication.view.OutputFileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
@@ -24,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -41,7 +43,7 @@ public class Main extends Application {
 		this.primaryStage.setTitle("Synthetic Data Generator");
 		
 		configuration = new ConfigurationModel();
-		
+		this.primaryStage.getIcons().add(new Image("file:./resources/icons/logo.png"));
 		initRootLayout();
 		showHomePage();
 	}
@@ -220,6 +222,7 @@ public class Main extends Application {
 	        dialogStage.setTitle("Edit Attribute");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
+	        dialogStage.getIcons().add(new Image("file:./resources/icons/edit_icon.png"));
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
 
@@ -282,6 +285,24 @@ public class Main extends Application {
 		}
 	}
 	
+	public void showStatisticsPage() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("view/StatisticsPage.fxml"));
+			Node statisticsPage = (Node) loader.load();
+		
+			rootLayout.setCenter(statisticsPage);
+			
+			StatisticsPageController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setConfiguration(configuration);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	/**
 	 * Opens a dialog to edit details for the specified person. If the user
@@ -300,8 +321,9 @@ public class Main extends Application {
 
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("Community Assaignment");
+	        dialogStage.setTitle("Community Assignment");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.getIcons().add(new Image("file:./resources/icons/edit_icon.png"));
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
@@ -340,6 +362,7 @@ public class Main extends Application {
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Profile Frequency");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.getIcons().add(new Image("file:./resources/icons/edit_icon.png"));
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
