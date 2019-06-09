@@ -16,9 +16,13 @@ import javafx.util.Pair;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import genDataNOapplication.Main;
+import genDataNOapplication.RV.RV;
+import genDataNOapplication.User.User;
 import genDataNOapplication.Utils.Utils;
 import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
@@ -133,25 +137,6 @@ public class StatisticsPageController {
         }
         final PieChart profileChart = new PieChart(profileChartData);
         
-        /*final Label caption = new Label("");
-        caption.setTextFill(Color.DARKORANGE);
-        caption.setStyle("-fx-font: 24 arial;");
-        for (final PieChart.Data data : profileChart.getData()) {
-            data.getNode().addEventHandler(MouseEvent.MOUSE_ENTERED,
-                e -> {
-                    double total = 0;
-                    for (PieChart.Data d : profileChart.getData()) {
-                        total += d.getPieValue();
-                    }
-                    caption.setTranslateX(e.getSceneX());
-                    caption.setTranslateY(e.getSceneY());
-                    String text = String.format("%.1f%%", 100*data.getPieValue()/total) ;
-                    caption.setText(text);
-                    System.out.println(text);;
-                 }
-                );
-        }*/
-        
         for (PieChart.Data d : profileChart.getData()) {
             total += d.getPieValue();
         }
@@ -170,13 +155,15 @@ public class StatisticsPageController {
 		//Charts for User Attributes
 		int row = 0;
 		int col = 1;
+		int countAttr = 0;
 		for(AttributeModel currentAttr : configuration.getUserAttrributesList()) {
 			List<Pair<String, Double>> paramList = currentAttr.getParameterList();
+			List<Pair<String, Double>> realParamList = getRealData(countAttr);
 	        final CategoryAxis xAxis = new CategoryAxis();
 	        final NumberAxis yAxis = new NumberAxis();
-	        final BarChart<String,Number> ageChart = 
+	        final BarChart<String,Number> attributesChart = 
 	                new BarChart<String,Number>(xAxis,yAxis);
-	            ageChart.setTitle(currentAttr.getName());
+	            attributesChart.setTitle(currentAttr.getName());
 	            xAxis.setLabel("Parameters");       
 	            yAxis.setLabel("Frequency");
 	            XYChart.Series series1 = new XYChart.Series();
@@ -186,20 +173,90 @@ public class StatisticsPageController {
 	            }
 	            
 	            XYChart.Series series2 = new XYChart.Series();
-	            series2.setName("Expected");
-	            for(Pair<String, Double> currentParam : paramList) {
+	            series2.setName("Real");
+	            for(Pair<String, Double> currentParam : realParamList) {
 	            	series2.getData().add(new XYChart.Data<String, Double>(currentParam.getKey(), currentParam.getValue()));
 	            }
-	            chartsSection.add(ageChart, col, row);
-	            //chartsSection.getChildren().add(ageChart);
-	            ageChart.getData().addAll(series1, series2);
+	            chartsSection.add(attributesChart, col, row);
+	            attributesChart.getData().addAll(series1, series2);
 	            col++;
 	            if(col > 2) {
 	            	col = 0;
 	            	row++;
 	            }
+	       countAttr++;
 		}
 		//List<Pair<String, Double>> paramList = configuration.getUserAttrributesList().get(0).getParameterList();		
+	}
+	
+	private List<Pair<String, Double>> getRealData(int attributeId){
+		List<Pair<String, Double>> realParamList = new ArrayList<Pair<String, Double>>();
+		List<Integer> paramFreqList = new ArrayList<Integer>();
+		List<String> paramNameList = new ArrayList<String>();
+		for(Pair<String, Double> currentParam : configuration.getUserAttrributesList().get(attributeId).getParameterList()) {
+			paramNameList.add(currentParam.getKey());
+			paramFreqList.add(0);
+		}
+		Enumeration<?> en1 = RV.Users.keys();
+		
+		while (en1.hasMoreElements()){
+			User nw = (User)RV.Users.get((Integer)en1.nextElement());
+			String attribute = new String();
+			switch(attributeId) {
+			case 0:
+				attribute = nw.getAge();
+				break;
+			case 1:
+				attribute = nw.getGender();
+				break;
+			case 2:
+				attribute = nw.getResidence();
+				break;
+			case 3:
+				attribute = nw.getReligion();
+				break;
+			case 4:
+				attribute = nw.getMaritalStatus();
+				break;
+			case 5:
+				attribute = nw.getProfession();
+				break;
+			case 6:
+				attribute = nw.getPoliticalOrientation();
+				break;
+			case 7:
+				attribute = nw.getSexualOrientation();
+			}
+				
+			int index = 0;
+			for(String currentName : paramNameList) {
+				if(attribute.equals(currentName)) {
+					index = paramNameList.indexOf(currentName);
+					int freq = paramFreqList.get(index);
+					freq++;
+					paramFreqList.set(index, freq);
+					break;
+				}
+			}
+			
+			
+
+		}
+		int sum = 0;
+		for(String currentName : paramNameList) {
+			sum += paramFreqList.get(paramNameList.indexOf(currentName));
+		}
+		
+		for(int value : paramFreqList) {
+			double freq = (double) value / sum;
+			String name = paramNameList.get(paramFreqList.indexOf(value));
+			Pair<String, Double> param = new Pair<String, Double>(name, freq);
+			realParamList.add(param);
+		}
+		
+		
+		
+		return realParamList;
 	}
 	
 	@FXML

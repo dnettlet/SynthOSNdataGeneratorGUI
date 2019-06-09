@@ -321,7 +321,7 @@ public class Main extends Application {
 
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("Community Assaignment");
+	        dialogStage.setTitle("Community Assignment");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.getIcons().add(new Image("file:./resources/icons/edit_icon.png"));
 	        dialogStage.initOwner(primaryStage);

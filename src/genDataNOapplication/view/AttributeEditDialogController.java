@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import genDataNOapplication.model.AttributeModel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -255,6 +257,18 @@ public class AttributeEditDialogController {
     		deleteParamButton.getStyleClass().add("danger");
     		String deleteButtonID = "deleteParamButton" + String.valueOf(paramCount);
     		deleteParamButton.setId(deleteButtonID);
+    		deleteParamButton.setOnAction(new EventHandler<ActionEvent>() {
+    	
+				@Override public void handle(ActionEvent e) {
+    		       parameterList.remove(parameter);
+    		       attribute.setParameterList(parameterList);
+    		       int size = parametersSection.getChildren().size();
+    		       for(int i = size - 1; i > 3; i--) {
+    		    	   parametersSection.getChildren().remove(i);
+    		       }
+    		       openAttribute(attribute);
+    		    }
+    		});
     		parametersSection.add(deleteParamButton, 2, paramCount + 2);
     		paramCount++;
     	}
