@@ -100,15 +100,15 @@ public class ConfigurationModel {
 		religion.setDescription("The religion a user follows. It can also be the case that"
 				+ " the user doesn't follow any religion at all");
 		List<Pair<String, Double>> ReligionparameterList = new ArrayList<Pair<String, Double>>();
-		ReligionparameterList.add(new Pair<String, Double>("Buddhist", 0.068));
-		ReligionparameterList.add(new Pair<String, Double>("Christian", 0.304));
-		ReligionparameterList.add(new Pair<String, Double>("Hindu", 0.138));
-		ReligionparameterList.add(new Pair<String, Double>("Jewish", 0.02));
-		ReligionparameterList.add(new Pair<String, Double>("Muslim", 0.257));
-		ReligionparameterList.add(new Pair<String, Double>("Sikh", 0.03));
-		ReligionparameterList.add(new Pair<String, Double>("Traditional Spirituality", 0.01));
-		ReligionparameterList.add(new Pair<String, Double>("Other religions", 0.110));
-		ReligionparameterList.add(new Pair<String, Double>("No religious affiliation", 0.117));
+		ReligionparameterList.add(new Pair<String, Double>("Buddhist", 0.1));
+		ReligionparameterList.add(new Pair<String, Double>("Christian", 0.30));
+		ReligionparameterList.add(new Pair<String, Double>("Hindu", 0.13));
+		ReligionparameterList.add(new Pair<String, Double>("Jewish", 0.1));
+		ReligionparameterList.add(new Pair<String, Double>("Muslim", 0.25));
+		ReligionparameterList.add(new Pair<String, Double>("Sikh", 0.0));
+		ReligionparameterList.add(new Pair<String, Double>("Traditional Spirituality", 0.0));
+		ReligionparameterList.add(new Pair<String, Double>("Other religions", 0.10));
+		ReligionparameterList.add(new Pair<String, Double>("No religious affiliation", 0.01));
 		religion.setParameterList(ReligionparameterList);
 		userAttrributesList.add(religion);
 		
@@ -119,7 +119,7 @@ public class ConfigurationModel {
 		maritalstatusparameterList.add(new Pair<String, Double>("Single", 0.3));
 		maritalstatusparameterList.add(new Pair<String, Double>("Married", 0.5));
 		maritalstatusparameterList.add(new Pair<String, Double>("Divorced", 0.1));
-		maritalstatusparameterList.add(new Pair<String, Double>("Widowed", 0.06));
+		maritalstatusparameterList.add(new Pair<String, Double>("Widowed", 0.1));
 		maritalstatus.setParameterList(maritalstatusparameterList);
 		userAttrributesList.add(maritalstatus);
 		
@@ -146,7 +146,7 @@ public class ConfigurationModel {
 		politicalOrientationparameterList.add(new Pair<String, Double>("Center Left", 0.18));
 		politicalOrientationparameterList.add(new Pair<String, Double>("Center", 0.18));
 		politicalOrientationparameterList.add(new Pair<String, Double>("Center Right", 0.10));
-		politicalOrientationparameterList.add(new Pair<String, Double>("Right", 0.08));
+		politicalOrientationparameterList.add(new Pair<String, Double>("Right", 0.09));
 		politicalOrientationparameterList.add(new Pair<String, Double>("Far Right", 0.01));
 		politicalOrientation.setParameterList(politicalOrientationparameterList);
 		userAttrributesList.add(politicalOrientation);

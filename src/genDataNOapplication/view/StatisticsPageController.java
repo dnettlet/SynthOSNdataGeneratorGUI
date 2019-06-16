@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Vector;
 
 import genDataNOapplication.Main;
 import genDataNOapplication.RV.RV;
@@ -117,6 +118,7 @@ public class StatisticsPageController {
             // if the item of the list is changed 
             public void changed(ObservableValue ov, Number value, Number userValue) 
             { 
+            	chartsSection.getChildren().clear();
             	loadStatistics(whatToDisplay.getSelectionModel().selectedIndexProperty().intValue());
             } 
         }); 
@@ -124,8 +126,8 @@ public class StatisticsPageController {
 	}
     
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void loadStatistics(int i) {
-		System.out.println(i);
+	private void loadStatistics(int comNum) {
+		System.out.println("Displaying community " + comNum);
 		//Chart for Profiles
 		List<Pair<List<Integer>, Integer>>  profileList = configuration.getProfileList();
 		int count = 0;
@@ -157,8 +159,8 @@ public class StatisticsPageController {
 		int col = 1;
 		int countAttr = 0;
 		for(AttributeModel currentAttr : configuration.getUserAttrributesList()) {
-			List<Pair<String, Double>> paramList = currentAttr.getParameterList();
-			List<Pair<String, Double>> realParamList = getRealData(countAttr);
+			List<Pair<String, Double>> paramList = getExpectedData(comNum, countAttr);
+			List<Pair<String, Double>> realParamList = getRealData(comNum, countAttr);
 	        final CategoryAxis xAxis = new CategoryAxis();
 	        final NumberAxis yAxis = new NumberAxis();
 	        final BarChart<String,Number> attributesChart = 
@@ -189,7 +191,36 @@ public class StatisticsPageController {
 		//List<Pair<String, Double>> paramList = configuration.getUserAttrributesList().get(0).getParameterList();		
 	}
 	
-	private List<Pair<String, Double>> getRealData(int attributeId){
+	
+	private List<Pair<String, Double>> getExpectedData(int comNum, int countAttr){
+		List<Pair<String, Double>> expectedParamList = configuration.getUserAttrributesList().get(countAttr).getParameterList();
+
+		if(comNum != 10) {
+			int[] profComAssaign = configuration.getProfileCommunityAssaignment();
+			int profileID = profComAssaign[comNum];
+			Pair<List<Integer>, Integer> profile = configuration.getProfileList().get(profileID);
+			int paramID = profile.getKey().get(countAttr);
+			Pair<String, Double> param = expectedParamList.get(paramID);
+			List<Pair<String, Double>> newParamList = new ArrayList<Pair<String, Double>>();
+			
+			for(Pair<String, Double> currentParam : expectedParamList) {
+				if(currentParam.getKey().equals(param.getKey())) {
+					Pair<String, Double> newParam = new Pair<String, Double>(currentParam.getKey(), 1.0);
+					newParamList.add(newParam);
+				}else {
+					Pair<String, Double> newParam = new Pair<String, Double>(currentParam.getKey(), 0.0);
+					newParamList.add(newParam);
+				}
+					
+			}
+			expectedParamList = newParamList;
+			
+		}
+		
+		return expectedParamList;
+	}
+	@SuppressWarnings("unchecked")
+	private List<Pair<String, Double>> getRealData(int comNum, int attributeId){
 		List<Pair<String, Double>> realParamList = new ArrayList<Pair<String, Double>>();
 		List<Integer> paramFreqList = new ArrayList<Integer>();
 		List<String> paramNameList = new ArrayList<String>();
@@ -201,6 +232,12 @@ public class StatisticsPageController {
 		
 		while (en1.hasMoreElements()){
 			User nw = (User)RV.Users.get((Integer)en1.nextElement());
+			if(comNum != 10) {
+			Vector<Integer> communities =  nw.communities;
+			if(!communities.contains(comNum))
+				continue;
+			}
+			
 			String attribute = new String();
 			switch(attributeId) {
 			case 0:
@@ -226,6 +263,7 @@ public class StatisticsPageController {
 				break;
 			case 7:
 				attribute = nw.getSexualOrientation();
+				break;
 			}
 				
 			int index = 0;
@@ -238,8 +276,6 @@ public class StatisticsPageController {
 					break;
 				}
 			}
-			
-			
 
 		}
 		int sum = 0;
@@ -253,9 +289,6 @@ public class StatisticsPageController {
 			Pair<String, Double> param = new Pair<String, Double>(name, freq);
 			realParamList.add(param);
 		}
-		
-		
-		
 		return realParamList;
 	}
 	
