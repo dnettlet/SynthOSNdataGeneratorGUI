@@ -108,7 +108,7 @@ public class ConfigurationModel {
 		ReligionparameterList.add(new Pair<String, Double>("Sikh", 0.0));
 		ReligionparameterList.add(new Pair<String, Double>("Traditional Spirituality", 0.0));
 		ReligionparameterList.add(new Pair<String, Double>("Other religions", 0.10));
-		ReligionparameterList.add(new Pair<String, Double>("No religious affiliation", 0.01));
+		ReligionparameterList.add(new Pair<String, Double>("No religious affiliation", 0.02));
 		religion.setParameterList(ReligionparameterList);
 		userAttrributesList.add(religion);
 		
