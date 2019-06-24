@@ -52,7 +52,7 @@ public int AssignSeeds2(Hashtable Users, int maxid, int seedsize)
     int maxtries = 50, tries=0;
     
     int besttonow=0;
-
+    System.out.println("seedsize="+seedsize+" tries="+tries);
     while ((RV.seeds.size() < seedsize) && (tries < maxtries))  // loop until got 'seedsize' seeds
     {
     	//System.out.println("P1");
@@ -66,7 +66,7 @@ public int AssignSeeds2(Hashtable Users, int maxid, int seedsize)
     		--seedsize;
     		tries = 0;
     	}
-    	System.out.println("seedsize="+seedsize+" tries="+tries+" seeds assigned="+RV.seeds.size());
+    	//System.out.println("seedsize="+seedsize+" tries="+tries+" seeds assigned="+RV.seeds.size());
     	
     	if (RV.seeds.size() > besttonow)
     	{

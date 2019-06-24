@@ -23,21 +23,26 @@ public class rAssignDataGeneralizedSensAttr4{
 	
 	public static ConfigurationModel configuration;
 	
-public static double dage(String agev1, String agev2)
+public static double dage(String agev1, String agev2, String[] gage)
 {
 int i=0, j=0;
  
-String age[]  = new String[7]; 
+String age[]  = new String[gage.length]; 
 String ag="";
 int agix = 0;
 
-age[0]  = "18-25";
+/*age[0]  = "18-25";
 age[1]  = "26-35";
 age[2]  = "36-45";
 age[3]  = "46-55";
 age[4]  = "56-65";
 age[5]  = "66-75";
-age[6]  = "76-85";
+age[6]  = "76-85";*/
+
+for(int k = 0; k < gage.length; k++) {
+	age[k] = gage[k];
+}
+
 
 int pos1=0, pos2=0;
 
@@ -58,7 +63,7 @@ return(distage);
 
 }
 
-public static String assignAge(String ag, Random generator, Random generator2, double dagthresh, String[] age,
+public static String assignAge(String ag, Random generator, Random generator2, double dagthresh, String[] age, String[] gage,
 		                       int agL1, int agL2,int agL3,int agL4)
 {
 
@@ -66,21 +71,25 @@ public static String assignAge(String ag, Random generator, Random generator2, d
 	int agix=0;
 	String ag2="";
 	int ranval = 	 ((int)(generator2.nextInt(100))); // rnd will be between 0 and 9
+	int count = 0;
 	
 	boolean got = false;
 	if (ranval < agL1)
 		ag2 = ag; // 60% of the time it'll be the same so just assign it.
 	else
 		while (!got)
-		{				
-			agix = 	 ((int)(generator.nextInt(12))); // rnd will be between 0 and limit-1
+		{	
+			count++;
+			agix = 	 ((int)(generator.nextInt(100))); // rnd will be between 0 and limit-1
 			ag2 = age[agix];
 
-			distage = dage(ag, ag2);
+			distage = dage(ag, ag2, gage);
 		
 			if ((ranval > agL2) && (ranval < agL3) && (distage == dagthresh))
 				got = true;
 			else if ((ranval > agL4) && (distage > dagthresh))
+				got = true;
+			else if(count > 200)//if after 200 attempts there isn't a result, exit
 				got = true;
 		}
 
@@ -88,21 +97,21 @@ public static String assignAge(String ag, Random generator, Random generator2, d
 
 }
 
-public static double dpol(String polv1, String polv2)
+public static double dpol(String polv1, String polv2, String[] gpoliticalorientation)
 {
 int i=0, j=0;
  
-String pol[]  = new String[7]; 
+String pol[]  = gpoliticalorientation; 
 String po="";
 int poix = 0;
 
-pol[0] = "Far Left";
+/*pol[0] = "Far Left";
 pol[1] = "Left";
 pol[2] = "Center Left";
 pol[3] = "Center";
 pol[4] = "Center Right";
 pol[5] = "Right";
-pol[6] = "Far Right";
+pol[6] = "Far Right";*/
 
 int pos1=0, pos2=0;
 
@@ -124,7 +133,7 @@ return(distpol);
 }
 
 public static String assignPol(String pol, Random generator, Random generator2, double dpolthresh, String[] politicalorientation,
-        					   int polL1, int polL2, int polL3, int polL4)
+        					   String[] gpoliticalorientation, int polL1, int polL2, int polL3, int polL4)
 {
 	double distpol=0.0; int polix=0;
 	String pol2="";
@@ -136,10 +145,10 @@ public static String assignPol(String pol, Random generator, Random generator2, 
 	else
 		while (!got)
 		{
-			polix =  ((int)(generator.nextInt(99))); // rnd will be between 0 and limit-1
+			polix =  ((int)(generator.nextInt(100))); // rnd will be between 0 and limit-1
 			pol2 = politicalorientation[polix];
 
-			distpol = dpol(pol, pol2);
+			distpol = dpol(pol, pol2, gpoliticalorientation);
 	
 			if ((ranval > polL2) && (ranval < polL3) && (distpol == dpolthresh))
 				got = true;
@@ -163,11 +172,11 @@ else
 return(distseo);
 }
 
-public static double dseo2(String seov1, String seov2)
+public static double dseo2(String seov1, String seov2, String[] gsexualOrientation)
 {
-	String sexual[] = new String[4]; 
+	String sexual[] = gsexualOrientation;
 	String sex="";
-	sexual[0] = "Asexual";sexual[1] = "Bisexual";sexual[2] = "Heterosexual";sexual[3] = "Homosexual";
+	//sexual[0] = "Asexual";sexual[1] = "Bisexual";sexual[2] = "Heterosexual";sexual[3] = "Homosexual";
 
 	double distseo = 0.0;
 
@@ -182,7 +191,7 @@ return(distseo);
 }
 
 public static String assignSeo(String seo, Random generator, Random generator2, double dseothresh, 
-		   				       String[] sexualorientation,
+		   				       String[] sexualorientation, String[] gsexualorientation,
 		   				       int seoL1, int seoL2,int seoL3,int seoL4,
 		   				       int seoL1h, int seoL2h,int seoL3h,int seoL4h)
 {
@@ -190,23 +199,25 @@ public static String assignSeo(String seo, Random generator, Random generator2, 
 	double distseo=0.0; int seoix=0;
 	String seo2="";
 	int ranval = 	 ((int)(generator2.nextInt(100))); // rnd will be between 0 and 9
+	int count = 0;
 	
 	boolean got = false;
-	if (ranval < seoL1 && seo.equals("Heterosexual"))
+	if (ranval < seoL1 && seo.equals(gsexualorientation[0]))
 		seo2 = seo; // 60% of the time it'll be the same so just assign it.
-	else if (ranval < seoL1h && !seo.equals("Heterosexual"))
+	else if (ranval < seoL1h && !seo.equals(gsexualorientation[1]))
 		seo2 = seo; // 40% of the time it'll be the same so just assign it.
 	else
 		while (!got)
 		{
+			count++;
 			seoix =  ((int)(generator.nextInt(100))); // rnd will be between 0 and limit-1
 			seo2 = sexualorientation[seoix];
 
-			distseo = dseo2(seo, seo2);
+			distseo = dseo2(seo, seo2, gsexualorientation);
 			
 			//System.out.println("ranval: "+ranval+" distseo: "+distseo+" seo: "+seo+" seo2: "+seo2);
 			
-			if (seo.equals("Asexual") || seo.equals("Bisexual") || seo.equals("Homosexual"))
+			if (seo.equals(gsexualorientation[1]) || seo.equals("Bisexual") || seo.equals("Homosexual"))
 			{
 				//System.out.println("P1");
 				if ((ranval > seoL2h) && (ranval < seoL3h) && (distseo == dseothresh)) // 30% of time !hetero
@@ -221,17 +232,19 @@ public static String assignSeo(String seo, Random generator, Random generator2, 
 					got = true;
 				else if ((ranval > seoL4) && (distseo > 0.0)) // 10% of time ! hetero
 					got = true;
+				else if(count > 200)
+					got = true;
 			}
 		}
 return(seo2);
 }
 
 
-public static double dres(String residencev1, String residencev2)
+public static double dres(String residencev1, String residencev2, String[] gresidence)
 {
 int i=0, j=0;
 
-String residence[] = new String[6]; 
+String residence[] = gresidence;
 String county[]    = new String[6]; 
 String state[]     = new String[6]; 
 String division[]  = new String[6]; 
@@ -240,12 +253,12 @@ String region[]    = new String[6];
 String res="";
 int resix = 0;
 
-residence[0] = "Palo Alto";
+/*residence[0] = "Palo Alto";
 residence[1] = "Santa Barbara";
 residence[2] = "Winthrop";
 residence[3] = "Boston";
 residence[4] = "Cambridge";
-residence[5] = "San Jose";
+residence[5] = "San Jose";*/
 
 county[0] = "Santa Clara";
 county[1] = "Santa Barbara";
@@ -307,12 +320,13 @@ return(distresidence);
 }
 
 public static String assignRes(String res, Random generator, Random generator2, double dresthresh1, 
-							   double dresthresh2, double dresthresh3, String[] residence,
+							   double dresthresh2, double dresthresh3, String[] residence, String[] gresidence,
 							   int resL1, int resL2,int resL3,int resL4)
 {
 
 	double distres=0.0; int resix=0;
 	String res2="";
+	//int count = 0;
 	int ranval = 	 ((int)(generator2.nextInt(100))); // rnd will be between 0 and 9
 	boolean got = false;
 	if (ranval < resL1)
@@ -320,34 +334,40 @@ public static String assignRes(String res, Random generator, Random generator2, 
 	else
 	while (!got)
 	{
-		resix =  ((int)(generator.nextInt(6))); // rnd will be between 0 and limit-1
+		//count++;
+		resix =  ((int)(generator.nextInt(100))); // rnd will be between 0 and limit-1
 		res2 = residence[resix];
-		distres = dres(res, res2);
+		distres = dres(res, res2, gresidence);
 	
 		//System.out.println("ranval: "+ranval+" distres: "+distres);
 
 		if ((ranval >= resL1) && (ranval < resL3) && ((distres == dresthresh1) || (distres == dresthresh2)))
 			got = true;
 		else if ((ranval >= resL4) && (distres == dresthresh3))
-			got = true;						
+			got = true;	
+		//else if(count > 200)
+			//got = true;
+			
 
 	}
 	return(res2);
 }
 
 
-public static double dgen(String genderv1, String genderv2)
+public static double dgen(String genderv1, String genderv2, String[] ggender)
 {
 int i=0, j=0;
 
-String gender[]    = new String[2]; 
+String gender[]    = ggender; 
 
 String gen="";
 
 int genix = 0;
 
-gender[0] = "male";
-gender[1] = "female";
+/*gender[0] = "male";
+gender[1] = "female";*/
+
+
 
 double distgender = 0.0;
 if (genderv1.equals(genderv2) == true ) // just check for equality or not
@@ -359,7 +379,7 @@ return(distgender);
 }
 
 public static String assignGen(String gen, Random generator, Random generator2, 
-                               int genL1, double dgenthresh, String[] gender, String lk23)
+                               int genL1, double dgenthresh, String[] gender, String[] ggender, String lk23)
 
 {
     int ranval=0, genix=0; 
@@ -372,7 +392,7 @@ public static String assignGen(String gen, Random generator, Random generator2,
 	{
 		genix =  ((int)(generator.nextInt(2))); // rnd will be between 0 and limit-1
 		gen2 = gender[genix];
-		distgen = dgen(gen, gen2);
+		distgen = dgen(gen, gen2, ggender);
 		
 		if (ranval < genL1)
 		{
@@ -410,14 +430,14 @@ else
 return(distrel);
 }
 
-public static double drel2(String religionv1, String religionv2)
+public static double drel2(String religionv1, String religionv2, String[] greligion)
 {
 	double distreligion = 0.0;
-	String religion[]    	 = new String[9]; 
-	religion[0] = "Buddhist";  religion[1] = "Christian"; 
+	String religion[]    	 = greligion; 
+	/*religion[0] = "Buddhist";  religion[1] = "Christian"; 
 	religion[2] = "Hindu";     religion[3] = "Jewish";    
 	religion[4] = "Muslim";    religion[5] = "Sikh";      
-	religion[6] = "Traditional Spirituality";  religion[7] = "Other Religions"; religion[8] = "No religious affiliation";
+	religion[6] = "Traditional Spirituality";  religion[7] = "Other Religions"; religion[8] = "No religious affiliation";*/
 
 
 	if (religionv1.equals(religionv2) == true ) // found it
@@ -440,7 +460,7 @@ public static double drel2(String religionv1, String religionv2)
 return(distreligion);
 }
 
-public static String assignRel(String rel, Random generator, Random generator2, double drelthresh, String[] religion,
+public static String assignRel(String rel, Random generator, Random generator2, double drelthresh, String[] religion, String[] greligion,
 		int LimRel1,  int LimRel2, int LimRel3, int LimRel4, int LimRel5, int LimRel6, int LimRel7, int LimRel8)
 {
 	double distrel=0.0; int relix=0;
@@ -460,13 +480,15 @@ public static String assignRel(String rel, Random generator, Random generator2, 
 
 	
 	boolean got = false;
+	int count = 0;
 
 	while (!got)
 	{
+		count++;
 		relix =  ((int)(generator.nextInt(1000))); // rnd will be between 0 and limit-1
 		rel2 = religion[relix];
 		
-		distrel = drel2(rel, rel2);
+		distrel = drel2(rel, rel2, greligion);
 		
 		//System.out.println("ranval: "+ranval+" distrel: "+distrel+" thresh: "+drelthresh);
 		
@@ -578,6 +600,8 @@ public static String assignRel(String rel, Random generator, Random generator2, 
 			}
 			else if ((ranval >= 40) && (distrel > 0.0))
 				got = true;
+			else if(count > 200)
+				got = true;
 		}
 
 	}
@@ -599,11 +623,11 @@ else
 return(distmar);
 }
 
-public static double dmar2(String maritalv1, String maritalv2)
+public static double dmar2(String maritalv1, String maritalv2, String[] gmaritalstatus)
 {
-	String marital[]       	 = new String[4]; 
+	String marital[]       	 = gmaritalstatus; 
 	String mar="";
-	marital[0] = "Single";   marital[1] = "Married";  marital[2] = "Divorced"; marital[3] = "Widowed";
+	//marital[0] = "Single";   marital[1] = "Married";  marital[2] = "Divorced"; marital[3] = "Widowed";
 
 	double distmarital = 0.0;
 
@@ -622,7 +646,7 @@ return(distmarital);
 
 
 public static String assignMar(String mar, Random generator, Random generator2, double dagthresh, String[] maritalstatus,
-							   int LimMar1, int LimMar2, int LimMar3, int LimMar4, int LimMar5)
+							   String[] gmaritalstatus, int LimMar1, int LimMar2, int LimMar3, int LimMar4, int LimMar5)
 {
 	double distmar=0.0; int marix = 0;
 	String mar2="";
@@ -638,10 +662,10 @@ public static String assignMar(String mar, Random generator, Random generator2, 
 	
 	while (!got)
 	{
-		marix =  ((int)(generator.nextInt(96))); // rnd will be between 0 and limit-1
+		marix =  ((int)(generator.nextInt(100))); // rnd will be between 0 and limit-1
 		mar2 = maritalstatus[marix];
 
-		distmar = dmar2(mar, mar2);
+		distmar = dmar2(mar, mar2, gmaritalstatus);
 		
 		//System.out.println("ranval: "+ranval+" distseo: "+distseo+" seo: "+seo+" seo2: "+seo2);
 		
@@ -718,6 +742,10 @@ public static String assignMar(String mar, Random generator, Random generator2, 
 				got = true;
 			}	
 		 } // end of case when widowed
+		else {
+			//If any condition is matched return the initial random value
+			got = true;
+		}
 
 	}
 
@@ -737,16 +765,16 @@ else
 return(distprof);
 }
 
-public static double dprof2(String professionv1, String professionv2)
+public static double dprof2(String professionv1, String professionv2, String[] gprofession)
 {
 	double distprof = 0.0;
-	String profession[]    = new String[10]; 
+	String profession[]    = gprofession; 
 
-	profession[0] = "Manager";     		profession[1] = "Professional";  
+	/*profession[0] = "Manager";     		profession[1] = "Professional";  
 	profession[2] = "Service";          profession[3] = "Sales and office"; 
 	profession[4] = "Natural resources construction and maintenance"; 
 	profession[5] = "Production transportation and material moving"; 
-	profession[6] = "Student"; 
+	profession[6] = "Student"; */
 
 	if (professionv1.equals(professionv2) == true ) // found it
 		distprof = 0.0;
@@ -774,7 +802,7 @@ return(distprof);
 
 
 public static String assignPro(String prof, Random generator, Random generator2, double dprothresh1, String[] profession,
-		                       int LimPro1, int LimPro2, int LimPro3, int LimPro4, int LimPro5, int LimPro6)
+		                       String[] gprofession, int LimPro1, int LimPro2, int LimPro3, int LimPro4, int LimPro5, int LimPro6)
 {
 	double distpro=0.0; int profix = 0;
 	String pro2="";
@@ -811,7 +839,7 @@ public static String assignPro(String prof, Random generator, Random generator2,
 		profix =  ((int)(generator.nextInt(100))); // rnd will be between 0 and limit-1
 		pro2 = profession[profix];
 		
-		distpro = dprof2(prof, pro2);
+		distpro = dprof2(prof, pro2, gprofession);
 		
 		//System.out.println(prof+" "+pro2+" "+distpro);
 		
@@ -903,29 +931,29 @@ public static String assignPro(String prof, Random generator, Random generator2,
 					got = true;
 			}
 		}
-		else if (prof.equals("Natural resources construction and maintenance") || 
-				 prof.equals("Production transportation and material moving"))
+		else if (prof.equals("Natural resources construction") || 
+				 prof.equals("Production transportation"))
 		{
 			if (ranval < LimPro_NP)
 			{
 				pro2 = prof; // 60% of the time assign the same
 				got = true;
 			}
-			else if (prof.equals("Natural resources construction and maintenance"))
+			else if (prof.equals("Natural resources construction"))
 			{
 				if ((ranval > LimPro_NP_N1) && (ranval < LimPro_NP_N2)) // 25% of time
 				{
-					pro2 = "Production transportation and material moving"; // 25% of the time it'll be other one
+					pro2 = "Production transportation"; // 25% of the time it'll be other one
 					got = true;
 				}
 				else if ((ranval > (LimPro_NP_N2-1)) && (distpro > dprothresh1)) // 15% of time random
 					got = true;
 			}
-			else if (prof.equals("Production transportation and material moving"))
+			else if (prof.equals("Production transportation"))
 			{
 				if ((ranval > LimPro_NP_P1) && (ranval < LimPro_NP_P2)) // 25% of time
 				{
-					pro2 = "Natural resources construction and maintenance"; // 25% of the time it'll be other one
+					pro2 = "Natural resources construction"; // 25% of the time it'll be other one
 					got = true;
 				}
 				else if ((ranval > (LimPro_NP_P1-1)) && (distpro > dprothresh1)) // 15% of time random
@@ -1255,13 +1283,14 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 /*************************************************************************************************************/
 /*********************************************** ASSIGN NEIGHBOURS *******************************************/
 /*************************************************************************************************************/
-public static void AssignNeighbors(Random generator, Random generator2, String age[], String residence[],	
-								   String gender[],
-								   String sexualorientation[],
-								   String politicalorientation[],
-								   String religion[],
-								   String maritalstatus[],
-								   String profession[],
+public static void AssignNeighbors(Random generator, Random generator2, String age[], String gage[], String residence[],
+								   String gresidence[],
+								   String gender[], String ggender[],
+								   String sexualorientation[], String gsexualorientation[],
+								   String politicalorientation[], String gpoliticalorientation[],
+								   String religion[], String greligion[],
+								   String maritalstatus[], String gmaritalstatus[],
+								   String profession[], String gprofession[],
 		                           String likes1[], String likes2[], String likes3[], boolean switchdistance)
 		                        		   
 
@@ -1460,19 +1489,19 @@ public static void AssignNeighbors(Random generator, Random generator2, String a
 					
 				//assign *****************AGE*****************
 				
-				String ag2 = assignAge(ag, generator, generator2, dagthresh, age, agL1, agL2, agL3, agL4);
+				String ag2 = assignAge(ag, generator, generator2, dagthresh, age, gage, agL1, agL2, agL3, agL4);
 	
 				nwf1.loadAge(ag2);
 
 				// second assign *****************RESIDENCE*****************
 				String res2 = assignRes(res, generator, generator2, dresthresh1, 
-						   			    dresthresh2, dresthresh3, residence,
+						   			    dresthresh2, dresthresh3, residence, gresidence,
 						   			    resL1, resL2, resL3, resL4);
 
 				nwf1.loadResidence(res2);
 
 				// next assign *****************POLITICAL ORIENTATION*****************
-				String pol2 = assignPol(pol, generator, generator2, dpolthresh, politicalorientation,
+				String pol2 = assignPol(pol, generator, generator2, dpolthresh, politicalorientation, gpoliticalorientation,
  					   					polL1, polL2, polL3, polL4);
 				
 				nwf1.loadPoliticalOrientation(pol2);
@@ -1480,26 +1509,26 @@ public static void AssignNeighbors(Random generator, Random generator2, String a
 				// next assign *****************SEXUAL ORIENTATION*****************
 
 				String seo2 = assignSeo(seo, generator, generator2, dseothresh, 
-	   				                    sexualorientation, seoL1, seoL2, seoL3, seoL4, seoL1h, seoL2h, seoL3h, seoL4h);
+	   				                    sexualorientation, gsexualorientation, seoL1, seoL2, seoL3, seoL4, seoL1h, seoL2h, seoL3h, seoL4h);
 	
 				nwf1.loadSexualOrientation(seo2);
 
 				// next assign *****************RELIGION*****************
-				String rel2 = assignRel(rel, generator, generator2, drelthresh, religion,
+				String rel2 = assignRel(rel, generator, generator2, drelthresh, religion, greligion,
 						LimRel1,  LimRel2, LimRel3, LimRel4, LimRel5, LimRel6, LimRel7, LimRel8);				
 
 				nwf1.loadReligion(rel2);
 				
 
 				// next assign *****************MARITAL STATUS*****************
-				String mar2 = assignMar(mar, generator, generator2, dagthresh, maritalstatus, 
+				String mar2 = assignMar(mar, generator, generator2, dagthresh, maritalstatus, gmaritalstatus,
 						                limMar1, limMar2, limMar3, limMar4, limMar5);
 
 				nwf1.loadMaritalStatus(mar2);
 
 				
 				// next assign *****************PROFESSION*****************
-				String pro2 =  assignPro(prof, generator, generator2, dprothresh, profession,
+				String pro2 =  assignPro(prof, generator, generator2, dprothresh, profession, gprofession,
 	                                     LimPro1, LimPro2, LimPro3, LimPro4, LimPro5, LimPro6);				
 				
 				
@@ -1518,7 +1547,7 @@ public static void AssignNeighbors(Random generator, Random generator2, String a
 				
 				// fourth assign *****************GENDER*****************
 				String gen2 = assignGen(gen, generator, generator2, genL1, dgenthresh,
-				                        gender, likes[2]);
+				                        gender, ggender, likes[2]);
 			
 				nwf1.loadGender(gen2);
 
@@ -1529,8 +1558,10 @@ public static void AssignNeighbors(Random generator, Random generator2, String a
 			} // end for each friend
 				
 			} // eif same community
+			
 
 		} // efor each seed
+			System.out.println("Hola");
 			
 	} // ewhile each community
 }
@@ -1953,21 +1984,43 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	String profile_lk2[]       = new String[10]; 
 	String profile_lk3[]       = new String[10]; 
 	
-	String residence[] = new String[6]; 
-	String gender[]    = new String[2]; 
-	String age[]       = new String[12]; 
-
+	//String residence[] = new String[6]; 
+	//String gender[]    = new String[2]; 
+	//String age[]       = new String[12];
 	
-	String greligion[]              = new String[9];  	 int religionf[]             = new int[9];
-	String gmaritalstatus[]         = new String[4];     int maritalstatusf[]        = new int[4];
-	String gprofession[]            = new String[10];    int professionf[]           = new int[10];
-	String gpoliticalorientation[]  = new String[7];     int politicalorientationf[] = new int[7];
-	String gsexualorientation[]     = new String[4];     int sexualorientationf[]    = new int[4];
+	List<Pair<String, Double>> ageParamList = attributeList.get(0).getParameterList();
+	int ageNumParam = ageParamList.size();
+	List<Pair<String, Double>> genderParamList = attributeList.get(1).getParameterList();
+	int genderNumParam = genderParamList.size();
+	List<Pair<String, Double>> residenceParamList = attributeList.get(2).getParameterList();
+	int residenceNumParam = residenceParamList.size();
+	List<Pair<String, Double>> religionParamList = attributeList.get(3).getParameterList();
+	int religionNumParam = religionParamList.size();
+	List<Pair<String, Double>> maritalParamList = attributeList.get(4).getParameterList();
+	int maritalNumParam = maritalParamList.size();
+	List<Pair<String, Double>> professionParamList = attributeList.get(5).getParameterList();
+	int professionNumParam = professionParamList.size();
+	List<Pair<String, Double>> politicalParamList = attributeList.get(6).getParameterList();
+	int politicalNumParam = politicalParamList.size();
+	List<Pair<String, Double>> sexualParamList = attributeList.get(7).getParameterList();
+	int sexualNumParam = sexualParamList.size();
 	
+	String gage[]					= new String[ageNumParam];				int agef[]					= new int[ageNumParam];
+	String ggender[]				= new String[genderNumParam];			int genderf[]				= new int[genderNumParam];
+	String gresidence[]				= new String[residenceNumParam];		int residencef[]			= new int[residenceNumParam];
+	String greligion[]              = new String[religionNumParam]; 		int religionf[]             = new int[religionNumParam];
+	String gmaritalstatus[]         = new String[maritalNumParam];			int maritalstatusf[]        = new int[maritalNumParam];
+	String gprofession[]            = new String[professionNumParam];    	int professionf[]           = new int[professionNumParam];
+	String gpoliticalorientation[]  = new String[politicalNumParam];     	int politicalorientationf[] = new int[politicalNumParam];
+	String gsexualorientation[]     = new String[sexualNumParam];     		int sexualorientationf[]    = new int[sexualNumParam];
+	
+	String age[]				   = new String[100];
+	String gender[]				   = new String[100];
+	String residence[]			   = new String[100];
 	String religion[]              = new String[1000];
-	String maritalstatus[]         = new String[96];
+	String maritalstatus[]         = new String[100];
 	String profession[]            = new String[100];
-	String politicalorientation[]  = new String[99];
+	String politicalorientation[]  = new String[100];
 	String sexualorientation[]     = new String[100];
 	
 	
@@ -2003,17 +2056,29 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	
 	int relix = 0, marix = 0, profix = 0, polix = 0, seoix = 0;
 	
-	residence[0] = "Palo Alto";
+	/*residence[0] = "Palo Alto";
 	residence[1] = "Santa Barbara";
 	residence[2] = "Winthrop";
 	residence[3] = "Boston";
 	residence[4] = "Cambridge";
-	residence[5] = "San Jose";
+	residence[5] = "San Jose";*/
 	
-	gender[0] = "male";
-	gender[1] = "female";
+	for(int k = 0; k < residenceNumParam; k++) {
+		gresidence[k] = residenceParamList.get(k).getKey();
+		Double freq = residenceParamList.get(k).getValue() * 100;
+		residencef[k] = freq.intValue();
+	}
 	
-	age[0] = "18-25";
+	/*gender[0] = "male";
+	gender[1] = "female";*/
+	
+	for(int k = 0; k < genderNumParam; k++) {
+		ggender[k] = genderParamList.get(k).getKey();
+		Double freq = genderParamList.get(k).getValue() * 100;
+		genderf[k] = freq.intValue();
+	}
+	
+	/*age[0] = "18-25";
 	age[1] = "18-25";
 	age[2] = "18-25";
 	age[3] = "26-35";
@@ -2024,10 +2089,17 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	age[8] = "46-55";
 	age[9] = "56-65";
 	age[10] = "66-75";
-	age[11] = "76-85";
+	age[11] = "76-85";*/
+	
+	for(int k = 0; k < ageNumParam; k++) {
+		gage[k] = ageParamList.get(k).getKey();
+		Double freq = ageParamList.get(k).getValue() * 100;
+		agef[k] = freq.intValue();
+	}
+	
 	
 	// TOTAL: 1000
-	greligion[0] = "Buddhist";  religionf[0] = 68; //6.8%
+	/*greligion[0] = "Buddhist";  religionf[0] = 68; //6.8%
 	greligion[1] = "Christian"; religionf[1] = 304;//30.4%
 	greligion[2] = "Hindu";     religionf[2] = 138;//13.8%
 	greligion[3] = "Jewish";    religionf[3] = 2;//0.2%
@@ -2035,48 +2107,82 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	greligion[5] = "Sikh";      religionf[5] = 3;//0.3%
 	greligion[6] = "Traditional Spirituality";  religionf[6] = 1;//0.1%
 	greligion[7] = "Other Religions";           religionf[7] = 110;//10.9%
-	greligion[8] = "No religious affiliation";  religionf[8] = 117;//11.7%
+	greligion[8] = "No religious affiliation";  religionf[8] = 117;//11.7%*/
+	
+	
+	
+	for(int k = 0; k < religionNumParam; k++) {
+		greligion[k] = religionParamList.get(k).getKey();
+		Double freq = religionParamList.get(k).getValue() * 1000;
+		religionf[k] = freq.intValue();
+	}
 	
 	//Christian 30.39%, 
 	//Muslim 25.74%, Hindu 13.8%, Buddhist 6.77%, Sikh 0.35%, Jewish 0.22%, Baha'i 0.11%, other religions 10.95%, 
 	//non-religious 9.66%, atheists 2.01%
 	
-	// TOTAL: 96
-	gmaritalstatus[0] = "Single";   maritalstatusf[0] = 30; //30.4%
+	// TOTAL: 100
+	/*gmaritalstatus[0] = "Single";   maritalstatusf[0] = 30; //30.4%
 	gmaritalstatus[1] = "Married";  maritalstatusf[1] = 50; // 50.8%
 	gmaritalstatus[2] = "Divorced"; maritalstatusf[2] = 10; //10.0%
-	gmaritalstatus[3] = "Widowed";  maritalstatusf[3] = 6;  //6.1%
+	gmaritalstatus[3] = "Widowed";  maritalstatusf[3] = 10;  //6.1%*/
 	//maritalstatus[4] = "Cohabiting";
 	//maritalstatus[5] = "Civil Union";
 	//maritalstatus[6] = "Domestic Partnership";
 	//maritalstatus[7] = "Unmarried Partners";
 	
 
+	for(int k = 0; k < maritalNumParam; k++) {
+		gmaritalstatus[k] = maritalParamList.get(k).getKey();
+		Double freq = maritalParamList.get(k).getValue() * 100;
+		maritalstatusf[k] = freq.intValue();
+	}
+	
+
 	//Profession: ISCO-08 structure 
 	// TOTAL: 100
-	gprofession[0] = "Manager";     		professionf[0] = 12;      //12%
+	/*gprofession[0] = "Manager";     		professionf[0] = 12;      //12%
 	gprofession[1] = "Professional";  	    professionf[1] = 17;      //17%
 	gprofession[2] = "Service";       	    professionf[2] = 14;      //14%
 	gprofession[3] = "Sales and office";    professionf[3] = 18;      //18%
 	gprofession[4] = "Natural resources construction and maintenance"; professionf[4] = 7; //7%
 	gprofession[5] = "Production transportation and material moving";  professionf[5] = 9; //9%
-	gprofession[6] = "Student";             professionf[6] = 23; //23%
+	gprofession[6] = "Student";             professionf[6] = 23; //23%*/
+	
+	
+	for(int k = 0; k < professionNumParam; k++) {
+		gprofession[k] = professionParamList.get(k).getKey();
+		Double freq = professionParamList.get(k).getValue() * 100;
+		professionf[k] = freq.intValue();
+	}
 
 	
 	// TOTAL: 99
-	gpoliticalorientation[0] = "Far Left";     politicalorientationf[0] = 9;   //9.4%
+	/*gpoliticalorientation[0] = "Far Left";     politicalorientationf[0] = 9;   //9.4%
 	gpoliticalorientation[1] = "Left";         politicalorientationf[1] = 35;  //34.7%
 	gpoliticalorientation[2] = "Center Left";  politicalorientationf[2] = 18; //18.1%
 	gpoliticalorientation[3] = "Center";       politicalorientationf[3] = 18;  //18.0%
 	gpoliticalorientation[4] = "Center Right"; politicalorientationf[4] = 10;  //10.5%
 	gpoliticalorientation[5] = "Right";        politicalorientationf[5] = 8;   // 8.0%
-	gpoliticalorientation[6] = "Far Right";    politicalorientationf[6] = 1;   //1.2%
+	gpoliticalorientation[6] = "Far Right";    politicalorientationf[6] = 1;   //1.2%*/
+	
+	for(int k = 0; k < politicalNumParam; k++) {
+		gpoliticalorientation[k] = politicalParamList.get(k).getKey();
+		Double freq = politicalParamList.get(k).getValue() * 100;
+		politicalorientationf[k] = freq.intValue();
+	}
 	
 	// TOTAL: 100
-	gsexualorientation[0] = "Asexual";      sexualorientationf[0] = 1;// 1.3%
+	/*gsexualorientation[0] = "Asexual";      sexualorientationf[0] = 1;// 1.3%
 	gsexualorientation[1] = "Bisexual";     sexualorientationf[1] = 2;//1.8%
 	gsexualorientation[2] = "Heterosexual"; sexualorientationf[2] = 95;//95.4%
-	gsexualorientation[3] = "Homosexual";   sexualorientationf[3] = 2;// 1.5%
+	gsexualorientation[3] = "Homosexual";   sexualorientationf[3] = 2;// 1.5%*/
+	
+	for(int k = 0; k < sexualNumParam; k++) {
+		gsexualorientation[k] = sexualParamList.get(k).getKey();
+		Double freq = sexualParamList.get(k).getValue() * 100;
+		sexualorientationf[k] = freq.intValue();
+	}
 
 		
 	weight[0] = "1-2";
@@ -2105,8 +2211,42 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		    ++count;
 		}
 	}
+	
+	// assign residence based on frequencies
+	for(i=0, count=0; i<residenceNumParam; i++)
+	{
+		num = residencef[i];
+		for (j=0;j<num;++j)
+		{
+			residence[count]=gresidence[i];
+		    ++count;
+		}
+	}
+	
+	// assign gender based on frequencies
+	for(i=0, count=0; i<genderNumParam; i++)
+	{
+		num = genderf[i];
+		for (j=0;j<num;++j)
+		{
+			gender[count]=ggender[i];
+		    ++count;
+		}
+	}
+	// assign age based on frequencies
+	for(i=0, count=0; i<ageNumParam; i++)
+	{
+		num = agef[i];
+		for (j=0;j<num;++j)
+		{
+			age[count]=gage[i];
+		    ++count;
+		}
+	}
+	
+	
 	// assign religion based on frequencies
-	for(i=0, count=0; i<9; i++)
+	for(i=0, count=0; i<religionNumParam; i++)
 	{
 		num = religionf[i];
 		for (j=0;j<num;++j)
@@ -2117,7 +2257,7 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	}
 	
 	// assign marital status based on frequencies
-	for(i=0, count=0; i<4; i++)
+	for(i=0, count=0; i<maritalNumParam; i++)
 	{
 		num = maritalstatusf[i];
 		for (j=0;j<num;++j)
@@ -2128,7 +2268,7 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	}
 	
 	// assign profession based on frequencies
-	for(i=0, count=0; i<7; i++)
+	for(i=0, count=0; i<professionNumParam; i++)
 	{
 		num = professionf[i];
 		for (j=0;j<num;++j)
@@ -2139,7 +2279,7 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	}
 	
 	// assign political orientation based on frequencies
-	for(i=0, count=0; i<7; i++)
+	for(i=0, count=0; i<politicalNumParam; i++)
 	{
 		num = politicalorientationf[i];
 		for (j=0;j<num;++j)
@@ -2150,7 +2290,7 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	}
 	
 	// assign sexual orientation based on frequencies
-	for(i=0, count=0; i<4; i++)
+	for(i=0, count=0; i<sexualNumParam; i++)
 	{
 		num = sexualorientationf[i];
 		for (j=0;j<num;++j)
@@ -2247,8 +2387,8 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
                 profile_seo, profile_lk1, profile_lk2, profile_lk3, profileList, configuration.getProfileCommunityAssaignment());
 		
 	boolean switchdistance = true;
-	AssignNeighbors(generator, generator2, age, residence, gender, sexualorientation, politicalorientation, 
-			        religion, maritalstatus, profession, likes1, likes2, likes3, switchdistance);
+	AssignNeighbors(generator, generator2, age, gage, residence, gresidence, gender, ggender, sexualorientation, gsexualorientation, politicalorientation, gpoliticalorientation,
+			        religion, greligion, maritalstatus, gmaritalstatus, profession, gprofession, likes1, likes2, likes3, switchdistance);
 	
 	
 	int RANLIMUNAS= configuration.getRandomness(); // Unassigned nodes assignment, 0 is equivalent to 10% random assignment (low). 

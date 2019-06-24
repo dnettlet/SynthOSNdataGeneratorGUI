@@ -96,39 +96,39 @@
         <description>The religion a user follows. It can also be the case that the user doesn't follow any religion at all</description>
         <param>
             <value>Buddhist</value>
-            <frequency>0.068</frequency>
+            <frequency>0.1</frequency>
         </param>
         <param>
             <value>Christian</value>
-            <frequency>0.304</frequency>
+            <frequency>0.30</frequency>
         </param>
         <param>
             <value>Hindu</value>
-            <frequency>0.138</frequency>
+            <frequency>0.13</frequency>
         </param>
         <param>
             <value>Jewish</value>
-            <frequency>0.02</frequency>
+            <frequency>0.1</frequency>
         </param>
         <param>
             <value>Muslim</value>
-            <frequency>0.257</frequency>
+            <frequency>0.25</frequency>
         </param>
         <param>
             <value>Sikh</value>
-            <frequency>0.03</frequency>
+            <frequency>0.0</frequency>
         </param>
         <param>
             <value>Traditional Spirituality</value>
-            <frequency>0.01</frequency>
+            <frequency>0.0</frequency>
         </param>
         <param>
             <value>Other religions</value>
-            <frequency>0.110</frequency>
+            <frequency>0.11</frequency>
         </param>
         <param>
             <value>No religious affiliation</value>
-            <frequency>0.117</frequency>
+            <frequency>0.02</frequency>
         </param>
     </attribute>
 
@@ -148,7 +148,7 @@
         </param>
         <param>
             <value>Widowed</value>
-            <frequency>0.06</frequency>
+            <frequency>0.1</frequency>
         </param>
     </attribute>
 
@@ -208,7 +208,7 @@
         </param>
         <param>
             <value>Right</value>
-            <frequency>0.08</frequency>
+            <frequency>0.09</frequency>
         </param>
         <param>
             <value>Far Right</value>
