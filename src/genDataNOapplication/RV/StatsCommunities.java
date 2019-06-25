@@ -3,13 +3,9 @@
 
 package genDataNOapplication.RV;
 
-import java.io.*;
-import java.lang.Math;
-import java.lang.Object;
-import java.io.Serializable;
+
 import java.util.Random;
 import java.util.Enumeration;
-import java.util.Scanner;
 import java.util.Vector;
 
 import genDataNOapplication.User.User;

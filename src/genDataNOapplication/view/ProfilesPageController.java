@@ -9,19 +9,13 @@ import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TitledPane;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -110,7 +104,7 @@ public class ProfilesPageController {
 		        attributeSelection.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() { 
 		        	 
 		            // if the item of the list is changed 
-		            public void changed(ObservableValue ov, Number value, Number userValue) 
+		            public void changed(@SuppressWarnings("rawtypes") ObservableValue ov, Number value, Number userValue) 
 		            { 
 		            	List<Integer> oldValues = currentProfile.getKey();
 		            	int oldFreq = currentProfile.getValue();

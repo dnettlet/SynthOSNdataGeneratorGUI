@@ -2,18 +2,14 @@ package genDataNOapplication.view;
 
 import java.io.File;
 
-import genDataNOapplication.Controller;
 import genDataNOapplication.Main;
 import genDataNOapplication.Utils.FileUtils;
 import genDataNOapplication.model.ConfigurationModel;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressIndicator;
 
 //Controller class for the Home Page
 public class HomePageController {

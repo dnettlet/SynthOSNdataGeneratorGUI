@@ -19,7 +19,6 @@ import genDataNOapplication.view.InputFileSettingsController;
 import genDataNOapplication.view.OutputFileSettingsController;
 import genDataNOapplication.view.UserAttributesController;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
 import javafx.stage.Stage;

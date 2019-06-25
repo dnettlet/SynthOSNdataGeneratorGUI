@@ -4,18 +4,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -27,8 +20,6 @@ import genDataNOapplication.User.User;
 import genDataNOapplication.Utils.Utils;
 import genDataNOapplication.model.AttributeModel;
 import genDataNOapplication.model.ConfigurationModel;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -116,7 +107,7 @@ public class StatisticsPageController {
         whatToDisplay.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() { 
        	 
             // if the item of the list is changed 
-            public void changed(ObservableValue ov, Number value, Number userValue) 
+            public void changed(@SuppressWarnings("rawtypes") ObservableValue ov, Number value, Number userValue) 
             { 
             	chartsSection.getChildren().clear();
             	loadStatistics(whatToDisplay.getSelectionModel().selectedIndexProperty().intValue());
