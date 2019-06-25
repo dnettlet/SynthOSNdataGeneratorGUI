@@ -3,14 +3,10 @@
 
 package genDataNOapplication.RV;
 
-import java.io.*;
 import java.lang.Math;
-import java.lang.Object;
-import java.io.Serializable;
 import java.util.Random;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Vector;
 
 import genDataNOapplication.User.User;
@@ -30,14 +26,6 @@ int i=0, j=0;
 String age[]  = new String[gage.length]; 
 String ag="";
 int agix = 0;
-
-/*age[0]  = "18-25";
-age[1]  = "26-35";
-age[2]  = "36-45";
-age[3]  = "46-55";
-age[4]  = "56-65";
-age[5]  = "66-75";
-age[6]  = "76-85";*/
 
 for(int k = 0; k < gage.length; k++) {
 	age[k] = gage[k];
@@ -105,13 +93,6 @@ String pol[]  = gpoliticalorientation;
 String po="";
 int poix = 0;
 
-/*pol[0] = "Far Left";
-pol[1] = "Left";
-pol[2] = "Center Left";
-pol[3] = "Center";
-pol[4] = "Center Right";
-pol[5] = "Right";
-pol[6] = "Far Right";*/
 
 int pos1=0, pos2=0;
 
@@ -176,7 +157,6 @@ public static double dseo2(String seov1, String seov2, String[] gsexualOrientati
 {
 	String sexual[] = gsexualOrientation;
 	String sex="";
-	//sexual[0] = "Asexual";sexual[1] = "Bisexual";sexual[2] = "Heterosexual";sexual[3] = "Homosexual";
 
 	double distseo = 0.0;
 
@@ -252,13 +232,6 @@ String region[]    = new String[6];
 
 String res="";
 int resix = 0;
-
-/*residence[0] = "Palo Alto";
-residence[1] = "Santa Barbara";
-residence[2] = "Winthrop";
-residence[3] = "Boston";
-residence[4] = "Cambridge";
-residence[5] = "San Jose";*/
 
 county[0] = "Santa Clara";
 county[1] = "Santa Barbara";
@@ -364,9 +337,6 @@ String gen="";
 
 int genix = 0;
 
-/*gender[0] = "male";
-gender[1] = "female";*/
-
 
 
 double distgender = 0.0;
@@ -434,10 +404,6 @@ public static double drel2(String religionv1, String religionv2, String[] grelig
 {
 	double distreligion = 0.0;
 	String religion[]    	 = greligion; 
-	/*religion[0] = "Buddhist";  religion[1] = "Christian"; 
-	religion[2] = "Hindu";     religion[3] = "Jewish";    
-	religion[4] = "Muslim";    religion[5] = "Sikh";      
-	religion[6] = "Traditional Spirituality";  religion[7] = "Other Religions"; religion[8] = "No religious affiliation";*/
 
 
 	if (religionv1.equals(religionv2) == true ) // found it
@@ -769,12 +735,6 @@ public static double dprof2(String professionv1, String professionv2, String[] g
 {
 	double distprof = 0.0;
 	String profession[]    = gprofession; 
-
-	/*profession[0] = "Manager";     		profession[1] = "Professional";  
-	profession[2] = "Service";          profession[3] = "Sales and office"; 
-	profession[4] = "Natural resources construction and maintenance"; 
-	profession[5] = "Production transportation and material moving"; 
-	profession[6] = "Student"; */
 
 	if (professionv1.equals(professionv2) == true ) // found it
 		distprof = 0.0;
@@ -1175,16 +1135,6 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 				profilefreq[k] = profileList.get(k).getValue();
 			}
 			System.out.println("Profile 0 frequency: " + profilefreq[0]);
-			/*profilefreq[0]=216; // sum to 1000
-			profilefreq[2]=211;
-			profilefreq[1]=172;
-			profilefreq[5]=157;
-			profilefreq[3]=97;
-			profilefreq[4]=81;
-			profilefreq[8]=28;
-			profilefreq[6]=24;
-			profilefreq[9]=9;
-			profilefreq[7]=5;*/
 			
 			int freq=0;
 			
@@ -1204,17 +1154,6 @@ public static void AssignSeeds(Random generator, String profile_age[],String pro
 			//System.out.println("Community " + k + "assaigned to profile " + profilevalues[k]);
 			}
 			
-			// *********** next 10 lines only for rmat ***********
-			/*profilevalues[0]=0; // assign profile 0 to community 0
-			profilevalues[1]=2; // assign profile 2 to community 1
-			profilevalues[2]=1; // assign profile 1 to community 2
-			profilevalues[3]=4; // assign profile 4 to community 3
-			profilevalues[4]=5; // assign profile 5 to community 4
-			profilevalues[5]=3; // assign profile 3 to community 5
-			profilevalues[6]=7; // assign profile 7 to community 6
-			profilevalues[7]=9; // assign profile 9 to community 7
-			profilevalues[8]=6; // assign profile 6 to community 8
-			profilevalues[9]=8; // assign profile 8 to community 9*/
 			
 	  		enc = RV.Communities.keys();
 	  		int comcount=0;
@@ -1561,7 +1500,6 @@ public static void AssignNeighbors(Random generator, Random generator2, String a
 			
 
 		} // efor each seed
-			System.out.println("Hola");
 			
 	} // ewhile each community
 }
@@ -2056,12 +1994,6 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 	
 	int relix = 0, marix = 0, profix = 0, polix = 0, seoix = 0;
 	
-	/*residence[0] = "Palo Alto";
-	residence[1] = "Santa Barbara";
-	residence[2] = "Winthrop";
-	residence[3] = "Boston";
-	residence[4] = "Cambridge";
-	residence[5] = "San Jose";*/
 	
 	for(int k = 0; k < residenceNumParam; k++) {
 		gresidence[k] = residenceParamList.get(k).getKey();
@@ -2069,45 +2001,18 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		residencef[k] = freq.intValue();
 	}
 	
-	/*gender[0] = "male";
-	gender[1] = "female";*/
-	
 	for(int k = 0; k < genderNumParam; k++) {
 		ggender[k] = genderParamList.get(k).getKey();
 		Double freq = genderParamList.get(k).getValue() * 100;
 		genderf[k] = freq.intValue();
 	}
 	
-	/*age[0] = "18-25";
-	age[1] = "18-25";
-	age[2] = "18-25";
-	age[3] = "26-35";
-	age[4] = "26-35";
-	age[5] = "26-35";
-	age[6] = "36-45";
-	age[7] = "36-45";
-	age[8] = "46-55";
-	age[9] = "56-65";
-	age[10] = "66-75";
-	age[11] = "76-85";*/
 	
 	for(int k = 0; k < ageNumParam; k++) {
 		gage[k] = ageParamList.get(k).getKey();
 		Double freq = ageParamList.get(k).getValue() * 100;
 		agef[k] = freq.intValue();
 	}
-	
-	
-	// TOTAL: 1000
-	/*greligion[0] = "Buddhist";  religionf[0] = 68; //6.8%
-	greligion[1] = "Christian"; religionf[1] = 304;//30.4%
-	greligion[2] = "Hindu";     religionf[2] = 138;//13.8%
-	greligion[3] = "Jewish";    religionf[3] = 2;//0.2%
-	greligion[4] = "Muslim";    religionf[4] = 257;//25.7%
-	greligion[5] = "Sikh";      religionf[5] = 3;//0.3%
-	greligion[6] = "Traditional Spirituality";  religionf[6] = 1;//0.1%
-	greligion[7] = "Other Religions";           religionf[7] = 110;//10.9%
-	greligion[8] = "No religious affiliation";  religionf[8] = 117;//11.7%*/
 	
 	
 	
@@ -2117,20 +2022,6 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		religionf[k] = freq.intValue();
 	}
 	
-	//Christian 30.39%, 
-	//Muslim 25.74%, Hindu 13.8%, Buddhist 6.77%, Sikh 0.35%, Jewish 0.22%, Baha'i 0.11%, other religions 10.95%, 
-	//non-religious 9.66%, atheists 2.01%
-	
-	// TOTAL: 100
-	/*gmaritalstatus[0] = "Single";   maritalstatusf[0] = 30; //30.4%
-	gmaritalstatus[1] = "Married";  maritalstatusf[1] = 50; // 50.8%
-	gmaritalstatus[2] = "Divorced"; maritalstatusf[2] = 10; //10.0%
-	gmaritalstatus[3] = "Widowed";  maritalstatusf[3] = 10;  //6.1%*/
-	//maritalstatus[4] = "Cohabiting";
-	//maritalstatus[5] = "Civil Union";
-	//maritalstatus[6] = "Domestic Partnership";
-	//maritalstatus[7] = "Unmarried Partners";
-	
 
 	for(int k = 0; k < maritalNumParam; k++) {
 		gmaritalstatus[k] = maritalParamList.get(k).getKey();
@@ -2138,33 +2029,12 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		maritalstatusf[k] = freq.intValue();
 	}
 	
-
-	//Profession: ISCO-08 structure 
-	// TOTAL: 100
-	/*gprofession[0] = "Manager";     		professionf[0] = 12;      //12%
-	gprofession[1] = "Professional";  	    professionf[1] = 17;      //17%
-	gprofession[2] = "Service";       	    professionf[2] = 14;      //14%
-	gprofession[3] = "Sales and office";    professionf[3] = 18;      //18%
-	gprofession[4] = "Natural resources construction and maintenance"; professionf[4] = 7; //7%
-	gprofession[5] = "Production transportation and material moving";  professionf[5] = 9; //9%
-	gprofession[6] = "Student";             professionf[6] = 23; //23%*/
-	
 	
 	for(int k = 0; k < professionNumParam; k++) {
 		gprofession[k] = professionParamList.get(k).getKey();
 		Double freq = professionParamList.get(k).getValue() * 100;
 		professionf[k] = freq.intValue();
 	}
-
-	
-	// TOTAL: 99
-	/*gpoliticalorientation[0] = "Far Left";     politicalorientationf[0] = 9;   //9.4%
-	gpoliticalorientation[1] = "Left";         politicalorientationf[1] = 35;  //34.7%
-	gpoliticalorientation[2] = "Center Left";  politicalorientationf[2] = 18; //18.1%
-	gpoliticalorientation[3] = "Center";       politicalorientationf[3] = 18;  //18.0%
-	gpoliticalorientation[4] = "Center Right"; politicalorientationf[4] = 10;  //10.5%
-	gpoliticalorientation[5] = "Right";        politicalorientationf[5] = 8;   // 8.0%
-	gpoliticalorientation[6] = "Far Right";    politicalorientationf[6] = 1;   //1.2%*/
 	
 	for(int k = 0; k < politicalNumParam; k++) {
 		gpoliticalorientation[k] = politicalParamList.get(k).getKey();
@@ -2172,11 +2042,6 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		politicalorientationf[k] = freq.intValue();
 	}
 	
-	// TOTAL: 100
-	/*gsexualorientation[0] = "Asexual";      sexualorientationf[0] = 1;// 1.3%
-	gsexualorientation[1] = "Bisexual";     sexualorientationf[1] = 2;//1.8%
-	gsexualorientation[2] = "Heterosexual"; sexualorientationf[2] = 95;//95.4%
-	gsexualorientation[3] = "Homosexual";   sexualorientationf[3] = 2;// 1.5%*/
 	
 	for(int k = 0; k < sexualNumParam; k++) {
 		gsexualorientation[k] = sexualParamList.get(k).getKey();
@@ -2331,55 +2196,26 @@ public static int rAssignDataGeneralizedSensAttr4(int numnodes, ConfigurationMod
 		profile_seo[k] = attributeList.get(7).getParameterList().get(profileList.get(k).getKey().get(7)).getKey();
 	}
 	
-	//profile_age[0]  = age[6]; 					profile_gen[0]  = gender[0]; 			profile_res[0]  = residence[3]; 
-	//profile_rel[0]  = greligion[8]; 			profile_mar[0]  = gmaritalstatus[1]; 	profile_prof[0] = gprofession[3]; 
+ 
 	profile_lk1[0]  = glike1[3];  				profile_lk2[0]  = glike2[3]; 			profile_lk3[0]  = glike3[3];
-	//profile_pol[0]  = gpoliticalorientation[3]; profile_seo[0]  = gsexualorientation[2]; 
-	
-	//profile_age[1]  = age[3]; 					profile_gen[1]  = gender[1]; 			profile_res[1]  = residence[4]; 
-	//profile_rel[1]  = greligion[0]; 			profile_mar[1]  = gmaritalstatus[2]; 	profile_prof[1] = gprofession[0]; 
+
 	profile_lk1[1]  = glike1[1];  				profile_lk2[1]  = glike2[1]; 			profile_lk3[1]  = glike3[1];
-	//profile_pol[1]  = gpoliticalorientation[1]; profile_seo[1]  = gsexualorientation[1]; 
-	
-	//profile_age[2]  = age[0]; 					profile_gen[2]  = gender[0]; 			profile_res[2]  = residence[0]; 
-	//profile_rel[2]  = greligion[1]; 			profile_mar[2]  = gmaritalstatus[0]; 	profile_prof[2] = gprofession[6]; 
+
 	profile_lk1[2]  = glike1[2];  				profile_lk2[2]  = glike2[2]; 			profile_lk3[2]  = glike3[2];
-	//profile_pol[2]  = gpoliticalorientation[2]; profile_seo[2]  = gsexualorientation[2];
-	
-	//profile_age[3]  = age[0]; 					profile_gen[3]  = gender[1]; 			profile_res[3]  = residence[2]; 
-	//profile_rel[3]  = greligion[4]; 			profile_mar[3]  = gmaritalstatus[0]; 	profile_prof[3] = gprofession[1]; 
+
 	profile_lk1[3]  = glike1[0];  				profile_lk2[3]  = glike2[0]; 			profile_lk3[3]  = glike3[0];
-	//profile_pol[3]  = gpoliticalorientation[4]; profile_seo[3]  = gsexualorientation[2];
-	
-	//profile_age[4]  = age[9]; 					profile_gen[4]  = gender[0]; 			profile_res[4]  = residence[1]; 
-	//profile_rel[4]  = greligion[2]; 			profile_mar[4]  = gmaritalstatus[3]; 	profile_prof[4] = gprofession[4]; 
+
 	profile_lk1[4]  = glike1[3];  				profile_lk2[4]  = glike2[3]; 			profile_lk3[4]  = glike3[3];
-	//profile_pol[4]  = gpoliticalorientation[5]; profile_seo[4]  = gsexualorientation[2];
-	
-	//profile_age[5]  = age[10]; 					profile_gen[5]  = gender[1]; 			profile_res[5]  = residence[5]; 
-	//profile_rel[5]  = greligion[3]; 			profile_mar[5]  = gmaritalstatus[1]; 	profile_prof[5] = gprofession[5]; 
+
 	profile_lk1[5]  = glike1[1];  				profile_lk2[5]  = glike2[1]; 			profile_lk3[5]  = glike3[1];
-	//profile_pol[5]  = gpoliticalorientation[0]; profile_seo[5]  = gsexualorientation[2];
-	
-	//profile_age[6]  = age[0]; 					profile_gen[6]  = gender[1]; 			profile_res[6]  = residence[2]; 
-	//profile_rel[6]  = greligion[1]; 			profile_mar[6]  = gmaritalstatus[0]; 	profile_prof[6] = gprofession[1]; 
+ 
 	profile_lk1[6]  = glike1[0];  				profile_lk2[6]  = glike2[0]; 			profile_lk3[6]  = glike3[0];
-	//profile_pol[6]  = gpoliticalorientation[4]; profile_seo[6]  = gsexualorientation[2];
-	
-	//profile_age[7]  = age[0]; 					profile_gen[7]  = gender[1]; 			profile_res[7]  = residence[2]; 
-	//profile_rel[7]  = greligion[3]; 			profile_mar[7]  = gmaritalstatus[0]; 	profile_prof[7] = gprofession[1]; 
+
 	profile_lk1[7]  = glike1[0];  				profile_lk2[7]  = glike2[0]; 			profile_lk3[7]  = glike3[0];
-	//profile_pol[7]  = gpoliticalorientation[4]; profile_seo[7]  = gsexualorientation[2];
-	
-	//profile_age[8]  = age[9]; 					profile_gen[8]  = gender[0]; 			profile_res[8]  = residence[1]; 
-	//profile_rel[8]  = greligion[2]; 			profile_mar[8]  = gmaritalstatus[3]; 	profile_prof[8] = gprofession[4]; 
+
 	profile_lk1[8]  = glike1[3];  				profile_lk2[8]  = glike2[3]; 			profile_lk3[8]  = glike3[3];
-	//profile_pol[8]  = gpoliticalorientation[1]; profile_seo[8]  = gsexualorientation[2];
-	
-	//profile_age[9]  = age[9]; 					profile_gen[9]  = gender[0]; 			profile_res[9]  = residence[1]; 
-	//profile_rel[9]  = greligion[2]; 			profile_mar[9]  = gmaritalstatus[3]; 	profile_prof[9] = gprofession[4]; 
+
 	profile_lk1[9]  = glike1[3];  				profile_lk2[9]  = glike2[3]; 			profile_lk3[9]  = glike3[3];
-	//profile_pol[9]  = gpoliticalorientation[0]; profile_seo[9]  = gsexualorientation[2];
 	
 	
     // The following three routines do all the work
